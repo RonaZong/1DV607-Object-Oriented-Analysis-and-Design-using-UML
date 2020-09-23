@@ -5,6 +5,10 @@ public class Member {
     private String personalNumber;
     private String memberID;
 
+    public Member(){
+
+    }
+
     public String getName() {
         return name;
     }
