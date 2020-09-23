@@ -4,6 +4,13 @@ public class Member {
     private String name;
     private String personalNumber;
     private String memberID;
+    private Boat boats;
+
+    public Member(String name, String personalNumber, String memberID) {
+        this.name = name;
+        this.personalNumber = personalNumber;
+        this.memberID = memberID;
+    }
 
     public Member(){
 
