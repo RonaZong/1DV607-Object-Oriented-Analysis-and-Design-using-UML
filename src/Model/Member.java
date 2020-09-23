@@ -43,10 +43,4 @@ public class Member {
     public void setMemberID(String memberID) {
         this.memberID = memberID;
     }
-
-    public void createMember(){
-        String name = scanner.nextLine();
-        String personalNumber = scanner.nextLine();
-        String memberID = scanner.nextLine();
-    }
 }
