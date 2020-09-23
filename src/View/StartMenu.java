@@ -1,5 +1,6 @@
 package View;
 
+import Model.Boat;
 import Model.BoatClub;
 
 import java.util.Scanner;
@@ -20,6 +21,7 @@ public class StartMenu {
                 "press 3 to check member's information ");
                 // do we need to have an admin so can have access to member's information?
 
+
         int choice = sc.nextInt();
         switch(choice){
             case 1: createMemberMenu(boatClub);
@@ -38,5 +40,25 @@ public class StartMenu {
         boatClub.creatMember(name,personalNumber);
 
 
+    }
+
+    public void showCompactList(Model.Member member){
+        System.out.println("This member name is : " + member.getName()+
+                           "\nwith memberID of : " + member.getMemberID()+
+                            "\nwhich has " + member.boatsOwnedByMember().size() + "boats");
+    }
+
+    public void showVerboseList(Model.Member member){
+        System.out.println("This member name is : " + member.getName() +
+                           "\nwith personal number of " + member.getPersonalNumber() +
+                            "\nwith memberID of " + member.getMemberID());
+        System.out.println("This member has " + member.boatsOwnedByMember().size() + "boats");
+        if(member.boatsOwnedByMember().size()> 0 ){
+            System.out.println("this member boat information is :");
+            for(Boat boat : member.boatsOwnedByMember()){
+                System.out.println("Boat type :" + boat.getType() +
+                                   "\nBoat color : " + boat.getLength());
+            }
+        }
     }
 }
