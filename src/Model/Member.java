@@ -5,6 +5,12 @@ public class Member {
     private String personalNumber;
     private String memberID;
 
+    public Member(String name, String personalNumber, String memberID) {
+        this.name = name;
+        this.personalNumber = personalNumber;
+        this.memberID = memberID;
+    }
+
     public String getName() {
         return name;
     }
