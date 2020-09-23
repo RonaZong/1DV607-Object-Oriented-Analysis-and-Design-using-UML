@@ -25,5 +25,10 @@ public class Console {
     public void createMember(){
         String name = scanner.nextLine();
         String personalNumber = scanner.nextLine();
+        String memberID = scanner.nextLine();
+
+        if (this.member == null) {
+            Member newMember = new Member(name, personalNumber, memberID);
+        }
     }
 }
