@@ -9,6 +9,11 @@ public class Member {
     private Boat boats;
     private Scanner scanner = new Scanner(System.in);
 
+    public Member(String name, String personalNumber) {
+        this.name = name;
+        this.personalNumber = personalNumber;
+    }
+
     public Member(String name, String personalNumber, String memberID) {
         this.name = name;
         this.personalNumber = personalNumber;
