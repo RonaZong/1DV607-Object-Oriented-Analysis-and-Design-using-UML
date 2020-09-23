@@ -6,7 +6,9 @@ public class Console {
     }
 
     public void start(){
+
         System.out.println("Hello china" +
                 "try again");
+
     }
 }
