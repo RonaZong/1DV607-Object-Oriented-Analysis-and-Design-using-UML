@@ -6,6 +6,6 @@ public class Console {
     }
 
     public void start(){
-        System.out.println("Hello");
+        System.out.println("Hello china");
     }
 }
