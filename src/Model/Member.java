@@ -1,19 +1,18 @@
 package Model;
 
+import java.util.Scanner;
+
 public class Member {
     private String name;
     private String personalNumber;
     private String memberID;
     private Boat boats;
+    private Scanner scanner = new Scanner(System.in);
 
     public Member(String name, String personalNumber, String memberID) {
         this.name = name;
         this.personalNumber = personalNumber;
         this.memberID = memberID;
-    }
-
-    public Member(){
-
     }
 
     public String getName() {
@@ -38,5 +37,11 @@ public class Member {
 
     public void setMemberID(String memberID) {
         this.memberID = memberID;
+    }
+
+    public void createMember(){
+        String name = scanner.nextLine();
+        String personalNumber = scanner.nextLine();
+        String memberID = scanner.nextLine();
     }
 }
