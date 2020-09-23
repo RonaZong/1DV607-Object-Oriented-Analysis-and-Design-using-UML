@@ -1,10 +1,10 @@
-import View.Console;
+import View.StartMenu;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        View.Console console = new Console();
+        StartMenu console = new StartMenu();
         console.start();
     }
 }
