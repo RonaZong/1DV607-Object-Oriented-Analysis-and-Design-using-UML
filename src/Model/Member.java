@@ -11,7 +11,7 @@ public class Member {
     //if member should have a boat at least so he or she can register we can initialize arraylist in method
     //otherwise we have to initialize arraylist here or we get null value
     private ArrayList<Boat> boats;
-    
+
     // I think we don't need scanner here
    // private Scanner scanner = new Scanner(System.in);
 
