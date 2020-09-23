@@ -1,9 +1,5 @@
 package View;
 
-import Model.Member;
-
-import java.util.Scanner;
-
 public class Console {
 
     public Console() {
@@ -16,8 +12,6 @@ public class Console {
                 "Press 2 to show lists of all members\n" +
                 "Press 3 to change a member’s information\n" +
                 "Press 4 to check members information");
-
-
 
     }
 
