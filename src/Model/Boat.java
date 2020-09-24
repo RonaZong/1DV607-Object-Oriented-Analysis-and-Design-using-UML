@@ -2,6 +2,7 @@ package Model;
 
 
 public class Boat {
+
     public enum BoatType {
         SAILBOAT, MOTORSAILOR, KAYAK_OR_CANOE, OTHER
     }
@@ -30,4 +31,6 @@ public class Boat {
     public void setLength(int length) {
         this.length = length;
     }
+
+
 }
