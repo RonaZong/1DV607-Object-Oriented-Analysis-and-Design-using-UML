@@ -27,25 +27,32 @@ public class StartMenu {
         return userInput==3;
     }
 
-    public void welcomeMessage(BoatClub boatClub){
+    public void welcomeMessage(BoatClub boatClub , Member member, Boat boat){
 
         while (!IWantToQuit()) {
-            if(!alreadyMember) {
+
                 System.out.println("Welcome to Boat Club\n" +
                         "-----------------------\n" +
-                        "If you are not a member press 1 to register as a new member\n" +
-                        "Otherwise press 2 to show members' menu\n" +
+                        "Press 1 to add a new member\n" +
+                        "Press 2 to see a compact list of members\n"+
+                        "Press 3 to see a full detailed list of members\n"+
+                        "Press 4 to delete a member\n"+
+                        "Press 5 to update the information of a member\n"+
+                        "Press 6 to see the information of a specific member\n"+
+                        "Press 7 to register a new boat\n"+
+                        "Press 8 to update a boat information\n"+
+                        "Press 9 to delete a boat\n"+
+
                         //who can have access to a specific member's information?
                         // "press 3 to check member's information \n" +
-                        "press 3 to quit \n");
+                        "Press 10 to quit \n");
                 // do we need to have an admin so can have access to member's information?
-
-
                 userInput = userIntInput();
 
-                actUponUserInputInMainMenu(userInput, boatClub);
-            }
-            showMemberMenu();
+                actUponUserInputInMainMenu(userInput, boatClub,member,boat);
+
+
+           // showMemberMenu();
            /* int choice = sc.nextInt();
             switch (choice) {
                 case 1:
@@ -59,7 +66,7 @@ public class StartMenu {
         }
     }
 
-    public void showMemberMenu(){
+   /* public void showMemberMenu(){
         System.out.println("----Members' menu----");
         System.out.println("For see a compact list of members press 4 ");
         System.out.println("For see a full detailed list of members press 5");
@@ -71,17 +78,61 @@ public class StartMenu {
         System.out.println("For delete a boat press 11");
         System.out.println("For quit press 3");
         int userInput = userIntInput();
-    }
+    }*/
 
-    public void actUponUserInputInMainMenu(int userInput , BoatClub boatClub) {
+    public void actUponUserInputInMainMenu(int userInput , BoatClub boatClub , Member member, Boat boat) {
         switch (userInput) {
             case 1:
                 createMemberMenu(boatClub);
                 break;
             case 2:
-                showMemberMenu();
+                showCompactList(boatClub);
                 break;
+            case 3:
+                showVerboseList(boatClub);
+                break;
+            case 4:
+                boatClub.deleteMember(member);
+                break;
+            case 5:
+                showUpdateMemberMenu(boatClub , member);
+                break;
+            case 6:
+                showSpecificMemberData(boatClub);
+                break;
+            case 7:
+                askForABoatDataToRegister(member,boat);
+                break;
+            case 8:
+                showUpdateBoatMenu(boat);
+                break;
+            case 9:
+                showDeleteMenu(member,boat);
+                break;
+
+
         }
+    }
+
+    private void showDeleteMenu(Member member,Boat boat) {
+        member.deleteBoat(boat);
+    }
+
+    private void showUpdateBoatMenu(Member member,Boat boat) {
+        System.out.println("");
+    }
+
+    private void askForABoatDataToRegister(Member member,Boat boat) {
+        System.out.println("enter boat type:" +
+                "\n0 for Sailboat , 1 for Motor sailor , 2 for Kayak/Canoe, 3 for Others");
+        int typeValue = userIntInput();
+        System.out.println("Enter length of the boat");
+        int length = userIntInput();
+        member.registerNewBoat(Boat.BoatType.values()[typeValue] , length);
+    }
+
+    private void showSpecificMemberData(BoatClub boatClub) {
+
     }
 
     public void actUponUserInputInMemberMenu(int userInput , BoatClub boatClub , Member member){
@@ -138,7 +189,7 @@ public class StartMenu {
         System.out.print("Please enter personal number: ");
         String personalNumber = userStringInput();
         boatClub.creatMember(name,personalNumber);
-        this.alreadyMember = true;
+       // this.alreadyMember = true;
 
 
     }
