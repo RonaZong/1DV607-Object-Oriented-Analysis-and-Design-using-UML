@@ -21,7 +21,7 @@ public class Member {
     public Member(String name, String personalNumber) {
         this.name = name;
         this.personalNumber = personalNumber;
-        creatUniqueID();
+        this.memberID=creatUniqueID();
     }
 
     public Member(){

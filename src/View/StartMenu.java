@@ -14,26 +14,28 @@ public class StartMenu {
 
     public void start(BoatClub boatClub){
 
+        while (true) {
+            System.out.println("Welcome to Boat Club\n" +
+                    "-----------------------\n" +
+                    "Press 1 to create a new member\n" +
+                    "Press 2 to show lists of all members\n" +
+                    //who can have access to a specific member's information?
+                    "press 3 to check member's information \n" +
+                    "press 4 to quit \n");
+            // do we need to have an admin so can have access to member's information?
 
-        System.out.println("Welcome to Boat Club\n" +
-                "-----------------------\n"+
-                "Press 1 to create a new member\n" +
-                "Press 2 to show lists of all members\n" +
-                //who can have access to a specific member's information?
-                "press 3 to check member's information \n"+
-                "press 4 to quit \n");
-                // do we need to have an admin so can have access to member's information?
 
+            int choice = sc.nextInt();
+            switch (choice) {
+                case 1:
+                    createMemberMenu(boatClub);
+                    break;
+                case 2:
+                    showList(boatClub);
+                    break;
 
-        int choice = sc.nextInt();
-        switch(choice){
-            case 1: createMemberMenu(boatClub);
-            break;
-            case 2: showList(boatClub);
-            break;
-
+            }
         }
-
     }
 
 
