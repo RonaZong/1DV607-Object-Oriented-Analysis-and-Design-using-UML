@@ -2,6 +2,7 @@ package View;
 
 import Model.Boat;
 import Model.BoatClub;
+import Model.Member;
 
 import java.util.Scanner;
 
@@ -15,10 +16,12 @@ public class StartMenu {
 
 
         System.out.println("Welcome to Boat Club\n" +
+                "-----------------------\n"+
                 "Press 1 to create a new member\n" +
                 "Press 2 to show lists of all members\n" +
                 //who can have access to a specific member's information?
-                "press 3 to check member's information ");
+                "press 3 to check member's information \n"+
+                "press 4 to quit \n");
                 // do we need to have an admin so can have access to member's information?
 
 
@@ -26,8 +29,26 @@ public class StartMenu {
         switch(choice){
             case 1: createMemberMenu(boatClub);
             break;
+            case 2: showList(boatClub);
+            break;
+
         }
 
+    }
+
+
+    public void showList(BoatClub boatClub){
+        System.out.print("----- Show list of members -----\n"+
+                " What kind of list, press 1 for compact list, press 2 for verbose list: ");
+        int enter = sc.nextInt();
+
+        if (enter==1){
+            //showCompactList();
+        }else if(enter==2){
+            //showVerboseList();
+        }else {
+            //error
+        }
     }
 
     public void createMemberMenu(BoatClub boatClub){
