@@ -14,7 +14,18 @@ public class BoatClub {
 
     }
 
+    public void deleteMember(Member member){
+        members.remove(member);
+    }
+
     public ArrayList<Member> getAllMember(){
         return this.members;
+    }
+
+    public void updateMemberInformation(Member member , String name , String personalNumber){
+        if(name.length() >1)
+            member.setName(name);
+        if(personalNumber.length() >1)
+            member.setPersonalNumber(personalNumber);
     }
 }
