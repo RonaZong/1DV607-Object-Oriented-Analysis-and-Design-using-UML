@@ -28,6 +28,11 @@ public class Member {
 
     }
 
+    public void getANewBoat(Boat.BoatType boatType , double length ){
+        Boat boat = new Boat(boatType , length);
+        addBoat(boat);
+    }
+
    // sorry to comment this out I wrote a comment below and I will explain tomorrow
    /* public Member(String name, String personalNumber, int memberID) {
         this.name = name;
@@ -76,5 +81,14 @@ public class Member {
 
     public ArrayList<Boat> boatsOwnedByMember(){
         return this.boats;
+    }
+
+    public void registerNewBoat(Boat.BoatType boatType , double length){
+        Boat boat = new Boat(boatType , length);
+        addBoat(boat);
+    }
+
+    public void deleteBoat(Boat boat) {
+        boats.remove(boat);
     }
 }
