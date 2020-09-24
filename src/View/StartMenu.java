@@ -31,11 +31,12 @@ public class StartMenu {
     }
 
     public void createMemberMenu(BoatClub boatClub){
-        System.out.println("--- Add a Member ---");
+        System.out.println("----- Add a Member -----");
 
-        System.out.print("Full name: ");
-        String name = sc.next();
-        System.out.print("Personal number: ");
+        System.out.print("Please enter user name: ");
+        String ch=sc.nextLine();
+        String name = sc.nextLine();
+        System.out.print("Please enter personal number: ");
         String personalNumber = sc.next();
         boatClub.creatMember(name,personalNumber);
 
