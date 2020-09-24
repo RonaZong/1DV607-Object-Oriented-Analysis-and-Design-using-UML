@@ -104,7 +104,7 @@ public class StartMenu {
                 askForABoatDataToRegister(member,boat);
                 break;
             case 8:
-                showUpdateBoatMenu(boat);
+                showUpdateBoatMenu(member,boat);
                 break;
             case 9:
                 showDeleteMenu(member,boat);
