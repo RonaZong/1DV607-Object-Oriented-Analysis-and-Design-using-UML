@@ -7,25 +7,42 @@ import Model.Member;
 import java.util.Scanner;
 
 public class StartMenu {
-    Scanner sc = new Scanner(System.in);
+    private Scanner sc;
+    private int userInput;
+    private boolean alreadyMember;
 
     public StartMenu() {
     }
 
+    private int userIntInput(){
+        sc = new Scanner(System.in);
+        return sc.nextInt();
+    }
+    private String userStringInput(){
+        sc =new Scanner(System.in);
+        return sc.nextLine();
+    }
+
+    private boolean iWantToQuit(){
+        return userInput==4;
+    }
+
     public void start(BoatClub boatClub){
 
-        while (true) {
+        while (!iWantToQuit()) {
             System.out.println("Welcome to Boat Club\n" +
                     "-----------------------\n" +
-                    "Press 1 to create a new member\n" +
+                    "Press 1 to register as a new member\n" +
                     "Press 2 to show lists of all members\n" +
                     //who can have access to a specific member's information?
                     "press 3 to check member's information \n" +
                     "press 4 to quit \n");
             // do we need to have an admin so can have access to member's information?
 
+            userInput = userIntInput();
 
-            int choice = sc.nextInt();
+            actUponUserInput(userInput , boatClub);
+           /* int choice = sc.nextInt();
             switch (choice) {
                 case 1:
                     createMemberMenu(boatClub);
@@ -34,10 +51,20 @@ public class StartMenu {
                     showList(boatClub);
                     break;
 
-            }
+            }*/
         }
     }
 
+    public void actUponUserInput(int userInput , BoatClub boatClub) {
+        switch (userInput) {
+            case 1:
+                showMembershipMenu(boatClub);
+                break;
+            case 2:
+                showList(boatClub);
+                break;
+        }
+    }
 
     public void showList(BoatClub boatClub){
         System.out.print("----- Show list of members -----\n"+
@@ -85,4 +112,14 @@ public class StartMenu {
             }
         }
     }
-}
+
+    private void showMembershipMenu(BoatClub boatClub) {
+        System.out.println("In oreder to become a member u have to " +
+                "enter following information:" +
+                "\nEnter your full name : ");
+        String fullName =userStringInput();
+        System.out.println("Enter your personal number : ");
+        String personalNumber = userStringInput();
+        boatClub.creatMember(fullName , personalNumber);
+    }
+    }
