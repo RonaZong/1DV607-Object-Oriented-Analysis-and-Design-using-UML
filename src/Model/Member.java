@@ -24,12 +24,8 @@ public class Member {
         this.memberID=creatUniqueID();
     }
 
-    public Member(){
-
-    }
-
     public void getANewBoat(Boat.BoatType boatType , double length ){
-        Boat boat = new Boat(boatType , length);
+        Boat boat = new Boat(boatType, length);
         addBoat(boat);
     }
 
@@ -83,8 +79,8 @@ public class Member {
         return this.boats;
     }
 
-    public void registerNewBoat(Boat.BoatType boatType , double length){
-        Boat boat = new Boat(boatType , length);
+    public void registerNewBoat(Boat.BoatType boatType, double length){
+        Boat boat = new Boat(boatType, length);
         addBoat(boat);
     }
 
