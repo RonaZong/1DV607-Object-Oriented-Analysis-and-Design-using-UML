@@ -6,7 +6,7 @@ import Model.Member;
 
 import java.util.Scanner;
 
-public class StartMenu {
+public class StartMenu extends Menu {
     private Scanner sc;
     private int userInput;
     private boolean alreadyMember=false;
@@ -24,94 +24,53 @@ public class StartMenu {
     }
 
     private boolean IWantToQuit(){
-        return userInput==3;
+        return userInput==4;
     }
 
-    public void welcomeMessage(BoatClub boatClub , Member member, Boat boat){
+    @Override
+    public void showInstruction(int input , Menu menu) {
 
-        while (!IWantToQuit()) {
+        System.out.println("Welcome to Boat Club\n" +
+                "-----------------------\n" +
+                "Press 1 to add a new member\n" +
+                "Press 2 to go to member menu\n"+
+                "Press 3 to go to boat menu\n"+
+                "Press 4 to quit \n");
+        // do we need to have an admin so can have access to member's information?
+        userInput = userIntInput();
 
-                System.out.println("Welcome to Boat Club\n" +
-                        "-----------------------\n" +
-                        "Press 1 to add a new member\n" +
-                        "Press 2 to see a compact list of members\n"+
-                        "Press 3 to see a full detailed list of members\n"+
-                        "Press 4 to delete a member\n"+
-                        "Press 5 to update the information of a member\n"+
-                        "Press 6 to see the information of a specific member\n"+
-                        "Press 7 to register a new boat\n"+
-                        "Press 8 to update a boat information\n"+
-                        "Press 9 to delete a boat\n"+
-
-                        //who can have access to a specific member's information?
-                        // "press 3 to check member's information \n" +
-                        "Press 10 to quit \n");
-                // do we need to have an admin so can have access to member's information?
-                userInput = userIntInput();
-
-                actUponUserInputInMainMenu(userInput, boatClub,member,boat);
-
-
-           // showMemberMenu();
-           /* int choice = sc.nextInt();
-            switch (choice) {
-                case 1:
-                    createMemberMenu(boatClub);
-                    break;
-                case 2:
-                    showList(boatClub);
-                    break;
-
-            }*/
-        }
+        actUponUserInputInMainMenu(userInput,menu);
     }
+  //  public void welcomeMessage(MemberCreationMenu memberCreation , MemberMenu memberMenu, BoatMenu boatMenu){
+    //    }
 
-   /* public void showMemberMenu(){
-        System.out.println("----Members' menu----");
-        System.out.println("For see a compact list of members press 4 ");
-        System.out.println("For see a full detailed list of members press 5");
-        System.out.println("For delete a member press 6");
-        System.out.println("For update the information of a member press 7");
-        System.out.println("For see the information of a specific member press 8");
-        System.out.println("For register a new boat press 9");
-        System.out.println("For update a boat information press 10");
-        System.out.println("For delete a boat press 11");
-        System.out.println("For quit press 3");
-        int userInput = userIntInput();
-    }*/
 
-    public void actUponUserInputInMainMenu(int userInput , BoatClub boatClub , Member member, Boat boat) {
+    public void actUponUserInputInMainMenu(int userInput, Menu menu) {
         switch (userInput) {
             case 1:
-                createMemberMenu(boatClub);
+                showRegisterMenu(userInput,menu);
                 break;
             case 2:
-                showCompactList(boatClub);
+                showMemberMenu(userInput,menu);
                 break;
             case 3:
-                showVerboseList(boatClub);
+                showBoatMenu(userInput,menu);
                 break;
-            case 4:
-                boatClub.deleteMember(member);
-                break;
-            case 5:
-                showUpdateMemberMenu(boatClub , member);
-                break;
-            case 6:
-                showSpecificMemberData(boatClub);
-                break;
-            case 7:
-                askForABoatDataToRegister(member,boat);
-                break;
-            case 8:
-                showUpdateBoatMenu(member,boat);
-                break;
-            case 9:
-                showDeleteMenu(member,boat);
-                break;
-
 
         }
+    }
+
+    private void showBoatMenu(int input,Menu menu) {
+        menu.showInstruction(input, menu);
+    }
+
+    private void showMemberMenu(int input,Menu menu) {
+        menu.showInstruction(input,menu);
+    }
+
+    private void showRegisterMenu(int input,Menu menu) {
+
+        menu.showInstruction(input,menu);
     }
 
     private void showDeleteMenu(Member member,Boat boat) {
@@ -180,9 +139,9 @@ public class StartMenu {
     }
 
     public void createMemberMenu(BoatClub boatClub){
-        System.out.println("----- Become a Member -----");
+        System.out.println("----- Add a Member -----");
 
-        System.out.println("In order to be a member you have to enter following information : ");
+        System.out.println("In order to add a member you have to enter following information : ");
         System.out.print("Please enter user name: ");
         //String ch=sc.nextLine();????
         String name = userStringInput();
@@ -220,5 +179,37 @@ public class StartMenu {
         }
     }
 
+
+ /*switch (userInput) {
+            case 1:
+                createMemberMenu(boatClub);
+                break;
+            case 2:
+                showCompactList(boatClub);
+                break;
+            case 3:
+                showVerboseList(boatClub);
+                break;
+            case 4:
+                boatClub.deleteMember(member);
+                break;
+            case 5:
+                showUpdateMemberMenu(boatClub , member);
+                break;
+            case 6:
+                showSpecificMemberData(boatClub);
+                break;
+            case 7:
+                askForABoatDataToRegister(member,boat);
+                break;
+            case 8:
+                showUpdateBoatMenu(member,boat);
+                break;
+            case 9:
+                showDeleteMenu(member,boat);
+                break;
+
+
+        }*/
 
     }
