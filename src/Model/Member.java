@@ -61,11 +61,11 @@ public class Member {
     //}
     // I m not sure if it works or not but the member ID should be created by system and
     // we cant set it to whatever we want so I think we dont need setter
-    public String creatUniqueID(){
+    private String creatUniqueID(){
         //use current time to creat a unique id
         //only take long from 8 to 12
         long ID = System.currentTimeMillis();
-        String memberID = Long.toString(ID).substring(8,12);
+        String memberID = Long.toString(ID).substring(9,13);
         return memberID;
     }
 
