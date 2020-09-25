@@ -28,7 +28,7 @@ public class StartMenu extends Menu {
     }
 
     @Override
-    public void showInstruction(int input , Menu menu) {
+    public void showInstruction( Menu menu) {
 
         System.out.println("Welcome to Boat Club\n" +
                 "-----------------------\n" +
@@ -60,17 +60,17 @@ public class StartMenu extends Menu {
         }
     }
 
-    private void showBoatMenu(int input,Menu menu) {
-        menu.showInstruction(input, menu);
+    private void showBoatMenu(int input , Menu menu) {
+        menu.showInstruction(menu);
     }
 
     private void showMemberMenu(int input,Menu menu) {
-        menu.showInstruction(input,menu);
+        menu.showInstruction(menu);
     }
 
     private void showRegisterMenu(int input,Menu menu) {
 
-        menu.showInstruction(input,menu);
+        menu.showInstruction(menu);
     }
 
     private void showDeleteMenu(Member member,Boat boat) {
