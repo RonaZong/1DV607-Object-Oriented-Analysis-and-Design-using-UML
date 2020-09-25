@@ -37,7 +37,7 @@ public class MemberCreationMenu extends Menu {
     }
 
     @Override
-    public void showInstruction(int input, Menu menu) {
+    public void showInstruction( Menu menu) {
 
     }
 }
