@@ -8,5 +8,6 @@ public class BoatMenu extends Menu {
     @Override
     public void showInstruction() {
 
+        System.out.println("enter your boat information");
     }
 }
