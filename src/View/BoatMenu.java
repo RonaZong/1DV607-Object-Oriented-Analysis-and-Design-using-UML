@@ -6,7 +6,7 @@ public class BoatMenu extends Menu {
     }
 
     @Override
-    public void showInstruction(Menu menu) {
+    public void showInstruction() {
 
     }
 }
