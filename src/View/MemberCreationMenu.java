@@ -27,11 +27,15 @@ public class MemberCreationMenu extends Menu {
         }while (!isValid(personalNumber));
     }
 
-    private void createMember(BoatClub boatClub){
-        boatClub.creatMember(name , personalNumber);
-    }
-
     private boolean isValid(String input){
         return input.length()==10;
+    }
+
+    public String getName(){
+        return this.name;
+    }
+
+    public String getPersonalNumber(){
+        return  this.personalNumber;
     }
 }
