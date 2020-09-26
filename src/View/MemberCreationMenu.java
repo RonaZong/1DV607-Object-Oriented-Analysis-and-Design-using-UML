@@ -15,7 +15,8 @@ public class MemberCreationMenu extends Menu {
         return sc.nextLine();
     }
 
-    public void showMenuForRegister() {
+    @Override
+    public void showInstruction( ) {
         System.out.println("----- Add a Member -----\n" +
                 "In order to add a member you have to enter following information : \n"+
                 "Please enter user name: ");
@@ -24,8 +25,6 @@ public class MemberCreationMenu extends Menu {
             System.out.print("Please enter personal number in 10 digits: ");
             this.personalNumber = userStringInput();
         }while (!isValid(personalNumber));
-
-
     }
 
     private void createMember(BoatClub boatClub){
@@ -34,10 +33,5 @@ public class MemberCreationMenu extends Menu {
 
     private boolean isValid(String input){
         return input.length()==10;
-    }
-
-    @Override
-    public void showInstruction( Menu menu) {
-
     }
 }
