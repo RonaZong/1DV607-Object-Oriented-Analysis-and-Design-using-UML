@@ -8,7 +8,7 @@ public class MemberMenu extends Menu {
     }
 
     @Override
-    public void showInstruction( Menu menu) {
+    public void showInstruction() {
 
     }
 }
