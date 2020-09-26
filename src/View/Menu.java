@@ -1,5 +1,5 @@
 package View;
 
 public abstract class Menu {
-    public abstract void showInstruction(Menu menu);
+    public abstract void showInstruction();
 }
