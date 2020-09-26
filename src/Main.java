@@ -9,6 +9,6 @@ public class Main {
 
         BoatClub boatClub = new BoatClub();
         Menu console = new StartMenu();
-        console.showInstruction(console);
+        console.showInstruction();
     }
 }
