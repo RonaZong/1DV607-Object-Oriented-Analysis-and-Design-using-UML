@@ -28,49 +28,51 @@ public class StartMenu extends Menu {
     }
 
     @Override
-    public void showInstruction( Menu menu) {
+    public void showInstruction() {
 
         System.out.println("Welcome to Boat Club\n" +
                 "-----------------------\n" +
                 "Press 1 to add a new member\n" +
                 "Press 2 to go to member menu\n"+
                 "Press 3 to go to boat menu\n"+
-                "Press 4 to quit \n");
+                "Press 4 to quit");
         // do we need to have an admin so can have access to member's information?
         userInput = userIntInput();
 
-        actUponUserInputInMainMenu(userInput,menu);
+        actUponUserInputInMainMenu(userInput);
     }
   //  public void welcomeMessage(MemberCreationMenu memberCreation , MemberMenu memberMenu, BoatMenu boatMenu){
     //    }
 
 
-    public void actUponUserInputInMainMenu(int userInput, Menu menu) {
+    public void actUponUserInputInMainMenu(int userInput) {
         switch (userInput) {
             case 1:
-                showRegisterMenu(userInput,menu);
+                showRegisterMenu();
                 break;
             case 2:
-                showMemberMenu(userInput,menu);
+                showMemberMenu();
                 break;
             case 3:
-                showBoatMenu(userInput,menu);
+                showBoatMenu();
                 break;
 
         }
     }
 
-    private void showBoatMenu(int input , Menu menu) {
-        menu.showInstruction(menu);
+    private void showBoatMenu() {
+        Menu menu = new BoatMenu();
+        menu.showInstruction();
     }
 
-    private void showMemberMenu(int input,Menu menu) {
-        menu.showInstruction(menu);
+    private void showMemberMenu() {
+        Menu menu = new MemberMenu();
+        menu.showInstruction();
     }
 
-    private void showRegisterMenu(int input,Menu menu) {
-
-        menu.showInstruction(menu);
+    private void showRegisterMenu() {
+        Menu menu = new MemberCreationMenu();
+        menu.showInstruction();
     }
 
     private void showDeleteMenu(Member member,Boat boat) {
