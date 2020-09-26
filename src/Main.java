@@ -1,3 +1,4 @@
+import Controller.MainController;
 import Model.BoatClub;
 import View.Menu;
 import View.StartMenu;
@@ -9,6 +10,7 @@ public class Main {
 
         BoatClub boatClub = new BoatClub();
         Menu console = new StartMenu();
-        console.showInstruction();
+        MainController user = new MainController(console);
+        user.memberAction(boatClub);
     }
 }
