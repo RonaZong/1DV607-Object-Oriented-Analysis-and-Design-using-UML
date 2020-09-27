@@ -15,6 +15,7 @@ public class MainController {
         this.menu = console;
     }
 
+    //every scenarios would happen in this method
     public void memberAction(BoatClub boatClub){
 
         this.menu.showInstruction();
