@@ -22,6 +22,7 @@ public class Member {
         this.name = name;
         this.personalNumber = personalNumber;
         this.memberID=creatUniqueID();
+        //save to the text file(method to save the member should be here)
     }
 
     public void getANewBoat(Boat.BoatType boatType , double length ){
@@ -43,6 +44,7 @@ public class Member {
 
     public void setName(String name) {
         this.name = name;
+        //after updating information it should be saved
     }
 
     public String getPersonalNumber() {
@@ -51,6 +53,7 @@ public class Member {
 
     public void setPersonalNumber(String personalNumber) {
         this.personalNumber = personalNumber;
+        //after updating information it should be saved
     }
 
     public String getMemberID() {
@@ -71,7 +74,7 @@ public class Member {
     }
 
     public void addBoat(Boat boat){
-        
+
         boats.add(boat);
     }
 
@@ -81,6 +84,7 @@ public class Member {
 
     public void registerNewBoat(Boat.BoatType boatType, double length){
         Boat boat = new Boat(boatType, length);
+        //save the information of boat
         addBoat(boat);
     }
 
