@@ -21,7 +21,7 @@ public class MemberMenu extends Menu {
 
     }
 
-    private void actUponUserInputInMainMenu(int userInput) {
+ /*   private void actUponUserInputInMainMenu(int userInput) {
         switch (userInput) {
             case 1:
                 showCompactList(boatClub);
@@ -34,7 +34,7 @@ public class MemberMenu extends Menu {
                 break;
 
         }
-    }
+    }*/
 
     private void showDeleteMemberMenu() {
         System.out.println("Enter the member's name which you want to delete");
