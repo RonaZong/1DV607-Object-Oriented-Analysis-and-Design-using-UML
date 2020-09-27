@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
 
         BoatClub boatClub = new BoatClub();
-        StartMenu console = new StartMenu();
-        console.welcomeMessage(boatClub);
+        StartMenu console = new StartMenu(boatClub);
+        console.welcomeMessage();
     }
 }
