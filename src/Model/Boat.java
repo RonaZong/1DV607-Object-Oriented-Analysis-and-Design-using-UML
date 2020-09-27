@@ -14,6 +14,7 @@ public class Boat {
     public Boat(BoatType type, double length) {
         this.type = type;
         this.length = length;
+        //the method for saving boat should be here too
     }
 
     public BoatType getType() {
@@ -22,6 +23,7 @@ public class Boat {
 
     public void setType(BoatType type) {
         this.type = type;
+        //after updating information it should be saved
     }
 
     public double getLength() {
@@ -30,6 +32,7 @@ public class Boat {
 
     public void setLength(double length) {
         this.length = length;
+        //after updating information it should be saved
     }
 
 
