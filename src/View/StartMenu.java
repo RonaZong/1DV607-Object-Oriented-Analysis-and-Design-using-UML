@@ -45,8 +45,7 @@ public class StartMenu extends Menu {
 
         getUserInputInMainMenu();
     }
-  //  public void welcomeMessage(MemberCreationMenu memberCreation , MemberMenu memberMenu, BoatMenu boatMenu){
-    //    }
+  
 
 
     public UserChoiceInMainMenu getUserInputInMainMenu() {
@@ -68,76 +67,5 @@ public class StartMenu extends Menu {
         }
         return choice;
     }
-
-
-
-    private void showDeleteMenu(Member member,Boat boat) {
-        member.deleteBoat(boat);
-    }
-
-    private void showUpdateBoatMenu(Member member,Boat boat) {
-        System.out.println("");
-    }
-
-    private void askForABoatDataToRegister(Member member,Boat boat) {
-        System.out.println("enter boat type:" +
-                "\n0 for Sailboat , 1 for Motor sailor , 2 for Kayak/Canoe, 3 for Others");
-        int typeValue = userIntInput();
-        System.out.println("Enter length of the boat");
-        int length = userIntInput();
-        member.registerNewBoat(Boat.BoatType.values()[typeValue] , length);
-    }
-
-    private void showSpecificMemberData(BoatClub boatClub) {
-
-    }
-
-
-    public void showList(BoatClub boatClub){
-        System.out.print("----- Show list of members -----\n"+
-                " What kind of list, press 1 for compact list, press 2 for verbose list: ");
-        int enter = sc.nextInt();
-
-        if (enter==1){
-            //showCompactList();
-        }else if(enter==2){
-            //showVerboseList();
-        }else {
-            //error
-        }
-    }
-
-
- /*switch (userInput) {
-            case 1:
-                createMemberMenu(boatClub);
-                break;
-            case 2:
-                showCompactList(boatClub);
-                break;
-            case 3:
-                showVerboseList(boatClub);
-                break;
-            case 4:
-                boatClub.deleteMember(member);
-                break;
-            case 5:
-                showUpdateMemberMenu(boatClub , member);
-                break;
-            case 6:
-                showSpecificMemberData(boatClub);
-                break;
-            case 7:
-                askForABoatDataToRegister(member,boat);
-                break;
-            case 8:
-                showUpdateBoatMenu(member,boat);
-                break;
-            case 9:
-                showDeleteMenu(member,boat);
-                break;
-
-
-        }*/
 
     }
