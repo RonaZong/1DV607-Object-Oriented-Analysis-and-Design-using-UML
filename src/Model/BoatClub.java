@@ -18,9 +18,7 @@ public class BoatClub {
         members.remove(member);
     }
 
-    public Iterable<Member> getAllMember(){
-        return this.members;
-    }
+
 
     public void updateMemberInformation(Member member , String name , String personalNumber){
         if(name.length() >0)
