@@ -4,8 +4,27 @@ import Model.Boat;
 import Model.BoatClub;
 import Model.Member;
 
-public class MemberMenu extends Menu {
+import java.util.Scanner;
 
+public class MemberMenu extends Menu {
+    private int userInput;
+    private Scanner sc;
+    private String name;
+    private String personalNumber;
+
+    private int userIntInput(){
+        sc = new Scanner(System.in);
+        return sc.nextInt();
+    }
+
+    private String userStringInput(){
+        sc =new Scanner(System.in);
+        return sc.nextLine();
+    }
+
+    public enum UserChoice{
+        COMPACT_LIST, VERBOSE_LIST,QUIT,DELETE,UPDATE,SPECIFIC_MEMBER
+    }
 
     public void showMemberMenu() {
 
@@ -19,24 +38,39 @@ public class MemberMenu extends Menu {
                            "Press 4 to update a member information\n" +
                            "Press 5 to see a specific member data");
 
+        userInput = userIntInput();
+
     }
 
-    private void actUponUserInputInMainMenu(int userInput,BoatClub boatClub) {
+    public UserChoice getUserInputInMemberMenu() {
+        UserChoice choice = null;
+
         switch (userInput) {
+
             case 1:
-                showCompactList(boatClub);
+                choice = UserChoice.COMPACT_LIST;
                 break;
             case 2:
-                showVerboseList(boatClub);
+                choice = UserChoice.VERBOSE_LIST;
                 break;
             case 3:
-                showDeleteMemberMenu();
+                choice = UserChoice.DELETE;
+                break;
+            case 4:
+                choice = UserChoice.UPDATE;
+                break;
+            case 5:
+                choice = UserChoice.SPECIFIC_MEMBER;
+                break;
+            case 6:
+                choice = UserChoice.QUIT;
                 break;
 
         }
+        return choice;
     }
 
-    private void showDeleteMemberMenu() {
+    public void showDeleteMemberMenu() {
         System.out.println("Enter the member's name which you want to delete");
     }
 
@@ -64,5 +98,24 @@ public class MemberMenu extends Menu {
                 }
             }
         }
+    }
+
+    public void showUpdateMenu(){
+        System.out.println("What do you want to update?");
+        System.out.println("If you want to update name enter your new name otherwise press enter");
+        name = userStringInput();
+        //do we need to check for validate personal number??
+        System.out.println("if you want to update your personal number enter your new personal" +
+                "number otherwise press enter");
+        personalNumber = userStringInput();
+
+    }
+
+    public String getName(){
+        return name;
+    }
+
+    public String getPersonalNumber(){
+        return personalNumber;
     }
 }
