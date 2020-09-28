@@ -45,7 +45,7 @@ public class StartMenu extends Menu {
 
         getUserInputInMainMenu();
     }
-  
+
 
 
     public UserChoiceInMainMenu getUserInputInMainMenu() {
