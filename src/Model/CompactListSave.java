@@ -32,13 +32,13 @@ public class CompactListSave {
        try {
            reader = new Scanner(file);
            while (reader.hasNextLine()){
-               String thisLine = reader.nextLine();
+              /* String thisLine = reader.nextLine();
                String[] parameters = thisLine.split(",");
                Member member = new Member(parameters[1], parameters[2]);
-               member.setNumbersOfBoatsOwnByAMember(Integer.parseInt(parameters[3]));
+               member.setNumbersOfBoatsOwnByAMember(Integer.parseInt(parameters[3]));*/
 
 
-               result+=thisLine;
+               result+=reader.nextLine();
            }
        }catch(Exception e){
 
