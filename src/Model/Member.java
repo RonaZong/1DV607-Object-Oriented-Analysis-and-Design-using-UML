@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Member {
     private String name;
     private String personalNumber;
-
+    private int numbersOfBoatsOwnByAMember;
     //do we need to initialize?
     //change member id to string
     private String memberID ;//=1;
@@ -14,6 +14,8 @@ public class Member {
     //if member should have a boat at least so he or she can register we can initialize arraylist in method
     //otherwise we have to initialize arraylist here or we get null value
     private ArrayList<Boat> boats=new ArrayList<>();
+
+
 
     // I think we don't need scanner here
    // private Scanner scanner = new Scanner(System.in);
@@ -82,8 +84,12 @@ public class Member {
         return this.boats;
     }
 
+    public void setNumbersOfBoatsOwnByAMember(int numbersOfBoats){
+        this.numbersOfBoatsOwnByAMember=numbersOfBoats;
+    }
+
     public int numberOfBoats(){
-        return boats.size();
+        return this.numbersOfBoatsOwnByAMember;
     }
 
     public void registerNewBoat(Boat.BoatType boatType, double length){
