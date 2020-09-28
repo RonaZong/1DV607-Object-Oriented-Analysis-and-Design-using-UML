@@ -30,12 +30,11 @@ public class MemberMenuController {
                     boatClub.updateMemberInformation(member,menu.getName(),menu.getPersonalNumber());
                     break;
                 case SPECIFIC_MEMBER:
-                    
+
             }
 
 
         }
     }
-    private void updateMember (BoatClub boatClub){
-    }
+
 }
