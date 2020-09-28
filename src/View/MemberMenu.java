@@ -4,6 +4,8 @@ import Model.Boat;
 import Model.BoatClub;
 import Model.Member;
 
+import java.util.ArrayList;
+
 import java.util.Scanner;
 
 public class MemberMenu extends Menu {
@@ -75,22 +77,22 @@ public class MemberMenu extends Menu {
     }
 
     public void showCompactList(BoatClub boatClub){
-        for(Member member : boatClub.getAllMember()) {
+        for(Member member : boatClub.getAllMembers()) {
             System.out.println("This member name is : " + member.getName() +
                     "\nwith memberID of : " + member.getMemberID() +
-                    "\nwhich has " + member.boatsOwnedByMember().size() + "boats" +
+                    "\nwhich has " + member.numberOfBoats() + "boats" +
                     "\n------------\n");
         }
     }
 
     public void showVerboseList(BoatClub boatClub){
-        for(Member member : boatClub.getAllMember()){
+        for(Member member : boatClub.getAllMembers()){
             System.out.println("This member name is : " + member.getName() +
                     "\nwith personal number of " + member.getPersonalNumber() +
                     "\nwith memberID of " + member.getMemberID());
             //it might give a null exception
-            System.out.println("This member has " + member.boatsOwnedByMember().size() + "boats");
-            if(member.boatsOwnedByMember().size()> 0 ) {
+            System.out.println("This member has " + member.numberOfBoats()+ "boats");
+            if(member.numberOfBoats()> 0 ) {
                 System.out.println("this member boat information is :");
                 for (Boat boat : member.boatsOwnedByMember()) {
                     System.out.println("Boat type :" + boat.getType() +
