@@ -11,6 +11,10 @@ public class StartMenu extends Menu {
     private int userInput;
     private boolean alreadyMember=false;
 
+    public enum UserChoiceInMainMenu{
+        ADD_NEW_MEMBER, MEMBER_MENU, BOAT_MENU, QUIT
+    }
+
     public StartMenu() {
     }
 
@@ -37,43 +41,35 @@ public class StartMenu extends Menu {
                 "Press 3 to go to boat menu\n"+
                 "Press 4 to quit");
         // do we need to have an admin so can have access to member's information?
-        userInput = userIntInput();
+        this.userInput = userIntInput();
 
-        actUponUserInputInMainMenu(userInput);
+        getUserInputInMainMenu();
     }
   //  public void welcomeMessage(MemberCreationMenu memberCreation , MemberMenu memberMenu, BoatMenu boatMenu){
     //    }
 
 
-    public void actUponUserInputInMainMenu(int userInput) {
+    public UserChoiceInMainMenu getUserInputInMainMenu() {
+        UserChoiceInMainMenu choice = null;
         switch (userInput) {
             case 1:
-                showRegisterMenu();
+                choice = UserChoiceInMainMenu.ADD_NEW_MEMBER;
                 break;
             case 2:
-                showMemberMenu();
+                choice = UserChoiceInMainMenu.MEMBER_MENU;
                 break;
             case 3:
-                showBoatMenu();
+                choice = UserChoiceInMainMenu.BOAT_MENU;
+                break;
+            case 4:
+                choice= UserChoiceInMainMenu.QUIT;
                 break;
 
         }
+        return choice;
     }
 
-    private void showBoatMenu() {
-        Menu menu = new BoatMenu();
-        menu.showInstruction();
-    }
 
-    private void showMemberMenu() {
-        Menu menu = new MemberMenu();
-        menu.showInstruction();
-    }
-
-    private void showRegisterMenu() {
-        Menu menu = new MemberCreationMenu();
-        menu.showInstruction();
-    }
 
     private void showDeleteMenu(Member member,Boat boat) {
         member.deleteBoat(boat);
@@ -96,33 +92,6 @@ public class StartMenu extends Menu {
 
     }
 
-    public void actUponUserInputInMemberMenu(int userInput , BoatClub boatClub , Member member){
-        switch(userInput){
-
-
-            case 5:
-
-            case 6:
-               // boatClub.deleteMember(member);
-                break;
-            case 7:
-                showUpdateMemberMenu(boatClub , member);
-                break;
-
-        }
-    }
-
-    private void showUpdateMemberMenu(BoatClub boatClub , Member member) {
-        System.out.println("What do you want to update?");
-        System.out.println("If you want to update name enter your new name otherwise press enter");
-        String name = userStringInput();
-        //do we need to check for validate personal number??
-        System.out.println("if you want to update your personal number enter your new personal" +
-                "number otherwise press enter");
-        String personalNumber = userStringInput();
-        boatClub.updateMemberInformation(member , name , personalNumber);
-
-    }
 
     public void showList(BoatClub boatClub){
         System.out.print("----- Show list of members -----\n"+
