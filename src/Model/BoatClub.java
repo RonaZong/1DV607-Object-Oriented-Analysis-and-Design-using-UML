@@ -18,14 +18,18 @@ public class BoatClub {
         members.remove(member);
     }
 
-    public ArrayList<Member> getAllMember(){
+    public Iterable<Member> getAllMember(){
         return this.members;
     }
 
     public void updateMemberInformation(Member member , String name , String personalNumber){
-        if(name.length() >1)
+        if(name.length() >0)
             member.setName(name);
-        if(personalNumber.length() >1)
+        if(personalNumber.length() >0)
             member.setPersonalNumber(personalNumber);
+    }
+
+    public Iterable<Member> getAllMembers(){
+        return members;
     }
 }
