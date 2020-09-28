@@ -78,8 +78,12 @@ public class Member {
         boats.add(boat);
     }
 
-    public ArrayList<Boat> boatsOwnedByMember(){
+    public Iterable<Boat> boatsOwnedByMember(){
         return this.boats;
+    }
+
+    public int numberOfBoats(){
+        return boats.size();
     }
 
     public void registerNewBoat(Boat.BoatType boatType, double length){
