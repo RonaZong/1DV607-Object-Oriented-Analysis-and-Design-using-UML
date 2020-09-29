@@ -10,19 +10,18 @@ public class CompactListSave {
     private Scanner reader;
     private PrintWriter saver=null;
 
-    public void saveFileOnCompactList(Iterable<Member> boatClub) {
+    public void saveFileOnCompactList(Member member) {
         File file = new File("CompactList.txt");
         try {
             saver = new PrintWriter(new FileWriter(file,true));
-            for(Member member : boatClub){
-                saver.println( member.getName()  + member.getMemberID() + "," + member.numberOfBoats());
-            }
+
+                saver.println( member.getName() + "," + member.getMemberID() + "," + member.numberOfBoats());
+
             saver.close();
 
         }catch(Exception e){
 
         }
-
     }
 
     public String compactList(String filePath){
@@ -30,12 +29,13 @@ public class CompactListSave {
         String result = "";
        try {
            reader = new Scanner(new File(filePath));
+           result+=reader.nextLine()+"\n";
            while (reader.hasNextLine()){
               /* String thisLine = reader.nextLine();
                String[] parameters = thisLine.split(",");
                Member member = new Member(parameters[1], parameters[2]);
                member.setNumbersOfBoatsOwnByAMember(Integer.parseInt(parameters[3]));*/
-               result+=reader.nextLine();
+               result+=reader.nextLine()+"\n";
            }
        }catch(Exception e){
 
