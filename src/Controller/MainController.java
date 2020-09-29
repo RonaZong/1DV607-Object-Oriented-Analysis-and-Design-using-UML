@@ -8,11 +8,13 @@ public class MainController {
 
     private MemberCreationController controller;
     private StartMenu menu;
+    private MemberMenu memberMenu;
     
-    public MainController(StartMenu console) {
+    public MainController(StartMenu console,MemberMenu memberMenu) {
 
         this.controller=new MemberCreationController();
         this.menu = console;
+        this.memberMenu =memberMenu;
 
     }
 
@@ -20,40 +22,34 @@ public class MainController {
     public void memberAction(BoatClub boatClub){
 
 
-        actUponUserInputInStartMenu(this.menu,boatClub);
+       while(!actUponUserInputInStartMenu(menu,boatClub)) ;
 
-
-
-
-
-        actUponUserInputInStartMenu(this.menu,boatClub);
     }
 
-    private void actUponUserInputInStartMenu( StartMenu menu ,BoatClub boatClub) {
+    private boolean actUponUserInputInStartMenu( StartMenu menu ,BoatClub boatClub) {
 
-        boolean IWantToQuit = false;
-        while(!IWantToQuit) {
+
             this.menu.showInstruction();
             StartMenu.UserChoiceInStartMenu userChoice = menu.getUserInputInStartMenu();
 
             switch (userChoice) {
                 case ADD_NEW_MEMBER:
                     controller.userWantsToAddMember(boatClub);
-                    IWantToQuit=true;
+
                     break;
                 case MEMBER_MENU:
-                    showMemberMenu();
+                    MemberMenuController memberMenuController =new MemberMenuController();
+                    memberMenuController.actUponUserInputInMemberMenu(boatClub);
 
                     break;
                 case BOAT_MENU:
                     showBoatMenu();
                     break;
                 case QUIT:
-                IWantToQuit=true;
-                    break;
+                return true;
 
             }
-        }
+        return false;
     }
 
     private void showBoatMenu() {
