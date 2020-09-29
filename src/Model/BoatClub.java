@@ -4,15 +4,16 @@ import java.util.ArrayList;
 
 public class BoatClub {
     private ArrayList<Member> members=new ArrayList<>();
+    private CompactListSave compactSave;
 
     public BoatClub() {
     }
 
     public void creatMember(String userName, String personalNumber){
         Member member = new Member(userName,personalNumber);
-        members.add(member);
         CompactListSave save = new CompactListSave();
-        save.saveFileOnCompactList(members);
+        members.add(member);
+        save.saveFileOnCompactList(member);
 
     }
 
@@ -30,6 +31,12 @@ public class BoatClub {
     }
 
     public Iterable<Member> getAllMembers(){
-        return members;
+        compactSave = new CompactListSave();
+
+        return compactSave.readyToPrintForCompactList(compactSave.compactList("compactList.txt"));
+    }
+
+    public void loadFromCompactList(CompactListSave list){
+        this.members= (ArrayList<Member>) list.readyToPrintForCompactList(list.compactList("CompactList.txt"));
     }
 }
