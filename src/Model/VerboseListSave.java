@@ -11,11 +11,14 @@ public class VerboseListSave {
     private PrintWriter saver=null;
 
     public void saveFileOnCompactList(Member member) {
-        File file = new File("CompactList.txt");
+        File file = new File("VerboseList.txt");
         try {
             saver = new PrintWriter(new FileWriter(file,true));
 
-            saver.println( member.getName() + "," + member.getMemberID() + "," + member.numberOfBoats());
+            saver.print( member.getName() + "," + member.getPersonalNumber() +","
+                    + member.getMemberID() + "," + member.numberOfBoats() + ",");
+            for(Boat boat:member.boatsOwnedByMember())
+                saver.println(boat.getType() + "," + boat.getLength());
 
             saver.close();
 
