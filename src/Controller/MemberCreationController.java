@@ -13,10 +13,10 @@ public class MemberCreationController {
 
     public void userWantsToAddMember(BoatClub boatClub){
 
-        menu = new MemberCreationMenu();
+        menu=new MemberCreationMenu();
         menu.showInstruction();
         boatClub.creatMember(menu.getName() , menu.getPersonalNumber());
-
+        menu.confirmationMsg();
     }
 
 
