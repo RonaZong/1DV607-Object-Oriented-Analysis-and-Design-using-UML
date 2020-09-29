@@ -16,10 +16,10 @@ public class VerboseListSave {
             saver = new PrintWriter(new FileWriter(file,true));
 
             saver.print( member.getName() + "," + member.getPersonalNumber() +","
-                    + member.getMemberID() + "," + member.numberOfBoats() + ",");
+                    + member.getMemberID() + "," + member.numberOfBoats());
             for(Boat boat:member.boatsOwnedByMember())
-                saver.println(boat.getType() + "," + boat.getLength());
-
+                saver.print("," + boat.getType() + "," + boat.getLength());
+         saver.println();
             saver.close();
 
         }catch(Exception e){
