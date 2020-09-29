@@ -1,11 +1,11 @@
 package Model;
 
 
+import Util.BoatType;
+
 public class Boat {
 
-    public enum BoatType {
-        SAILBOAT, MOTORSAILOR, KAYAK_OR_CANOE, OTHER
-    }
+
 
     private BoatType type;
     private double length;
