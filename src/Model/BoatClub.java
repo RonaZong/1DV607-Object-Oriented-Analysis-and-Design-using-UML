@@ -5,15 +5,20 @@ import java.util.ArrayList;
 public class BoatClub {
     private ArrayList<Member> members=new ArrayList<>();
     private CompactListSave compactSave;
+    private VerboseListSave verboseListSave;
 
     public BoatClub() {
     }
 
-    public void creatMember(String userName, String personalNumber){
+    public Member creatMember(String userName, String personalNumber){
         Member member = new Member(userName,personalNumber);
         CompactListSave save = new CompactListSave();
         members.add(member);
         save.saveFileOnCompactList(member);
+        verboseListSave = new VerboseListSave();
+        verboseListSave.saveFileOnCompactList(member);
+
+        return member;
 
     }
 
