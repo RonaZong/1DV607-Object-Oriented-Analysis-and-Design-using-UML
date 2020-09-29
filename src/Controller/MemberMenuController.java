@@ -8,16 +8,18 @@ import View.StartMenu;
 
 public class MemberMenuController {
 
+    private MemberMenu menu;
 
-    public void actUponUserInputInMemberMenu(CompactListSave boatClub, Member member) {
+    public void actUponUserInputInMemberMenu(BoatClub boatClub) {
         MemberMenu menu = new MemberMenu();
-        boolean IWantToQuit = false;
-        while (IWantToQuit) {
+        boolean IWantToGoBack = false;
+        while (!IWantToGoBack) {
+            menu.showInstruction();
             MemberMenu.UserChoice userChoice = menu.getUserInputInMemberMenu();
             switch (userChoice) {
                 case COMPACT_LIST:
                     menu.showCompactList(boatClub);
-                    IWantToQuit = true;
+                    IWantToGoBack = true;
                     break;
              /*   case VERBOSE_LIST:
                     menu.showVerboseList(boatClub);
