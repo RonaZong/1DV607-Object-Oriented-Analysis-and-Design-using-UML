@@ -27,9 +27,10 @@ public class Member {
         //save to the text file(method to save the member should be here)
     }
 
-    public void getANewBoat(Boat.BoatType boatType , double length ){
+    public Boat addNewBoat(Util.BoatType boatType , double length ){
         Boat boat = new Boat(boatType, length);
         addBoat(boat);
+        return boat;
     }
 
    // sorry to comment this out I wrote a comment below and I will explain tomorrow
@@ -92,7 +93,7 @@ public class Member {
         return this.numbersOfBoatsOwnByAMember;
     }
 
-    public void registerNewBoat(Boat.BoatType boatType, double length){
+    public void registerNewBoat(Util.BoatType boatType, double length){
         Boat boat = new Boat(boatType, length);
         //save the information of boat
         addBoat(boat);
