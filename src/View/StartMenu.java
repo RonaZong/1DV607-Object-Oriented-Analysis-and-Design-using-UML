@@ -11,7 +11,7 @@ public class StartMenu extends Menu {
     private int userInput;
     private boolean alreadyMember=false;
 
-    public enum UserChoiceInMainMenu{
+    public enum UserChoiceInStartMenu{
         ADD_NEW_MEMBER, MEMBER_MENU, BOAT_MENU, QUIT
     }
 
@@ -37,34 +37,38 @@ public class StartMenu extends Menu {
         System.out.println("Welcome to Boat Club\n" +
                 "-----------------------\n" +
                 "Press 1 to add a new member\n" +
-                "Press 2 to go to member menu\n"+
-                "Press 3 to go to boat menu\n"+
+                "Press 2 to go to member menu\n" +
+                "Press 3 to go to boat menu\n" +
                 "Press 4 to quit");
-        // do we need to have an admin so can have access to member's information?
-        this.userInput = userIntInput();
 
-        getUserInputInMainMenu();
+
     }
 
 
 
-    public UserChoiceInMainMenu getUserInputInMainMenu() {
-        UserChoiceInMainMenu choice = null;
-        switch (userInput) {
-            case 1:
-                choice = UserChoiceInMainMenu.ADD_NEW_MEMBER;
-                break;
-            case 2:
-                choice = UserChoiceInMainMenu.MEMBER_MENU;
-                break;
-            case 3:
-                choice = UserChoiceInMainMenu.BOAT_MENU;
-                break;
-            case 4:
-                choice= UserChoiceInMainMenu.QUIT;
-                break;
+    public UserChoiceInStartMenu getUserInputInStartMenu() {
+        UserChoiceInStartMenu choice = null;
 
-        }
+            this.userInput = userIntInput();
+            switch (userInput) {
+                case 1:
+                    choice = UserChoiceInStartMenu.ADD_NEW_MEMBER;
+
+                    break;
+                case 2:
+                    choice = UserChoiceInStartMenu.MEMBER_MENU;
+
+                    break;
+                case 3:
+                    choice = UserChoiceInStartMenu.BOAT_MENU;
+                    break;
+                case 4:
+                    choice = UserChoiceInStartMenu.QUIT;
+                    break;
+
+            }
+
+
         return choice;
     }
 
