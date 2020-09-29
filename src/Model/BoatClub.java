@@ -14,12 +14,17 @@ public class BoatClub {
         Member member = new Member(userName,personalNumber);
         CompactListSave save = new CompactListSave();
         members.add(member);
+
         save.saveFileOnCompactList(member);
-        verboseListSave = new VerboseListSave();
-        verboseListSave.saveFileOnCompactList(member);
+
 
         return member;
 
+    }
+
+    public void saveOnVerboseList(Member member){
+        verboseListSave = new VerboseListSave();
+        verboseListSave.saveFileOnCompactList(member);
     }
 
     public void deleteMember(Member member){
