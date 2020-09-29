@@ -1,6 +1,7 @@
 import Controller.MainController;
 import Model.BoatClub;
 import Model.CompactListSave;
+import View.MemberMenu;
 import View.Menu;
 import View.StartMenu;
 
@@ -11,9 +12,9 @@ public class Main {
 
         BoatClub boatClub = new BoatClub();
 
-        Menu console = new StartMenu();
+        MemberMenu memberMenu = new MemberMenu();
         StartMenu menu=new StartMenu();
-        MainController user = new MainController(menu);
+        MainController user = new MainController(menu,memberMenu);
         user.memberAction(boatClub);
     }
 }
