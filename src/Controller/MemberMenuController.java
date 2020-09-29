@@ -21,10 +21,10 @@ public class MemberMenuController {
                     menu.showCompactList(boatClub);
                     IWantToGoBack = true;
                     break;
-             /*   case VERBOSE_LIST:
+               case VERBOSE_LIST:
                     menu.showVerboseList(boatClub);
                     break;
-                case DELETE:
+               /*  case DELETE:
                     menu.showDeleteMemberMenu();
                     boatClub.deleteMember(member);
                     break;
