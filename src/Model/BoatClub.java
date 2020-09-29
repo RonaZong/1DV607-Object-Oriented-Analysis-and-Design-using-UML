@@ -11,6 +11,8 @@ public class BoatClub {
     public void creatMember(String userName, String personalNumber){
         Member member = new Member(userName,personalNumber);
         members.add(member);
+        CompactListSave save = new CompactListSave();
+        save.saveFileOnCompactList(members);
 
     }
 
