@@ -77,14 +77,15 @@ public class MemberMenu extends Menu {
         System.out.println("Enter the member's name which you want to delete");
     }
 
-    public void showCompactList(CompactListSave boatClub){
-      /*  for(Member member : boatClub.getAllMembers()) {
-            System.out.println("This member name is : " + member.getName() +
+    public void showCompactList(BoatClub boatClub){
+        int index =1;
+        for(Member member : boatClub.getAllMembers()) {
+            System.out.println((index++) + ":This member name is : " + member.getName() +
                     "\nwith memberID of : " + member.getMemberID() +
                     "\nwhich has " + member.numberOfBoats() + "boats" +
                     "\n------------\n");
-        }*/
-        System.out.println(boatClub.compactList("CompactList.txt"));
+        }
+      //  System.out.println(boatClub.compactList("CompactList.txt"));
     }
 
     public void showVerboseList(BoatClub boatClub){
