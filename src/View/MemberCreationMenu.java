@@ -38,4 +38,8 @@ public class MemberCreationMenu extends Menu {
     public String getPersonalNumber(){
         return  this.personalNumber;
     }
+
+    public void confirmationMsg(){
+        System.out.println(this.name+" is added");
+    }
 }
