@@ -28,6 +28,6 @@ public class BoatMenu extends Menu {
         int typeValue = userIntInput();
         System.out.println("Enter length of the boat");
         int length = userIntInput();
-        member.registerNewBoat(Boat.BoatType.values()[typeValue] , length);
+        member.registerNewBoat(Util.BoatType.values()[typeValue] , length);
     }
 }
