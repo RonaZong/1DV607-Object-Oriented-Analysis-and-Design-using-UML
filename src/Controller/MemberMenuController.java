@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.BoatClub;
+import Model.CompactListSave;
 import Model.Member;
 import View.MemberMenu;
 import View.StartMenu;
@@ -8,7 +9,7 @@ import View.StartMenu;
 public class MemberMenuController {
 
 
-    public void actUponUserInputInMemberMenu(BoatClub boatClub,Member member) {
+    public void actUponUserInputInMemberMenu(CompactListSave boatClub, Member member) {
         MemberMenu menu = new MemberMenu();
         boolean IWantToQuit = false;
         while (IWantToQuit) {
@@ -18,7 +19,7 @@ public class MemberMenuController {
                     menu.showCompactList(boatClub);
                     IWantToQuit = true;
                     break;
-                case VERBOSE_LIST:
+             /*   case VERBOSE_LIST:
                     menu.showVerboseList(boatClub);
                     break;
                 case DELETE:
@@ -29,7 +30,7 @@ public class MemberMenuController {
                     menu.showUpdateMenu();
                     boatClub.updateMemberInformation(member,menu.getName(),menu.getPersonalNumber());
                     break;
-                case SPECIFIC_MEMBER:
+                case SPECIFIC_MEMBER:*/
 
             }
 
