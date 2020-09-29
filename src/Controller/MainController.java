@@ -5,42 +5,51 @@ import View.*;
 
 public class MainController {
 
-    private Menu menu;
+
     private MemberCreationController controller;
+    private StartMenu menu;
     
-    public MainController(Menu console) {
+    public MainController(StartMenu console) {
 
         this.controller=new MemberCreationController();
         this.menu = console;
+
     }
 
     //every scenarios would happen in this method
     public void memberAction(BoatClub boatClub){
 
-        this.menu.showInstruction();
-        actUponUserInputInStartMenu();
-        controller.userWantsToAddMember(boatClub);
 
+        actUponUserInputInStartMenu(this.menu,boatClub);
+
+
+
+
+
+        actUponUserInputInStartMenu(this.menu,boatClub);
     }
 
-    private void actUponUserInputInStartMenu(  ) {
-        StartMenu menu = new StartMenu();
+    private void actUponUserInputInStartMenu( StartMenu menu ,BoatClub boatClub) {
+
         boolean IWantToQuit = false;
-        while(IWantToQuit) {
-            StartMenu.UserChoiceInMainMenu userChoice = menu.getUserInputInMainMenu();
+        while(!IWantToQuit) {
+            this.menu.showInstruction();
+            StartMenu.UserChoiceInStartMenu userChoice = menu.getUserInputInStartMenu();
+
             switch (userChoice) {
                 case ADD_NEW_MEMBER:
-                    showRegisterMenu();
-                    IWantToQuit = true;
+                    controller.userWantsToAddMember(boatClub);
+                    IWantToQuit=true;
                     break;
                 case MEMBER_MENU:
                     showMemberMenu();
+
                     break;
                 case BOAT_MENU:
                     showBoatMenu();
                     break;
                 case QUIT:
-IWantToQuit=true;
+                IWantToQuit=true;
                     break;
 
             }
