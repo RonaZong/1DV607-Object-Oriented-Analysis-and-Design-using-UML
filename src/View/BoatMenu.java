@@ -16,7 +16,6 @@ public class BoatMenu extends Menu {
     private float length;
 
 
-
 //    public enum UserChoiceInBoatMenu{
 //        ADD_NEW_BOAT, DELETE_BOAT, CHANGE_BOAT_INFORMATION
 //    }
@@ -52,6 +51,8 @@ public class BoatMenu extends Menu {
                 choice = UserChoiceInBoatMenu.ADD_NEW_BOAT;
                 break;
             case 2:
+                choice = UserChoiceInBoatMenu.DELETE_BOAT;
+            case 3:
                 choice = UserChoiceInBoatMenu.CHANGE_BOAT_INFORMATION;
         }
         return choice;
@@ -64,7 +65,7 @@ public class BoatMenu extends Menu {
     }
 
     public void showRegisterABoat(BoatClub boatClub,Member member){
-        System.out.println("enter boat type:" +
+        System.out.println("Enter boat type:" +
                 "\n0 for Sailboat , 1 for Motor sailor , 2 for Kayak/Canoe, 3 for Others");
         int typeValue = userIntInput();
         System.out.println("Enter length of the boat");
