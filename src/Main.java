@@ -14,7 +14,11 @@ public class Main {
 
         MemberMenu memberMenu = new MemberMenu();
         StartMenu menu=new StartMenu();
-        MainController user = new MainController(menu,memberMenu);
-        user.memberAction(boatClub);
+
+//        MainController user = new MainController(menu, memberMenu);
+        MainController user = new MainController(boatClub, menu, memberMenu);
+//        user.memberAction(boatClub);
+        user.memberAction();
+
     }
 }
