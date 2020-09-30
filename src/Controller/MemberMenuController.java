@@ -3,6 +3,7 @@ package Controller;
 import Model.BoatClub;
 import Model.CompactListSave;
 import Model.Member;
+import Util.UserChoiceInMemberMenu;
 import View.MemberMenu;
 import View.StartMenu;
 
@@ -16,7 +17,7 @@ public class MemberMenuController {
         boolean IWantToGoBack = false;
         while (!IWantToGoBack) {
             menu.showInstruction();
-            MemberMenu.UserChoice userChoice = menu.getUserInputInMemberMenu();
+            UserChoiceInMemberMenu userChoice = menu.getUserInputInMemberMenu();
             switch (userChoice) {
                 case COMPACT_LIST:
                     menu.showCompactList(boatClub);
