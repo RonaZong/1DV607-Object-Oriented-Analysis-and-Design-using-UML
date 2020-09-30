@@ -1,5 +1,7 @@
 package Model;
 
+import Util.BoatType;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
@@ -27,7 +29,7 @@ public class VerboseListSave {
         }
     }
 
-    public String compactList(String filePath){
+    public String verboseList(String filePath){
 
         String result = "";
         try {
@@ -46,15 +48,21 @@ public class VerboseListSave {
         return result;
     }
 
-    public Iterable<Member> readyToPrintForCompactList(String result){
+    public Iterable<Member> readyToPrintForVerboseList(String result){
         ArrayList<Member> members = new ArrayList<>();
         String[] eachLines = result.split("[\\r\\n]+");
         for (String lines: eachLines) {
             String[] parameters = lines.split(",");
             Member member = new Member(parameters[0],parameters[1]);
-            member.setNumbersOfBoatsOwnByAMember(Integer.parseInt(parameters[2]));
+            member.setMemberID(parameters[2]);
+            member.setNumbersOfBoatsOwnByAMember(Integer.parseInt(parameters[3]));
+            for(int i = 4;i<parameters.length-1;i=i+2){
+                member.registerNewBoat(BoatType.valueOf(parameters[i]),Float.parseFloat(parameters[i+1]));
+            }
             members.add(member);
         }
         return members;
     }
+
+
 }
