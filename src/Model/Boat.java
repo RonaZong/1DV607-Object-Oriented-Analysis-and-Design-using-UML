@@ -8,10 +8,10 @@ public class Boat {
 
 
     private BoatType type;
-    private double length;
+    private float length;
 
     //since we have only this 4 fixed type better to have enum in my idea
-    public Boat(BoatType type, double length) {
+    public Boat(BoatType type, float length) {
         this.type = type;
         this.length = length;
         //the method for saving boat should be here too
@@ -30,7 +30,7 @@ public class Boat {
         return length;
     }
 
-    public void setLength(double length) {
+    public void setLength(float length) {
         this.length = length;
         //after updating information it should be saved
     }
