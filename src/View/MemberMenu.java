@@ -82,7 +82,7 @@ public class MemberMenu extends Menu {
         for(Member member : boatClub.getAllMembersForCompactList()) {
             System.out.println((index++) + ":This member name is : " + member.getName() +
                     "\nwith memberID of : " + member.getMemberID() +
-                    "\nwhich has " + member.numberOfBoats() + "boats" +
+                    "\nwhich has " + member.getNumbersOfBoatsOwnByAMember() + "boats" +
                     "\n------------\n");
         }
       //  System.out.println(boatClub.compactList("CompactList.txt"));
@@ -99,9 +99,10 @@ public class MemberMenu extends Menu {
                 System.out.println("this member boat information is :");
                 for (Boat boat : member.boatsOwnedByMember()) {
                     System.out.println("Boat type :" + boat.getType() +
-                            "\nBoat color : " + boat.getLength());
+                            "\nBoat Length : " + boat.getLength());
                 }
             }
+            System.out.println("\n----------------------\n");
         }
     }
 
