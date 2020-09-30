@@ -40,10 +40,15 @@ public class BoatClub {
             member.setPersonalNumber(personalNumber);
     }
 
-    public Iterable<Member> getAllMembers(){
+    public Iterable<Member> getAllMembersForCompactList(){
         compactSave = new CompactListSave();
 
         return compactSave.readyToPrintForCompactList(compactSave.compactList("compactList.txt"));
+    }
+
+    public Iterable<Member> getAllMembersForVerboseList(){
+        VerboseListSave vb= new VerboseListSave();
+        return vb.readyToPrintForVerboseList(vb.verboseList("VerboseList.txt"));
     }
 
     public void loadFromCompactList(CompactListSave list){
