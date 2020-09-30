@@ -12,6 +12,8 @@ public class BoatMenu extends Menu {
     private BoatType boatType;
     private Scanner sc;
     private String memberName;
+    private float length;
+
 
 
     public enum UserChoiceInBoatMenu{
@@ -21,6 +23,11 @@ public class BoatMenu extends Menu {
     private int userIntInput(){
         sc = new Scanner(System.in);
         return sc.nextInt();
+    }
+
+    private float userFloatInput(){
+        sc = new Scanner(System.in);
+        return sc.nextFloat();
     }
 
     private String userStringInput(){
@@ -60,14 +67,24 @@ public class BoatMenu extends Menu {
                 "\n0 for Sailboat , 1 for Motor sailor , 2 for Kayak/Canoe, 3 for Others");
         int typeValue = userIntInput();
         System.out.println("Enter length of the boat");
-        int length = userIntInput();
-        member.registerNewBoat(Util.BoatType.values()[typeValue] , length);
-    }
-    public void showChangeInformation(BoatClub boatClub){
+        length = userFloatInput();
 
     }
-    public void showDeleteBoat(BoatClub boatClub){
-
+    public void showChangeInformation(BoatClub boatClub, Member member){
+        System.out.println("Which boat your want to change");
+        //not sure how to iterate and show boats yet, and how user choose boat
+        //by type? by length
+        for (Boat b: member.boatsOwnedByMember()){
+            System.out.println(b);
+        }
+    }
+    public void showDeleteBoat(BoatClub boatClub, Member member){
+        System.out.println("Which boat your want to change");
+        //not sure how to iterate and show boats yet, and how user choose boat
+        //by type? by length
+        for (Boat b: member.boatsOwnedByMember()){
+            System.out.println(b);
+        }
     }
 //    private void askForABoatDataToRegister(Member member, Boat boat) {
 //        System.out.println("enter boat type:" +
@@ -80,5 +97,9 @@ public class BoatMenu extends Menu {
 
     public BoatType getBoatType(){
         return boatType;
+    }
+
+    public Float getLength(){
+        return length;
     }
 }
