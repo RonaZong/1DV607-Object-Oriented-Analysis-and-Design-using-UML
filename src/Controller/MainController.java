@@ -5,7 +5,6 @@ import View.*;
 
 public class MainController {
 
-
     private MemberCreationController controller;
     private StartMenu menu;
     private MemberMenu memberMenu;
@@ -21,13 +20,11 @@ public class MainController {
     //every scenarios would happen in this method
     public void memberAction(BoatClub boatClub){
 
-
        while(!actUponUserInputInStartMenu(menu,boatClub)) ;
 
     }
 
-    private boolean actUponUserInputInStartMenu( StartMenu menu ,BoatClub boatClub) {
-
+    private boolean actUponUserInputInStartMenu(StartMenu menu, BoatClub boatClub) {
 
             this.menu.showInstruction();
             StartMenu.UserChoiceInStartMenu userChoice = menu.getUserInputInStartMenu();
@@ -35,26 +32,21 @@ public class MainController {
             switch (userChoice) {
                 case ADD_NEW_MEMBER:
                     controller.userWantsToAddMember(boatClub);
-
                     break;
                 case MEMBER_MENU:
                     MemberMenuController memberMenuController =new MemberMenuController();
                     memberMenuController.actUponUserInputInMemberMenu(boatClub);
-
                     break;
                 case BOAT_MENU:
                     showBoatMenu();
                     break;
                 case QUIT:
+                    System.exit(1);
+                    // return to previous menu or exit directly
                 return true;
 
             }
         return false;
-    }
-
-    private void showBoatMenu() {
-        Menu menu = new BoatMenu();
-        menu.showInstruction();
     }
 
     private void showMemberMenu() {
@@ -64,6 +56,11 @@ public class MainController {
 
     private void showRegisterMenu() {
         Menu menu = new MemberCreationMenu();
+        menu.showInstruction();
+    }
+
+    private void showBoatMenu() {
+        Menu menu = new BoatMenu();
         menu.showInstruction();
     }
 }
