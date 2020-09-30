@@ -4,6 +4,7 @@ import Model.Boat;
 import Model.BoatClub;
 import Model.Member;
 import Util.BoatType;
+import Util.UserChoiceInBoatMenu;
 
 import java.util.Scanner;
 
@@ -16,9 +17,9 @@ public class BoatMenu extends Menu {
 
 
 
-    public enum UserChoiceInBoatMenu{
-        ADD_NEW_BOAT, DELETE_BOAT, CHANGE_BOAT_INFORMATION
-    }
+//    public enum UserChoiceInBoatMenu{
+//        ADD_NEW_BOAT, DELETE_BOAT, CHANGE_BOAT_INFORMATION
+//    }
 
     private int userIntInput(){
         sc = new Scanner(System.in);
