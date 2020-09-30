@@ -17,9 +17,7 @@ public class BoatClub {
 
        // save.saveFileOnCompactList(member);
 
-
         return member;
-
     }
 
     public void saveOnVerboseList(Member member){
@@ -35,7 +33,6 @@ public class BoatClub {
     public void deleteMember(Member member){
         members.remove(member);
     }
-
 
 
     public void updateMemberInformation(Member member , String name , String personalNumber){
