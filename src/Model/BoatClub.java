@@ -55,9 +55,10 @@ public class BoatClub {
         this.members= (ArrayList<Member>) list.readyToPrintForCompactList(list.compactList("CompactList.txt"));
     }
 
+    //enter a member name to get member
     public Member getMember(String memberName){
         for (Member m:members){
-            if (memberName == m.getName()){
+            if (memberName.equals(memberName)){
                 return m;
             }
         }
