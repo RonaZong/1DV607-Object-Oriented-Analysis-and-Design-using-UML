@@ -12,10 +12,10 @@ public class BoatClub {
 
     public Member creatMember(String userName, String personalNumber){
         Member member = new Member(userName,personalNumber);
-        CompactListSave save = new CompactListSave();
+        //CompactListSave save = new CompactListSave();
         members.add(member);
 
-        save.saveFileOnCompactList(member);
+       // save.saveFileOnCompactList(member);
 
 
         return member;
@@ -25,6 +25,11 @@ public class BoatClub {
     public void saveOnVerboseList(Member member){
         verboseListSave = new VerboseListSave();
         verboseListSave.saveFileOnCompactList(member);
+    }
+
+    public void saveOnCompactList(Member member){
+        CompactListSave save = new CompactListSave();
+        save.saveFileOnCompactList(member);
     }
 
     public void deleteMember(Member member){
@@ -39,6 +44,7 @@ public class BoatClub {
         if(personalNumber.length() >0)
             member.setPersonalNumber(personalNumber);
     }
+
 
     public Iterable<Member> getAllMembersForCompactList(){
         compactSave = new CompactListSave();
