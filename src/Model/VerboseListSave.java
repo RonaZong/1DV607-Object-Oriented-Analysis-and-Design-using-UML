@@ -17,10 +17,10 @@ public class VerboseListSave {
         try {
             saver = new PrintWriter(new FileWriter(file,true));
 
-            saver.print( member.getName() + "," + member.getPersonalNumber() +","
-                    + member.getMemberID() + "," + member.numberOfBoats());
+            saver.print( member.getName() + ":" + member.getPersonalNumber() +":"
+                    + member.getMemberID() + ":" + member.numberOfBoats());
             for(Boat boat:member.boatsOwnedByMember())
-                saver.print("," + boat.getType() + "," + boat.getLength());
+                saver.print(":" + boat.getType() + ":" + boat.getLength());
          saver.println();
             saver.close();
 
@@ -50,9 +50,10 @@ public class VerboseListSave {
 
     public Iterable<Member> readyToPrintForVerboseList(String result){
         ArrayList<Member> members = new ArrayList<>();
+        ArrayList<Boat> boats = new ArrayList<>();
         String[] eachLines = result.split("[\\r\\n]+");
         for (String lines: eachLines) {
-            String[] parameters = lines.split(",");
+            String[] parameters = lines.split(":");
             Member member = new Member(parameters[0],parameters[1]);
             member.setMemberID(parameters[2]);
             member.setNumbersOfBoatsOwnByAMember(Integer.parseInt(parameters[3]));
