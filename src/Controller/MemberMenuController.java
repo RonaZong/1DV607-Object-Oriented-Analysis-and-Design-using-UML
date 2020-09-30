@@ -9,9 +9,10 @@ import View.StartMenu;
 public class MemberMenuController {
 
     private MemberMenu menu;
+    private Member member;
 
     public void actUponUserInputInMemberMenu(BoatClub boatClub) {
-        MemberMenu menu = new MemberMenu();
+        menu = new MemberMenu();
         boolean IWantToGoBack = false;
         while (!IWantToGoBack) {
             menu.showInstruction();
@@ -24,15 +25,15 @@ public class MemberMenuController {
                case VERBOSE_LIST:
                     menu.showVerboseList(boatClub);
                     break;
-               /*  case DELETE:
+               case DELETE:
                     menu.showDeleteMemberMenu();
                     boatClub.deleteMember(member);
                     break;
-                case UPDATE:
+               case UPDATE:
                     menu.showUpdateMenu();
                     boatClub.updateMemberInformation(member,menu.getName(),menu.getPersonalNumber());
                     break;
-                case SPECIFIC_MEMBER:*/
+               case SPECIFIC_MEMBER:
 
             }
 
