@@ -43,7 +43,9 @@ public class MainController {
 
                     break;
                 case BOAT_MENU:
-                    showBoatMenu();
+                    BoatMenuController boatMenuController = new BoatMenuController();
+                    boatMenuController.acrUponUserInputInBoatMenu(boatClub);
+                    //showBoatMenu();
                     break;
                 case QUIT:
                 return true;
@@ -52,10 +54,10 @@ public class MainController {
         return false;
     }
 
-    private void showBoatMenu() {
-        Menu menu = new BoatMenu();
-        menu.showInstruction();
-    }
+//    private void showBoatMenu() {
+//        Menu menu = new BoatMenu();
+//        menu.showInstruction();
+//    }
 
     private void showMemberMenu() {
         Menu menu = new MemberMenu();
