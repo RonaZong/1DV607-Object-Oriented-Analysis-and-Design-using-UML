@@ -4,9 +4,7 @@ package Model;
 import Util.BoatType;
 
 public class Boat {
-
-
-
+    
     private BoatType type;
     private double length;
 
