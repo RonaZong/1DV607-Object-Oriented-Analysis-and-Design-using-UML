@@ -15,7 +15,8 @@ public class CompactListSave {
         try {
             saver = new PrintWriter(new FileWriter(file,true));
 
-                saver.println( member.getName() + "," + member.getMemberID() + "," + member.numberOfBoats());
+                saver.println( member.getName() + ":" + member.getMemberID() + ":" + member.numberOfBoats());
+                System.out.println(member.numberOfBoats());
 
             saver.close();
 
@@ -47,7 +48,7 @@ public class CompactListSave {
         ArrayList<Member> members = new ArrayList<>();
         String[] eachLines = result.split("[\\r\\n]+");
         for (String lines: eachLines) {
-            String[] parameters = lines.split(",");
+            String[] parameters = lines.split(":");
             Member member = new Member(parameters[0],parameters[1]);
             member.setNumbersOfBoatsOwnByAMember(Integer.parseInt(parameters[2]));
             members.add(member);
