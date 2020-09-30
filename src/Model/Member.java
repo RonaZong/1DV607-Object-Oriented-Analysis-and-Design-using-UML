@@ -27,11 +27,11 @@ public class Member {
         //save to the text file(method to save the member should be here)
     }
 
-    public Boat addNewBoat(Util.BoatType boatType , float length ){
-        Boat boat = new Boat(boatType, length);
-        addBoat(boat);
-        return boat;
-    }
+//    public Boat addNewBoat(Util.BoatType boatType , float length ){
+//        Boat boat = new Boat(boatType, length);
+//        addBoat(boat);
+//        return boat;
+//    }
 
    // sorry to comment this out I wrote a comment below and I will explain tomorrow
    /* public Member(String name, String personalNumber, int memberID) {
@@ -80,10 +80,10 @@ public class Member {
         this.memberID=memberID;
     }
 
-    public void addBoat(Boat boat){
-
-        boats.add(boat);
-    }
+//    public void addBoat(Boat boat){
+//
+//        boats.add(boat);
+//    }
 
     public Iterable<Boat> boatsOwnedByMember(){
         return this.boats;
@@ -100,7 +100,8 @@ public class Member {
     public void registerNewBoat(Util.BoatType boatType, float length){
         Boat boat = new Boat(boatType, length);
         //save the information of boat
-        addBoat(boat);
+        boats.add(boat);
+        //I change to boats.add directly
     }
 
     public void deleteBoat(Boat boat) {

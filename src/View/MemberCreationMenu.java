@@ -16,8 +16,6 @@ public class MemberCreationMenu extends Menu {
     private BoatType[] type;
 
 
-
-
     private String userStringInput(){
         sc =new Scanner(System.in);
         return sc.nextLine();
