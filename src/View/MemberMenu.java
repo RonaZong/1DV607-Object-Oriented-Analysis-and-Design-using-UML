@@ -79,7 +79,7 @@ public class MemberMenu extends Menu {
 
     public void showCompactList(BoatClub boatClub){
         int index =1;
-        for(Member member : boatClub.getAllMembers()) {
+        for(Member member : boatClub.getAllMembersForCompactList()) {
             System.out.println((index++) + ":This member name is : " + member.getName() +
                     "\nwith memberID of : " + member.getMemberID() +
                     "\nwhich has " + member.numberOfBoats() + "boats" +
@@ -89,7 +89,7 @@ public class MemberMenu extends Menu {
     }
 
     public void showVerboseList(BoatClub boatClub){
-        for(Member member : boatClub.getAllMembers()){
+        for(Member member : boatClub.getAllMembersForVerboseList()){
             System.out.println("This member name is : " + member.getName() +
                     "\nwith personal number of " + member.getPersonalNumber() +
                     "\nwith memberID of " + member.getMemberID());
