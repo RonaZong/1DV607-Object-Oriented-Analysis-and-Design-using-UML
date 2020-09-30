@@ -11,7 +11,7 @@ public class MemberCreationMenu extends Menu {
     private String name;
     private String personalNumber;
     private int numberOfBoats;
-    private double[] boatLength;
+    private float[] boatLength;
     private int typeOfBoat;
     private BoatType[] type;
 
@@ -28,9 +28,9 @@ public class MemberCreationMenu extends Menu {
         return sc.nextInt();
     }
 
-    private double userDoubleInput(){
+    private float userDoubleInput(){
         sc = new Scanner(System.in);
-        return sc.nextDouble();
+        return sc.nextFloat();
     }
 
     @Override
@@ -45,7 +45,7 @@ public class MemberCreationMenu extends Menu {
         }while (!isValid(personalNumber));
         System.out.println("Please enter numbers of boats:");
         this.numberOfBoats = userIntInput();
-        boatLength = new double[numberOfBoats];
+        boatLength = new float[numberOfBoats];
         type = new BoatType[numberOfBoats];
         for(int i = 0 ; i<numberOfBoats;i++){
             System.out.println("Please enter length of the boat:");
@@ -76,7 +76,7 @@ public class MemberCreationMenu extends Menu {
         return numberOfBoats;
     }
 
-    public double[] getBoatLength() {
+    public float[] getBoatLength() {
         return boatLength;
     }
 
