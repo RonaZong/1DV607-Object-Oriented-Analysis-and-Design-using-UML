@@ -55,7 +55,8 @@ public class MemberCreationMenu extends Menu {
     }
 
     private boolean isValid(String input){
-        return input.length()==10;
+        return input.length() == 10 && input.matches("-?\\d+(\\.\\d+)?");
+        //check its digits
     }
 
     public String getName(){

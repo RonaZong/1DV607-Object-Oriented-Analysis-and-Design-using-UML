@@ -4,6 +4,7 @@ import Model.Boat;
 import Model.BoatClub;
 import Model.CompactListSave;
 import Model.Member;
+import Util.UserChoiceInMemberMenu;
 
 import java.util.ArrayList;
 
@@ -25,9 +26,9 @@ public class MemberMenu extends Menu {
         return sc.nextLine();
     }
 
-    public enum UserChoice{
-        COMPACT_LIST, VERBOSE_LIST,QUIT,DELETE,UPDATE,SPECIFIC_MEMBER
-    }
+//    public enum UserChoice{
+//        COMPACT_LIST, VERBOSE_LIST,QUIT,DELETE,UPDATE,SPECIFIC_MEMBER
+//    }
 
     public void showMemberMenu() {
 
@@ -45,28 +46,28 @@ public class MemberMenu extends Menu {
 
     }
 
-    public UserChoice getUserInputInMemberMenu() {
-        UserChoice choice = null;
+    public UserChoiceInMemberMenu getUserInputInMemberMenu() {
+        UserChoiceInMemberMenu choice = null;
 
         switch (userInput) {
 
             case 1:
-                choice = UserChoice.COMPACT_LIST;
+                choice = UserChoiceInMemberMenu.COMPACT_LIST;
                 break;
             case 2:
-                choice = UserChoice.VERBOSE_LIST;
+                choice = UserChoiceInMemberMenu.VERBOSE_LIST;
                 break;
             case 3:
-                choice = UserChoice.DELETE;
+                choice = UserChoiceInMemberMenu.DELETE;
                 break;
             case 4:
-                choice = UserChoice.UPDATE;
+                choice = UserChoiceInMemberMenu.UPDATE;
                 break;
             case 5:
-                choice = UserChoice.SPECIFIC_MEMBER;
+                choice = UserChoiceInMemberMenu.SPECIFIC_MEMBER;
                 break;
             case 6:
-                choice = UserChoice.QUIT;
+                choice = UserChoiceInMemberMenu.QUIT;
                 break;
 
         }
