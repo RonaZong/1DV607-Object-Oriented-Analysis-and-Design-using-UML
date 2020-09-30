@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.BoatClub;
+import Util.UserChoiceInStartMenu;
 import View.*;
 
 public class MainController {
@@ -27,7 +28,7 @@ public class MainController {
     private boolean actUponUserInputInStartMenu(StartMenu menu, BoatClub boatClub) {
 
             this.menu.showInstruction();
-            StartMenu.UserChoiceInStartMenu userChoice = menu.getUserInputInStartMenu();
+            UserChoiceInStartMenu userChoice = menu.getUserInputInStartMenu();
 
             switch (userChoice) {
                 case ADD_NEW_MEMBER:
