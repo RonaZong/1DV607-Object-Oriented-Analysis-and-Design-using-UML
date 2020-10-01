@@ -94,14 +94,19 @@ public class Member {
     }
 
     public int numberOfBoats(){
-        return boats.size();
+        return this.boats.size();
     }
 
-    public void registerNewBoat(Util.BoatType boatType, float length){
+    public int getNumbersOfBoatsOwnByAMember(){
+          return this.numbersOfBoatsOwnByAMember;
+    }
+
+    public void registerNewBoat(Util.BoatType boatType, double length){
         Boat boat = new Boat(boatType, length);
         //save the information of boat
         boats.add(boat);
         //I change to boats.add directly
+        //ya I was going to do that since it was redundant.tnx
     }
 
     public void deleteBoat(Boat boat) {

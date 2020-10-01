@@ -5,13 +5,11 @@ import Util.BoatType;
 
 public class Boat {
 
-
-
     private BoatType type;
-    private float length;
+    private double length;
 
     //since we have only this 4 fixed type better to have enum in my idea
-    public Boat(BoatType type, float length) {
+    public Boat(BoatType type, double length) {
         this.type = type;
         this.length = length;
         //the method for saving boat should be here too

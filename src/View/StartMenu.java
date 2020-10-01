@@ -3,6 +3,7 @@ package View;
 import Model.Boat;
 import Model.BoatClub;
 import Model.Member;
+import Util.UserChoiceInStartMenu;
 
 import java.util.Scanner;
 
@@ -11,9 +12,7 @@ public class StartMenu extends Menu {
     private int userInput;
     private boolean alreadyMember=false;
 
-    public enum UserChoiceInStartMenu{
-        ADD_NEW_MEMBER, MEMBER_MENU, BOAT_MENU, QUIT
-    }
+
 
     public StartMenu() {
     }

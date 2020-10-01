@@ -4,33 +4,39 @@ import java.util.ArrayList;
 
 public class BoatClub {
     private ArrayList<Member> members=new ArrayList<>();
-    private CompactListSave compactSave;
-    private VerboseListSave verboseListSave;
+    private Registry registry;
+    //we can discuss if need this as an attribute or not(I added for showing the information of member deleted as a confirmation msg)line 38
+    private Member member;
 
     public BoatClub() {
     }
 
     public Member creatMember(String userName, String personalNumber){
         Member member = new Member(userName,personalNumber);
-        CompactListSave save = new CompactListSave();
+        //CompactListSave save = new CompactListSave();
         members.add(member);
 
-        save.saveFileOnCompactList(member);
-
+       // save.saveFileOnCompactList(member);
 
         return member;
-
     }
 
     public void saveOnVerboseList(Member member){
-        verboseListSave = new VerboseListSave();
-        verboseListSave.saveFileOnCompactList(member);
+        registry = new Registry();
+        registry.saveFile(member);
     }
 
-    public void deleteMember(Member member){
+   /* public void saveOnCompactList(Member member){
+        VerboseListSave save = new VerboseListSave();
+        save.saveFileOnCompactList(member);
+    }*/
+
+    public Member deleteMember(Member member){
+        this.member = member;
         members.remove(member);
+        //I used here to return that member who was deleted
+        return this.member;
     }
-
 
 
     public void updateMemberInformation(Member member , String name , String personalNumber){
@@ -40,19 +46,21 @@ public class BoatClub {
             member.setPersonalNumber(personalNumber);
     }
 
-    public Iterable<Member> getAllMembersForCompactList(){
-        compactSave = new CompactListSave();
 
-        return compactSave.readyToPrintForCompactList(compactSave.compactList("compactList.txt"));
+    public Iterable<Member> getAllMembersFromRegistry(){
+       // compactSave = new CompactListSave();
+        registry = new Registry();
+
+        return registry.loadForCompactList(registry.verboseList("VerboseList.txt"));
     }
 
-    public Iterable<Member> getAllMembersForVerboseList(){
-        VerboseListSave vb= new VerboseListSave();
-        return vb.readyToPrintForVerboseList(vb.verboseList("VerboseList.txt"));
-    }
+   /* public Iterable<Member> getAllMembersForVerboseList(){
+        Registry vb= new Registry();
+        return vb.loadForVerboseList(vb.verboseList("VerboseList.txt"));
+    }*/
 
-    public void loadFromCompactList(CompactListSave list){
-        this.members= (ArrayList<Member>) list.readyToPrintForCompactList(list.compactList("CompactList.txt"));
+    public void loadAllInformationOfMembers(Registry list){
+        this.members= (ArrayList<Member>) list.loadForVerboseList(list.verboseList("VerboseList.txt"));
     }
 
     //enter a member name to get member

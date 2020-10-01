@@ -2,10 +2,8 @@ package View;
 
 import Model.Boat;
 import Model.BoatClub;
-import Model.CompactListSave;
 import Model.Member;
-
-import java.util.ArrayList;
+import Util.UserChoiceInMemberMenu;
 
 import java.util.Scanner;
 
@@ -25,9 +23,6 @@ public class MemberMenu extends Menu {
         return sc.nextLine();
     }
 
-    public enum UserChoice{
-        COMPACT_LIST, VERBOSE_LIST,QUIT,DELETE,UPDATE,SPECIFIC_MEMBER
-    }
 
     public void showMemberMenu() {
 
@@ -45,63 +40,77 @@ public class MemberMenu extends Menu {
 
     }
 
-    public UserChoice getUserInputInMemberMenu() {
-        UserChoice choice = null;
+    public UserChoiceInMemberMenu getUserInputInMemberMenu() {
+        UserChoiceInMemberMenu choice = null;
 
         switch (userInput) {
 
             case 1:
-                choice = UserChoice.COMPACT_LIST;
+                choice = UserChoiceInMemberMenu.COMPACT_LIST;
                 break;
             case 2:
-                choice = UserChoice.VERBOSE_LIST;
-                break;
-            case 3:
-                choice = UserChoice.DELETE;
-                break;
-            case 4:
-                choice = UserChoice.UPDATE;
-                break;
-            case 5:
-                choice = UserChoice.SPECIFIC_MEMBER;
+                choice = UserChoiceInMemberMenu.VERBOSE_LIST;
                 break;
             case 6:
-                choice = UserChoice.QUIT;
+                choice = UserChoiceInMemberMenu.QUIT;
                 break;
 
         }
         return choice;
     }
 
-    public void showDeleteMemberMenu() {
-        System.out.println("Enter the member's name which you want to delete");
+    public UserChoiceInMemberMenu getInputInCompactList() {
+        UserChoiceInMemberMenu choice = null;
+
+        switch(userInput){
+            case 1:
+                choice = UserChoiceInMemberMenu.DELETE;
+                break;
+            case 2:
+                choice = UserChoiceInMemberMenu.UPDATE;
+                break;
+            case 3:
+                choice = UserChoiceInMemberMenu.SPECIFIC_MEMBER;
+                break;
+        }
+        return choice;
     }
 
-    public void showCompactList(BoatClub boatClub){
+    public Member showCompactList(BoatClub boatClub){
         int index =1;
-        for(Member member : boatClub.getAllMembersForCompactList()) {
+        for(Member member : boatClub.getAllMembersFromRegistry()) {
             System.out.println((index++) + ":This member name is : " + member.getName() +
                     "\nwith memberID of : " + member.getMemberID() +
-                    "\nwhich has " + member.numberOfBoats() + "boats" +
+                    "\nwhich has " + member.getNumbersOfBoatsOwnByAMember() + "boats" +
                     "\n------------\n");
         }
-      //  System.out.println(boatClub.compactList("CompactList.txt"));
+      System.out.println("Enter index of member to choose:");
+        int input = userIntInput();
+        index = 1;
+        for(Member member : boatClub.getAllMembersFromRegistry()){
+            if(index==input){
+                return member;
+            }
+            index++;
+        }
+        return null;
     }
 
     public void showVerboseList(BoatClub boatClub){
-        for(Member member : boatClub.getAllMembersForVerboseList()){
+        for(Member member : boatClub.getAllMembersFromRegistry()){
             System.out.println("This member name is : " + member.getName() +
                     "\nwith personal number of " + member.getPersonalNumber() +
                     "\nwith memberID of " + member.getMemberID());
             //it might give a null exception
-            System.out.println("This member has " + member.numberOfBoats()+ "boats");
-            if(member.numberOfBoats()> 0 ) {
+            System.out.println("This member has " + member.getNumbersOfBoatsOwnByAMember()+ "boats");
+
                 System.out.println("this member boat information is :");
                 for (Boat boat : member.boatsOwnedByMember()) {
                     System.out.println("Boat type :" + boat.getType() +
-                            "\nBoat color : " + boat.getLength());
-                }
+                            "\nBoat Length : " + boat.getLength());
+
             }
+            System.out.println("\n----------------------\n");
         }
     }
 
@@ -109,10 +118,20 @@ public class MemberMenu extends Menu {
         System.out.println("What do you want to update?");
         System.out.println("If you want to update name enter your new name otherwise press enter");
         name = userStringInput();
-        //do we need to check for validate personal number??
         System.out.println("if you want to update your personal number enter your new personal" +
                 "number otherwise press enter");
-        personalNumber = userStringInput();
+        do {
+            personalNumber = userStringInput();
+        }while (!isValid(personalNumber));
+
+    }
+
+    public void showConfirmationMsg(Member member){
+        System.out.println(member.getName() + " is deleted");
+
+    }
+
+    public void showMemberInformation(Member member){
 
     }
 
@@ -122,5 +141,10 @@ public class MemberMenu extends Menu {
 
     public String getPersonalNumber(){
         return personalNumber;
+    }
+
+    private boolean isValid(String input){
+        return input.length() == 10 && input.matches("-?\\d+(\\.\\d+)?");
+        //check its digits
     }
 }
