@@ -12,6 +12,7 @@ public class Registry {
     private Scanner reader;
     private PrintWriter saver=null;
 
+
     public void saveFile(Member member) {
         File file = new File("VerboseList.txt");
         try {
@@ -30,7 +31,6 @@ public class Registry {
     }
 
     public String verboseList(String filePath){
-
         String result = "";
         try {
             reader = new Scanner(new File(filePath));
@@ -48,7 +48,8 @@ public class Registry {
         return result;
     }
 
-    public Iterable<Member> loadForVerboseList(String result){
+    public ArrayList<Member> loadForVerboseList(String result){
+        BoatClub boatClub = new BoatClub();
         ArrayList<Member> members = new ArrayList<>();
         String[] eachLines = result.split("[\\r\\n]+");
         for (String lines: eachLines) {
@@ -59,39 +60,19 @@ public class Registry {
 
             ArrayList<Boat> boats = new ArrayList<>();
             for(int i = 4; i < parameters.length-1; i = i+2){
-                //  Boat boat = new Boat(BoatType.valueOf(parameters[i]),Float.parseFloat(parameters[i+1]));
-                // boats.add(boat);
-                member.registerNewBoat(BoatType.valueOf(parameters[i]),Double.parseDouble(parameters[i+1]));
-                member.setBoats(boats);
-            }
-            members.add(member);
-        }
-        return members;
-    }
-
-    public Iterable<Member> loadForCompactList(String result){
-        ArrayList<Member> members = new ArrayList<>();
-        String[] eachLines = result.split("[\\r\\n]+");
-        for (String lines: eachLines) {
-            String[] parameters = lines.split(":");
-            Member member = new Member(parameters[0],parameters[1]);
-            member.setMemberID(parameters[2]);
-            member.setNumbersOfBoatsOwnByAMember(Integer.parseInt(parameters[3]));
-
-            ArrayList<Boat> boats = new ArrayList<>();
-            for(int i = 4; i < parameters.length-1; i = i+2){
-                  Boat boat = new Boat(BoatType.valueOf(parameters[i]),Float.parseFloat(parameters[i+1]));
-                 boats.add(boat);
+                Boat boat = new Boat(BoatType.valueOf(parameters[i]),Float.parseFloat(parameters[i+1]));
+                boats.add(boat);
 //                member.registerNewBoat(BoatType.valueOf(parameters[i]),Double.parseDouble(parameters[i+1]));
                 member.setBoats(boats);
             }
             members.add(member);
+            boatClub.setMembers(members);
         }
         return members;
     }
 
     public void updateRegistryFile(BoatClub boatClub){
-        ArrayList<Member> members = (ArrayList<Member>) boatClub.getAllMembersFromRegistry();
+        ArrayList<Member> members = boatClub.getAllMembersLocally();
         File file = new File("VerboseList.txt");
         try {
             saver = new PrintWriter(file);
@@ -109,5 +90,4 @@ public class Registry {
 
         }
     }
-
 }
