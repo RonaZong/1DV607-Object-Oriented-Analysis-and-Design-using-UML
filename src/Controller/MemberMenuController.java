@@ -25,6 +25,7 @@ public class MemberMenuController {
                     break;
                case VERBOSE_LIST:
                     menu.showVerboseList(boatClub);
+                    IWantToGoBack=true;
                     break;
 
             }
@@ -33,7 +34,7 @@ public class MemberMenuController {
     }
 
     public void actionOnCompactList(BoatClub boatClub){
-        Iterable<Member> members = boatClub.getAllMembersFromRegistry();
+      //  Iterable<Member> members = boatClub.getAllMembersFromRegistry();
         Registry registry=new Registry();
         boolean goBack=false;
         while(!goBack){
