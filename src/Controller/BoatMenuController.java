@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.BoatClub;
+import Util.UserChoiceInBoatMenu;
 import View.BoatMenu;
 
 import java.lang.reflect.Member;
@@ -13,7 +14,7 @@ public class BoatMenuController {
     public void acrUponUserInputInBoatMenu(BoatClub boatClub){
         menu = new BoatMenu();
         menu.showInstruction();
-        BoatMenu.UserChoiceInBoatMenu choice = menu.getUserInputInBoatMenu();
+        UserChoiceInBoatMenu choice = menu.getUserInputInBoatMenu();
         switch (choice){
             case ADD_NEW_BOAT:
                 member= boatClub.getMember(menu.ShowAccessToMember());
