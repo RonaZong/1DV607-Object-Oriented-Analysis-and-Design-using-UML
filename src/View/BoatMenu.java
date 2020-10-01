@@ -16,10 +16,6 @@ public class BoatMenu extends Menu {
     private float length;
 
 
-//    public enum UserChoiceInBoatMenu{
-//        ADD_NEW_BOAT, DELETE_BOAT, CHANGE_BOAT_INFORMATION
-//    }
-
     private int userIntInput(){
         sc = new Scanner(System.in);
         return sc.nextInt();
