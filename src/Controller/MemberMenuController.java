@@ -19,6 +19,7 @@ public class MemberMenuController {
             switch (userChoice) {
                 case COMPACT_LIST:
                     member =menu.showCompactList(boatClub);
+                    actionOnCompactList(boatClub);
                     IWantToGoBack = true;
                     break;
                case VERBOSE_LIST:
