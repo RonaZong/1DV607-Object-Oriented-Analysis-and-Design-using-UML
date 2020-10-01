@@ -65,5 +65,17 @@ public class VerboseListSave {
         return members;
     }
 
+    public Iterable<Member> readyToPrintForCompactList(String result){
+        ArrayList<Member> members = new ArrayList<>();
+        String[] eachLines = result.split("[\\r\\n]+");
+        for (String lines: eachLines) {
+            String[] parameters = lines.split(":");
+            Member member = new Member(parameters[0],parameters[1]);
+            member.setMemberID(parameters[2]);
+            member.setNumbersOfBoatsOwnByAMember(Integer.parseInt(parameters[3]));
+            members.add(member);
+        }
+        return members;
+    }
 
 }
