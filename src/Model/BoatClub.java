@@ -4,8 +4,7 @@ import java.util.ArrayList;
 
 public class BoatClub {
     private ArrayList<Member> members=new ArrayList<>();
-    private Main.CompactListSave compactSave;
-    private VerboseListSave verboseListSave;
+    private Registry registry;
 
     public BoatClub() {
     }
@@ -21,8 +20,8 @@ public class BoatClub {
     }
 
     public void saveOnVerboseList(Member member){
-        verboseListSave = new VerboseListSave();
-        verboseListSave.saveFileOnCompactList(member);
+        registry = new Registry();
+        registry.saveFileOnCompactList(member);
     }
 
    /* public void saveOnCompactList(Member member){
@@ -43,20 +42,20 @@ public class BoatClub {
     }
 
 
-    public Iterable<Member> getAllMembersForCompactList(){
+    public Iterable<Member> getAllMembersFromRegistry(){
        // compactSave = new CompactListSave();
-        verboseListSave = new VerboseListSave();
+        registry = new Registry();
 
-        return verboseListSave.readyToPrintForCompactList(verboseListSave.verboseList("VerboseList.txt"));
+        return registry.readyToPrintForCompactList(registry.verboseList("VerboseList.txt"));
     }
 
     public Iterable<Member> getAllMembersForVerboseList(){
-        VerboseListSave vb= new VerboseListSave();
+        Registry vb= new Registry();
         return vb.readyToPrintForVerboseList(vb.verboseList("VerboseList.txt"));
     }
 
-    public void loadFromCompactList(Main.CompactListSave list){
-        this.members= (ArrayList<Member>) list.readyToPrintForCompactList(list.compactList("CompactList.txt"));
+    public void loadFromCompactList(Registry list){
+        this.members= (ArrayList<Member>) list.readyToPrintForCompactList(list.verboseList("VerboseList.txt"));
     }
 
     //enter a member name to get member
