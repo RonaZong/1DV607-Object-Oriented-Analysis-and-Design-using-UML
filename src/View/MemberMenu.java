@@ -24,17 +24,10 @@ public class MemberMenu extends Menu {
     }
 
 
-    public void showMemberMenu() {
-
-    }
-
     @Override
     public void showInstruction() {
         System.out.println("Press 1 to show a compact list of members\n" +
-                           "Press 2 to show a verbose list of members\n" +
-                           "Press 3 to delete a member\n" +
-                           "Press 4 to update a member information\n" +
-                           "Press 5 to see a specific member data");
+                           "Press 2 to show a verbose list of members\n");
 
         userInput = userIntInput();
 
@@ -84,17 +77,23 @@ public class MemberMenu extends Menu {
                     "\nwhich has " + member.getNumbersOfBoatsOwnByAMember() + "boats" +
                     "\n------------\n");
         }
+        System.out.println("Press 1 to delete a member\n" +
+                "Press 2 to update a member information\n" +
+                "Press 3 to see a specific member data");
       System.out.println("Enter index of member to choose:");
-        int input = userIntInput();
+        userInput= userIntInput();
         index = 1;
         for(Member member : boatClub.getAllMembersFromRegistry()){
-            if(index==input){
+            if(index==userInput){
                 return member;
             }
             index++;
         }
+
+
         return null;
     }
+    // how to read them categorised from txt file
 
     public void showVerboseList(BoatClub boatClub){
         for(Member member : boatClub.getAllMembersFromRegistry()){
