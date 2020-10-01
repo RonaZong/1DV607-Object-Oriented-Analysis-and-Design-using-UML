@@ -16,9 +16,7 @@ public class MemberCreationController {
         menu.showInstruction();
         Member member = boatClub.creatMember(menu.getName(), menu.getPersonalNumber());
         for(int i = 0 ; i < menu.getNumberOfBoats(); i++){
-
             member.registerNewBoat(menu.getType()[i] , menu.getBoatLength()[i]);
-
         }
        // boatClub.saveOnCompactList(member);
         boatClub.saveOnVerboseList(member);
