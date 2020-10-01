@@ -19,7 +19,7 @@ public class MemberMenuController {
             UserChoiceInMemberMenu userChoice = menu.getUserInputInMemberMenu();
             switch (userChoice) {
                 case COMPACT_LIST:
-                    member =menu.showCompactList(boatClub);
+                    member = menu.showCompactList(boatClub);
                     actionOnCompactList(boatClub);
                     IWantToGoBack = true;
                     break;
@@ -30,7 +30,6 @@ public class MemberMenuController {
 
             }
         }
-
     }
 
     public void actionOnCompactList(BoatClub boatClub){
@@ -46,9 +45,10 @@ public class MemberMenuController {
                         System.out.println(m.getName() +"," + m.getNumbersOfBoatsOwnByAMember());
                     }
 
-                    boatClub.loadAllInformationOfMembers(registry);//this should update the arraylist of members from registry
+                   // boatClub.loadAllInformationOfMembers(registry);//this should update the arraylist of members from registry
                     // menu.showDeleteMemberMenu();
-                    menu.showConfirmationMsg(boatClub.deleteMember(member));
+                    boatClub.deleteMember(member);
+                    menu.showConfirmationMsg(member);
                     registry.updateRegistryFile(boatClub);
                     goBack = true;
                     break;
