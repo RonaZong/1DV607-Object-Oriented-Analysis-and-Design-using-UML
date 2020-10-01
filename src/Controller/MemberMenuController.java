@@ -1,11 +1,9 @@
 package Controller;
 
 import Model.BoatClub;
-import Model.CompactListSave;
 import Model.Member;
 import Util.UserChoiceInMemberMenu;
 import View.MemberMenu;
-import View.StartMenu;
 
 public class MemberMenuController {
 
@@ -20,25 +18,38 @@ public class MemberMenuController {
             UserChoiceInMemberMenu userChoice = menu.getUserInputInMemberMenu();
             switch (userChoice) {
                 case COMPACT_LIST:
-                    menu.showCompactList(boatClub);
+                    member =menu.showCompactList(boatClub);
                     IWantToGoBack = true;
                     break;
                case VERBOSE_LIST:
                     menu.showVerboseList(boatClub);
                     break;
-               case DELETE:
-                    menu.showDeleteMemberMenu();
-                    boatClub.deleteMember(member);
-                    break;
-               case UPDATE:
-                    menu.showUpdateMenu();
-                    boatClub.updateMemberInformation(member,menu.getName(),menu.getPersonalNumber());
-                    break;
-               case SPECIFIC_MEMBER:
 
             }
+        }
 
+    }
 
+    public void actionOnCompactList(BoatClub boatClub){
+
+        boolean goBack=false;
+        while(!goBack){
+            UserChoiceInMemberMenu choice = menu.getInputInCompactList();
+            switch (choice){
+                case DELETE:
+
+                    // menu.showDeleteMemberMenu();
+                    boatClub.deleteMember(member);
+                    goBack = true;
+                    break;
+                case UPDATE:
+                    menu.showUpdateMenu();
+                    boatClub.updateMemberInformation(member, menu.getName(), menu.getPersonalNumber());
+                    break;
+                case SPECIFIC_MEMBER:
+                    menu.showMemberInformation(member);
+                    break;
+            }
         }
     }
 
