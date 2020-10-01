@@ -33,5 +33,4 @@ public class Boat {
         //after updating information it should be saved
     }
 
-
 }
