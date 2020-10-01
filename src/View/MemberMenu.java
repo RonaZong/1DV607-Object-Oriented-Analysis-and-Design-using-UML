@@ -97,18 +97,18 @@ public class MemberMenu extends Menu {
     }
 
     public void showVerboseList(BoatClub boatClub){
-        for(Member member : boatClub.getAllMembersForVerboseList()){
+        for(Member member : boatClub.getAllMembersFromRegistry()){
             System.out.println("This member name is : " + member.getName() +
                     "\nwith personal number of " + member.getPersonalNumber() +
                     "\nwith memberID of " + member.getMemberID());
             //it might give a null exception
-            System.out.println("This member has " + member.numberOfBoats()+ "boats");
-            if(member.numberOfBoats()> 0 ) {
+            System.out.println("This member has " + member.getNumbersOfBoatsOwnByAMember()+ "boats");
+
                 System.out.println("this member boat information is :");
                 for (Boat boat : member.boatsOwnedByMember()) {
                     System.out.println("Boat type :" + boat.getType() +
                             "\nBoat Length : " + boat.getLength());
-                }
+
             }
             System.out.println("\n----------------------\n");
         }
@@ -123,6 +123,11 @@ public class MemberMenu extends Menu {
         do {
             personalNumber = userStringInput();
         }while (!isValid(personalNumber));
+
+    }
+
+    public void showConfirmationMsg(Member member){
+        System.out.println(member.getName() + " is deleted");
 
     }
 
