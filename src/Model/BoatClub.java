@@ -26,10 +26,6 @@ public class BoatClub {
         registry.saveFile(member);
     }
 
-   /* public void saveOnCompactList(Member member){
-        VerboseListSave save = new VerboseListSave();
-        save.saveFileOnCompactList(member);
-    }*/
 
     public Member deleteMember(Member member){
         this.member = member;
@@ -60,12 +56,16 @@ public class BoatClub {
     }*/
 
     public void loadAllInformationOfMembers(Registry list){
-        this.members= (ArrayList<Member>) list.loadForVerboseList(list.verboseList("VerboseList.txt"));
+        this.members = (ArrayList<Member>) list.loadForVerboseList(list.verboseList("VerboseList.txt"));
+//        for (Member member: this.members) {
+//            member.registerNewBoat();
+//
+//        }
     }
 
     //enter a member name to get member
     public Member getMember(String memberName){
-        for (Member m:members){
+        for (Member m:this.members){
             if (memberName.equals(memberName)){
                 return m;
             }
