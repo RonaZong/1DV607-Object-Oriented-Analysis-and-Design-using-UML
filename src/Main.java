@@ -2,6 +2,7 @@ import Controller.MainController;
 import Model.BoatClub;
 import Model.Member;
 import View.MemberMenu;
+import View.Menu;
 import View.StartMenu;
 
 import java.io.File;
@@ -20,7 +21,7 @@ public class Main {
         MemberMenu memberMenu = new MemberMenu();
         StartMenu menu=new StartMenu();
 
-        MainController user = new MainController(menu, memberMenu);
+        MainController user = new MainController(boatClub, menu);
         //MainController user = new MainController(boatClub, menu, memberMenu);
         //MainController only take two parameters but here u changed it and did it with three parameters
         //I didnt get it why
