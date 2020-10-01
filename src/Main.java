@@ -17,22 +17,11 @@ public class Main {
 
 
         BoatClub boatClub = new BoatClub();
-
-        MemberMenu memberMenu = new MemberMenu();
         StartMenu menu=new StartMenu();
 
         MainController user = new MainController(boatClub, menu);
-        //MainController user = new MainController(boatClub, menu, memberMenu);
-        //MainController only take two parameters but here u changed it and did it with three parameters
-        //I didnt get it why
-        /* public MainController(StartMenu console,MemberMenu memberMenu) {
-        this.controller=new MemberCreationController();
-        this.menu = console;
-        this.memberMenu =memberMenu;
 
-    }*/
-         user.memberAction(boatClub);
-     //   user.memberAction();
+        user.memberAction(boatClub);
 
     }
 }
