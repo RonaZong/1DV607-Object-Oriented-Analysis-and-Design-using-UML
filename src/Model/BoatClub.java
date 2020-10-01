@@ -66,7 +66,7 @@ public class BoatClub {
     //enter a member name to get member
     public Member getMember(String memberName){
         for (Member m:members){
-            if (memberName.equals(memberName)){
+            if (memberName.equals(m.getName())){
                 return m;
             }
         }
