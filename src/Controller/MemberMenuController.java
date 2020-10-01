@@ -34,22 +34,19 @@ public class MemberMenuController {
 
     public void actionOnCompactList(BoatClub boatClub){
       //  Iterable<Member> members = boatClub.getAllMembersFromRegistry();
-        Registry registry=new Registry();
+        Registry registry = new Registry();
         boolean goBack=false;
         while(!goBack){
             UserChoiceInMemberMenu choice = menu.getInputInCompactList();
             switch (choice){
                 case DELETE:
                     //for debug
-                    for(Member m :boatClub.getAllMembersFromRegistry()){
-                        System.out.println(m.getName() +"," + m.getNumbersOfBoatsOwnByAMember());
-                    }
 
                    // boatClub.loadAllInformationOfMembers(registry);//this should update the arraylist of members from registry
-                    // menu.showDeleteMemberMenu();
+//                    menu.showConfirmationMsg();
                     boatClub.deleteMember(member);
-                    menu.showConfirmationMsg(member);
                     registry.updateRegistryFile(boatClub);
+
                     goBack = true;
                     break;
                 case UPDATE:
