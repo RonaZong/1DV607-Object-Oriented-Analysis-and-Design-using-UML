@@ -50,17 +50,19 @@ public class Registry {
 
     public Iterable<Member> loadForVerboseList(String result){
         ArrayList<Member> members = new ArrayList<>();
-       // ArrayList<Boat> boats = new ArrayList<>();
         String[] eachLines = result.split("[\\r\\n]+");
         for (String lines: eachLines) {
             String[] parameters = lines.split(":");
             Member member = new Member(parameters[0],parameters[1]);
             member.setMemberID(parameters[2]);
             member.setNumbersOfBoatsOwnByAMember(Integer.parseInt(parameters[3]));
-            for(int i = 4;i<parameters.length-1;i=i+2){
-              //  Boat boat = new Boat(BoatType.valueOf(parameters[i]),Float.parseFloat(parameters[i+1]));
-               // boats.add(boat);
+
+            ArrayList<Boat> boats = new ArrayList<>();
+            for(int i = 4; i < parameters.length-1; i = i+2){
+                //  Boat boat = new Boat(BoatType.valueOf(parameters[i]),Float.parseFloat(parameters[i+1]));
+                // boats.add(boat);
                 member.registerNewBoat(BoatType.valueOf(parameters[i]),Double.parseDouble(parameters[i+1]));
+                member.setBoats(boats);
             }
             members.add(member);
         }
@@ -75,6 +77,14 @@ public class Registry {
             Member member = new Member(parameters[0],parameters[1]);
             member.setMemberID(parameters[2]);
             member.setNumbersOfBoatsOwnByAMember(Integer.parseInt(parameters[3]));
+
+            ArrayList<Boat> boats = new ArrayList<>();
+            for(int i = 4; i < parameters.length-1; i = i+2){
+                  Boat boat = new Boat(BoatType.valueOf(parameters[i]),Float.parseFloat(parameters[i+1]));
+                 boats.add(boat);
+//                member.registerNewBoat(BoatType.valueOf(parameters[i]),Double.parseDouble(parameters[i+1]));
+                member.setBoats(boats);
+            }
             members.add(member);
         }
         return members;
@@ -88,13 +98,14 @@ public class Registry {
             for(Member member : members) {
                 saver.print(member.getName() + ":" + member.getPersonalNumber() + ":"
                         + member.getMemberID() + ":" + member.numberOfBoats());
-                for (Boat boat : member.boatsOwnedByMember())
+                for (Boat boat : member.boatsOwnedByMember()) {
                     saver.print(":" + boat.getType() + ":" + boat.getLength());
+                }
+                saver.println();
             }
-            saver.println();
             saver.close();
 
-        }catch(Exception e){
+        }catch(Exception e) {
 
         }
     }
