@@ -78,7 +78,7 @@ public class MemberMenu extends Menu {
 
     public Member showCompactList(BoatClub boatClub){
         int index =1;
-        for(Member member : boatClub.getAllMembersForCompactList()) {
+        for(Member member : boatClub.getAllMembersFromRegistry()) {
             System.out.println((index++) + ":This member name is : " + member.getName() +
                     "\nwith memberID of : " + member.getMemberID() +
                     "\nwhich has " + member.getNumbersOfBoatsOwnByAMember() + "boats" +
@@ -87,7 +87,7 @@ public class MemberMenu extends Menu {
       System.out.println("Enter index of member to choose:");
         int input = userIntInput();
         index = 1;
-        for(Member member : boatClub.getAllMembersForCompactList()){
+        for(Member member : boatClub.getAllMembersFromRegistry()){
             if(index==input){
                 return member;
             }
