@@ -18,7 +18,6 @@ public class BoatMenuController {
             case ADD_NEW_BOAT:
                 member= boatClub.getMember(menu.ShowAccessToMember());
                 menu.showRegisterABoat(boatClub, member);
-                System.out.println(member.getMemberID());
                 member.registerNewBoat(menu.getBoatType(),menu.getLength());
                 break;
             case DELETE_BOAT:
