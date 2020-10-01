@@ -13,7 +13,6 @@ public class StartMenu extends Menu {
     private boolean alreadyMember=false;
 
 
-
     public StartMenu() {
     }
 
