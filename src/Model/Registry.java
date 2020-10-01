@@ -50,7 +50,7 @@ public class Registry {
 
     public Iterable<Member> loadForVerboseList(String result){
         ArrayList<Member> members = new ArrayList<>();
-        ArrayList<Boat> boats = new ArrayList<>();
+       // ArrayList<Boat> boats = new ArrayList<>();
         String[] eachLines = result.split("[\\r\\n]+");
         for (String lines: eachLines) {
             String[] parameters = lines.split(":");
@@ -58,7 +58,9 @@ public class Registry {
             member.setMemberID(parameters[2]);
             member.setNumbersOfBoatsOwnByAMember(Integer.parseInt(parameters[3]));
             for(int i = 4;i<parameters.length-1;i=i+2){
-                member.registerNewBoat(BoatType.valueOf(parameters[i]),Float.parseFloat(parameters[i+1]));
+              //  Boat boat = new Boat(BoatType.valueOf(parameters[i]),Float.parseFloat(parameters[i+1]));
+               // boats.add(boat);
+                member.registerNewBoat(BoatType.valueOf(parameters[i]),Double.parseDouble(parameters[i+1]));
             }
             members.add(member);
         }
