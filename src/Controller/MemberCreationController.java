@@ -20,7 +20,7 @@ public class MemberCreationController {
             member.registerNewBoat(menu.getType()[i] , menu.getBoatLength()[i]);
 
         }
-        boatClub.saveOnCompactList(member);
+       // boatClub.saveOnCompactList(member);
         boatClub.saveOnVerboseList(member);
         menu.confirmationMsg();
     }
