@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class BoatClub {
     private ArrayList<Member> members=new ArrayList<>();
     private Registry registry;
-    //we can discuss if need this as an attribute or not(I added for showing the information of member deleted as a confirmation msg)line 38
     private Member member;
 
     public BoatClub() {
@@ -27,13 +26,14 @@ public class BoatClub {
     }
 
 
-    public Member deleteMember(Member member){
-        this.member = member;
-        members.remove(member);
+    public void deleteMember(Member member){
+//        this.member = member;
+        registry = new Registry();
+       this.members = registry.loadForVerboseList(registry.verboseList("VerboseList.txt"));
+        this.members.remove(member);
         //I used here to return that member who was deleted
-        return this.member;
+       // return this.member;
     }
-
 
     public void updateMemberInformation(Member member , String name , String personalNumber){
         if(name.length() >0)
@@ -42,25 +42,15 @@ public class BoatClub {
             member.setPersonalNumber(personalNumber);
     }
 
-
     public Iterable<Member> getAllMembersFromRegistry(){
        // compactSave = new CompactListSave();
         registry = new Registry();
-
-        return registry.loadForCompactList(registry.verboseList("VerboseList.txt"));
+        return registry.loadForVerboseList(registry.verboseList("VerboseList.txt"));
     }
 
-   /* public Iterable<Member> getAllMembersForVerboseList(){
-        Registry vb= new Registry();
-        return vb.loadForVerboseList(vb.verboseList("VerboseList.txt"));
-    }*/
 
     public void loadAllInformationOfMembers(Registry list){
-        this.members = (ArrayList<Member>) list.loadForVerboseList(list.verboseList("VerboseList.txt"));
-//        for (Member member: this.members) {
-//            member.registerNewBoat();
-//
-//        }
+        this.members = list.loadForVerboseList(list.verboseList("VerboseList.txt"));
     }
 
     //enter a member name to get member
@@ -71,5 +61,13 @@ public class BoatClub {
             }
         }
         return null;
+    }
+
+    public ArrayList<Member> getAllMembersLocally(){
+        return this.members;
+    }
+
+    public void setMembers(ArrayList<Member> members) {
+        this.members = members;
     }
 }
