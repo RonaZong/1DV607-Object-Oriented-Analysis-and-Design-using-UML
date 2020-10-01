@@ -27,25 +27,20 @@ public class MemberMenu extends Menu {
     @Override
     public void showInstruction() {
         System.out.println("Press 1 to show a compact list of members\n" +
-                           "Press 2 to show a verbose list of members\n");
+                           "Press 2 to show a verbose list of members");
 
         userInput = userIntInput();
-
     }
 
     public UserChoiceInMemberMenu getUserInputInMemberMenu() {
         UserChoiceInMemberMenu choice = null;
 
         switch (userInput) {
-
             case 1:
                 choice = UserChoiceInMemberMenu.COMPACT_LIST;
                 break;
             case 2:
                 choice = UserChoiceInMemberMenu.VERBOSE_LIST;
-                break;
-            case 6:
-                choice = UserChoiceInMemberMenu.QUIT;
                 break;
 
         }
@@ -77,19 +72,22 @@ public class MemberMenu extends Menu {
                     "\nwhich has " + member.getNumbersOfBoatsOwnByAMember() + "boats" +
                     "\n------------\n");
         }
-        System.out.println("Press 1 to delete a member\n" +
-                "Press 2 to update a member information\n" +
-                "Press 3 to see a specific member data");
-      System.out.println("Enter index of member to choose:");
-        userInput= userIntInput();
-        index = 1;
-        for(Member member : boatClub.getAllMembersFromRegistry()){
-            if(index==userInput){
-                return member;
-            }
-            index++;
-        }
 
+        System.out.println("Enter index of member to choose:");
+        int input = userIntInput();
+        index = 1;
+        for(Member member : boatClub.getAllMembersFromRegistry()) {
+            if (index == input) {
+                System.out.println("Press 1 to delete a member\n" +
+                        "Press 2 to update a member information\n" +
+                        "Press 3 to see a specific member data");
+
+                userInput = userIntInput();
+                return member;
+            } else {
+                index++;
+            }
+        }
 
         return null;
     }
@@ -144,6 +142,5 @@ public class MemberMenu extends Menu {
 
     private boolean isValid(String input){
         return input.length() == 10 && input.matches("-?\\d+(\\.\\d+)?");
-        //check its digits
     }
 }
