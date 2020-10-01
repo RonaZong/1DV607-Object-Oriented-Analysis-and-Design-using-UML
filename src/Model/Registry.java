@@ -12,7 +12,7 @@ public class Registry {
     private Scanner reader;
     private PrintWriter saver=null;
 
-    public void saveFileOnCompactList(Member member) {
+    public void saveFile(Member member) {
         File file = new File("VerboseList.txt");
         try {
             saver = new PrintWriter(new FileWriter(file,true));
@@ -48,7 +48,7 @@ public class Registry {
         return result;
     }
 
-    public Iterable<Member> readyToPrintForVerboseList(String result){
+    public Iterable<Member> loadForVerboseList(String result){
         ArrayList<Member> members = new ArrayList<>();
         ArrayList<Boat> boats = new ArrayList<>();
         String[] eachLines = result.split("[\\r\\n]+");
@@ -65,7 +65,7 @@ public class Registry {
         return members;
     }
 
-    public Iterable<Member> readyToPrintForCompactList(String result){
+    public Iterable<Member> loadForCompactList(String result){
         ArrayList<Member> members = new ArrayList<>();
         String[] eachLines = result.split("[\\r\\n]+");
         for (String lines: eachLines) {
@@ -76,6 +76,25 @@ public class Registry {
             members.add(member);
         }
         return members;
+    }
+
+    public void updateRegistryFile(BoatClub boatClub){
+        ArrayList<Member> members = (ArrayList<Member>) boatClub.getAllMembersFromRegistry();
+        File file = new File("VerboseList.txt");
+        try {
+            saver = new PrintWriter(file);
+            for(Member member : members) {
+                saver.print(member.getName() + ":" + member.getPersonalNumber() + ":"
+                        + member.getMemberID() + ":" + member.numberOfBoats());
+                for (Boat boat : member.boatsOwnedByMember())
+                    saver.print(":" + boat.getType() + ":" + boat.getLength());
+            }
+            saver.println();
+            saver.close();
+
+        }catch(Exception e){
+
+        }
     }
 
 }
