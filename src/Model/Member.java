@@ -13,17 +13,26 @@ public class Member {
     //we need the know how many boats each member has
     //if member should have a boat at least so he or she can register we can initialize arraylist in method
     //otherwise we have to initialize arraylist here or we get null value
-    private ArrayList<Boat> boats=new ArrayList<>();
+    private ArrayList<Boat> boats = new ArrayList<>();
 
 
 
     // I think we don't need scanner here
    // private Scanner scanner = new Scanner(System.in);
 
+
     public Member(String name, String personalNumber) {
         this.name = name;
         this.personalNumber = personalNumber;
+        this.memberID = creatUniqueID();
+    }
+
+    public Member(String name, String personalNumber, ArrayList<Boat> boats) {
+        this.name = name;
+        this.personalNumber = personalNumber;
         this.memberID=creatUniqueID();
+        this.boats = boats;
+
         //save to the text file(method to save the member should be here)
     }
 
@@ -39,6 +48,7 @@ public class Member {
         this.personalNumber = personalNumber;
         this.memberID = memberID;
     }*/
+
 
 
     public String getName() {
@@ -80,12 +90,15 @@ public class Member {
         this.memberID=memberID;
     }
 
-//    public void addBoat(Boat boat){
-//
-//        boats.add(boat);
-//    }
+    public ArrayList<Boat> getBoats() {
+        return boats;
+    }
 
-    public Iterable<Boat> boatsOwnedByMember(){
+    public void setBoats(ArrayList<Boat> boats) {
+        this.boats = boats;
+    }
+
+    public ArrayList<Boat> boatsOwnedByMember(){
         return this.boats;
     }
 
