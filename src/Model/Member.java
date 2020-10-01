@@ -90,16 +90,12 @@ public class Member {
         this.memberID=memberID;
     }
 
-    public ArrayList<Boat> getBoats() {
-        return boats;
+    public ArrayList<Boat> boatsOwnedByMember(){
+        return this.boats;
     }
 
     public void setBoats(ArrayList<Boat> boats) {
         this.boats = boats;
-    }
-
-    public ArrayList<Boat> boatsOwnedByMember(){
-        return this.boats;
     }
 
     public void setNumbersOfBoatsOwnByAMember(int numbersOfBoats){
@@ -116,10 +112,7 @@ public class Member {
 
     public void registerNewBoat(Util.BoatType boatType, double length){
         Boat boat = new Boat(boatType, length);
-        //save the information of boat
         boats.add(boat);
-        //I change to boats.add directly
-        //ya I was going to do that since it was redundant.tnx
     }
 
     public void deleteBoat(Boat boat) {
