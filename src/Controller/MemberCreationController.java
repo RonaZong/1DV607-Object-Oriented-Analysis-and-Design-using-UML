@@ -18,7 +18,6 @@ public class MemberCreationController {
         for(int i = 0 ; i < menu.getNumberOfBoats(); i++){
             member.registerNewBoat(menu.getType()[i] , menu.getBoatLength()[i]);
         }
-       // boatClub.saveOnCompactList(member);
         boatClub.saveOnVerboseList(member);
         menu.confirmationMsg();
     }
