@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class BoatClub {
     private ArrayList<Member> members=new ArrayList<>();
-    private Registry registry;
+    private Registry registry = new Registry();
     private Member member;
 
     public BoatClub() {
@@ -21,15 +21,15 @@ public class BoatClub {
     }
 
     public void saveOnVerboseList(Member member){
-        registry = new Registry();
+      //  registry = new Registry();
         registry.saveFile(member);
     }
 
 
     public void deleteMember(Member member){
 //        this.member = member;
-        registry = new Registry();
-       this.members = registry.loadForVerboseList(registry.verboseList("VerboseList.txt"));
+    //    registry = new Registry();
+    //   this.members = registry.loadForVerboseList(registry.verboseList("VerboseList.txt"));
         this.members.remove(member);
         //I used here to return that member who was deleted
        // return this.member;
@@ -43,9 +43,10 @@ public class BoatClub {
     }
 
     public Iterable<Member> getAllMembersFromRegistry(){
-       // compactSave = new CompactListSave();
-        registry = new Registry();
-        return registry.loadForVerboseList(registry.verboseList("VerboseList.txt"));
+
+        //registry = new Registry();
+        this.members=registry.loadForVerboseList(registry.verboseList("VerboseList.txt"));
+        return members;
     }
 
 
