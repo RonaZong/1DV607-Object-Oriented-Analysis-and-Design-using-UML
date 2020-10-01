@@ -19,7 +19,7 @@ public class MemberMenuController {
             UserChoiceInMemberMenu userChoice = menu.getUserInputInMemberMenu();
             switch (userChoice) {
                 case COMPACT_LIST:
-                    member = menu.showCompactList(boatClub);
+                    member = menu.showCompactList(boatClub);//this boat club here show the list and assign the members to the boat club
                     actionOnCompactList(boatClub);
                     IWantToGoBack = true;
                     break;
