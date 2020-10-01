@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class BoatClub {
     private ArrayList<Member> members=new ArrayList<>();
-    private CompactListSave compactSave;
+    private Main.CompactListSave compactSave;
     private VerboseListSave verboseListSave;
 
     public BoatClub() {
@@ -25,10 +25,10 @@ public class BoatClub {
         verboseListSave.saveFileOnCompactList(member);
     }
 
-    public void saveOnCompactList(Member member){
-        CompactListSave save = new CompactListSave();
+   /* public void saveOnCompactList(Member member){
+        VerboseListSave save = new VerboseListSave();
         save.saveFileOnCompactList(member);
-    }
+    }*/
 
     public void deleteMember(Member member){
         members.remove(member);
@@ -44,9 +44,10 @@ public class BoatClub {
 
 
     public Iterable<Member> getAllMembersForCompactList(){
-        compactSave = new CompactListSave();
+       // compactSave = new CompactListSave();
+        verboseListSave = new VerboseListSave();
 
-        return compactSave.readyToPrintForCompactList(compactSave.compactList("compactList.txt"));
+        return verboseListSave.readyToPrintForCompactList(verboseListSave.verboseList("VerboseList.txt"));
     }
 
     public Iterable<Member> getAllMembersForVerboseList(){
@@ -54,7 +55,7 @@ public class BoatClub {
         return vb.readyToPrintForVerboseList(vb.verboseList("VerboseList.txt"));
     }
 
-    public void loadFromCompactList(CompactListSave list){
+    public void loadFromCompactList(Main.CompactListSave list){
         this.members= (ArrayList<Member>) list.readyToPrintForCompactList(list.compactList("CompactList.txt"));
     }
 
