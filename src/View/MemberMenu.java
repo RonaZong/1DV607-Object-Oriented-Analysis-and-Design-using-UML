@@ -8,7 +8,7 @@ import Util.UserChoiceInMemberMenu;
 import java.util.Scanner;
 
 public class MemberMenu extends Menu {
-    private int userInput;
+    private String userInput;
     private Scanner sc;
     private String name;
     private String personalNumber;
@@ -29,17 +29,17 @@ public class MemberMenu extends Menu {
         System.out.println("Press 1 to show a compact list of members\n" +
                            "Press 2 to show a verbose list of members");
 
-        userInput = userIntInput();
+        userInput = userStringInput();
     }
 
     public UserChoiceInMemberMenu getUserInputInMemberMenu() {
         UserChoiceInMemberMenu choice = null;
 
         switch (userInput) {
-            case 1:
+            case "1":
                 choice = UserChoiceInMemberMenu.COMPACT_LIST;
                 break;
-            case 2:
+            case "2":
                 choice = UserChoiceInMemberMenu.VERBOSE_LIST;
                 break;
 
@@ -51,13 +51,13 @@ public class MemberMenu extends Menu {
         UserChoiceInMemberMenu choice = null;
 
         switch(userInput){
-            case 1:
+            case "1":
                 choice = UserChoiceInMemberMenu.DELETE;
                 break;
-            case 2:
+            case "2":
                 choice = UserChoiceInMemberMenu.UPDATE;
                 break;
-            case 3:
+            case "3":
                 choice = UserChoiceInMemberMenu.SPECIFIC_MEMBER;
                 break;
         }
@@ -74,15 +74,15 @@ public class MemberMenu extends Menu {
         }
 
         System.out.println("Enter index of member to choose:");
-        int input = userIntInput();
+        String chosenMember = userStringInput();
         index = 1;
         for(Member member : boatClub.getAllMembersFromRegistry()) {
-            if (index == input) {
+            if (index == Integer.parseInt(chosenMember)) {
                 System.out.println("Press 1 to delete a member\n" +
                         "Press 2 to update a member information\n" +
                         "Press 3 to see a specific member data");
 
-                userInput = userIntInput();
+                userInput = userStringInput();
                 return member;
             } else {
                 index++;
@@ -95,18 +95,7 @@ public class MemberMenu extends Menu {
 
     public void showVerboseList(BoatClub boatClub){
         for(Member member : boatClub.getAllMembersFromRegistry()){
-            System.out.println("This member name is : " + member.getName() +
-                    "\nwith personal number of " + member.getPersonalNumber() +
-                    "\nwith memberID of " + member.getMemberID());
-            //it might give a null exception
-            System.out.println("This member has " + member.getNumbersOfBoatsOwnByAMember()+ "boats");
-
-                System.out.println("this member boat information is :");
-                for (Boat boat : member.boatsOwnedByMember()) {
-                    System.out.println("Boat type :" + boat.getType() +
-                            "\nBoat Length : " + boat.getLength());
-
-            }
+           showMemberInformation(member);
             System.out.println("\n----------------------\n");
         }
     }
@@ -128,8 +117,18 @@ public class MemberMenu extends Menu {
 
     }
 
-    public void showMemberInformation(Member member){
+    public void showMemberInformation(Member member) {
+        System.out.println("This member name is : " + member.getName() +
+                "\nwith personal number of " + member.getPersonalNumber() +
+                "\nwith memberID of " + member.getMemberID());
+        //it might give a null exception
+        System.out.println("This member has " + member.getNumbersOfBoatsOwnByAMember() + "boats");
 
+        System.out.println("this member boat information is :");
+        for (Boat boat : member.boatsOwnedByMember()) {
+            System.out.println("Boat type :" + boat.getType() +
+                    "\nBoat Length : " + boat.getLength());
+        }
     }
 
     public String getName(){
@@ -140,6 +139,7 @@ public class MemberMenu extends Menu {
         return personalNumber;
     }
 
+    //check if personal number is valid
     private boolean isValid(String input){
         return input.length() == 10 && input.matches("-?\\d+(\\.\\d+)?");
     }
