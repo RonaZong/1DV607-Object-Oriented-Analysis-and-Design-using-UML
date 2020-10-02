@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class StartMenu extends Menu {
     private Scanner sc;
-    private int userInput;
+    private String userInput;
     private boolean alreadyMember=false;
 
 
@@ -26,7 +26,7 @@ public class StartMenu extends Menu {
     }
 
     private boolean IWantToQuit(){
-        return userInput==4;
+        return userInput.equals("4");
     }
 
     @Override
@@ -47,26 +47,24 @@ public class StartMenu extends Menu {
     public UserChoiceInStartMenu getUserInputInStartMenu() {
         UserChoiceInStartMenu choice = null;
 
-            this.userInput = userIntInput();
+            this.userInput = userStringInput();
             switch (userInput) {
-                case 1:
+                case "1":
                     choice = UserChoiceInStartMenu.ADD_NEW_MEMBER;
 
                     break;
-                case 2:
+                case "2":
                     choice = UserChoiceInStartMenu.MEMBER_MENU;
 
                     break;
-                case 3:
+                case "3":
                     choice = UserChoiceInStartMenu.BOAT_MENU;
                     break;
-                case 4:
+                case "4":
                     choice = UserChoiceInStartMenu.QUIT;
                     break;
 
             }
-
-
         return choice;
     }
 
