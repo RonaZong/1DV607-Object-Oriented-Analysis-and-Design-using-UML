@@ -26,19 +26,18 @@ public class BoatClub {
     }
 
 
-    public void deleteMember(Member member){
-//        this.member = member;
+    public Member deleteMember(Member member){
+        this.member = member;
     //    registry = new Registry();
     //   this.members = registry.loadForVerboseList(registry.verboseList("VerboseList.txt"));
         this.members.remove(member);
         //I used here to return that member who was deleted
-       // return this.member;
+        return this.member;
     }
 
     public void updateMemberInformation(Member member , String name , String personalNumber){
-        if(name.length() >0)
             member.setName(name);
-        if(personalNumber.length() >0)
+
             member.setPersonalNumber(personalNumber);
     }
 
