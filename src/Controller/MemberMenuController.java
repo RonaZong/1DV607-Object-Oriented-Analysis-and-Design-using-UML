@@ -35,16 +35,19 @@ public class MemberMenuController {
     public void actionOnCompactList(BoatClub boatClub){
       //  Iterable<Member> members = boatClub.getAllMembersFromRegistry();
         Registry registry = new Registry();
+        //UserChoiceInMemberMenu choice = null;
         boolean goBack=false;
-        while(!goBack){
+        while(!goBack  ){
             UserChoiceInMemberMenu choice = menu.getInputInCompactList();
             switch (choice){
                 case DELETE:
                     //for debug
+                    // boatClub.loadAllInformationOfMembers(registry);//this should update the arraylist of members from registry
+                    try {
+                        menu.showConfirmationMsg(boatClub.deleteMember(member));
+                    }catch (NullPointerException e){
 
-                   // boatClub.loadAllInformationOfMembers(registry);//this should update the arraylist of members from registry
-//                    menu.showConfirmationMsg();
-                    boatClub.deleteMember(member);
+                    }
                     registry.updateRegistryFile(boatClub);
 
                     goBack = true;
@@ -52,9 +55,12 @@ public class MemberMenuController {
                 case UPDATE:
                     menu.showUpdateMenu();
                     boatClub.updateMemberInformation(member, menu.getName(), menu.getPersonalNumber());
+                    registry.updateRegistryFile(boatClub);
+                    goBack = true;
                     break;
                 case SPECIFIC_MEMBER:
                     menu.showMemberInformation(member);
+                    goBack = true;
                     break;
             }
         }
