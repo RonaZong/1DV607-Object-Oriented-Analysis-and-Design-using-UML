@@ -3,6 +3,7 @@ package View;
 import Model.Boat;
 import Model.BoatClub;
 import Model.Member;
+import Util.UserChoiceInBoatMenu;
 import Util.UserChoiceInMemberMenu;
 
 import java.util.Scanner;
@@ -13,6 +14,7 @@ public class MemberMenu extends Menu {
     private String name;
     private String personalNumber;
 
+    //can be removed
     private int userIntInput(){
         sc = new Scanner(System.in);
         return sc.nextInt();
@@ -27,7 +29,8 @@ public class MemberMenu extends Menu {
     @Override
     public void showInstruction() {
         System.out.println("Press 1 to show a compact list of members\n" +
-                           "Press 2 to show a verbose list of members");
+                           "Press 2 to show a verbose list of members\n" +
+                            "Press any key to go back to main menu");
 
         userInput = userStringInput();
     }
@@ -41,6 +44,9 @@ public class MemberMenu extends Menu {
                 break;
             case "2":
                 choice = UserChoiceInMemberMenu.VERBOSE_LIST;
+                break;
+            default:
+                choice = UserChoiceInMemberMenu.QUIT;
                 break;
 
         }
@@ -117,18 +123,51 @@ public class MemberMenu extends Menu {
 
     }
 
-    public void showMemberInformation(Member member) {
+    public Boat showMemberInformation(Member member) {
         System.out.println("This member name is : " + member.getName() +
                 "\nwith personal number of " + member.getPersonalNumber() +
                 "\nwith memberID of " + member.getMemberID());
         //it might give a null exception
         System.out.println("This member has " + member.getNumbersOfBoatsOwnByAMember() + "boats");
-
+        int index=1;
         System.out.println("this member boat information is :");
         for (Boat boat : member.boatsOwnedByMember()) {
-            System.out.println("Boat type :" + boat.getType() +
-                    "\nBoat Length : " + boat.getLength());
+            System.out.println((index++) + " - Boat type :" + boat.getType() +
+                    ", Boat Length : " + boat.getLength());
         }
+        System.out.println("Enter index of boat to choose or any other key to go back to last menu:");
+        String chosenMember = userStringInput();
+        index = 1;
+        for(Boat boat : member.boatsOwnedByMember()) {
+            if (index == Integer.parseInt(chosenMember)) {
+                System.out.println("Press 1 to register a new boat\n" +
+                        "Press 2 to update the boat information\n" +
+                        "Press 3 to delete the boat");
+
+                userInput = userStringInput();
+                return boat;
+            } else {
+                index++;
+            }
+        }
+
+        return null;
+    }
+
+    public UserChoiceInBoatMenu getUserInputInBoatMenu(){
+        UserChoiceInBoatMenu choice = null;
+        switch (userInput){
+            case "1":
+                choice = UserChoiceInBoatMenu.ADD_NEW_BOAT;
+                break;
+            case "2":
+                choice = UserChoiceInBoatMenu.CHANGE_BOAT_INFORMATION;
+                break;
+            case "3":
+                choice = UserChoiceInBoatMenu.DELETE_BOAT;
+                break;
+        }
+        return choice;
     }
 
     public String getName(){
