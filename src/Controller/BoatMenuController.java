@@ -17,7 +17,7 @@ public class BoatMenuController {
         switch (choice){
             case ADD_NEW_BOAT:
                 member= boatClub.getMember(menu.ShowAccessToMember());
-                menu.showRegisterABoat(boatClub, member);
+                menu.showRegisterABoat();
                 member.registerNewBoat(menu.getBoatType(),menu.getLength());
                 break;
             case DELETE_BOAT:
@@ -25,7 +25,7 @@ public class BoatMenuController {
                 menu.showDeleteBoat(boatClub, member);
             case CHANGE_BOAT_INFORMATION:
                 member= boatClub.getMember(menu.ShowAccessToMember());
-                menu.showChangeInformation(boatClub, member);
+                menu.showChangeInformation();
                 break;
 
         }
