@@ -60,21 +60,26 @@ public class BoatMenu extends Menu {
         return memberName;
     }
 
-    public void showRegisterABoat(BoatClub boatClub,Member member){
+    public void showRegisterABoat(){
         System.out.println("Enter boat type:" +
-                "\n0 for Sailboat , 1 for Motor sailor , 2 for Kayak/Canoe, 3 for Others");
-        int typeValue = userIntInput();
+                "\n1 for Sailboat , 2 for Motor sailor , 3 for Kayak/Canoe, 4 for Others");
+        boatType =  BoatType.values()[Integer.parseInt(userStringInput())-1];
         System.out.println("Enter length of the boat");
         length = userFloatInput();
 
     }
-    public void showChangeInformation(BoatClub boatClub, Member member){
-        System.out.println("Which boat your want to change");
+    public void showChangeInformation(){
+      /*  System.out.println("Which boat you want to change");
         //not sure how to iterate and show boats yet, and how user choose boat
         //by type? by length
         for (Boat b: member.boatsOwnedByMember()){
             System.out.println(b);
-        }
+        }*/
+        System.out.println("Enter boat type: " +
+                "\n1 for Sailboat , 2 for Motor sailor , 3 for Kayak/Canoe, 4 for Others");
+        boatType = BoatType.values()[Integer.parseInt(userStringInput())-1];
+        System.out.println("Enter length of the boat");
+        length = userFloatInput();
     }
     public void showDeleteBoat(BoatClub boatClub, Member member){
         System.out.println("Which boat your want to change");
