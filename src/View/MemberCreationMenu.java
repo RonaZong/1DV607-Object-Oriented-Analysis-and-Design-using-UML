@@ -20,16 +20,6 @@ public class MemberCreationMenu extends Menu {
         return sc.nextLine();
     }
 
-    private int userIntInput(){
-        sc = new Scanner(System.in);
-        return sc.nextInt();
-    }
-
-    private double userDoubleInput(){
-        sc = new Scanner(System.in);
-        return sc.nextDouble();
-    }
-
     @Override
     public void showInstruction( ) {
         System.out.println("----- Add a Member -----\n" +
