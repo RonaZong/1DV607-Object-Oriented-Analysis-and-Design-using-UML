@@ -24,17 +24,19 @@ public class MainController {
         this.menu.showInstruction();
         UserChoiceInStartMenu userChoice = this.menu.getUserInputInStartMenu();
 
-        switch (userChoice) {
-            case ADD_NEW_MEMBER:
-                MemberCreationController memberCreationController = new MemberCreationController();
-                memberCreationController.userWantsToAddMember(boatClub);
-                break;
-            case MEMBER_MENU:
-                MemberMenuController memberMenuController =new MemberMenuController();
-                memberMenuController.actUponUserInputInMemberMenu(boatClub);
-                break;
-            case QUIT:
-                return true;
+        while (userChoice !=null) {
+            switch (userChoice) {
+                case ADD_NEW_MEMBER:
+                    MemberCreationController memberCreationController = new MemberCreationController();
+                    memberCreationController.userWantsToAddMember(boatClub);
+                    break;
+                case MEMBER_MENU:
+                    MemberMenuController memberMenuController = new MemberMenuController();
+                    memberMenuController.actUponUserInputInMemberMenu(boatClub);
+                    break;
+                case QUIT:
+                    return true;
+            }
         }
         return false;
     }
