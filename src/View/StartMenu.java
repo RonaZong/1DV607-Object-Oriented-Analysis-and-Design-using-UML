@@ -10,16 +10,8 @@ import java.util.Scanner;
 public class StartMenu extends Menu {
     private Scanner sc;
     private String userInput;
-    private boolean alreadyMember=false;
 
 
-    public StartMenu() {
-    }
-
-    private int userIntInput(){
-        sc = new Scanner(System.in);
-        return sc.nextInt();
-    }
     private String userStringInput(){
         sc =new Scanner(System.in);
         return sc.nextLine();
@@ -36,12 +28,8 @@ public class StartMenu extends Menu {
                 "-----------------------\n" +
                 "Press 1 to add a new member\n" +
                 "Press 2 to go to member menu\n" +
-                "Press 3 to go to boat menu\n" +
-                "Press 4 to quit");
-
-
+                "Press 3 to quit");
     }
-
 
 
     public UserChoiceInStartMenu getUserInputInStartMenu() {
@@ -51,19 +39,13 @@ public class StartMenu extends Menu {
             switch (userInput) {
                 case "1":
                     choice = UserChoiceInStartMenu.ADD_NEW_MEMBER;
-
                     break;
                 case "2":
                     choice = UserChoiceInStartMenu.MEMBER_MENU;
-
                     break;
                 case "3":
-                    choice = UserChoiceInStartMenu.BOAT_MENU;
-                    break;
-                case "4":
                     choice = UserChoiceInStartMenu.QUIT;
                     break;
-
             }
         return choice;
     }
