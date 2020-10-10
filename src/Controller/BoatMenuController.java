@@ -9,7 +9,7 @@ public class BoatMenuController {
     private BoatMenu menu;
     private Member member;
 
-    public void actUponUserInputInBoatMenu(BoatClub boatClub){
+   /* public void actUponUserInputInBoatMenu(BoatClub boatClub){
         menu = new BoatMenu();
         menu.showInstruction();
         UserChoiceInBoatMenu choice = menu.getUserInputInBoatMenu();
@@ -29,5 +29,5 @@ public class BoatMenuController {
                 break;
 
         }
-    }
+    }*/
 }
