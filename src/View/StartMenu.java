@@ -46,8 +46,15 @@ public class StartMenu extends Menu {
                 case "3":
                     choice = UserChoiceInStartMenu.QUIT;
                     break;
+                default:
+                    showError();
+
             }
         return choice;
     }
+
+     private void showError(){
+        System.out.println("You need to enter the correct number\n");
+     }
 
     }
