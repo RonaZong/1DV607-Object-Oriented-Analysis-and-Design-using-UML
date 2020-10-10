@@ -15,10 +15,8 @@ public class MainController {
     }
 
     //every scenarios would happen in this method
-    public void memberAction(BoatClub boatClub){
-
+    public void memberAction(){
         while(!actUponUserInputInStartMenu()) ;
-
     }
 
     private boolean actUponUserInputInStartMenu() {
@@ -35,13 +33,8 @@ public class MainController {
                 MemberMenuController memberMenuController =new MemberMenuController();
                 memberMenuController.actUponUserInputInMemberMenu(boatClub);
                 break;
-            case BOAT_MENU:
-                BoatMenuController boatMenuController = new BoatMenuController();
-                boatMenuController.actUponUserInputInBoatMenu(boatClub);
-                break;
             case QUIT:
                 return true;
-
         }
         return false;
     }
