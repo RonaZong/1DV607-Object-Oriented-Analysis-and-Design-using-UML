@@ -53,6 +53,7 @@ public class MainController {
         return false;
     }
 
+    /** Probably do not need to use (BoatClub) as they are all in onw controller **/
     private void userWantsToAddMember(BoatClub boatClub){
         memberCreationMenu = new MemberCreationMenu();
         memberCreationMenu.showInstruction();
