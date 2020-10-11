@@ -7,7 +7,7 @@ import View.MemberCreationMenu;
 
 public class MemberCreationController {
 
-    private MemberCreationMenu menu;
+   /* private MemberCreationMenu menu;
 
     public void userWantsToAddMember(BoatClub boatClub){
         menu = new MemberCreationMenu();
@@ -18,7 +18,7 @@ public class MemberCreationController {
         }
         boatClub.saveOnVerboseList(member);
         menu.confirmationMsg();
-    }
+    }*/
 
 
 }
