@@ -31,12 +31,12 @@ public class MemberCreationMenu extends Menu {
             this.personalNumber = userStringInput();
         }while (!isValid(personalNumber));
         System.out.println("Please enter numbers of boats:");
-        this.numberOfBoats = Integer.parseInt(userStringInput());
+        this.numberOfBoats = correctInteger();
         boatLength = new double[numberOfBoats];
         type = new BoatType[numberOfBoats];
         for(int i = 0 ; i<numberOfBoats;i++){
             System.out.println("Please enter length of the boat " + (i+1)+ ":");
-            boatLength[i] = Double.parseDouble(userStringInput());
+            boatLength[i] = correctDouble();
             System.out.println("Please enter boat type(1 for sailboat, 2 for motor sail, " +
                     "3 for kayak/canoe, and 4 for others)");
             type[i] = BoatType.values()[Integer.parseInt(userStringInput())-1];
@@ -46,6 +46,34 @@ public class MemberCreationMenu extends Menu {
     private boolean isValid(String input){
         return input.length() == 10 && input.matches("-?\\d+(\\.\\d+)?");
         //check its digits
+    }
+
+    private int correctInteger(){
+        boolean correctFormat=false;
+        int inputToDouble = 0;
+        do{
+            try{
+                inputToDouble = Integer.parseInt(userStringInput());
+                correctFormat=true;
+            }catch (NumberFormatException ex){
+                System.out.println("Enter a correct number");
+            }
+        }while(!correctFormat);
+        return inputToDouble;
+    }
+
+    private double correctDouble(){
+        boolean correctFormat=false;
+        double inputToDouble = 0;
+        do{
+        try{
+           inputToDouble = Double.parseDouble(userStringInput());
+            correctFormat=true;
+        }catch (NumberFormatException ex){
+          System.out.println("Enter a correct number");
+        }
+        }while(!correctFormat);
+        return inputToDouble;
     }
 
     public String getName(){
