@@ -19,7 +19,7 @@ public class Main {
         BoatClub boatClub = new BoatClub();
         StartMenu menu=new StartMenu();
 
-        MainController user = new MainController(boatClub, menu);
+        MainController user = new MainController(boatClub);
 
         user.memberAction();
 
