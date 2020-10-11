@@ -39,7 +39,7 @@ public class MemberCreationMenu extends Menu {
             boatLength[i] = correctDouble();
             System.out.println("Please enter boat type(1 for sailboat, 2 for motor sail, " +
                     "3 for kayak/canoe, and 4 for others)");
-            type[i] = BoatType.values()[Integer.parseInt(userStringInput())-1];
+            type[i] = correctBoatType();
         }
     }
 
@@ -48,6 +48,7 @@ public class MemberCreationMenu extends Menu {
         //check its digits
     }
 
+    //check if correct integer used by user
     private int correctInteger(){
         boolean correctFormat=false;
         int inputToDouble = 0;
@@ -62,6 +63,7 @@ public class MemberCreationMenu extends Menu {
         return inputToDouble;
     }
 
+    //check if correct double format used by user
     private double correctDouble(){
         boolean correctFormat=false;
         double inputToDouble = 0;
@@ -74,6 +76,24 @@ public class MemberCreationMenu extends Menu {
         }
         }while(!correctFormat);
         return inputToDouble;
+    }
+
+    //check if userinput is correct in boat type
+    private BoatType correctBoatType(){
+        boolean correctFormat=false;
+        BoatType input = null ;
+        do{
+            try{
+                input = BoatType.values()[Integer.parseInt(userStringInput())-1];
+                correctFormat=true;
+            }catch (NumberFormatException ex){
+                System.out.println("Enter a number");
+            }catch (ArrayIndexOutOfBoundsException ex){
+                System.out.println("You have to choose between 1 to 4");
+            }
+        }while(!correctFormat);
+        return input;
+
     }
 
     public String getName(){
