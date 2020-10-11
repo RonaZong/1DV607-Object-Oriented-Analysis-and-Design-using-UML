@@ -29,6 +29,7 @@ public class MainController {
                 case ADD_NEW_MEMBER:
                     MemberCreationController memberCreationController = new MemberCreationController();
                     memberCreationController.userWantsToAddMember(boatClub);
+                    userChoice=null;//for exiting the loop after add a member
                     break;
                 case MEMBER_MENU:
                     MemberMenuController memberMenuController = new MemberMenuController();
