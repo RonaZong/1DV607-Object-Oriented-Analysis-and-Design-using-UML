@@ -11,7 +11,7 @@ import View.MemberMenu;
 
 public class MemberMenuController {
 
-    private MemberMenu menu;
+  /*  private MemberMenu menu;
     private Member member;
     private Boat boat;
 
@@ -99,6 +99,6 @@ public class MemberMenuController {
                 break;
 
         }
-    }
+    }*/
 
 }
