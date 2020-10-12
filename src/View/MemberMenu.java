@@ -8,7 +8,7 @@ import Util.UserChoiceInMemberMenu;
 
 import java.util.Scanner;
 
-public class MemberMenu extends Menu {
+public class MemberMenu {
     private String userInput;
     private Scanner sc;
     private String name;
@@ -26,7 +26,6 @@ public class MemberMenu extends Menu {
     }
 
 
-    @Override
     public void showInstruction() {
         System.out.println("Press 1 to show a compact list of members\n" +
                            "Press 2 to show a verbose list of members\n" +
