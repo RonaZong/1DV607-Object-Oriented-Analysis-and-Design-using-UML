@@ -8,11 +8,11 @@ public class Boat {
     private BoatType type;
     private double length;
 
-    //since we have only this 4 fixed type better to have enum in my idea
+
     public Boat(BoatType type, double length) {
-        this.type = type;
+       // this.type = type;
+        setType(type);
         this.length = length;
-        //the method for saving boat should be here too
     }
 
     public BoatType getType() {
@@ -21,14 +21,16 @@ public class Boat {
 
     public void setType(BoatType type) {
         this.type = type;
-        //after updating information it should be saved
+
     }
 
     public double getLength() {
         return length;
     }
 
-    public void setLength(float length) {
+    public void setLength(double length) {
+        if(length>70 || length<=0)
+            throw new IllegalArgumentException("Boat length should be between 1 and 70 meters");
         this.length = length;
         //after updating information it should be saved
     }
