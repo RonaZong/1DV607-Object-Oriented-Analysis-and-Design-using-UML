@@ -72,11 +72,11 @@ public class Registry {
     }
 
     public void updateRegistryFile(BoatClub boatClub){
-       // ArrayList<Member> members = boatClub.getAllMembersLocally();
+        ArrayList<Member> members = boatClub.getAllMembersLocally();
         File file = new File("VerboseList.txt");
         try {
             saver = new PrintWriter(file);
-            for(Member member : boatClub.getAllMembersLocally()) {
+            for(Member member : members) {
                 saver.print(member.getName() + ":" + member.getPersonalNumber() + ":"
                         + member.getMemberID() + ":" + member.numberOfBoats());
                 for (Boat boat : member.boatsOwnedByMember()) {
