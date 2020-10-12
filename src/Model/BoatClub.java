@@ -20,10 +20,10 @@ public class BoatClub {
         return member;
     }
 
-    public void saveOnVerboseList(Member member){
+   /* public void saveOnVerboseList(Member member){
       //  registry = new Registry();
         registry.saveFile(member);
-    }
+    }*/
 
 
     public Member deleteMember(Member member){
@@ -41,11 +41,18 @@ public class BoatClub {
             member.setPersonalNumber(personalNumber);
     }
 
+    //we load all information with this method once we start the program
     public Iterable<Member> getAllMembersFromRegistry(){
 
         //registry = new Registry();
         this.members=registry.loadForVerboseList(registry.verboseList("VerboseList.txt"));
         return members;
+    }
+
+    //we save once we quit the program
+    public void save(){
+        Registry registry = new Registry();
+        registry.updateRegistryFile(this);
     }
 
 
@@ -63,7 +70,8 @@ public class BoatClub {
         return null;
     }
 
-    public ArrayList<Member> getAllMembersLocally(){
+    //other than first time we use this one to get information of arrayList
+    public Iterable<Member> getAllMembersLocally(){
         return this.members;
     }
 
