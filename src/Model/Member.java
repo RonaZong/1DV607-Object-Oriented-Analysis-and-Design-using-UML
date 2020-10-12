@@ -107,7 +107,7 @@ public class Member {
     }
 
     public int getNumbersOfBoatsOwnByAMember(){
-          return this.numbersOfBoatsOwnByAMember;
+          return this.boats.size();
     }
 
     public void registerNewBoat(Util.BoatType boatType, double length){
