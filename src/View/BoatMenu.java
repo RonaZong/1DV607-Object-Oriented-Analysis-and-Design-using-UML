@@ -9,7 +9,7 @@ import Util.UserChoiceInBoatMenu;
 import java.util.Scanner;
 
 public class BoatMenu extends Menu {
-    private int userInput;
+    private String userInput;
     private BoatType boatType;
     private Scanner sc;
     private String memberName;
@@ -37,19 +37,25 @@ public class BoatMenu extends Menu {
                 "Press 2 to delete a boat\n"+
                 "Press 3 to change the boat’s information");
         //System.out.println("enter your boat information");
-        userInput=userIntInput();
+
     }
 
     public UserChoiceInBoatMenu getUserInputInBoatMenu(){
         UserChoiceInBoatMenu choice = null;
+        userInput=userStringInput();
         switch (userInput){
-            case 1:
+            case "1":
                 choice = UserChoiceInBoatMenu.ADD_NEW_BOAT;
                 break;
-            case 2:
+            case "2":
                 choice = UserChoiceInBoatMenu.DELETE_BOAT;
-            case 3:
+                break;
+            case "3":
                 choice = UserChoiceInBoatMenu.CHANGE_BOAT_INFORMATION;
+                break;
+            default:
+                choice = UserChoiceInBoatMenu.GO_BACK;
+                break;
         }
         return choice;
     }
