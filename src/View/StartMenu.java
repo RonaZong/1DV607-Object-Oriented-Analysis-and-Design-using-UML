@@ -9,7 +9,7 @@ import Util.UserChoiceInStartMenu;
 import java.util.Scanner;
 
 public class StartMenu {
-    private Scanner sc;
+  //  private Scanner sc;
     private String userInput;
     private String name;
     private String personalNumber;
@@ -19,7 +19,7 @@ public class StartMenu {
 
 
     private String userStringInput(){
-        sc =new Scanner(System.in);
+        Scanner sc =new Scanner(System.in);
         return sc.nextLine();
     }
 
@@ -97,32 +97,50 @@ public class StartMenu {
 
     //check if correct integer used by user
     private int correctInteger(){
-        boolean correctFormat=false;
-        int inputToInteger = 0;
+        boolean isValid=false;
+         int inputToInteger=0;
         do{
             try{
                 inputToInteger = Integer.parseInt(userStringInput());
-                correctFormat=true;
+               // positiveNumbersOfBoats(inputToInteger);
+                isValid = isPositive(inputToInteger);
             }catch (NumberFormatException ex){
                 System.out.println("Enter a correct number");
             }
-        }while(!correctFormat);
+            catch (IllegalArgumentException ex){
+                System.out.println(ex.getMessage());
+            }
+        }while(!isValid);
         return inputToInteger;
+    }
+
+    private boolean isPositive(int input){
+        if(input<0)
+            throw new IllegalArgumentException("Numbers of boats can't be a negative number");
+        return true;
     }
 
     //check if correct double format used by user
     private double correctDouble(){
-        boolean correctFormat=false;
+        boolean isValid =false;
         double inputToDouble = 0;
         do{
             try{
                 inputToDouble = Double.parseDouble(userStringInput());
-                correctFormat=true;
+                isValid= isValidDouble(inputToDouble) ;
             }catch (NumberFormatException ex){
                 System.out.println("Enter a correct number");
+            }catch (IllegalArgumentException ex){
+                System.out.println(ex.getMessage());
             }
-        }while(!correctFormat);
+        }while(!isValid);
         return inputToDouble;
+    }
+
+    private boolean isValidDouble(double input){
+        if(input<=0 || input>70)
+            throw new IllegalArgumentException("Boat length should be a valid number between 1-70");
+        return true;
     }
 
     //check if userinput is correct in boat type
