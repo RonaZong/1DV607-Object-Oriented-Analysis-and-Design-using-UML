@@ -44,23 +44,23 @@ public class MemberCreationMenu extends Menu {
     }
 
     private boolean isValid(String input){
-        return input.length() == 10 && input.matches("-?\\d+(\\.\\d+)?");
+        return input.length() == 1 && input.matches("-?\\d+(\\.\\d+)?");
         //check its digits
     }
 
     //check if correct integer used by user
     private int correctInteger(){
         boolean correctFormat=false;
-        int inputToDouble = 0;
+        int inputToInteger = 0;
         do{
             try{
-                inputToDouble = Integer.parseInt(userStringInput());
+                inputToInteger = Integer.parseInt(userStringInput());
                 correctFormat=true;
             }catch (NumberFormatException ex){
                 System.out.println("Enter a correct number");
             }
         }while(!correctFormat);
-        return inputToDouble;
+        return inputToInteger;
     }
 
     //check if correct double format used by user
@@ -118,5 +118,17 @@ public class MemberCreationMenu extends Menu {
 
     public BoatType[] getType() {
         return type;
+    }
+
+    public boolean userWantsToAddMoreMemebr() {
+
+        String answer ="";
+        do {
+            System.out.println("Do you want to add another member\n" +
+                    "Press \"yes\" to add a new member or \"no\" to go back to main menu");
+            answer = userStringInput();
+        }while (!answer.equalsIgnoreCase("yes") && !answer.equalsIgnoreCase("no"));
+        return answer.equalsIgnoreCase("yes");
+
     }
 }
