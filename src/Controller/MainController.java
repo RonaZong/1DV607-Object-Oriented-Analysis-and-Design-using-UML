@@ -14,6 +14,7 @@ public class MainController {
     private BoatClub boatClub;
     private StartMenu menu;
     private MemberCreationMenu memberCreationMenu;
+    private BoatMenu boatMenu;
     private MemberMenu memberMenu;
     private Member member;
     private Boat boat;
@@ -24,15 +25,15 @@ public class MainController {
     }
 
     //every scenarios would happen in this method
-    public void memberAction(){
+    public void memberAction(StartMenu menu){
         boatClub.getAllMembersFromRegistry();
-        while(!actUponUserInputInStartMenu()) ;
+        while(!actUponUserInputInStartMenu(menu)) ;
     }
 
     //handling all user choices in main menu
-    private boolean actUponUserInputInStartMenu() {
+    private boolean actUponUserInputInStartMenu(StartMenu menu) {
         //this.menu.showInstruction();
-        StartMenu menu = new StartMenu();
+       // StartMenu menu = new StartMenu();
         menu.showInstruction();
         UserChoiceInStartMenu userChoice = menu.getUserInputInStartMenu();
 
@@ -80,7 +81,6 @@ public class MainController {
             }
            // boatClub.saveOnVerboseList(member);
             menu.confirmationMsg();
-            System.out.println(member.getName());
         }while(menu.userWantsToAddMoreMemebr());
 
 
@@ -150,21 +150,23 @@ public class MainController {
 
     //handling all user choices for boat issues
     private void actUponUserInputInBoatMenu(){
-        BoatMenu menu = new BoatMenu();
-        // menu.showInstruction();
-        UserChoiceInBoatMenu choice = this.memberMenu.getUserInputInBoatMenu();
+        this.boatMenu = new BoatMenu();
+        boatMenu.showInstruction();
+        UserChoiceInBoatMenu choice = boatMenu.getUserInputInBoatMenu();
 
         switch (choice){
             case ADD_NEW_BOAT:
                 //member= boatClub.getMember(menu.ShowAccessToMember());
-                menu.showRegisterOrChangeABoat();
-                member.registerNewBoat(menu.getBoatType(),menu.getLength());
+                boatMenu.showRegisterOrChangeABoat();
+                member.registerNewBoat(boatMenu.getBoatType(),boatMenu.getLength());
+                boatMenu.showAddConfirmation();
+                System.out.println(member.numberOfBoats());
                 break;
             case CHANGE_BOAT_INFORMATION:
                 // member= boatClub.getMember(menu.ShowAccessToMember());
-                menu.showRegisterOrChangeABoat();
-                this.boat.setType(menu.getBoatType());
-                this.boat.setLength(menu.getLength());
+                boatMenu.showRegisterOrChangeABoat();
+                this.boat.setType(boatMenu.getBoatType());
+                this.boat.setLength(boatMenu.getLength());
                 break;
 
             case DELETE_BOAT:
