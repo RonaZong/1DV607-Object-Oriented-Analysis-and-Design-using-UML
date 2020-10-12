@@ -13,7 +13,7 @@ public class Registry {
     private PrintWriter saver=null;
 
 
-    public void saveFile(Member member) {
+   /* public void saveFile(Member member) {
         File file = new File("VerboseList.txt");
         try {
             saver = new PrintWriter(new FileWriter(file,true));
@@ -28,7 +28,7 @@ public class Registry {
         }catch(Exception e){
 
         }
-    }
+    }*/
 
     public String verboseList(String filePath){
         String result = "";
@@ -72,11 +72,11 @@ public class Registry {
     }
 
     public void updateRegistryFile(BoatClub boatClub){
-        ArrayList<Member> members = boatClub.getAllMembersLocally();
+       // ArrayList<Member> members = boatClub.getAllMembersLocally();
         File file = new File("VerboseList.txt");
         try {
             saver = new PrintWriter(file);
-            for(Member member : members) {
+            for(Member member : boatClub.getAllMembersLocally()) {
                 saver.print(member.getName() + ":" + member.getPersonalNumber() + ":"
                         + member.getMemberID() + ":" + member.numberOfBoats());
                 for (Boat boat : member.boatsOwnedByMember()) {
