@@ -1,15 +1,6 @@
 import Controller.MainController;
 import Model.BoatClub;
-import Model.Member;
-import View.MemberMenu;
-import View.Menu;
 import View.StartMenu;
-
-import java.io.File;
-import java.io.FileWriter;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Main {
 
@@ -21,7 +12,7 @@ public class Main {
 
         MainController user = new MainController(boatClub);
 
-        user.memberAction();
+        user.memberAction(menu);
 
     }
 }
