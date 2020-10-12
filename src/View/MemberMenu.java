@@ -10,18 +10,12 @@ import java.util.Scanner;
 
 public class MemberMenu {
     private String userInput;
-    private Scanner sc;
+   // private Scanner sc;
     private String name;
     private String personalNumber;
 
-    //can be removed
-    private int userIntInput(){
-        sc = new Scanner(System.in);
-        return sc.nextInt();
-    }
-
     private String userStringInput(){
-        sc =new Scanner(System.in);
+        Scanner sc =new Scanner(System.in);
         return sc.nextLine();
     }
 
