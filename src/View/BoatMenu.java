@@ -1,33 +1,17 @@
 package View;
 
-import Model.Boat;
-import Model.BoatClub;
-import Model.Member;
 import Util.BoatType;
 import Util.UserChoiceInBoatMenu;
 
 import java.util.Scanner;
 
 public class BoatMenu {
-    private String userInput;
     private BoatType boatType;
-    private Scanner sc;
-    private String memberName;
-    private float length;
-
-
-    private int userIntInput(){
-        sc = new Scanner(System.in);
-        return sc.nextInt();
-    }
-
-    private float userFloatInput(){
-        sc = new Scanner(System.in);
-        return sc.nextFloat();
-    }
+    private double length;
+//do we need to have min and max length for boat?
 
     private String userStringInput(){
-        sc =new Scanner(System.in);
+        Scanner sc =new Scanner(System.in);
         return sc.nextLine();
     }
 
@@ -35,13 +19,12 @@ public class BoatMenu {
         System.out.println("Press 1 to register a new boat\n"+
                 "Press 2 to delete a boat\n"+
                 "Press 3 to change the boat’s information");
-        //System.out.println("enter your boat information");
 
     }
 
     public UserChoiceInBoatMenu getUserInputInBoatMenu(){
         UserChoiceInBoatMenu choice = null;
-        userInput=userStringInput();
+        String userInput=userStringInput();
         switch (userInput){
             case "1":
                 choice = UserChoiceInBoatMenu.ADD_NEW_BOAT;
@@ -68,50 +51,58 @@ public class BoatMenu {
     public void showRegisterOrChangeABoat(){
         System.out.println("Enter boat type:" +
                 "\n1 for Sailboat , 2 for Motor sailor , 3 for Kayak/Canoe, 4 for Others");
-        boatType =  BoatType.values()[Integer.parseInt(userStringInput())-1];
+        boatType =  correctBoatType();
         System.out.println("Enter length of the boat");
-        length = userFloatInput();
+        length = correctDouble();
 
     }
-    public void showChangeInformation(){
-      /*  System.out.println("Which boat you want to change");
-        //not sure how to iterate and show boats yet, and how user choose boat
-        //by type? by length
-        for (Boat b: member.boatsOwnedByMember()){
-            System.out.println(b);
-        }*/
-        System.out.println("Enter boat type: " +
-                "\n1 for Sailboat , 2 for Motor sailor , 3 for Kayak/Canoe, 4 for Others");
-        boatType = BoatType.values()[Integer.parseInt(userStringInput())-1];
-        System.out.println("Enter length of the boat");
-        length = userFloatInput();
-    }
- /*   public void showDeleteBoat(BoatClub boatClub, Member member){
-        System.out.println("Which boat your want to change");
-        //not sure how to iterate and show boats yet, and how user choose boat
-        //by type? by length
-        for (Boat b: member.boatsOwnedByMember()){
-            System.out.println(b);
-        }
-    }*/
-//    private void askForABoatDataToRegister(Member member, Boat boat) {
-//        System.out.println("enter boat type:" +
-//                "\n0 for Sailboat , 1 for Motor sailor , 2 for Kayak/Canoe, 3 for Others");
-//        int typeValue = userIntInput();
-//        System.out.println("Enter length of the boat");
-//        int length = userIntInput();
-//        member.registerNewBoat(Util.BoatType.values()[typeValue] , length);
-//    }
 
     public BoatType getBoatType(){
         return boatType;
     }
 
-    public Float getLength(){
+    public double getLength(){
         return length;
     }
 
     public void showAddConfirmation(){
         System.out.println(boatType+"is added");
+    }
+
+    private double correctDouble(){
+        boolean isValid=false;
+        double inputToDouble = 0;
+        do{
+            try{
+                inputToDouble = Double.parseDouble(userStringInput());
+                isValid = isValidDouble(inputToDouble);
+            }catch (NumberFormatException ex){
+                System.out.println("Enter a correct number");
+            }
+        }while(!isValid);
+        return inputToDouble;
+    }
+
+    private boolean isValidDouble(double input){
+        if(input<=0 || input>70)
+            throw new IllegalArgumentException("Boat length should be a valid number between 1-70");
+        return true;
+    }
+
+    private BoatType correctBoatType(){
+        boolean correctFormat=false;
+        BoatType input = null ;
+        do{
+            try{
+                input = BoatType.values()[Integer.parseInt(userStringInput())-1];
+                correctFormat=true;
+            }catch (NumberFormatException ex){
+                System.out.println("Enter a number");
+            }catch (ArrayIndexOutOfBoundsException ex){
+                System.out.println("You have to choose between 1 to 4");
+            }
+        }while(!correctFormat);
+        return input;
+
     }
 }
