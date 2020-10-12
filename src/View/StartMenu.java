@@ -8,7 +8,7 @@ import Util.UserChoiceInStartMenu;
 
 import java.util.Scanner;
 
-public class StartMenu extends Menu {
+public class StartMenu {
     private Scanner sc;
     private String userInput;
     private String name;
@@ -27,7 +27,7 @@ public class StartMenu extends Menu {
         return userInput.equals("4");
     }
 
-    @Override
+
     public void showInstruction() {
 
         System.out.println("Welcome to Boat Club\n" +
