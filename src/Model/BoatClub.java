@@ -71,7 +71,7 @@ public class BoatClub {
     }
 
     //other than first time we use this one to get information of arrayList
-    public Iterable<Member> getAllMembersLocally(){
+    public ArrayList<Member> getAllMembersLocally(){
         return this.members;
     }
 
