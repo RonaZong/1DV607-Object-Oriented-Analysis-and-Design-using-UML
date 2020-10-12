@@ -85,7 +85,7 @@ public class MemberMenu extends Menu {
         System.out.println("Enter index of member to choose:");
         int chosenMember = correctInteger();
         index = 1;
-        for(Member member : boatClub.getAllMembersFromRegistry()) {
+        for(Member member : boatClub.getAllMembersLocally()) {
             if (index == chosenMember) {
                 System.out.println("Press 1 to delete a member\n" +
                         "Press 2 to update a member information\n" +
@@ -142,7 +142,7 @@ public class MemberMenu extends Menu {
             System.out.println((index++) + " - Boat type :" + boat.getType() +
                     ", Boat Length : " + boat.getLength());
         }
-        System.out.println("Enter index of boat to choose or any other key to go back to last menu:");
+     /*   System.out.println("Enter index of boat to choose or any other key to go back to last menu:");
         String chosenMember = userStringInput();
         index = 1;
         for(Boat boat : member.boatsOwnedByMember()) {
@@ -156,7 +156,7 @@ public class MemberMenu extends Menu {
             } else {
                 index++;
             }
-        }
+        }*/
 
         return null;
     }
