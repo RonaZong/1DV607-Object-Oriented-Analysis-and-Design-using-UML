@@ -32,13 +32,13 @@ public class MemberMenu extends Menu {
                            "Press 2 to show a verbose list of members\n" +
                             "Press any key to go back to main menu");
 
-        userInput = userStringInput();
+      //  userInput = userStringInput();
     }
 
     public UserChoiceInMemberMenu getUserInputInMemberMenu() {
         UserChoiceInMemberMenu choice = null;
-
-        switch (userInput) {
+        String input = userStringInput();
+        switch (input) {
             case "1":
                 choice = UserChoiceInMemberMenu.COMPACT_LIST;
                 break;
@@ -66,13 +66,16 @@ public class MemberMenu extends Menu {
             case "3":
                 choice = UserChoiceInMemberMenu.SPECIFIC_MEMBER;
                 break;
+            default:
+                choice = UserChoiceInMemberMenu.QUIT;
+                break;
         }
         return choice;
     }
 
     public Member showCompactList(BoatClub boatClub){
         int index =1;
-        for(Member member : boatClub.getAllMembersFromRegistry()) {
+        for(Member member : boatClub.getAllMembersLocally()) {
             System.out.println((index++) + ":This member name is : " + member.getName() +
                     "\nwith memberID of : " + member.getMemberID() +
                     "\nwhich has " + member.getNumbersOfBoatsOwnByAMember() + "boats" +
@@ -80,13 +83,14 @@ public class MemberMenu extends Menu {
         }
 
         System.out.println("Enter index of member to choose:");
-        String chosenMember = userStringInput();
+        int chosenMember = correctInteger();
         index = 1;
         for(Member member : boatClub.getAllMembersFromRegistry()) {
-            if (index == Integer.parseInt(chosenMember)) {
+            if (index == chosenMember) {
                 System.out.println("Press 1 to delete a member\n" +
                         "Press 2 to update a member information\n" +
-                        "Press 3 to see a specific member data");
+                        "Press 3 to see a specific member data\n" +
+                        "Press any other key to go back");
 
                 userInput = userStringInput();
                 return member;
@@ -94,7 +98,8 @@ public class MemberMenu extends Menu {
                 index++;
             }
         }
-
+        System.out.println("This member does not exist you will go back to last menu\n");
+        userInput="";//to not get null error in line 59 in getInputInCompactList()
         return null;
     }
     // how to read them categorised from txt file
@@ -107,20 +112,22 @@ public class MemberMenu extends Menu {
     }
 
     public void showUpdateMenu(){
-        System.out.println("What do you want to update?");
-        System.out.println("If you want to update name enter your new name otherwise press enter");
+       // System.out.println("What do you want to update?");
+        System.out.println("Enter new name");
         name = userStringInput();
-        System.out.println("if you want to update your personal number enter your new personal" +
-                "number otherwise press enter");
         do {
+            System.out.println("Enter your new personal 10 digits");
             personalNumber = userStringInput();
         }while (!isValid(personalNumber));
-
     }
 
     public void showConfirmationMsg(Member member){
         System.out.println(member.getName() + " is deleted");
 
+    }
+
+    public void showUpdateConfirmationMsg(Member member){
+        System.out.println(member.getName() + " is updated");
     }
 
     public Boat showMemberInformation(Member member) {
@@ -168,6 +175,20 @@ public class MemberMenu extends Menu {
                 break;
         }
         return choice;
+    }
+
+    private int correctInteger(){
+        boolean correctFormat=false;
+        int inputToInteger = 0;
+        do{
+            try{
+                inputToInteger = Integer.parseInt(userStringInput());
+                correctFormat=true;
+            }catch (NumberFormatException ex){
+                System.out.println("Enter a correct number");
+            }
+        }while(!correctFormat);
+        return inputToInteger;
     }
 
     public String getName(){
