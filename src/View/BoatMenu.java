@@ -8,7 +8,7 @@ import Util.UserChoiceInBoatMenu;
 
 import java.util.Scanner;
 
-public class BoatMenu extends Menu {
+public class BoatMenu {
     private String userInput;
     private BoatType boatType;
     private Scanner sc;
@@ -31,7 +31,6 @@ public class BoatMenu extends Menu {
         return sc.nextLine();
     }
 
-    @Override
     public void showInstruction() {
         System.out.println("Press 1 to register a new boat\n"+
                 "Press 2 to delete a boat\n"+
@@ -110,5 +109,9 @@ public class BoatMenu extends Menu {
 
     public Float getLength(){
         return length;
+    }
+
+    public void showAddConfirmation(){
+        System.out.println(boatType+"is added");
     }
 }
