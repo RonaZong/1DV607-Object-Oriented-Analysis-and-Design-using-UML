@@ -12,8 +12,8 @@ public class Member {
 
 
     public Member(String name, String personalNumber) {
-        this.name = name;
-        this.personalNumber = personalNumber;
+        setName(name);
+        setPersonalNumber(personalNumber);
         this.memberID = creatUniqueID();
     }
 
@@ -36,9 +36,21 @@ public class Member {
 
     public String getPersonalNumber() { return personalNumber; }
 
-    public void setPersonalNumber(String personalNumber) { this.personalNumber = personalNumber; }
+    public void setPersonalNumber(String personalNumber) {
+        if(!isValid(personalNumber)) {
+            throw new IllegalArgumentException("Personal number should be a 10 digit number");
+        }
+        this.personalNumber = personalNumber;
+    }
 
-    public String getMemberID() { return memberID; }
+    private boolean isValid(String input){
+        return input.length() == 10 && input.matches("-?\\d+(\\.\\d+)?");
+        //check its digits
+    }
+
+    public String getMemberID() {
+        return memberID;
+    }
 
     private String creatUniqueID(){
         //use current time to creat a unique id
