@@ -75,7 +75,7 @@ public class MemberMenu {
             for (Member member : boatClub.getAllMembersLocally()) {
                 System.out.println((index++) + ":This member name is : " + member.getName() +
                         "\nwith memberID of : " + member.getMemberID() +
-                        "\nwhich has " + member.getNumbersOfBoatsOwnByAMember() + "boats" +
+                        "\nwhich has " + member.getNumbersOfBoatsOwnByAMember() + "boat(s)" +
                         "\n------------\n");
             }
 
@@ -153,7 +153,7 @@ public class MemberMenu {
     }
 
     public Boat askUserForChooseAnOptionInBoatMenu(Member member){
-        if(!member.boatsOwnedByMember().isEmpty()){
+        if(member.numberOfBoats()==0){
             System.out.println("Press 1 to register a new boat\n" +
                     "Or press any key to continue");
             userInput = userStringInput();
