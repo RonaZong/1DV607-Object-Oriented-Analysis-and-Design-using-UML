@@ -10,9 +10,8 @@ public class Boat {
 
 
     public Boat(BoatType type, double length) {
-       // this.type = type;
         setType(type);
-        this.length = length;
+        setLength(length);
     }
 
     public BoatType getType() {
