@@ -38,7 +38,7 @@ public class Member {
 
     public void setPersonalNumber(String personalNumber) {
         if(!isValid(personalNumber)) {
-            throw new IllegalArgumentException("Personal number should be a 10 digit number");
+            throw new IllegalArgumentException("Personal number should be a 10 digit number\n");
         }
         this.personalNumber = personalNumber;
     }
