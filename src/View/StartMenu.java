@@ -18,6 +18,9 @@ public class StartMenu {
     private BoatType[] type;
 
 
+    /** create member in the view, send it to controller, and controller send it to registry.
+     * the validation "isValid" should be in the model */
+
     private String userStringInput(){
         Scanner sc =new Scanner(System.in);
         return sc.nextLine();
@@ -73,10 +76,12 @@ public class StartMenu {
                 "In order to add a member you have to enter following information : \n"+
                 "Please enter user name: ");
         this.name = userStringInput();
-        do {
-            System.out.print("Please enter personal number in 10 digits: ");
-            this.personalNumber = userStringInput();
-        }while (!isValid(personalNumber));
+        System.out.print("Please enter personal number in 10 digits: ");
+        this.personalNumber = userStringInput();
+//        do {
+//            System.out.print("Please enter personal number in 10 digits: ");
+//            this.personalNumber = userStringInput();
+//        } while (!isValid(personalNumber));
         System.out.println("Please enter numbers of boats:");
         this.numberOfBoats = correctInteger();
         boatLength = new double[numberOfBoats];
@@ -90,10 +95,10 @@ public class StartMenu {
         }
     }
 
-    private boolean isValid(String input){
-        return input.length() == 1 && input.matches("-?\\d+(\\.\\d+)?");
-        //check its digits
-    }
+//    private boolean isValid(String input){
+//        return input.length() == 10 && input.matches("-?\\d+(\\.\\d+)?");
+//        //check its digits
+//    }
 
     //check if correct integer used by user
     private int correctInteger(){
