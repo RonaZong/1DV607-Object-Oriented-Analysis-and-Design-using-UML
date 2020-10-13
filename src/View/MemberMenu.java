@@ -75,7 +75,7 @@ public class MemberMenu {
             for (Member member : boatClub.getAllMembersLocally()) {
                 System.out.println((index++) + ":This member name is : " + member.getName() +
                         "\nwith memberID of : " + member.getMemberID() +
-                        "\nwhich has " + member.getNumbersOfBoatsOwnByAMember() + "boat(s)" +
+                        "\nwhich has " + member.numberOfBoats() + "boat(s)" +
                         "\n------------\n");
             }
 
@@ -142,7 +142,7 @@ public class MemberMenu {
                 "\nwith personal number of " + member.getPersonalNumber() +
                 "\nwith memberID of " + member.getMemberID());
         //it might give a null exception
-        System.out.println("This member has " + member.getNumbersOfBoatsOwnByAMember() + "boats");
+        System.out.println("This member has " + member.numberOfBoats() + "boats");
         int index=1;
         System.out.println("this member boat information is :");
         for (Boat boat : member.boatsOwnedByMember()) {
