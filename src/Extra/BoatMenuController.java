@@ -1,9 +1,6 @@
 package Extra;
 
-import Model.BoatClub;
 import Model.Member;
-import View.BoatMenu;
-import Util.UserChoiceInBoatMenu;
 
 public class BoatMenuController {
     private BoatMenu menu;
