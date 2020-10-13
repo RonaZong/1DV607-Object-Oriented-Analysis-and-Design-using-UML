@@ -32,7 +32,6 @@ public class Boat {
         if(length>70 || length<=0)
             throw new IllegalArgumentException("Boat length should be between 1 and 70 meters");
         this.length = length;
-        //after updating information it should be saved
     }
 
 }
