@@ -1,14 +1,5 @@
 package Extra;
 
-import Model.Boat;
-import Model.BoatClub;
-import Model.Member;
-import Model.Registry;
-import Util.UserChoiceInBoatMenu;
-import Util.UserChoiceInMemberMenu;
-import View.BoatMenu;
-import View.MemberMenu;
-
 public class MemberMenuController {
 
   /*  private MemberMenu menu;
