@@ -37,7 +37,6 @@ public class BoatClub {
 
     public void updateMemberInformation(Member member , String name , String personalNumber){
             member.setName(name);
-
             member.setPersonalNumber(personalNumber);
     }
 
@@ -45,11 +44,11 @@ public class BoatClub {
     public Iterable<Member> getAllMembersFromRegistry(){
 
         //registry = new Registry();
-        this.members=registry.loadForVerboseList(registry.verboseList("VerboseList.txt"));
+        this.members= (ArrayList<Member>) registry.loadForVerboseList(registry.verboseList("SaveFile.txt"));
         return members;
     }
 
-    //we save once we quit the program
+    //we save once user choose the save the program in main menu
     public void save(){
         Registry registry = new Registry();
         registry.updateRegistryFile(this);
@@ -57,7 +56,7 @@ public class BoatClub {
 
 
     public void loadAllInformationOfMembers(Registry list){
-        this.members = list.loadForVerboseList(list.verboseList("VerboseList.txt"));
+        this.members = (ArrayList<Member>) list.loadForVerboseList(list.verboseList("VerboseList.txt"));
     }
 
     //enter a member name to get member
@@ -70,8 +69,12 @@ public class BoatClub {
         return null;
     }
 
-    //other than first time we use this one to get information of arrayList
-    public ArrayList<Member> getAllMembersLocally(){
+    //other than first time, we use this one to get information of arrayList
+    public Iterable<Member> getAllMembersLocally(){
+
+        if(this.members.isEmpty())
+            throw new IllegalArgumentException("List is empty\n" +
+                    "----------------");
         return this.members;
     }
 
