@@ -13,7 +13,6 @@ public class MainController {
 
     //can we throw exception or try and catch errors in controller?
     private BoatClub boatClub;
-    private BoatMenu boatMenu;
     private MemberMenu memberMenu;
     private Member member;
     private Boat boat;
@@ -25,7 +24,7 @@ public class MainController {
 
     //every scenarios would happen in this method
     public void memberAction(StartMenu menu){
-        boatClub.getAllMembersFromRegistry();
+        boatClub.getAllMembersFromRegistry();//load all members' information from the text file in the beginning of program
         while(!actUponUserInputInStartMenu(menu)) ;
     }
 
@@ -81,8 +80,6 @@ public class MainController {
            // boatClub.saveOnVerboseList(member);
             menu.confirmationMsg();
         }while(menu.userWantsToAddMoreMemebr());
-
-
     }
 
     //handling all user choices in member menu
