@@ -20,6 +20,12 @@ public class BoatClub {
         return member;
     }
 
+    public Member makeMemberForLoadingInStartOfProgram(String name , String personalNemuber , String memberID){
+        Member member = new Member(name , personalNemuber, memberID);
+        members.add(member);
+        return member;
+    }
+
    /* public void saveOnVerboseList(Member member){
       //  registry = new Registry();
         registry.saveFile(member);
@@ -44,7 +50,7 @@ public class BoatClub {
     public Iterable<Member> getAllMembersFromRegistry(){
 
         //registry = new Registry();
-        this.members= (ArrayList<Member>) registry.loadForVerboseList(registry.verboseList("SaveFile.txt"));
+        this.members= (ArrayList<Member>) registry.loadFromSavedFile(registry.verboseList("SaveFile.txt"));
         return members;
     }
 
@@ -56,7 +62,7 @@ public class BoatClub {
 
 
     public void loadAllInformationOfMembers(Registry list){
-        this.members = (ArrayList<Member>) list.loadForVerboseList(list.verboseList("VerboseList.txt"));
+        this.members = (ArrayList<Member>) list.loadFromSavedFile(list.verboseList("VerboseList.txt"));
     }
 
     //enter a member name to get member
