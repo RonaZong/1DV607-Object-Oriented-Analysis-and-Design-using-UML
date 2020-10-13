@@ -66,17 +66,25 @@ public class StartMenu {
      }
 
 
-    public void showInstructionOfCreateMember( ) {
-        System.out.println("----- Add a Member -----\n" +
-                "In order to add a member you have to enter following information : \n"+
-                "Please enter user name: ");
-        this.name = userStringInput();
-        System.out.print("Please enter personal number in 10 digits: ");
-        this.personalNumber = userStringInput();
-//        do {
-//            System.out.print("Please enter personal number in 10 digits: ");
-//            this.personalNumber = userStringInput();
-//        } while (!isValid(personalNumber));
+    public Member showInstructionOfCreateMember( ) {
+        Member member = null;
+        do {
+            System.out.println("----- Add a Member -----\n" +
+                    "In order to add a member you have to enter following information : \n" +
+                    "Please enter user name: ");
+            this.name = userStringInput();
+            System.out.print("Please enter personal number in 10 digits: ");
+            this.personalNumber = userStringInput();
+            try {
+                    member = new Member(name, personalNumber);
+            }catch(IllegalArgumentException ex){
+                System.out.println(ex.getMessage());
+            }
+        }while (member == null);
+        return member;
+    }
+
+    public void userWantsToAddBoat(Member member){
         System.out.println("Please enter numbers of boats:");
         this.numberOfBoats = correctInteger();
         boatLength = new double[numberOfBoats];
@@ -87,6 +95,7 @@ public class StartMenu {
             System.out.println("Please enter boat type(1 for sailboat, 2 for motor sail, " +
                     "3 for kayak/canoe, and 4 for others)");
             type[i] = correctBoatType();
+            member.registerNewBoat(type[i], boatLength[i]);
         }
     }
 
@@ -199,6 +208,10 @@ public class StartMenu {
 
     public void showSaveMsg(){
         System.out.println("The information is saved");
+    }
+
+    public void showErrInMemberCreation(){
+        System.out.println("Personal nunber should be 10 digit number");
     }
 
     }
