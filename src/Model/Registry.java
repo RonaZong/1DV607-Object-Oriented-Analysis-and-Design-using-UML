@@ -52,33 +52,26 @@ public class Registry {
         return result;
     }
 
-    public Iterable<Member> loadForVerboseList(String result){
+    public Iterable<Member> loadFromSavedFile(String result){
         BoatClub boatClub = new BoatClub();
-        ArrayList<Member> members = new ArrayList<>();
+        //ArrayList<Member> members = new ArrayList<>();
         String[] eachLines = result.split("[\\r\\n]+");//separate each line and put them in and array of string
         if(!eachLines[0].trim().isEmpty()){//In order to check if file is empty or not to not get error of index out boundary in line 62 (we have an array of length 1 which contains \\r\\n
            for (String lines : eachLines) {
                String[] parameters = lines.split(":");//separate each word and put them in an array
-               Member member = new Member(parameters[0], parameters[1]);
-               member.setMemberID(parameters[2]);
+               Member member = boatClub.makeMemberForLoadingInStartOfProgram(parameters[0], parameters[1],parameters[2]);
                member.setNumbersOfBoatsOwnByAMember(Integer.parseInt(parameters[3]));
-
-               ArrayList<Boat> boats = new ArrayList<>();
                for (int i = 4; i < parameters.length - 1; i = i + 2) {
-                   Boat boat = new Boat(BoatType.valueOf(parameters[i]), Float.parseFloat(parameters[i + 1]));
-                   boats.add(boat);
-//                member.registerNewBoat(BoatType.valueOf(parameters[i]),Double.parseDouble(parameters[i+1]));
-                   member.setBoats(boats);
+                     member.registerNewBoat(BoatType.valueOf(parameters[i]),Double.parseDouble(parameters[i+1]));
                }
-               members.add(member);
-               boatClub.setMembers(members);
+              // members.add(member);
+             //  boatClub.setMembers(members);
            }
        }
-        return members;
+        return boatClub.getAllMembersLocally();
     }
 
     public void updateRegistryFile(BoatClub boatClub){
-       // ArrayList<Member> members = boatClub.getAllMembersLocally();
         File file = new File("SaveFile.txt");
         try {
             saver = new PrintWriter(file);
@@ -92,7 +85,7 @@ public class Registry {
             }
             saver.close();
 
-        }catch(Exception e) {
+        }catch(Exception ignored) {
 
         }
     }
