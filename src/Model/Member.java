@@ -30,27 +30,15 @@ public class Member {
         setMemberID(uniqueID);
     }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
 
-    public void setName(String name) {
-        this.name = name;
-        //after updating information it should be saved
-    }
+    public void setName(String name) { this.name = name; }
 
-    public String getPersonalNumber() {
-        return personalNumber;
-    }
+    public String getPersonalNumber() { return personalNumber; }
 
-    public void setPersonalNumber(String personalNumber) {
-        this.personalNumber = personalNumber;
-        //after updating information it should be saved
-    }
+    public void setPersonalNumber(String personalNumber) { this.personalNumber = personalNumber; }
 
-    public String getMemberID() {
-        return memberID;
-    }
+    public String getMemberID() { return memberID; }
 
     private String creatUniqueID(){
         //use current time to creat a unique id
@@ -59,13 +47,9 @@ public class Member {
         return Long.toString(ID).substring(9,13);
     }
 
-    public void setMemberID(String memberID){
-        this.memberID=memberID;
-    }
+    public void setMemberID(String memberID){ this.memberID=memberID; }
 
-    public Iterable<Boat> boatsOwnedByMember(){
-        return this.boats;
-    }
+    public Iterable<Boat> boatsOwnedByMember(){ return this.boats; }
 
    // public void setBoats(ArrayList<Boat> boats) {
      //   this.boats = boats;
@@ -77,10 +61,6 @@ public class Member {
 
     public int numberOfBoats(){
         return this.boats.size();
-    }
-
-    public int getNumbersOfBoatsOwnByAMember(){
-          return this.boats.size();
     }
 
     public void registerNewBoat(Util.BoatType boatType, double length){
