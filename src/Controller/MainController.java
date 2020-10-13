@@ -1,6 +1,6 @@
 package Controller;
 
-import Extra.MemberCreationMenu;
+import Extra.BoatMenu;
 import Model.Boat;
 import Model.BoatClub;
 import Model.Member;
@@ -11,9 +11,8 @@ import View.*;
 
 public class MainController {
 
+    //can we throw exception or try and catch errors in controller?
     private BoatClub boatClub;
-    private StartMenu menu;
-    private MemberCreationMenu memberCreationMenu;
     private BoatMenu boatMenu;
     private MemberMenu memberMenu;
     private Member member;
@@ -136,10 +135,11 @@ public class MainController {
                      goBack = true;
                     break;
                 case SPECIFIC_MEMBER:
-                    this.boat = memberMenu.showMemberInformation(member);
+                    memberMenu.showMemberInformation(member);
+                    this.boat = memberMenu.askUserForChooseAnOptionInBoatMenu(member);
                     actUponUserInputInBoatMenu();
                    // registry.updateRegistryFile(boatClub);
-                    goBack = true;
+                   // goBack = true;
                     break;
                 case QUIT:
                     goBack =true;
@@ -150,30 +150,29 @@ public class MainController {
 
     //handling all user choices for boat issues
     private void actUponUserInputInBoatMenu(){
-        this.boatMenu = new BoatMenu();
-        boatMenu.showInstruction();
-        UserChoiceInBoatMenu choice = boatMenu.getUserInputInBoatMenu();
+       // this.boatMenu = new BoatMenu();
+       // boatMenu.showInstruction();
+        UserChoiceInBoatMenu choice = memberMenu.getUserInputInBoatMenu();
 
         switch (choice){
             case ADD_NEW_BOAT:
                 //member= boatClub.getMember(menu.ShowAccessToMember());
-                boatMenu.showRegisterOrChangeABoat();
-                member.registerNewBoat(boatMenu.getBoatType(),boatMenu.getLength());
-                boatMenu.showAddConfirmation();
+                memberMenu.showRegisterOrChangeABoat();
+                member.registerNewBoat(memberMenu.getBoatType(),memberMenu.getLength());
+                memberMenu.showAddConfirmation();
                 System.out.println(member.numberOfBoats());
                 break;
             case CHANGE_BOAT_INFORMATION:
                 // member= boatClub.getMember(menu.ShowAccessToMember());
-                boatMenu.showRegisterOrChangeABoat();
-                this.boat.setType(boatMenu.getBoatType());
-                this.boat.setLength(boatMenu.getLength());
+                memberMenu.showRegisterOrChangeABoat();
+                this.boat.setType(memberMenu.getBoatType());
+                this.boat.setLength(memberMenu.getLength());
                 break;
 
             case DELETE_BOAT:
                 //member= boatClub.getMember(menu.ShowAccessToMember());
                 member.deleteBoat(this.boat);
                 break;
-
         }
     }
 
