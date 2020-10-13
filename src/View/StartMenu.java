@@ -26,11 +26,6 @@ public class StartMenu {
         return sc.nextLine();
     }
 
-    private boolean IWantToQuit(){
-        return userInput.equals("4");
-    }
-
-
     public void showInstruction() {
 
         System.out.println("Welcome to Boat Club\n" +
