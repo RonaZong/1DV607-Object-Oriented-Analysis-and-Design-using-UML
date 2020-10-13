@@ -47,7 +47,7 @@ public class MainController {
                 case MEMBER_MENU:
                    // MemberMenuController memberMenuController = new MemberMenuController();
                    // memberMenuController.actUponUserInputInMemberMenu(boatClub);
-                    actUponUserInputInMemberMenu();
+                    actUponUserInputInMemberMenu(menu);
                     userChoice=null;//for exit the loop since userchoice does not change after member menu closed so we always come back here and user choice would be same
                     break;
                 case SAVE:
@@ -72,18 +72,18 @@ public class MainController {
        // MemberCreationMenu menu = new MemberCreationMenu();
        // memberCreationMenu.showInstruction();
         do {
-            menu.showInstructionOfCreateMember();
-            Member member = boatClub.creatMember(menu.getName(), menu.getPersonalNumber());
-            for (int i = 0; i < menu.getNumberOfBoats(); i++) {
-                member.registerNewBoat(menu.getType()[i], menu.getBoatLength()[i]);
-            }
+            Member member = menu.showInstructionOfCreateMember();
+            boatClub.addNewMember(member);
+           // for (int i = 0; i < menu.getNumberOfBoats(); i++) {
+             //   member.registerNewBoat(menu.getType()[i], menu.getBoatLength()[i]);
+           // }
            // boatClub.saveOnVerboseList(member);
             menu.confirmationMsg();
         }while(menu.userWantsToAddMoreMemebr());
     }
 
     //handling all user choices in member menu
-    private void actUponUserInputInMemberMenu() {
+    private void actUponUserInputInMemberMenu(StartMenu menu) {
         memberMenu = new MemberMenu();
        // MemberMenu menu = new MemberMenu();
         boolean IWantToGoBack = false;
@@ -93,7 +93,7 @@ public class MainController {
             switch (userChoice) {
                 case COMPACT_LIST:
                     this.member = memberMenu.showCompactList(boatClub);//this boat club here show the list and assign the members to the boat club
-                    actionOnCompactList();
+                    actionOnCompactList(menu);
                    // if(this.member!=null)
                        IWantToGoBack = true;
                     break;
@@ -110,7 +110,7 @@ public class MainController {
     }
 
     //handling all user choices in showing list of members
-    private void actionOnCompactList(){
+    private void actionOnCompactList(StartMenu menu){
         //  Iterable<Member> members = boatClub.getAllMembersFromRegistry();
       //  Registry registry = new Registry();
         //UserChoiceInMemberMenu choice = null;
@@ -134,7 +134,7 @@ public class MainController {
                 case SPECIFIC_MEMBER:
                     memberMenu.showMemberInformation(member);
                     this.boat = memberMenu.askUserForChooseAnOptionInBoatMenu(member);
-                    actUponUserInputInBoatMenu();
+                    actUponUserInputInBoatMenu(menu);
                    // registry.updateRegistryFile(boatClub);
                    // goBack = true;
                     break;
@@ -146,7 +146,7 @@ public class MainController {
     }
 
     //handling all user choices for boat issues
-    private void actUponUserInputInBoatMenu(){
+    private void actUponUserInputInBoatMenu(StartMenu menu){
        // this.boatMenu = new BoatMenu();
        // boatMenu.showInstruction();
         UserChoiceInBoatMenu choice = memberMenu.getUserInputInBoatMenu();
@@ -154,7 +154,7 @@ public class MainController {
         switch (choice){
             case ADD_NEW_BOAT:
                 //member= boatClub.getMember(menu.ShowAccessToMember());
-                memberMenu.showRegisterOrChangeABoat();
+                menu.userWantsToAddBoat(member);
                 member.registerNewBoat(memberMenu.getBoatType(),memberMenu.getLength());
                 memberMenu.showAddConfirmation();
                 System.out.println(member.numberOfBoats());
