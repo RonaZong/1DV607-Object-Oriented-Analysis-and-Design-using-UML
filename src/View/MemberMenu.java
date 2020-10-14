@@ -152,7 +152,7 @@ public class MemberMenu {
 
     }
 
-    public Boat askUserForChooseAnOptionInBoatMenu(Member member){
+    /*public Boat askUserForChooseAnOptionInBoatMenu(Member member){
         if(member.numberOfBoats()==0){
             System.out.println("Press 1 to register a new boat\n" +
                     "Or press any key to continue");
@@ -176,6 +176,41 @@ public class MemberMenu {
             userInput = userStringInput();
         }
         return null;
+    }*/
+
+    public boolean askUserForChooseAnOptionInBoatMenu(Member member){
+
+        if(member.numberOfBoats()==0) {
+            System.out.println("Press 1 to register a new boat\n" +
+                    "Or press any key to continue");
+            userInput = userStringInput();
+            if (!userInput.equalsIgnoreCase("1"))
+                return true;
+        }
+        // System.out.println("Enter index of boat to choose or any other key to go back to last menu:");
+        //  String chosenMember = userStringInput();
+        // int index = 1;
+        //for(Boat boat : member.boatsOwnedByMember()) {
+        //   if (index == Integer.parseInt(chosenMember)) {
+        else {
+            System.out.println("Press 1 to register a bew boat\n" +
+                    "Press 2 to update the boat information\n" +
+                    "Press 3 to delete the boat\n" +
+                    "Press any other key to go back");
+            userInput = userStringInput();
+            //return boat;
+            if (userInput.equalsIgnoreCase("4"))
+                return true;
+        }
+        // } else {
+        //    index++;
+        // }
+        // }
+        // }else{
+        //   System.out.println("Press 1 to register a new boat");
+        // userInput = userStringInput();
+        // }
+        return false;
     }
 
     public UserChoiceInBoatMenu getUserInputInBoatMenu(){
@@ -194,6 +229,24 @@ public class MemberMenu {
         return choice;
     }
 
+    public Boat showRegisterNewBoat(Member member){
+        Boat boat = null;
+        do {
+            System.out.println("Please enter length of the boat :");
+            double boatLength = correctDouble();
+            System.out.println("Please enter boat type(1 for sailboat, 2 for motor sail, " +
+                    "3 for kayak/canoe, and 4 for others)");
+            BoatType type = correctBoatType();
+            try {
+                boat = new Boat(type , boatLength);
+            } catch (IllegalArgumentException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }while(boat == null);
+
+        return boat;
+    }
+
     public void showRegisterOrChangeABoat(){
         System.out.println("Enter length of the boat");
         length = correctDouble();
@@ -202,7 +255,7 @@ public class MemberMenu {
         boatType =  correctBoatType();
     }
 
-    public void showAddConfirmation(){ System.out.println(boatType+"is added"); }
+    public void showAddConfirmation(Boat boat){ System.out.println(boat.getType()+" is added"); }
 
     private double correctDouble(){
         boolean isValid=false;
@@ -218,6 +271,48 @@ public class MemberMenu {
             }
         }while(!isValid);
         return inputToDouble;
+    }
+
+    public void askUserToUpdateBoatData(Boat boat){
+        boolean isValid = false;
+        do {
+            System.out.println("Please enter length of the boat :");
+            double boatLength = correctDouble();
+            System.out.println("Please enter boat type(1 for sailboat, 2 for motor sail, " +
+                    "3 for kayak/canoe, and 4 for others)");
+            BoatType type = correctBoatType();
+            try {
+                boat.setType(type);
+                boat.setLength(boatLength);
+                isValid = true;
+            } catch (IllegalArgumentException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }while(!isValid);
+    }
+
+    private void showBoatsOfMember(Member member){
+        int index = 1;
+        for(Boat boat : member.boatsOwnedByMember()){
+            System.out.println((index++) + " Boat type : " + boat.getType() + " boat length : " +
+                    boat.getLength());
+        }
+    }
+
+    public Boat showDeleteOrChangeABoat(Member member){
+
+        showBoatsOfMember(member);
+        System.out.println("Enter index of boat to choose or any other key to go back to last menu:");
+        int chosenMember = correctInteger();
+        int index = 1;
+        for(Boat boat : member.boatsOwnedByMember()) {
+            if (index == chosenMember) {
+                return boat;
+            } else {
+                index++;
+            }
+        }
+        return null;
     }
 
     private boolean isValidDouble(double input){
