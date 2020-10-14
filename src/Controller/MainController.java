@@ -117,7 +117,6 @@ public class MainController {
         boolean goBack=false;
         UserChoiceInMemberMenu choice = this.memberMenu.getInputInCompactList();
         while(!goBack && choice!=null ){
-
             switch (choice){
                 case DELETE:
                     //for debug
@@ -137,7 +136,6 @@ public class MainController {
                     goBack = memberMenu.askUserForChooseAnOptionInBoatMenu(member);
                     choice = null;
                     actUponUserInputInBoatMenu(menu);
-
                    // registry.updateRegistryFile(boatClub);
                    // goBack = true;
                     break;
@@ -169,6 +167,14 @@ public class MainController {
                  memberMenu.askUserToUpdateBoatData(boat1);
                // this.boat.setType(memberMenu.getBoatType());
                 //this.boat.setLength(memberMenu.getLength());
+                memberMenu.showAddConfirmation();
+                System.out.println(member.numberOfBoats());
+                break;
+            case CHANGE_BOAT_INFORMATION:
+                // member= boatClub.getMember(menu.ShowAccessToMember());
+                memberMenu.showRegisterOrChangeABoat();
+                this.boat.setType(memberMenu.getBoatType());
+                this.boat.setLength(memberMenu.getLength());
                 break;
 
             case DELETE_BOAT:
@@ -178,6 +184,7 @@ public class MainController {
                 break;
 
             case GO_BACK:
+                member.deleteBoat(this.boat);
                 break;
         }
     }
