@@ -1,5 +1,7 @@
 package Model;
 
+import Util.BoatType;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -30,9 +32,9 @@ public class Member {
         setMemberID(uniqueID);
     }
 
-    public void editMember(String name, String personalNumber) {
-        this.name = name;
-        this.personalNumber = personalNumber;
+    public void updateMemberInformation(String name, String personalNumber) {
+        setName(name);
+        setPersonalNumber(personalNumber);
     }
 
         public String getName() { return name; }
@@ -66,7 +68,7 @@ public class Member {
 
 
 
-    public void registerANewBoat(Boat boat){}
+    public void registerANewBoat(Boat boat){boats.add(boat);}
 
     public void setMemberID(String memberID){ this.memberID=memberID; }
 
@@ -89,7 +91,20 @@ public class Member {
         boats.add(boat);
     }
 
+    public Boat memberSelectABoat(Boat boat){
+        if(boat == null)
+            throw new IllegalArgumentException("Boat could not be found");
+        return boat;
+    }
+
     public void deleteBoat(Boat boat) {
         boats.remove(boat);
+    }
+
+    public void updateBoatData(Boat boat , double length , BoatType type){
+        if(boat == null)
+            throw new IllegalArgumentException("This boat does not exist you will go back to menu");
+        boat.setLength(length);
+        boat.setType(type);
     }
 }
