@@ -30,7 +30,12 @@ public class Member {
         setMemberID(uniqueID);
     }
 
-    public String getName() { return name; }
+    public void editMember(String name, String personalNumber) {
+        this.name = name;
+        this.personalNumber = personalNumber;
+    }
+
+        public String getName() { return name; }
 
     public void setName(String name) { this.name = name; }
 
@@ -58,6 +63,10 @@ public class Member {
         long ID = System.currentTimeMillis();
         return Long.toString(ID).substring(9,13);
     }
+
+
+
+    public void registerANewBoat(Boat boat){}
 
     public void setMemberID(String memberID){ this.memberID=memberID; }
 
