@@ -1,11 +1,13 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.IllegalFormatWidthException;
 import java.util.Scanner;
 
 public class Member {
     private String name;
     private String personalNumber;
+<<<<<<< Updated upstream
 
     //do we need to initialize?
     //change member id to string
@@ -13,6 +15,10 @@ public class Member {
     //we need the know how many boats each member has
     //if member should have a boat at least so he or she can register we can initialize arraylist in method
     //otherwise we have to initialize arraylist here or we get null value
+=======
+    private int numbersOfBoatsOwnByAMember;
+    private String memberID ;
+>>>>>>> Stashed changes
     private ArrayList<Boat> boats = new ArrayList<>();
 
     // I think we don't need scanner here
@@ -73,12 +79,18 @@ public class Member {
         return this.boats;
     }
 
+<<<<<<< Updated upstream
     public void registerBoat(Boat.BoatType boatType, double length){
         Boat boat = new Boat(boatType, length);
+=======
+    public void registerANewBoat(Boat boat){
+>>>>>>> Stashed changes
         boats.add(boat);
     }
 
     public void deleteBoat(Boat boat) {
+        if(boats.isEmpty())
+            throw new IllegalArgumentException("list is empty");
         boats.remove(boat);
     }
 }
