@@ -136,20 +136,12 @@ public class StartMenu {
         do{
             try{
                 inputToDouble = Double.parseDouble(userStringInput());
-                isValid= isValidDouble(inputToDouble) ;
+                isValid= true;
             }catch (NumberFormatException ex){
                 System.out.println("Enter a correct number");
-            }catch (IllegalArgumentException ex){
-                System.out.println(ex.getMessage());
             }
         }while(!isValid);
         return inputToDouble;
-    }
-
-    private boolean isValidDouble(double input){
-        if(input<=0 || input>70)
-            throw new IllegalArgumentException("Boat length should be a valid number between 1-70");
-        return true;
     }
 
     //check if userinput is correct in boat type
