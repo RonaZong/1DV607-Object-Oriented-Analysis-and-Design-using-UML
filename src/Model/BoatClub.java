@@ -3,22 +3,15 @@ package Model;
 import java.util.ArrayList;
 
 public class BoatClub {
-    private ArrayList<Member> members = new ArrayList<>();
+
+    private ArrayList<Member> members=new ArrayList<>();
+
     private Member member;
 
     public BoatClub() {
     }
 
-<<<<<<< Updated upstream
-    public void creatMember(String userName, String personalNumber){
-        if (this.member == null) {
-            Member newMember = new Member(userName, personalNumber);
-            members.add(newMember);
-        }
-        else {
-            this.member.editMember(userName, personalNumber);
-        }
-=======
+
     public Member creatMember(String userName, String personalNumber) {
         Member member = new Member(userName, personalNumber);
         return  member;
@@ -52,13 +45,9 @@ public class BoatClub {
         this.members.remove(member);
         //I used here to return that member who was deleted
         return this.member;
->>>>>>> Stashed changes
-    }
 
-    public void updateMemberInformation(Member member, String name, String personalNumber){
-        if(name.length() >1)
+    public void updateMemberInformation(Member member , String name , String personalNumber){
             member.setName(name);
-        if(personalNumber.length() >1)
             member.setPersonalNumber(personalNumber);
     }
 
@@ -66,9 +55,45 @@ public class BoatClub {
         members.remove(member);
     }
 
-    public ArrayList<Member> getAllMember(){
-        return this.members;
+    //we load all information with this method once we start the program
+    public Iterable<Member> getAllMembersFromRegistry(){
+
+        //registry = new Registry();
+        this.members= (ArrayList<Member>) registry.loadFromSavedFile(registry.verboseList("SaveFile.txt"));
+        return members;
+    }
+
+    //we save once user choose the save the program in main menu
+    public void save(){
+        Registry registry = new Registry();
+        registry.updateRegistryFile(this);
     }
 
 
+    public void loadAllInformationOfMembers(Registry list){
+        this.members = (ArrayList<Member>) list.loadFromSavedFile(list.verboseList("VerboseList.txt"));
+    }
+
+    //enter a member name to get member
+    public Member getMember(String memberName){
+        for (Member m:members){
+            if (memberName.equals(memberName)){
+                return m;
+            }
+        }
+        return null;
+    }
+
+    //other than first time, we use this one to get information of arrayList
+    public Iterable<Member> getAllMembersLocally(){
+
+        if(this.members.isEmpty())
+            throw new IllegalArgumentException("List is empty\n" +
+                    "----------------");
+        return this.members;
+    }
+
+    public void setMembers(ArrayList<Member> members) {
+        this.members = members;
+    }
 }
