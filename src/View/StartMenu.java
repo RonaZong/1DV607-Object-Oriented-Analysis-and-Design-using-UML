@@ -182,18 +182,6 @@ public class StartMenu {
         System.out.println(this.name+" is added");
     }
 
-    public int getNumberOfBoats(){
-        return numberOfBoats;
-    }
-
-    public double[] getBoatLength() {
-        return boatLength;
-    }
-
-    public BoatType[] getType() {
-        return type;
-    }
-
     public boolean userWantsToAddMoreMemebr() {
 
         String answer ="";
