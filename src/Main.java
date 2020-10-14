@@ -7,10 +7,10 @@ public class Main {
     public static void main(String[] args) {
 
         BoatClub boatClub = new BoatClub();
-        //StartMenu menu=new StartMenu();
+        StartMenu menu=new StartMenu();
 
         MainController user = new MainController(boatClub);
 
-        user.memberAction();
+        user.memberAction(menu);
     }
 }
