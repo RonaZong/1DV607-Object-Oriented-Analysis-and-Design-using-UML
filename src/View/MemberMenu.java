@@ -3,60 +3,131 @@ package View;
 import Model.Boat;
 import Model.BoatClub;
 import Model.Member;
+import Util.BoatType;
+import Util.UserChoiceInBoatMenu;
+import Util.UserChoiceInMemberMenu;
 
 import java.util.Scanner;
 
 public class MemberMenu {
+    private String userInput;
+   // private Scanner sc;
+    private String name;
+    private String personalNumber;
+    private BoatType boatType;
+    private double length;
 
-    private Scanner sc = new Scanner(System.in);
-    private BoatClub boatClub;
-    private Member member;
-    private boolean alreadyMember = false;
-
-
-    public MemberMenu(BoatClub boatClub) {
-        this.boatClub = boatClub;
+    private String userStringInput(){
+        Scanner sc =new Scanner(System.in);
+        return sc.nextLine();
     }
 
-    public void showMemberMenu(){
-        System.out.println("----Members' menu----\n" +
-                "Press 1 to register as a member\n" +
-                "Press 2 to update the information of a member\n" +
-                "Press 3 to delete a member\n" +
-                "Press 4 to see the information of a specific member\n" +
-                "Press 5 to Boat Menu\n" +
-                "Press 0 to quit\n");
-        int userInput = sc.nextInt();
-        actUponUserInputInMemberMenu(userInput, this.boatClub);
+
+    public void showInstruction() {
+        System.out.println("Press 1 to show a compact list of members\n" +
+                           "Press 2 to show a verbose list of members\n" +
+                            "Press any key to go back to main menu");
+
+      //  userInput = userStringInput();
     }
 
-    public void actUponUserInputInMemberMenu(int userInput, BoatClub boatClub) {
-        switch (userInput) {
-            case 1:
-                createMemberMenu();
+    public UserChoiceInMemberMenu getUserInputInMemberMenu() {
+        UserChoiceInMemberMenu choice = null;
+        String input = userStringInput();
+        switch (input) {
+            case "1":
+                choice = UserChoiceInMemberMenu.COMPACT_LIST;
                 break;
-            case 2:
-                showUpdateMemberMenu();
+            case "2":
+                choice = UserChoiceInMemberMenu.VERBOSE_LIST;
                 break;
-            case 3:
-                boatClub.deleteMember(this.member);
+            default:
+                choice = UserChoiceInMemberMenu.QUIT;
                 break;
-            case 5:
-                BoatMenu boatMenu = new BoatMenu(this.boatClub, this.member);
-                boatMenu.showBoatMenu();
-                break;
-            case 0:
-                System.exit(1);
+
         }
+        return choice;
     }
 
-<<<<<<< Updated upstream
-    public void createMemberMenu(){
-        System.out.println("----- Become a Member ----\n-" +
-                "In order to be a member you have to enter following information : \n" +
-                "Please enter user name: ");
-        String name = sc.nextLine();
-=======
+    public UserChoiceInMemberMenu getInputInCompactList() {
+        UserChoiceInMemberMenu choice = null;
+
+        switch(userInput){
+            case "1":
+                choice = UserChoiceInMemberMenu.DELETE;
+                break;
+            case "2":
+                choice = UserChoiceInMemberMenu.UPDATE;
+                break;
+            case "3":
+                choice = UserChoiceInMemberMenu.SPECIFIC_MEMBER;
+                break;
+            default:
+                choice = UserChoiceInMemberMenu.QUIT;
+                break;
+        }
+        return choice;
+    }
+
+    public Member showCompactList(BoatClub boatClub){
+        int index =1;
+        try {
+            for (Member member : boatClub.getAllMembersLocally()) {
+                System.out.println((index++) + ":This member name is : " + member.getName() +
+                        "\nwith memberID of : " + member.getMemberID() +
+                        "\nwhich has " + member.numberOfBoats() + "boat(s)" +
+                        "\n------------\n");
+            }
+
+            System.out.println("Enter index of member to choose:\n" +
+                    "Or press other integer to go back");
+            int chosenMember = correctInteger();
+            index = 1;
+            for (Member member : boatClub.getAllMembersLocally()) {
+                if (index == chosenMember) {
+                    System.out.println("Press 1 to delete a member\n" +
+                            "Press 2 to update a member information\n" +
+                            "Press 3 to see a specific member data\n" +
+                            "Press any other key to go back");
+
+                    userInput = userStringInput();
+                    return member;
+                } else {
+                    index++;
+                }
+            }
+
+        System.out.println("This member does not exist you will go back to last menu\n");
+        }catch (IllegalArgumentException ex){
+            System.out.println(ex.getMessage());
+        }
+        userInput="";//to not get null error in line 59 in getInputInCompactList()
+        return null;
+    }
+
+    public void showVerboseList(BoatClub boatClub){
+        try {// if list is empty
+            for(Member member : boatClub.getAllMembersLocally()){
+                System.out.println("------------------------");
+                showMemberInformation(member);
+                System.out.println("\n----------------------\n\n");
+            }
+        }catch (IllegalArgumentException ex){
+            System.out.println(ex.getMessage());
+        }
+
+    }
+
+    public void showUpdateMenu(){
+       // System.out.println("What do you want to update?");
+        System.out.println("Enter new name");
+        name = userStringInput();
+        do {
+            System.out.println("Enter your new personal 10 digits");
+            personalNumber = userStringInput();
+        }while (!isValid(personalNumber));
+    }
+
     public void showConfirmationMsg(Member member){
         System.out.println(member.getName() + " is deleted");
 
@@ -73,28 +144,150 @@ public class MemberMenu {
         //it might give a null exception
         System.out.println("This member has " + member.numberOfBoats() + "boats");
         int index=1;
-        if(member.numberOfBoats()>0)
-             System.out.println("this member boat information is :");
+        System.out.println("this member boat information is :");
         for (Boat boat : member.boatsOwnedByMember()) {
             System.out.println((index++) + " - Boat type :" + boat.getType() +
                     ", Boat Length : " + boat.getLength());
         }
->>>>>>> Stashed changes
 
-        System.out.print("Please enter personal number: ");
-        String personalNumber = sc.nextLine();
-        this.boatClub.creatMember(name, personalNumber);
-        // this.alreadyMember = true;
     }
 
-<<<<<<< Updated upstream
-    private void showUpdateMemberMenu() {
-        System.out.println("What do you want to update?");
-        System.out.println("If you want to update name enter your new name otherwise press enter");
-        String name = sc.nextLine();
-        //do we need to check for validate personal number??
-        //Yes
-=======
+    public Boat askUserForChooseAnOptionInBoatMenu(Member member){
+        if(member.numberOfBoats()==0){
+            System.out.println("Press 1 to register a new boat\n" +
+                    "Or press any key to continue");
+            userInput = userStringInput();
+            if(!userInput.equalsIgnoreCase("1"))
+            System.out.println("Enter index of boat to choose or any other key to go back to last menu:");
+        String chosenMember = userStringInput();
+        int index = 1;
+        for(Boat boat : member.boatsOwnedByMember()) {
+            if (index == Integer.parseInt(chosenMember)) {
+                System.out.println("Press 2 to update the boat information\n" +
+                                   "Press 3 to delete the boat");
+                userInput = userStringInput();
+                return boat;
+            } else {
+                index++;
+            }
+        }
+        }else{
+            System.out.println("Press 1 to register a new boat");
+            userInput = userStringInput();
+        }
+        return null;
+    }
+
+    public UserChoiceInBoatMenu getUserInputInBoatMenu(){
+        UserChoiceInBoatMenu choice = null;
+        switch (userInput){
+            case "1":
+                choice = UserChoiceInBoatMenu.ADD_NEW_BOAT;
+                break;
+            case "2":
+                choice = UserChoiceInBoatMenu.CHANGE_BOAT_INFORMATION;
+                break;
+            case "3":
+                choice = UserChoiceInBoatMenu.DELETE_BOAT;
+                break;
+        }
+        return choice;
+    }
+
+    public void showRegisterOrChangeABoat(){
+        System.out.println("Enter length of the boat");
+        length = correctDouble();
+        System.out.println("Enter boat type:" +
+                "\n1 for Sailboat , 2 for Motor sailor , 3 for Kayak/Canoe, 4 for Others");
+        boatType =  correctBoatType();
+    }
+
+    public void showAddConfirmation(){ System.out.println(boatType+"is added"); }
+
+    private double correctDouble(){
+        boolean isValid=false;
+        double inputToDouble = 0;
+        do{
+            try{
+                inputToDouble = Double.parseDouble(userStringInput());
+                isValid = isValidDouble(inputToDouble);
+            }catch (NumberFormatException ex){
+                System.out.println("Enter a correct number");
+            }catch (IllegalArgumentException ex){
+                System.out.println(ex.getMessage());
+            }
+        }while(!isValid);
+        return inputToDouble;
+    }
+
+    private boolean isValidDouble(double input){
+        if(input<=0 || input>70)
+            throw new IllegalArgumentException("Boat length should be a valid number between 1-70");
+        return true;
+    }
+
+    private BoatType correctBoatType(){
+        boolean correctFormat=false;
+        BoatType input = null ;
+        do{
+            try{
+                input = BoatType.values()[Integer.parseInt(userStringInput())-1];
+                correctFormat=true;
+            }catch (NumberFormatException ex){
+                System.out.println("Enter a number");
+            }catch (ArrayIndexOutOfBoundsException ex){
+                System.out.println("You have to choose between 1 to 4");
+            }
+        }while(!correctFormat);
+        return input;
+
+    }
+
+    private int correctInteger(){
+        boolean correctFormat=false;
+        int inputToInteger = 0;
+        do{
+            try{
+                inputToInteger = Integer.parseInt(userStringInput());
+                correctFormat=true;
+            }catch (NumberFormatException ex){
+                System.out.println("Enter a correct number");
+            }
+        }while(!correctFormat);
+        return inputToInteger;
+    }
+
+    public String getName(){ return name; }
+
+    public String getPersonalNumber(){ return personalNumber; }
+
+    public BoatType getBoatType(){ return boatType; }
+
+    public void showConfirmationMsg(Member member){
+        System.out.println(member.getName() + " is deleted");
+
+    }
+
+    public void showUpdateConfirmationMsg(Member member){
+        System.out.println(member.getName() + " is updated");
+    }
+
+    public void showMemberInformation(Member member) {
+        System.out.println("This member name is : " + member.getName() +
+                "\nwith personal number of " + member.getPersonalNumber() +
+                "\nwith memberID of " + member.getMemberID());
+        //it might give a null exception
+        System.out.println("This member has " + member.numberOfBoats() + "boats");
+        int index = 1;
+        if (member.numberOfBoats() > 0)
+            System.out.println("this member boat information is :");
+        for (Boat boat : member.boatsOwnedByMember()) {
+            System.out.println((index++) + " - Boat type :" + boat.getType() +
+                    ", Boat Length : " + boat.getLength());
+        }
+    }
+
+
     public boolean askUserForChooseAnOptionInBoatMenu(Member member){
 
         if(member.numberOfBoats()==0) {
@@ -272,11 +465,7 @@ public class MemberMenu {
     public BoatType getBoatType(){ return boatType; }
 
     public double getLength(){ return length; }
->>>>>>> Stashed changes
 
-        System.out.println("If you want to update your personal number enter your new personal" +
-                "number otherwise press enter");
-        String personalNumber = sc.nextLine();
-        this.boatClub.updateMemberInformation(this.member, name, personalNumber);
-    }
+    public double getLength(){ return length; }
+
 }
