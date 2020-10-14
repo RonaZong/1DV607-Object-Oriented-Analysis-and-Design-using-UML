@@ -10,8 +10,10 @@ public class BoatClub {
     public BoatClub() {
     }
 
-    public Member creatMember(String userName, String personalNumber){
+    public Member creatMember(String userName, String personalNumber) {
         Member member = new Member(userName, personalNumber);
+        return member;
+    }
 
     public Member addNewMember(Member member){
         //CompactListSave save = new CompactListSave();
