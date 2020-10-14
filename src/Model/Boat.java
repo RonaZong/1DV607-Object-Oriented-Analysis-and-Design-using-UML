@@ -1,19 +1,17 @@
 package Model;
 
 
-public class Boat {
+import Util.BoatType;
 
-    public enum BoatType {
-        SAILBOAT, MOTORSAILOR, KAYAK_OR_CANOE, OTHER
-    }
+public class Boat {
 
     private BoatType type;
     private double length;
 
-    //since we have only this 4 fixed type better to have enum in my idea
+
     public Boat(BoatType type, double length) {
-        this.type = type;
-        this.length = length;
+        setType(type);
+        setLength(length);
     }
 
     public BoatType getType() {
@@ -22,6 +20,7 @@ public class Boat {
 
     public void setType(BoatType type) {
         this.type = type;
+
     }
 
     public double getLength() {
@@ -29,8 +28,9 @@ public class Boat {
     }
 
     public void setLength(double length) {
+        if(length > 70 || length <= 0)
+            throw new IllegalArgumentException("Boat length should be between 1 and 70 meters");
         this.length = length;
     }
-
 
 }
