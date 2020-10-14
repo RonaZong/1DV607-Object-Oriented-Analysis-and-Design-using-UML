@@ -7,8 +7,8 @@ package Controller;
         import Util.UserChoiceInBoatMenu;
         import Util.UserChoiceInMemberMenu;
         import Util.UserChoiceInStartMenu;
-        import View.*;
 
+        import View.*;
 public class MainController {
 
     //can we throw exception or try and catch errors in controller?
@@ -104,7 +104,6 @@ public class MainController {
                 case QUIT:
                     IWantToGoBack = true;
                     break;
-
             }
         }
     }
@@ -127,17 +126,18 @@ public class MainController {
                     goBack = true;
                     break;
                 case UPDATE:
-                    memberMenu.showUpdateMenu();
-                    boatClub.updateMemberInformation(member, memberMenu.getName(), memberMenu.getPersonalNumber());
+                    memberMenu.showUpdateMenu(member);
+                    memberMenu.showUpdateConfirmationMsg(member);
+                    //boatClub.updateMemberInformation(member, memberMenu.getName(), memberMenu.getPersonalNumber());
                     // registry.updateRegistryFile(boatClub);
                     goBack = true;
                     break;
                 case SPECIFIC_MEMBER:
                     memberMenu.showMemberInformation(member);
                     goBack = memberMenu.askUserForChooseAnOptionInBoatMenu(member);
-                    choice = null;
-                    actUponUserInputInBoatMenu(menu);
 
+                    actUponUserInputInBoatMenu(menu);
+                    choice = null;
                     // registry.updateRegistryFile(boatClub);
                     // goBack = true;
                     break;
@@ -158,28 +158,30 @@ public class MainController {
             case ADD_NEW_BOAT:
                 //member= boatClub.getMember(menu.ShowAccessToMember());
                 Boat boat = memberMenu.showRegisterNewBoat(member);
-                member.registerANewBoat(boat);
-                memberMenu.showAddConfirmation(boat);
-                System.out.println(member.numberOfBoats());
+               // member.registerANewBoat(boat);
+                memberMenu.showAddedBoatConfirmation(boat);
+               // System.out.println(member.numberOfBoats());
                 // choice = null;
                 break;
             case CHANGE_BOAT_INFORMATION:
                 // member= boatClub.getMember(menu.ShowAccessToMember());
                 Boat boat1 = memberMenu.showDeleteOrChangeABoat(member);
                 memberMenu.askUserToUpdateBoatData(boat1);
+                memberMenu.showUpdatedBoatConfirmation(boat1);
                 // this.boat.setType(memberMenu.getBoatType());
                 //this.boat.setLength(memberMenu.getLength());
                 break;
-
             case DELETE_BOAT:
                 //member= boatClub.getMember(menu.ShowAccessToMember());
                 Boat boat2 = memberMenu.showDeleteOrChangeABoat(member);
-                member.deleteBoat(boat2);
+               // member.deleteBoat(boat2);
+                memberMenu.showDeletedBoatConfirmation(boat2);
                 break;
-
             case GO_BACK:
                 break;
         }
     }
 
 }
+
+
