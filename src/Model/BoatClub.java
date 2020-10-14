@@ -40,6 +40,8 @@ public class BoatClub {
         this.member = member;
     //    registry = new Registry();
     //   this.members = registry.loadForVerboseList(registry.verboseList("VerboseList.txt"));
+        if(members==null)
+            throw new IllegalArgumentException("List is empty");
         this.members.remove(member);
         //I used here to return that member who was deleted
         return this.member;
