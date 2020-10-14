@@ -198,8 +198,5 @@ public class StartMenu {
         System.out.println("The information is saved");
     }
 
-    public void showErrInMemberCreation(){
-        System.out.println("Personal nunber should be 10 digit number");
-    }
 
     }
