@@ -30,12 +30,6 @@ public class BoatClub {
         return member;
     }
 
-   /* public void saveOnVerboseList(Member member){
-      //  registry = new Registry();
-        registry.saveFile(member);
-    }*/
-
-
     public Member deleteMember(Member member){
         this.member = member;
     //    registry = new Registry();
