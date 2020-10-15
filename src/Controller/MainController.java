@@ -36,7 +36,7 @@ public class MainController {
                     userChoice=null;//for exiting the loop after add a member
                     break;
                 case MEMBER_MENU:
-                    actUponUserInputInMemberMenu(menu);
+                    actUponUserInputInMemberMenu();
                     userChoice=null;//for exit the loop since userchoice does not change after member menu closed so we always come back here and user choice would be same
                     break;
                 case SAVE:
@@ -60,7 +60,7 @@ public class MainController {
     }
 
     //handling all user choices in member menu
-    private void actUponUserInputInMemberMenu(StartMenu menu) {
+    private void actUponUserInputInMemberMenu() {
         memberMenu = new MemberMenu();
         // MemberMenu menu = new MemberMenu();
         boolean IWantToGoBack = false;
@@ -70,7 +70,7 @@ public class MainController {
             switch (userChoice) {
                 case COMPACT_LIST:
                     this.member = memberMenu.showCompactList(boatClub);//this boat club here show the list and assign the members to the boat club
-                    actionOnCompactList(menu);
+                    actionOnCompactList();
                     // if(this.member!=null)
                     IWantToGoBack = true;
                     break;
@@ -86,9 +86,7 @@ public class MainController {
     }
 
     //handling all user choices in showing list of members
-    private void actionOnCompactList(StartMenu menu){
-        //  Iterable<Member> members = boatClub.getAllMembersFromRegistry();
-        //  Registry registry = new Registry();
+    private void actionOnCompactList(){
         //UserChoiceInMemberMenu choice = null;
         boolean goBack=false;
         UserChoiceInMemberMenu choice = this.memberMenu.getInputInCompactList();
@@ -96,17 +94,13 @@ public class MainController {
 
             switch (choice){
                 case DELETE:
-                    //for debug
-                    // boatClub.loadAllInformationOfMembers(registry);//this should update the arraylist of members from registry
                     memberMenu.showDeletedMemberConfirmationMsg(boatClub.deleteMember(this.member));
-                    // registry.updateRegistryFile(boatClub);
                     goBack = true;
                     break;
                 case UPDATE:
                     memberMenu.showUpdateMenu(member);
                     memberMenu.showUpdateConfirmationMsg(member);
                     //boatClub.updateMemberInformation(member, memberMenu.getName(), memberMenu.getPersonalNumber());
-                    // registry.updateRegistryFile(boatClub);
                     goBack = true;
                     break;
                 case SPECIFIC_MEMBER:
