@@ -300,26 +300,31 @@ public class MemberMenu {
         }
     }
 
-    public Boat showDeleteOrChangeABoat(Member member){
+    public Boat showDeleteOrChangeABoat(Member member , UserChoiceInBoatMenu choice){
         Boat boatFound = null;
-        do {
+       // Boat foundedBoat = null;
             showBoatsOfMember(member);
             System.out.println("Enter index of boat to choose or any other key to go back to last menu:");
             int chosenMember = correctInteger();
-            int index = 1;
-            for (Boat boat : member.boatsOwnedByMember()) {//why we have error here
+             int index = 1;
+            for(Boat boat : member.boatsOwnedByMember()){//when we iterate on a loop we can't remover or add an element
                 if (index == chosenMember) {
-                    try {
-                        boatFound = member.memberSelectABoat(boat);
-                        member.deleteBoat(boatFound);//better to have it here or in controller?
-                    }catch (IllegalArgumentException ex){
-                        System.out.println(ex.getMessage());
+                    boatFound = boat;
+                    //return boat;
+                        // member.deleteBoat(boatFound);//better to have it here or in controller?
+                } else{
+                        index++;
                     }
-                } else {
-                    index++;
                 }
-            }
-        } while (boatFound == null);
+        try {
+           boatFound = member.memberSelectABoat(boatFound);// to check if it s null or not(do u have any  better idea how to handle it
+            if(choice == UserChoiceInBoatMenu.CHANGE_BOAT_INFORMATION)
+                askUserToUpdateBoatData(boatFound);
+            else if(choice == UserChoiceInBoatMenu.DELETE_BOAT)
+                member.deleteBoat(boatFound);
+        } catch (IllegalArgumentException ex) {
+            System.out.println(ex.getMessage());
+        }
         return boatFound;
     }
 
