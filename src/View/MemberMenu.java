@@ -13,11 +13,6 @@ import java.util.Scanner;
 public class MemberMenu extends menu{
     private String userInput;
 
-   /* private String userStringInput(){
-        Scanner sc =new Scanner(System.in);
-        return sc.nextLine();
-    }*/
-
     public void showInstruction() {
         System.out.println("Press 1 to show a compact list of members\n" +
                            "Press 2 to show a verbose list of members\n" +
@@ -294,8 +289,4 @@ public class MemberMenu extends menu{
 
     public void showDeletedBoatConfirmation(Boat boat){System.out.println(boat.getType() + " is deleted");}
 
-    //check if personal number is valid
-    private boolean isValid(String input){
-        return input.length() == 10 && input.matches("-?\\d+(\\.\\d+)?");
-    }
 }

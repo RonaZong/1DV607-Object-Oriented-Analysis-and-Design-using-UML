@@ -4,7 +4,7 @@ import Util.BoatType;
 
 import java.util.Scanner;
 
-public class menu {
+public abstract class menu {
 
     protected String userStringInput(){
         Scanner sc =new Scanner(System.in);
