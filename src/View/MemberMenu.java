@@ -6,25 +6,17 @@ import Model.Member;
 import Util.BoatType;
 import Util.UserChoiceInBoatMenu;
 import Util.UserChoiceInMemberMenu;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 public class MemberMenu {
     private String userInput;
-    private String name;
-    private String personalNumber;
-    private BoatType boatType;
-    private double length;
 
     private String userStringInput(){
         Scanner sc =new Scanner(System.in);
         return sc.nextLine();
     }
-
 
     public void showInstruction() {
         System.out.println("Press 1 to show a compact list of members\n" +
@@ -125,7 +117,7 @@ public class MemberMenu {
             System.out.println("Enter new 10 digits personal number");
              int personalNumber = correctInteger();
              try {
-                 member.updateMemberInformation(name, personalNumber + "");
+                 member.updateMemberInformation(name, (personalNumber + ""));
                  isValid = true;
              }catch (IllegalArgumentException ex){
                  System.out.println(ex.getMessage());
@@ -133,7 +125,7 @@ public class MemberMenu {
         }while (!isValid);
     }
 
-    public void showConfirmationMsg(Member member){
+    public void showDeletedMemberConfirmationMsg(Member member){
         System.out.println(member.getName() + " is deleted");
 
     }
@@ -362,9 +354,7 @@ public class MemberMenu {
         }while(!correctFormat);
         return inputToInteger;
     }
-
-    public String getName(){ return name; }
-
+    
     //check if personal number is valid
     private boolean isValid(String input){
         return input.length() == 10 && input.matches("-?\\d+(\\.\\d+)?");
