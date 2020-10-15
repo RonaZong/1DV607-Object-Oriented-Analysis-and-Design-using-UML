@@ -52,8 +52,8 @@ public class Registry {
         return result;
     }
 
-    public Iterable<Member> loadFromSavedFile(String result){
-        BoatClub boatClub = new BoatClub();
+    public Iterable<Member> loadFromSavedFile(BoatClub boatClub, String result){
+        //BoatClub boatClub = new BoatClub();
         ArrayList<Member> members = new ArrayList<>();
         String[] eachLines = result.split("[\\r\\n]+");//separate each line and put them in and array of string
         if(!eachLines[0].trim().isEmpty()){//In order to check if file is empty or not to not get error of index out boundary in line 62 (we have an array of length 1 which contains \\r\\n
