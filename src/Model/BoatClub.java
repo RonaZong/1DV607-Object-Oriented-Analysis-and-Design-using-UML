@@ -37,7 +37,7 @@ public class BoatClub {
 
     //we load all information with this method once we start the program
     public void getAllMembersFromRegistry(){
-        this.members= (ArrayList<Member>) registry.loadFromSavedFile(registry.verboseList("SaveFile.txt"));
+        this.members= (ArrayList<Member>) registry.loadFromSavedFile(this,registry.verboseList("SaveFile.txt"));
     }
 
     //we save once user choose the save the program in main menu
