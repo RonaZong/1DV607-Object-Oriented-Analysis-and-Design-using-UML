@@ -1,6 +1,5 @@
 package Controller;
 
-        import Extra.BoatMenu;
         import Model.Boat;
         import Model.BoatClub;
         import Model.Member;
@@ -11,15 +10,12 @@ package Controller;
         import View.*;
 public class MainController {
 
-    //can we throw exception or try and catch errors in controller?
     private BoatClub boatClub;
     private MemberMenu memberMenu;
     private Member member;
-    private Boat boat;
 
     public MainController(BoatClub boatClub) {
         this.boatClub = boatClub;
-        // this.menu = console;
     }
 
     //every scenarios would happen in this method
@@ -30,23 +26,16 @@ public class MainController {
 
     //handling all user choices in main menu
     private boolean actUponUserInputInStartMenu(StartMenu menu) {
-        //this.menu.showInstruction();
-        // StartMenu menu = new StartMenu();
         menu.showInstruction();
         UserChoiceInStartMenu userChoice = menu.getUserInputInStartMenu();
 
         while (userChoice !=null) {
             switch (userChoice) {
                 case ADD_NEW_MEMBER:
-                    // MemberCreationController memberCreationController = new MemberCreationController();
-                    // memberCreationController.userWantsToAddMember(boatClub);
                     userWantsToAddMember(menu);
-                    // if(!memberCreationMenu.userWantsToAddMoreMemebr())
                     userChoice=null;//for exiting the loop after add a member
                     break;
                 case MEMBER_MENU:
-                    // MemberMenuController memberMenuController = new MemberMenuController();
-                    // memberMenuController.actUponUserInputInMemberMenu(boatClub);
                     actUponUserInputInMemberMenu(menu);
                     userChoice=null;//for exit the loop since userchoice does not change after member menu closed so we always come back here and user choice would be same
                     break;
@@ -63,22 +52,10 @@ public class MainController {
     }
 
 
-    /** Probably do not need to use (BoatClub) as they are all in onw controller **/
-
-    //handling user choices in adding new member menu
-
     private void userWantsToAddMember(StartMenu menu){
-        //memberCreationMenu = new MemberCreationMenu();
-        // MemberCreationMenu menu = new MemberCreationMenu();
-        // memberCreationMenu.showInstruction();
-        do {
-            Member member = menu.showInstructionOfCreateMember();
-            boatClub.addNewMember(member);
-            // for (int i = 0; i < menu.getNumberOfBoats(); i++) {
-            //   member.registerNewBoat(menu.getType()[i], menu.getBoatLength()[i]);
-            // }
-            // boatClub.saveOnVerboseList(member);
-            menu.confirmationMsg();
+       do {
+            Member newMember = menu.showInstructionOfCreateMember();
+           menu.confirmationMsg(boatClub.addNewMember(newMember));
         }while(menu.userWantsToAddMoreMemebr());
     }
 
@@ -136,7 +113,7 @@ public class MainController {
                     memberMenu.showMemberInformation(member);
                     goBack = memberMenu.askUserForChooseAnOptionInBoatMenu(member);
 
-                    actUponUserInputInBoatMenu(menu);
+                    actUponUserInputInBoatMenu();
                     choice = null;
                     // registry.updateRegistryFile(boatClub);
                     // goBack = true;
@@ -149,9 +126,7 @@ public class MainController {
     }
 
     //handling all user choices for boat issues
-    private void actUponUserInputInBoatMenu(StartMenu menu){
-        // this.boatMenu = new BoatMenu();
-        // boatMenu.showInstruction();
+    private void actUponUserInputInBoatMenu(){
         UserChoiceInBoatMenu choice = memberMenu.getUserInputInBoatMenu();
 
         switch (choice){
@@ -169,9 +144,6 @@ public class MainController {
               //  memberMenu.askUserToUpdateBoatData(boat1);
                 if(boat1 !=null)
                     memberMenu.showUpdatedBoatConfirmation(boat1);
-               // memberMenu.showUpdatedBoatConfirmation(boat1);
-                // this.boat.setType(memberMenu.getBoatType());
-                //this.boat.setLength(memberMenu.getLength());
                 break;
             case DELETE_BOAT:
                 //member= boatClub.getMember(menu.ShowAccessToMember());
