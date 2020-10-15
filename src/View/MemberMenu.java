@@ -81,14 +81,12 @@ public class MemberMenu {
                             "Press 2 to update a member information\n" +
                             "Press 3 to see a specific member data\n" +
                             "Press any other key to go back");
-
                     userInput = userStringInput();
                     return member;
                 } else {
                     index++;
                 }
             }
-
         System.out.println("This member does not exist you will go back to last menu\n");
         }catch (IllegalArgumentException ex){
             System.out.println(ex.getMessage());
@@ -354,7 +352,7 @@ public class MemberMenu {
         }while(!correctFormat);
         return inputToInteger;
     }
-    
+
     //check if personal number is valid
     private boolean isValid(String input){
         return input.length() == 10 && input.matches("-?\\d+(\\.\\d+)?");
