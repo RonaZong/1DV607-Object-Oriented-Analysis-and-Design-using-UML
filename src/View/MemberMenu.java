@@ -10,13 +10,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-public class MemberMenu {
+public class MemberMenu extends menu{
     private String userInput;
 
-    private String userStringInput(){
+   /* private String userStringInput(){
         Scanner sc =new Scanner(System.in);
         return sc.nextLine();
-    }
+    }*/
 
     public void showInstruction() {
         System.out.println("Press 1 to show a compact list of members\n" +
@@ -42,6 +42,7 @@ public class MemberMenu {
         return choice;
     }
 
+    //assign choice of user in creating a new member  to a enum to use in controller
     public UserChoiceInMemberMenu getInputInCompactList() {
         UserChoiceInMemberMenu choice = null;
 
@@ -107,7 +108,7 @@ public class MemberMenu {
         }
     }
 
-    public void showUpdateMenu(Member member){
+    public void showUpdateMemberMenu(Member member){
         boolean isValid = false;
         System.out.println("Enter new name");
         String name = userStringInput();
@@ -128,7 +129,7 @@ public class MemberMenu {
 
     }
 
-    public void showUpdateConfirmationMsg(Member member){
+    public void showUpdatedMemberConfirmationMsg(Member member){
         System.out.println(member.getName() + " is updated");
     }
 
@@ -136,7 +137,6 @@ public class MemberMenu {
         System.out.println("This member name is : " + member.getName() +
                 "\nwith personal number of " + member.getPersonalNumber() +
                 "\nwith memberID of " + member.getMemberID());
-        //it might give a null exception
         System.out.println("This member has " + member.numberOfBoats() + "boats");
         int index=1;
         if(member.numberOfBoats() != 0)
@@ -183,11 +183,6 @@ public class MemberMenu {
             if (!userInput.equalsIgnoreCase("1"))
                 return true;
         }
-        // System.out.println("Enter index of boat to choose or any other key to go back to last menu:");
-        //  String chosenMember = userStringInput();
-        // int index = 1;
-        //for(Boat boat : member.boatsOwnedByMember()) {
-        //   if (index == Integer.parseInt(chosenMember)) {
         else {
             System.out.println("Press 1 to register a bew boat\n" +
                     "Press 2 to update the boat information\n" +
@@ -200,14 +195,6 @@ public class MemberMenu {
             if (!options.contains(userInput) )
                 return true;
         }
-        // } else {
-        //    index++;
-        // }
-        // }
-        // }else{
-        //   System.out.println("Press 1 to register a new boat");
-        // userInput = userStringInput();
-        // }
         return false;
     }
 
@@ -229,7 +216,7 @@ public class MemberMenu {
         return choice;
     }
 
-    public Boat showRegisterNewBoat(Member member){
+    public Boat showRegisterNewBoatMenu(Member member){
         Boat boat = null;
         do {
             System.out.println("Please enter length of the boat :");
@@ -244,25 +231,10 @@ public class MemberMenu {
                 System.out.println(ex.getMessage());
             }
         }while(boat == null);
-
         return boat;
     }
 
     public void showAddedBoatConfirmation(Boat boat){ System.out.println(boat.getType()+" is added"); }
-
-    private double correctDouble(){
-        boolean isValid=false;
-        double inputToDouble = 0;
-        do{
-            try{
-                inputToDouble = Double.parseDouble(userStringInput());
-                isValid = true;
-            }catch (NumberFormatException ex){
-                System.out.println("Enter a correct number");
-            }
-        }while(!isValid);
-        return inputToDouble;
-    }
 
     public void askUserToUpdateBoatData(Boat boat){
         boolean isValid = false;
@@ -295,7 +267,7 @@ public class MemberMenu {
        // Boat foundedBoat = null;
             showBoatsOfMember(member);
             System.out.println("Enter index of boat to choose or any other key to go back to last menu:");
-            int chosenMember = correctInteger();
+            int chosenMember = super.correctInteger();
              int index = 1;
             for(Boat boat : member.boatsOwnedByMember()){//when we iterate on a loop we can't remover or add an element
                 if (index == chosenMember) {
@@ -321,37 +293,6 @@ public class MemberMenu {
     public void showUpdatedBoatConfirmation(Boat boat){System.out.println(boat.getType() + " is updated");}
 
     public void showDeletedBoatConfirmation(Boat boat){System.out.println(boat.getType() + " is deleted");}
-
-    private BoatType correctBoatType(){
-        boolean correctFormat=false;
-        BoatType input = null ;
-        do{
-            try{
-                input = BoatType.values()[Integer.parseInt(userStringInput())-1];
-                correctFormat=true;
-            }catch (NumberFormatException ex){
-                System.out.println("Enter a number");
-            }catch (ArrayIndexOutOfBoundsException ex){
-                System.out.println("You have to choose between 1 to 4");
-            }
-        }while(!correctFormat);
-        return input;
-
-    }
-
-    private int correctInteger(){
-        boolean correctFormat=false;
-        int inputToInteger = 0;
-        do{
-            try{
-                inputToInteger = Integer.parseInt(userStringInput());
-                correctFormat=true;
-            }catch (NumberFormatException ex){
-                System.out.println("Enter a correct number");
-            }
-        }while(!correctFormat);
-        return inputToInteger;
-    }
 
     //check if personal number is valid
     private boolean isValid(String input){
