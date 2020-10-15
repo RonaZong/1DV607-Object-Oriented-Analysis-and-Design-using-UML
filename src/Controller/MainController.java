@@ -98,8 +98,8 @@ public class MainController {
                     goBack = true;
                     break;
                 case UPDATE:
-                    memberMenu.showUpdateMenu(member);
-                    memberMenu.showUpdateConfirmationMsg(member);
+                    memberMenu.showUpdateMemberMenu(member);
+                    memberMenu.showUpdatedMemberConfirmationMsg(member);
                     //boatClub.updateMemberInformation(member, memberMenu.getName(), memberMenu.getPersonalNumber());
                     goBack = true;
                     break;
@@ -126,7 +126,7 @@ public class MainController {
         switch (choice){
             case ADD_NEW_BOAT:
                 //member= boatClub.getMember(menu.ShowAccessToMember());
-                Boat boat = memberMenu.showRegisterNewBoat(member);
+                Boat boat = memberMenu.showRegisterNewBoatMenu(member);
                // member.registerANewBoat(boat);
                 memberMenu.showAddedBoatConfirmation(boat);
                // System.out.println(member.numberOfBoats());
