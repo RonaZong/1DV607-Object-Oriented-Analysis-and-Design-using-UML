@@ -165,17 +165,20 @@ public class MainController {
                 break;
             case CHANGE_BOAT_INFORMATION:
                 // member= boatClub.getMember(menu.ShowAccessToMember());
-                Boat boat1 = memberMenu.showDeleteOrChangeABoat(member);
-                memberMenu.askUserToUpdateBoatData(boat1);
-                memberMenu.showUpdatedBoatConfirmation(boat1);
+                Boat boat1 = memberMenu.showDeleteOrChangeABoat(member,UserChoiceInBoatMenu.CHANGE_BOAT_INFORMATION);
+              //  memberMenu.askUserToUpdateBoatData(boat1);
+                if(boat1 !=null)
+                    memberMenu.showUpdatedBoatConfirmation(boat1);
+               // memberMenu.showUpdatedBoatConfirmation(boat1);
                 // this.boat.setType(memberMenu.getBoatType());
                 //this.boat.setLength(memberMenu.getLength());
                 break;
             case DELETE_BOAT:
                 //member= boatClub.getMember(menu.ShowAccessToMember());
-                Boat boat2 = memberMenu.showDeleteOrChangeABoat(member);
+                Boat boat2 = memberMenu.showDeleteOrChangeABoat(member,UserChoiceInBoatMenu.DELETE_BOAT);
                // member.deleteBoat(boat2);
-                memberMenu.showDeletedBoatConfirmation(boat2);
+                if(boat2 != null)
+                    memberMenu.showDeletedBoatConfirmation(boat2);
                 break;
             case GO_BACK:
                 break;
