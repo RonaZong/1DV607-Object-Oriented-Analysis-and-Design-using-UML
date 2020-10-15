@@ -1,30 +1,10 @@
 package View;
 
-import Model.Boat;
-import Model.BoatClub;
 import Model.Member;
-import Util.BoatType;
 import Util.UserChoiceInStartMenu;
 
-import java.util.Scanner;
-
-public class StartMenu {
-  //  private Scanner sc;
+public class StartMenu extends menu {
     private String userInput;
-    private String name;
-    private String personalNumber;
-    private int numberOfBoats;
-    private double[] boatLength;
-    private BoatType[] type;
-
-
-    /** create member in the view, send it to controller, and controller send it to registry.
-     * the validation "isValid" should be in the model */
-
-    private String userStringInput(){
-        Scanner sc =new Scanner(System.in);
-        return sc.nextLine();
-    }
 
     public void showInstruction() {
 
@@ -72,11 +52,11 @@ public class StartMenu {
             System.out.println("----- Add a Member -----\n" +
                     "In order to add a member you have to enter following information : \n" +
                     "Please enter user name: ");
-            this.name = userStringInput();
+            String name = userStringInput();
             System.out.print("Please enter personal number in 10 digits: ");
-            this.personalNumber = userStringInput();
+            int personalNumber = correctInteger();
             try {
-                    member = new Member(name, personalNumber);
+                    member = new Member(name, (personalNumber+""));
             }catch(IllegalArgumentException ex){
                 System.out.println(ex.getMessage());
             }
@@ -84,7 +64,7 @@ public class StartMenu {
         return member;
     }
 
-    public void userWantsToAddBoat(Member member){
+   /* public void userWantsToAddBoat(Member member){
         System.out.println("Please enter numbers of boats:");
         this.numberOfBoats = correctInteger();
         boatLength = new double[numberOfBoats];
@@ -97,78 +77,7 @@ public class StartMenu {
             type[i] = correctBoatType();
             member.registerNewBoat(type[i], boatLength[i]);
         }
-    }
-
-//    private boolean isValid(String input){
-//        return input.length() == 10 && input.matches("-?\\d+(\\.\\d+)?");
-//        //check its digits
-//    }
-
-    //check if correct integer used by user
-    private int correctInteger(){
-        boolean isValid=false;
-         int inputToInteger=0;
-        do{
-            try{
-                inputToInteger = Integer.parseInt(userStringInput());
-               // positiveNumbersOfBoats(inputToInteger);
-                isValid = isPositive(inputToInteger);
-            }catch (NumberFormatException ex){
-                System.out.println("Enter a correct number");
-            }
-            catch (IllegalArgumentException ex){
-                System.out.println(ex.getMessage());
-            }
-        }while(!isValid);
-        return inputToInteger;
-    }
-
-    private boolean isPositive(int input){
-        if(input<0)
-            throw new IllegalArgumentException("Numbers of boats can't be a negative number");
-        return true;
-    }
-
-    //check if correct double format used by user
-    private double correctDouble(){
-        boolean isValid =false;
-        double inputToDouble = 0;
-        do{
-            try{
-                inputToDouble = Double.parseDouble(userStringInput());
-                isValid= true;
-            }catch (NumberFormatException ex){
-                System.out.println("Enter a correct number");
-            }
-        }while(!isValid);
-        return inputToDouble;
-    }
-
-    //check if userinput is correct in boat type
-    private BoatType correctBoatType(){
-        boolean correctFormat=false;
-        BoatType input = null ;
-        do{
-            try{
-                input = BoatType.values()[Integer.parseInt(userStringInput())-1];
-                correctFormat=true;
-            }catch (NumberFormatException ex){
-                System.out.println("Enter a number");
-            }catch (ArrayIndexOutOfBoundsException ex){
-                System.out.println("You have to choose between 1 to 4");
-            }
-        }while(!correctFormat);
-        return input;
-
-    }
-
-    public String getName(){
-        return this.name;
-    }
-
-    public String getPersonalNumber(){
-        return  this.personalNumber;
-    }
+    }*/
 
     public void confirmationMsg(Member member){
         System.out.println(member.getName() +" is added");
@@ -183,12 +92,9 @@ public class StartMenu {
             answer = userStringInput();
         }while (!answer.equalsIgnoreCase("yes") && !answer.equalsIgnoreCase("no"));
         return answer.equalsIgnoreCase("yes");
-
     }
 
     public void showSaveMsg(){
         System.out.println("The information is saved");
     }
-
-
     }
