@@ -16,11 +16,7 @@ public class BoatClub {
     }
 
     public Member addNewMember(Member member){
-        //CompactListSave save = new CompactListSave();
         members.add(member);
-
-       // save.saveFileOnCompactList(member);
-
         return member;
     }
 
@@ -32,8 +28,6 @@ public class BoatClub {
 
     public Member deleteMember(Member member){
         this.member = member;
-    //    registry = new Registry();
-    //   this.members = registry.loadForVerboseList(registry.verboseList("VerboseList.txt"));
         if(members==null)
             throw new IllegalArgumentException("List is empty");
         this.members.remove(member);
@@ -41,28 +35,15 @@ public class BoatClub {
         return this.member;
     }
 
-    public void updateMemberInformation(Member member , String name , String personalNumber){
-            member.setName(name);
-            member.setPersonalNumber(personalNumber);
-    }
-
     //we load all information with this method once we start the program
-    public Iterable<Member> getAllMembersFromRegistry(){
-
-        //registry = new Registry();
+    public void getAllMembersFromRegistry(){
         this.members= (ArrayList<Member>) registry.loadFromSavedFile(registry.verboseList("SaveFile.txt"));
-        return members;
     }
 
     //we save once user choose the save the program in main menu
     public void save(){
         Registry registry = new Registry();
         registry.updateRegistryFile(this);
-    }
-
-
-    public void loadAllInformationOfMembers(Registry list){
-        this.members = (ArrayList<Member>) list.loadFromSavedFile(list.verboseList("VerboseList.txt"));
     }
 
     //enter a member name to get member
@@ -77,14 +58,9 @@ public class BoatClub {
 
     //other than first time, we use this one to get information of arrayList
     public Iterable<Member> getAllMembersLocally(){
-
         if(this.members.isEmpty())
             throw new IllegalArgumentException("List is empty\n" +
                     "----------------");
         return this.members;
-    }
-
-    public void setMembers(ArrayList<Member> members) {
-        this.members = members;
     }
 }
