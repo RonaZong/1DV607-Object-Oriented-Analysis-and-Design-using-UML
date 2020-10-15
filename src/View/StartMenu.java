@@ -170,8 +170,8 @@ public class StartMenu {
         return  this.personalNumber;
     }
 
-    public void confirmationMsg(){
-        System.out.println(this.name+" is added");
+    public void confirmationMsg(Member member){
+        System.out.println(member.getName() +" is added");
     }
 
     public boolean userWantsToAddMoreMemebr() {
