@@ -121,7 +121,7 @@ public class MainController {
                 case DELETE:
                     //for debug
                     // boatClub.loadAllInformationOfMembers(registry);//this should update the arraylist of members from registry
-                    memberMenu.showConfirmationMsg(boatClub.deleteMember(this.member));
+                    memberMenu.showDeletedMemberConfirmationMsg(boatClub.deleteMember(this.member));
                     // registry.updateRegistryFile(boatClub);
                     goBack = true;
                     break;
