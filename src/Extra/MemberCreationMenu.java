@@ -1,7 +1,6 @@
 package Extra;
 
-import Model.BoatClub;
-import Util.BoatType;
+import Model.BoatType;
 
 import java.util.Scanner;
 
