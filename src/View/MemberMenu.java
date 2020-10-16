@@ -289,4 +289,9 @@ public class MemberMenu extends menu{
 
     public void showDeletedBoatConfirmation(Boat boat){System.out.println(boat.getType() + " is deleted");}
 
+        System.out.println("If you want to update your personal number enter your new personal" +
+                "number otherwise press enter");
+        String personalNumber = sc.nextLine();
+        this.boatClub.updateMemberInformation(this.member, name, personalNumber);
+    }
 }

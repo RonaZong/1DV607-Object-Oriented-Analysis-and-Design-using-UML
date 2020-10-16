@@ -66,8 +66,6 @@ public class Member {
         return Long.toString(ID).substring(9,13);
     }
 
-
-
     public void registerANewBoat(Boat boat){boats.add(boat);}
 
     public void setMemberID(String memberID){ this.memberID=memberID; }

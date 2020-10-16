@@ -12,5 +12,6 @@ public class Main {
         MainController user = new MainController(boatClub);
 
         user.memberAction(menu);
+
     }
 }

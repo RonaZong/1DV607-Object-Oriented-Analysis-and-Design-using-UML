@@ -36,7 +36,6 @@ public class StartMenu extends menu {
                     break;
                 default:
                     showError();
-
             }
         return choice;
     }
@@ -98,3 +97,4 @@ public class StartMenu extends menu {
         System.out.println("The information is saved");
     }
     }
+}
