@@ -5,6 +5,7 @@ import Util.UserChoiceInStartMenu;
 
 public class StartMenu extends menu {
 
+    //show the start menu
     public void showInstruction() {
 
         System.out.println("Welcome to Boat Club\n" +
@@ -17,6 +18,7 @@ public class StartMenu extends menu {
     }
 
 
+    //take user input and return a suitable enum related to user input
     public UserChoiceInStartMenu getUserInputInStartMenu() {
         UserChoiceInStartMenu choice = null;
 
@@ -44,11 +46,12 @@ public class StartMenu extends menu {
         return choice;
     }
 
+    //if user use undefined option in start menu this error will be shown
      private void showError(){
         System.out.println("You need to enter the correct number\n");
      }
 
-
+    //ask user to enter name and personal number to create that member and return it
     public Member showInstructionOfCreateMember( ) {
         Member member = null;
         do {
@@ -67,12 +70,13 @@ public class StartMenu extends menu {
         return member;
     }
 
+    //show confirmation message after adding that member
     public void confirmationMsg(Member member){
         System.out.println("\n" + member.getName() +" is added\n");
     }
 
+    //after adding a member asking if user wants to add more member or not and act upon that
     public boolean userWantsToAddMoreMember() {
-
         String answer ="";
         do {
             System.out.println("Do you want to add another member\n" +
@@ -82,6 +86,7 @@ public class StartMenu extends menu {
         return answer.equalsIgnoreCase("yes");
     }
 
+    //show the instruction of how program works only in parts that might be not clear when user start the program
     public void showInstructionOfProgram(){
         System.out.println("For checking the list of members whether in detail or just a compact list you can go\n" +
                 "to member menu and choose which kind of list you want to see\n\n" +
@@ -94,6 +99,7 @@ public class StartMenu extends menu {
         goBackToStartMenu();
     }
 
+    //show the confirmation message after saving the program
     public void showSaveMsg(){
         System.out.println("The information is saved");
     }
