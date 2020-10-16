@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class Registry {
     private PrintWriter saver=null;
 
+    //take a file path and return the string of what is written in the text
     public String verboseList(String filePath){
         String result = "";
         try {
@@ -27,6 +28,7 @@ public class Registry {
         return result;
     }
 
+    //return an iterable of memebrs which loaded from text file
     public Iterable<Member> loadFromSavedFile(BoatClub boatClub, String result){
        // BoatClub boatClub1 = boatClub;
         ArrayList<Member> members = new ArrayList<>();
@@ -47,6 +49,7 @@ public class Registry {
         return members;
     }
 
+    //save or update text file each time we use save in start menu
     public void updateRegistryFile(BoatClub boatClub){
         File file = new File("SaveFile.txt");
         try {
