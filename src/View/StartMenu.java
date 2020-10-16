@@ -4,7 +4,6 @@ import Model.Member;
 import Util.UserChoiceInStartMenu;
 
 public class StartMenu extends menu {
-    private String userInput;
 
     public void showInstruction() {
 
@@ -12,15 +11,16 @@ public class StartMenu extends menu {
                 "-----------------------\n" +
                 "Press 1 to add a new member\n" +
                 "Press 2 to go to member menu\n" +
-                "Press 3 to save\n" +
-                "Press 4 to quit");
+                "Press 3 to see the instruction\n" +
+                "Press 4 to save\n" +
+                "Press 5 to quit");
     }
 
 
     public UserChoiceInStartMenu getUserInputInStartMenu() {
         UserChoiceInStartMenu choice = null;
 
-            this.userInput = userStringInput();
+            String userInput = userStringInput();
             switch (userInput) {
                 case "1":
                     choice = UserChoiceInStartMenu.ADD_NEW_MEMBER;
@@ -29,9 +29,12 @@ public class StartMenu extends menu {
                     choice = UserChoiceInStartMenu.MEMBER_MENU;
                     break;
                 case "3":
-                    choice = UserChoiceInStartMenu.SAVE;
+                    choice = UserChoiceInStartMenu.SEE_INSTRUCTION;
                     break;
                 case "4":
+                    choice = UserChoiceInStartMenu.SAVE;
+                    break;
+                case "5":
                     choice = UserChoiceInStartMenu.QUIT;
                     break;
                 default:
@@ -54,7 +57,7 @@ public class StartMenu extends menu {
                     "Please enter user name: ");
             String name = userStringInput();
             System.out.print("Please enter personal number in 10 digits: ");
-            int personalNumber = correctInteger();
+            long personalNumber = correctLong();
             try {
                     member = new Member(name, (personalNumber+""));
             }catch(IllegalArgumentException ex){
@@ -64,34 +67,31 @@ public class StartMenu extends menu {
         return member;
     }
 
-   /* public void userWantsToAddBoat(Member member){
-        System.out.println("Please enter numbers of boats:");
-        this.numberOfBoats = correctInteger();
-        boatLength = new double[numberOfBoats];
-        type = new BoatType[numberOfBoats];
-        for(int i = 0 ; i<numberOfBoats;i++){
-            System.out.println("Please enter length of the boat " + (i+1)+ ":");
-            boatLength[i] = correctDouble();
-            System.out.println("Please enter boat type(1 for sailboat, 2 for motor sail, " +
-                    "3 for kayak/canoe, and 4 for others)");
-            type[i] = correctBoatType();
-            member.registerNewBoat(type[i], boatLength[i]);
-        }
-    }*/
-
     public void confirmationMsg(Member member){
-        System.out.println(member.getName() +" is added");
+        System.out.println("\n" + member.getName() +" is added\n");
     }
 
-    public boolean userWantsToAddMoreMemebr() {
+    public boolean userWantsToAddMoreMember() {
 
         String answer ="";
         do {
             System.out.println("Do you want to add another member\n" +
-                    "Press \"yes\" to add a new member or \"no\" to go back to main menu");
+                    "Press \"yes\" to add a new member or \"no\" to go back to start menu");
             answer = userStringInput();
         }while (!answer.equalsIgnoreCase("yes") && !answer.equalsIgnoreCase("no"));
         return answer.equalsIgnoreCase("yes");
+    }
+
+    public void showInstructionOfProgram(){
+        System.out.println("For checking the list of members whether in detail or just a compact list you can go\n" +
+                "to member menu and choose which kind of list you want to see\n\n" +
+                "For see a specific member's information or update or delete a member information\n" +
+                "you need to go to \"member menu\" and then \"compact list\" then choose\n" +
+                "index number of that member and choose your desired option\n\n" +
+                "For adding or updating or deleting a member's boat you need to first go to a \"specific member's\n" +
+                "information\" then choose your desired option there\n\n" +
+                "For saving information you need to save all changes you made before you quit the program.\n");
+        goBackToStartMenu();
     }
 
     public void showSaveMsg(){
