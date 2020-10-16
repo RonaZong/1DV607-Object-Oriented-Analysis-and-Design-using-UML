@@ -1,15 +1,12 @@
 package Model;
 
-import Util.BoatType;
-
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Member {
     private String name;
     private String personalNumber;
     private int numbersOfBoatsOwnByAMember;
-    private String memberID ;//=1;
+    private String memberID ;
     private ArrayList<Boat> boats = new ArrayList<>();
 
 
@@ -18,13 +15,6 @@ public class Member {
         setPersonalNumber(personalNumber);
         this.memberID = creatUniqueID();
     }
-
-  /*  public Member(String name, String personalNumber, ArrayList<Boat> boats) {
-        this.name = name;
-        this.personalNumber = personalNumber;
-        this.memberID=creatUniqueID();
-        this.boats = boats;
-    }*/
 
     public Member(String name , String personalNumber,String uniqueID){
         setName(name);
@@ -86,7 +76,7 @@ public class Member {
         return this.boats.size();
     }
 
-    public void registerNewBoat(Util.BoatType boatType, double length){
+    public void registerNewBoat(BoatType boatType, double length){
         Boat boat = new Boat(boatType, length);
         boats.add(boat);
     }
