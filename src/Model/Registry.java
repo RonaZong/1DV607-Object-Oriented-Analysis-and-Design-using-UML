@@ -1,51 +1,26 @@
 package Model;
 
-import Util.BoatType;
-
 import java.io.File;
-import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Registry {
-    private Scanner reader;
     private PrintWriter saver=null;
-
-
-   /* public void saveFile(Member member) {
-        File file = new File("VerboseList.txt");
-        try {
-            saver = new PrintWriter(new FileWriter(file,true));
-
-            saver.print( member.getName() + ":" + member.getPersonalNumber() +":"
-                    + member.getMemberID() + ":" + member.numberOfBoats());
-            for(Boat boat:member.boatsOwnedByMember())
-                saver.print(":" + boat.getType() + ":" + boat.getLength());
-         saver.println();
-            saver.close();
-
-        }catch(Exception e){
-
-        }
-    }*/
 
     public String verboseList(String filePath){
         String result = "";
         try {
-            reader = new Scanner(new File(filePath));
-            result+=reader.nextLine()+"\n";
+            Scanner reader = new Scanner(new File(filePath));
+            result+= reader.nextLine()+"\n";
             while (reader.hasNextLine()){
-              /* String thisLine = reader.nextLine();
-               String[] parameters = thisLine.split(",");
-               Member member = new Member(parameters[1], parameters[2]);
-               member.setNumbersOfBoatsOwnByAMember(Integer.parseInt(parameters[3]));*/
-                result+=reader.nextLine()+"\n";
+                result+= reader.nextLine()+"\n";
             }
+            reader.close();
         }catch(Exception e){
             try {
                 saver = new PrintWriter(new File(filePath));//if text file is not there this will make it first
-            }catch (Exception ex){
+            }catch (Exception ignored){
 
             }
         }
