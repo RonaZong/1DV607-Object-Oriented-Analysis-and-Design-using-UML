@@ -18,6 +18,7 @@ public class MemberMenu extends menu{
                             "Press any key to go back to main menu");
     }
 
+    //take user input and return a related enum value to use in member menu
     public UserChoiceInMemberMenu getUserInputInMemberMenu() {
         UserChoiceInMemberMenu choice = null;
         String input = userStringInput();
@@ -57,6 +58,7 @@ public class MemberMenu extends menu{
         return choice;
     }
 
+    //show the compact list and return a member chose by user to do the desired request of user
     public Member showCompactList(BoatClub boatClub){
         int index =1;
         try {//if list is empty
@@ -91,6 +93,7 @@ public class MemberMenu extends menu{
         return null;
     }
 
+    //show in detail list of members
     public void showVerboseList(BoatClub boatClub){
         try {// if list is empty
             for(Member member : boatClub.getAllMembersLocally()){
@@ -104,6 +107,7 @@ public class MemberMenu extends menu{
         }
     }
 
+    // show update menu of member
     public void showUpdateMemberMenu(Member member){
         boolean isValid = false;
         System.out.println("Enter new name");
@@ -120,6 +124,7 @@ public class MemberMenu extends menu{
         }while (!isValid);
     }
 
+    // show deleted member confirmation
     public void showDeletedMemberConfirmationMsg(Member member){
         System.out.println(member.getName() + " is deleted\n");
         goBackToStartMenu();
@@ -144,6 +149,7 @@ public class MemberMenu extends menu{
         }
     }
 
+    //if boat doesnt exist on the list it return false
     public boolean askUserForChooseAnOptionInBoatMenu(Member member){
 
         if(member.numberOfBoats()==0) {
@@ -168,6 +174,7 @@ public class MemberMenu extends menu{
         return false;
     }
 
+    //return the related enum of user input to hadle in boat menu
     public UserChoiceInBoatMenu getUserInputInBoatMenu(){
         UserChoiceInBoatMenu choice = null;
         switch (userInput){
@@ -186,6 +193,7 @@ public class MemberMenu extends menu{
         return choice;
     }
 
+    //show the menu of registering a new boat and return the boat
     public Boat showRegisterNewBoatMenu(Member member){
         Boat boat = null;
         do {
