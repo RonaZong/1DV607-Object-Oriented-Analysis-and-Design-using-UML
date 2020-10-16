@@ -1,6 +1,6 @@
 package View;
 
-import Util.BoatType;
+import Model.BoatType;
 
 import java.util.Scanner;
 
@@ -55,5 +55,24 @@ public abstract class menu {
             }
         }while(!isValid);
         return inputToDouble;
+    }
+
+    protected long correctLong(){
+        boolean correctFormat=false;
+        long inputToInteger = 0;
+        do{
+            try{
+                inputToInteger = Long.parseLong(userStringInput());
+                correctFormat=true;
+            }catch (NumberFormatException ex){
+                System.out.println("Enter a correct number");
+            }
+        }while(!correctFormat);
+        return inputToInteger;
+    }
+
+    protected void goBackToStartMenu(){
+        System.out.println("Press any key to go back to start menu.");
+        userStringInput();
     }
 }

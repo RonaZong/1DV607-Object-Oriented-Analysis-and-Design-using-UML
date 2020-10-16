@@ -39,6 +39,10 @@ public class MainController {
                     actUponUserInputInMemberMenu();
                     userChoice=null;//for exit the loop since userchoice does not change after member menu closed so we always come back here and user choice would be same
                     break;
+                case SEE_INSTRUCTION:
+                    menu.showInstructionOfProgram();
+                    userChoice=null;//for exit the loop since userchoice does not change after member menu closed so we always come back here and user choice would be same
+                    break;
                 case SAVE:
                     boatClub.save();
                     userChoice=null;
@@ -56,7 +60,7 @@ public class MainController {
        do {
             Member newMember = menu.showInstructionOfCreateMember();
            menu.confirmationMsg(boatClub.addNewMember(newMember));
-        }while(menu.userWantsToAddMoreMemebr());
+        }while(menu.userWantsToAddMoreMember());
     }
 
     //handling all user choices in member menu
@@ -109,7 +113,6 @@ public class MainController {
 
                     actUponUserInputInBoatMenu();
                     choice = null;
-                    // registry.updateRegistryFile(boatClub);
                     // goBack = true;
                     break;
                 case QUIT:

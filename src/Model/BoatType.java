@@ -1,4 +1,4 @@
-package Util;
+package Model;
 
 public enum BoatType {
 
