@@ -3,12 +3,11 @@ package View;
 import Model.Boat;
 import Model.BoatClub;
 import Model.Member;
-import Util.BoatType;
+import Model.BoatType;
 import Util.UserChoiceInBoatMenu;
 import Util.UserChoiceInMemberMenu;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 
 public class MemberMenu extends menu{
     private String userInput;
@@ -83,7 +82,8 @@ public class MemberMenu extends menu{
                     index++;
                 }
             }
-        System.out.println("This member does not exist you will go back to last menu\n");
+            System.out.println("This member does not exist you will go back to start menu\n");
+            goBackToStartMenu();
         }catch (IllegalArgumentException ex){
             System.out.println(ex.getMessage());
         }
@@ -96,8 +96,9 @@ public class MemberMenu extends menu{
             for(Member member : boatClub.getAllMembersLocally()){
                 System.out.println("------------------------");
                 showMemberInformation(member);
-                System.out.println("\n----------------------\n\n");
+                System.out.println("\n----------------------\n");
             }
+            goBackToStartMenu();
         }catch (IllegalArgumentException ex){
             System.out.println(ex.getMessage());
         }
@@ -109,7 +110,7 @@ public class MemberMenu extends menu{
         String name = userStringInput();
         do {
             System.out.println("Enter new 10 digits personal number");
-             int personalNumber = correctInteger();
+             long personalNumber = correctLong();
              try {
                  member.updateMemberInformation(name, (personalNumber + ""));
                  isValid = true;
@@ -120,12 +121,13 @@ public class MemberMenu extends menu{
     }
 
     public void showDeletedMemberConfirmationMsg(Member member){
-        System.out.println(member.getName() + " is deleted");
-
+        System.out.println(member.getName() + " is deleted\n");
+        goBackToStartMenu();
     }
 
     public void showUpdatedMemberConfirmationMsg(Member member){
-        System.out.println(member.getName() + " is updated");
+        System.out.println(member.getName() + " is updated\n");
+        goBackToStartMenu();
     }
 
     public void showMemberInformation(Member member) {
@@ -140,34 +142,7 @@ public class MemberMenu extends menu{
             System.out.println((index++) + " - Boat type :" + boat.getType() +
                     ", Boat Length : " + boat.getLength());
         }
-
     }
-
-    /*public Boat askUserForChooseAnOptionInBoatMenu(Member member){
-        if(member.numberOfBoats()==0){
-            System.out.println("Press 1 to register a new boat\n" +
-                    "Or press any key to continue");
-            userInput = userStringInput();
-            if(!userInput.equalsIgnoreCase("1"))
-            System.out.println("Enter index of boat to choose or any other key to go back to last menu:");
-        String chosenMember = userStringInput();
-        int index = 1;
-        for(Boat boat : member.boatsOwnedByMember()) {
-            if (index == Integer.parseInt(chosenMember)) {
-                System.out.println("Press 2 to update the boat information\n" +
-                                   "Press 3 to delete the boat");
-                userInput = userStringInput();
-                return boat;
-            } else {
-                index++;
-            }
-        }
-        }else{
-            System.out.println("Press 1 to register a new boat");
-            userInput = userStringInput();
-        }
-        return null;
-    }*/
 
     public boolean askUserForChooseAnOptionInBoatMenu(Member member){
 
@@ -229,7 +204,10 @@ public class MemberMenu extends menu{
         return boat;
     }
 
-    public void showAddedBoatConfirmation(Boat boat){ System.out.println(boat.getType()+" is added"); }
+    public void showAddedBoatConfirmation(Boat boat){
+        System.out.println(boat.getType()+" is added\n");
+        goBackToStartMenu();
+    }
 
     public void askUserToUpdateBoatData(Boat boat){
         boolean isValid = false;
@@ -259,7 +237,6 @@ public class MemberMenu extends menu{
 
     public Boat showDeleteOrChangeABoat(Member member , UserChoiceInBoatMenu choice){
         Boat boatFound = null;
-       // Boat foundedBoat = null;
             showBoatsOfMember(member);
             System.out.println("Enter index of boat to choose or any other key to go back to last menu:");
             int chosenMember = super.correctInteger();
@@ -267,8 +244,6 @@ public class MemberMenu extends menu{
             for(Boat boat : member.boatsOwnedByMember()){//when we iterate on a loop we can't remover or add an element
                 if (index == chosenMember) {
                     boatFound = boat;
-                    //return boat;
-                        // member.deleteBoat(boatFound);//better to have it here or in controller?
                 } else{
                         index++;
                     }
@@ -285,8 +260,14 @@ public class MemberMenu extends menu{
         return boatFound;
     }
 
-    public void showUpdatedBoatConfirmation(Boat boat){System.out.println(boat.getType() + " is updated");}
+    public void showUpdatedBoatConfirmation(Boat boat){
+        System.out.println(boat.getType() + " is updated");
+        goBackToStartMenu();
+    }
 
-    public void showDeletedBoatConfirmation(Boat boat){System.out.println(boat.getType() + " is deleted");}
+    public void showDeletedBoatConfirmation(Boat boat){
+        System.out.println(boat.getType() + " is deleted");
+        goBackToStartMenu();
+    }
 
 }
