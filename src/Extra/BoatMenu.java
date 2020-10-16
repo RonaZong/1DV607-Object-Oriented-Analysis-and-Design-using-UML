@@ -1,9 +1,6 @@
 package Extra;
 
-import Util.BoatType;
-import Util.UserChoiceInBoatMenu;
-
-import java.util.Scanner;
+import Model.BoatType;
 
 public class BoatMenu {
     private BoatType boatType;
