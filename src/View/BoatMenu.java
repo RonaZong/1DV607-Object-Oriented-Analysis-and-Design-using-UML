@@ -19,10 +19,10 @@ public class BoatMenu {
 
     public void showBoatMenu(){
         System.out.println("----Boats' menu----\n" +
-                "Press 1 to register a new boat\n" +
-                "Press 2 to update a boat information\n" +
+                "Press 1 to add a boat\n" +
+                "Press 2 to update a boat\n" +
                 "Press 3 to delete a boat\n" +
-                "Press 0 to quit\n");
+                "Press 0 to quit");
         int userInput = sc.nextInt();
         actUponUserInputInBoatMenu(userInput, this.member, this.boat);
     }
