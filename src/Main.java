@@ -5,7 +5,6 @@ import View.StartMenu;
 public class Main {
 
     public static void main(String[] args) {
-
         BoatClub boatClub = new BoatClub();
         StartMenu startMenu = new StartMenu();
         MainController mainController = new MainController(boatClub, startMenu);
