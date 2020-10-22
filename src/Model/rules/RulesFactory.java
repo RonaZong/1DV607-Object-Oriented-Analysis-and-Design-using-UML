@@ -1,11 +1,13 @@
 package Model.rules;
 
 public class RulesFactory {
-    public IHitStrategy GetHitRule() {
+    public HitStrategy GetHitRule() {
         return new BasicHitStrategy();
     }
 
-    public INewGameStrategy GetNewGameRule() {
+    public NewGameStrategy GetNewGameRule() {
         return new AmericanNewGameStrategy();
     }
+
+    // TODO: variable rule for who wins the game
 }
