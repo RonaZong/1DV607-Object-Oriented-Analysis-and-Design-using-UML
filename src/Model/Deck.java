@@ -31,10 +31,6 @@ public class Deck {
         return c;
     }
 
-    private void getCard(Card card) {
-
-    }
-
     public Iterable<Card> GetCards() {
         return cards;
     }
