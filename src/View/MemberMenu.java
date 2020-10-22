@@ -1,8 +1,7 @@
 package View;
 
-import Model.Boat;
 import Model.BoatClub;
-import Model.Member;
+import Model.Dealer;
 
 import java.util.Scanner;
 
@@ -10,7 +9,7 @@ public class MemberMenu {
 
     private Scanner sc = new Scanner(System.in);
     private BoatClub boatClub;
-    private Member member;
+    private Dealer member;
     private boolean alreadyMember = false;
 
 
