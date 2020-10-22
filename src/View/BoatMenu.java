@@ -6,7 +6,7 @@ import Model.Member;
 
 import java.util.Scanner;
 
-public class BoatMenu {
+public class BoatMenu implements IView{
     private Scanner sc = new Scanner(System.in);
     private BoatClub boatClub;
     private Member member;
@@ -17,7 +17,8 @@ public class BoatMenu {
         this.member = member;
     }
 
-    public void showBoatMenu(){
+    @Override
+    public void showInstruction(){
         System.out.println("----Boats' menu----\n" +
                 "Press 1 to add a boat\n" +
                 "Press 2 to update a boat\n" +
@@ -25,6 +26,11 @@ public class BoatMenu {
                 "Press 0 to quit");
         int userInput = sc.nextInt();
         actUponUserInputInBoatMenu(userInput, this.member, this.boat);
+    }
+
+    @Override
+    public int getInput() {
+        return 0;
     }
 
     public void actUponUserInputInBoatMenu(int userInput, Member member, Boat boat) {
