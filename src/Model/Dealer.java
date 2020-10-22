@@ -1,18 +1,19 @@
 package Model;
 
-import Model.rules.IHitStrategy;
-import Model.rules.INewGameStrategy;
+import Model.rules.HitStrategy;
+import Model.rules.NewGameStrategy;
 import Model.rules.RulesFactory;
 
 public class Dealer extends Player{
     private Deck deck;
-    private INewGameStrategy newGameStrategy;
-    private IHitStrategy hitStrategy;
+    private NewGameStrategy newGameStrategy;
+    private HitStrategy hitStrategy;
 
-    public Dealer(RulesFactory a_rulesFactory) {
-
-        newGameStrategy = a_rulesFactory.GetNewGameRule();
-        hitStrategy = a_rulesFactory.GetHitRule();
+    public Dealer(RulesFactory rulesFactory) {
+        /** AmericanNewGame */
+        newGameStrategy = rulesFactory.GetNewGameRule();
+        /** BasicHit */
+        hitStrategy = rulesFactory.GetHitRule();
 
     /*for(Card c : m_deck.GetCards()) {
       c.Show(true);
@@ -21,37 +22,55 @@ public class Dealer extends Player{
     }
 
 
-    public boolean NewGame(Player a_player) {
+    public boolean NewGame(Player player) {
         if (deck == null || IsGameOver()) {
             deck = new Deck();
             ClearHand();
-            a_player.ClearHand();
-            return newGameStrategy.NewGame(deck, this, a_player);
+            player.ClearHand();
+            return newGameStrategy.NewGame(deck, this, player);
         }
         return false;
     }
 
-    public boolean Hit(Player a_player) {
-        if (deck != null && a_player.CalcScore() < g_maxScore && !IsGameOver()) {
+    /** Take another card from the dealer */
+    public boolean Hit(Player player) {
+        if (deck != null && player.CalcScore() < maxScore && !IsGameOver()) {
             Card c;
             c = deck.GetCard();
             c.Show(true);
-            a_player.DealCard(c);
+            player.DealCard(c);
 
             return true;
         }
         return false;
     }
 
-    public boolean IsDealerWinner(Player a_player) {
-        if (a_player.CalcScore() > g_maxScore) {
+    /** Take no more cards */
+    public boolean Stand() {
+        if (deck != null) {
+            ShowHand();
+
+            while (hitStrategy.DoHit(this)) {
+                Card c = deck.GetCard();
+                c.Show(true);
+                DealCard(c);
+            }
             return true;
-        } else if (CalcScore() > g_maxScore) {
-            return false;
         }
-        return CalcScore() >= a_player.CalcScore();
+        return false;
     }
 
+    /** Dealer won */
+    public boolean IsDealerWinner(Player player) {
+        if (player.CalcScore() > maxScore) {
+            return true; // dealer won
+        } else if (CalcScore() > maxScore) {
+            return false; // dealer lost
+        }
+        return CalcScore() >= player.CalcScore();
+    }
+
+    /** Dealer Lost */
     public boolean IsGameOver() {
         if (deck != null && hitStrategy.DoHit(this) != true) {
             return true;
