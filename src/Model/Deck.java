@@ -4,10 +4,10 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Deck {
-    private List<Card> m_cards;
+    private List<Card> cards;
 
     public Deck() {
-        m_cards = new LinkedList<Card>();
+        cards = new LinkedList<Card>();
 
         for(int cIx = 0; cIx < Card.Color.Count.ordinal(); cIx++) {
             for (int vIx = 0; vIx < Card.Value.Count.ordinal(); vIx++) {
@@ -21,28 +21,27 @@ public class Deck {
 
 
     public void AddCard(Card a_cardToAdd) {
-        m_cards.add(a_cardToAdd);
+        cards.add(a_cardToAdd);
     }
 
     public Card GetCard() {
-        Card c = m_cards.get(0);
-        m_cards.remove(0);
+        Card c = cards.get(0);
+        cards.remove(0);
 
         return c;
     }
 
     public Iterable<Card> GetCards()
     {
-        return m_cards;
+        return cards;
     }
 
     private void Shuffle()
     {
-        for (int i = 0; i < 1017; i++)
-        {
-            int index = (int)(Math.random() * 171717.0) % m_cards.size();
-            Card c = m_cards.get(index);
-            m_cards.remove(index);
+        for (int i = 0; i < 1017; i++) {
+            int index = (int)(Math.random() * 171717.0) % cards.size();
+            Card c = cards.get(index);
+            cards.remove(index);
             AddCard(c);
         }
     }
