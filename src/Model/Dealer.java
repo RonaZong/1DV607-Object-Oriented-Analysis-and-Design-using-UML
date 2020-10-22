@@ -1,8 +1,12 @@
 package Model;
 
+import Model.rules.IHitStrategy;
+import Model.rules.INewGameStrategy;
+import Model.rules.RulesFactory;
+
 import java.util.ArrayList;
 
-public class Dealer {
+public class Dealer extends Player{
     private Deck m_deck;
     private INewGameStrategy m_newGameRule;
     private IHitStrategy m_hitRule;
