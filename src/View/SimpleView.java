@@ -2,65 +2,63 @@ package View;
 
 import Model.Card;
 
-public class SimpleView implements IView{
+public class SimpleView extends BaseView implements IView{
+    public boolean play() {
+        return getInput() == 'q';
+    }
+
+    public boolean hit() {
+        return getInput() == 'h';
+    }
+
+    public boolean stand() {
+        return getInput() == 's';
+    }
+
+    public boolean quit() {
+        return getInput() == 'q';
+    }
+
     public void DisplayWelcomeMessage()
     {
-        for(int i = 0; i < 50; i++) {System.out.print("\n");};
-        System.out.println("Hello Black Jack World");
-        System.out.println("Type 'p' to Play, 'h' to Hit, 's' to Stand or 'q' to Quit\n");
+//        for(int i = 0; i < 50; i++) {System.out.print("\n");};
+        System.out.println("Hello Black Jack World\n" + "Type 'p' to Play, 'h' to Hit, 's' to Stand or 'q' to Quit\n");
     }
 
-    public int GetInput()
+    public void DisplayCard(Card card)
     {
-        try {
-            int c = System.in.read();
-            while (c == '\r' || c =='\n') {
-                c = System.in.read();
-            }
-            return c;
-        } catch (java.io.IOException e) {
-            System.out.println("" + e);
-            return 0;
-        }
+        System.out.println("" + card.GetValue() + " of " + card.GetColor());
     }
 
-    public void DisplayCard(Card a_card)
+    public void DisplayPlayerHand(Iterable<Card> hand, int score)
     {
-        System.out.println("" + a_card.GetValue() + " of " + a_card.GetColor());
+        DisplayHand("Player", hand, score);
     }
 
-    public void DisplayPlayerHand(Iterable<Card> a_hand, int a_score)
+    public void DisplayDealerHand(Iterable<Card> hand, int score)
     {
-        DisplayHand("Player", a_hand, a_score);
+        DisplayHand("Dealer", hand, score);
     }
 
-    public void DisplayDealerHand(Iterable<Card> a_hand, int a_score)
+    private void DisplayHand(String name, Iterable<Card> hand, int score)
     {
-        DisplayHand("Dealer", a_hand, a_score);
-    }
-
-    private void DisplayHand(String a_name, Iterable<Card> a_hand, int a_score)
-    {
-        System.out.println(a_name + " Has: ");
-        for(Card c : a_hand)
+        System.out.println(name + " Has: ");
+        for(Card c : hand)
         {
             DisplayCard(c);
         }
-        System.out.println("Score: " + a_score);
+        System.out.println("Score: " + score);
         System.out.println("");
     }
 
-    public void DisplayGameOver(boolean a_dealerIsWinner)
+    public void DisplayGameOver(boolean dealerIsWinner)
     {
         System.out.println("GameOver: ");
-        if (a_dealerIsWinner)
-        {
+        if (dealerIsWinner) {
             System.out.println("Dealer Won!");
         }
-        else
-        {
+        else {
             System.out.println("You Won!");
         }
-
     }
 }
