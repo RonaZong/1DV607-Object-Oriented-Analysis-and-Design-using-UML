@@ -5,26 +5,28 @@ import Model.Dealer;
 import Model.Deck;
 import Model.Player;
 
-class AmericanNewGameStrategy implements INewGameStrategy{
-    public boolean NewGame(Deck a_deck, Dealer a_dealer, Player a_player) {
+class AmericanNewGameStrategy implements NewGameStrategy {
+    public boolean NewGame(Deck deck, Dealer dealer, Player player) {
         Card c;
 
-        c = a_deck.GetCard();
+        c = deck.GetCard();
         c.Show(true);
-        a_player.DealCard(c);
+        player.DealCard(c);
 
-        c = a_deck.GetCard();
+        c = deck.GetCard();
         c.Show(true);
-        a_dealer.DealCard(c);
+        dealer.DealCard(c);
 
-        c = a_deck.GetCard();
+        c = deck.GetCard();
         c.Show(true);
-        a_player.DealCard(c);
+        player.DealCard(c);
 
-        c = a_deck.GetCard();
+        c = deck.GetCard();
         c.Show(false);
-        a_dealer.DealCard(c);
+        dealer.DealCard(c);
 
         return true;
     }
+
+
 }
