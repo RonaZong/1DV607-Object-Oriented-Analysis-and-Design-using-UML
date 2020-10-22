@@ -4,24 +4,23 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Player {
-    private List<Card> m_hand;
-    protected final int g_maxScore = 21;
+    private List<Card> hand;
+    protected final int maxScore = 21;
 
     public Player() {
-        m_hand = new LinkedList<Card>();
-        System.out.println("Hello List World");
+        this.hand = new LinkedList<Card>();
     }
 
-    public void DealCard(Card a_addToHand) {
-        m_hand.add(a_addToHand);
+    public void DealCard(Card addToHand) {
+        this.hand.add(addToHand);
     }
 
     public Iterable<Card> GetHand() {
-        return m_hand;
+        return this.hand;
     }
 
     public void ClearHand() {
-        m_hand.clear();
+        this.hand.clear();
     }
 
     public void ShowHand() {
@@ -45,9 +44,9 @@ public class Player {
             }
         }
 
-        if (score > g_maxScore) {
+        if (score > maxScore) {
             for(Card c : GetHand()) {
-                if (c.GetValue() == Card.Value.Ace && score > g_maxScore) {
+                if (c.GetValue() == Card.Value.Ace && score > maxScore) {
                     score -= 10;
                 }
             }
