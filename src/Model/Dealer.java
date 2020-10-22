@@ -4,17 +4,15 @@ import Model.rules.IHitStrategy;
 import Model.rules.INewGameStrategy;
 import Model.rules.RulesFactory;
 
-import java.util.ArrayList;
-
 public class Dealer extends Player{
-    private Deck m_deck;
-    private INewGameStrategy m_newGameRule;
-    private IHitStrategy m_hitRule;
+    private Deck deck;
+    private INewGameStrategy newGameStrategy;
+    private IHitStrategy hitStrategy;
 
     public Dealer(RulesFactory a_rulesFactory) {
 
-        m_newGameRule = a_rulesFactory.GetNewGameRule();
-        m_hitRule = a_rulesFactory.GetHitRule();
+        newGameStrategy = a_rulesFactory.GetNewGameRule();
+        hitStrategy = a_rulesFactory.GetHitRule();
 
     /*for(Card c : m_deck.GetCards()) {
       c.Show(true);
@@ -24,19 +22,19 @@ public class Dealer extends Player{
 
 
     public boolean NewGame(Player a_player) {
-        if (m_deck == null || IsGameOver()) {
-            m_deck = new Deck();
+        if (deck == null || IsGameOver()) {
+            deck = new Deck();
             ClearHand();
             a_player.ClearHand();
-            return m_newGameRule.NewGame(m_deck, this, a_player);
+            return newGameStrategy.NewGame(deck, this, a_player);
         }
         return false;
     }
 
     public boolean Hit(Player a_player) {
-        if (m_deck != null && a_player.CalcScore() < g_maxScore && !IsGameOver()) {
+        if (deck != null && a_player.CalcScore() < g_maxScore && !IsGameOver()) {
             Card c;
-            c = m_deck.GetCard();
+            c = deck.GetCard();
             c.Show(true);
             a_player.DealCard(c);
 
@@ -55,7 +53,7 @@ public class Dealer extends Player{
     }
 
     public boolean IsGameOver() {
-        if (m_deck != null && m_hitRule.DoHit(this) != true) {
+        if (deck != null && hitStrategy.DoHit(this) != true) {
             return true;
         }
         return false;
