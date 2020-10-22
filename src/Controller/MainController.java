@@ -8,7 +8,6 @@ import View.ShowList;
 import View.StartMenu;
 
 public class MainController {
-
     private BoatClub boatClub;
     private Member member;
     private StartMenu startMenu;
@@ -26,7 +25,7 @@ public class MainController {
 
     private boolean checkInputInStartMenu() {
         this.startMenu.showInstruction();
-        int input = this.startMenu.getInputInStartMenu();
+        int input = this.startMenu.getInput();
 
         switch (input) {
             case 1: /** MEMBER MENU */
@@ -46,7 +45,7 @@ public class MainController {
         this.memberMenu = new MemberMenu();
         this.memberMenu.showInstruction();
 
-        int input = this.memberMenu.getInputInMemberMenu();
+        int input = this.memberMenu.getInput();
 
         switch (input) {
             case 1:
