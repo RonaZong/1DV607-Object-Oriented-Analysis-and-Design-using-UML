@@ -1,8 +1,8 @@
 package View;
 
-import Model.Boat;
+import Model.Card;
 import Model.BoatClub;
-import Model.Member;
+import Model.Dealer;
 
 import java.util.Scanner;
 
@@ -86,7 +86,7 @@ public class StartMenu {
 
 
     public void showCompactList(BoatClub boatClub){
-        for(Member member : boatClub.getAllMember()) {
+        for(Dealer member : boatClub.getAllMember()) {
             System.out.println("This member name is : " + member.getName() +
                     "\nwith memberID of : " + member.getMemberID() +
                     "\nwhich has " + member.boatsOwnedByMember().size() + "boats" +
@@ -95,7 +95,7 @@ public class StartMenu {
     }
 
     public void showVerboseList(BoatClub boatClub){
-        for(Member member : boatClub.getAllMember()){
+        for(Dealer member : boatClub.getAllMember()){
             System.out.println("This member name is : " + member.getName() +
                            "\nwith personal number of " + member.getPersonalNumber() +
                             "\nwith memberID of " + member.getMemberID());
@@ -103,7 +103,7 @@ public class StartMenu {
             System.out.println("This member has " + member.boatsOwnedByMember().size() + "boats");
             if(member.boatsOwnedByMember().size()> 0 ) {
                 System.out.println("this member boat information is :");
-                for (Boat boat : member.boatsOwnedByMember()) {
+                for (Card boat : member.boatsOwnedByMember()) {
                     System.out.println("Boat type :" + boat.getType() +
                             "\nBoat color : " + boat.getLength());
                 }
