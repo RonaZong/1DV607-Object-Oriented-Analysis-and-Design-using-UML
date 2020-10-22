@@ -20,8 +20,8 @@ public class Deck {
     }
 
 
-    public void AddCard(Card a_cardToAdd) {
-        cards.add(a_cardToAdd);
+    public void AddCard(Card cardToAdd) {
+        cards.add(cardToAdd);
     }
 
     public Card GetCard() {
@@ -31,8 +31,11 @@ public class Deck {
         return c;
     }
 
-    public Iterable<Card> GetCards()
-    {
+    private void getCard(Card card) {
+
+    }
+
+    public Iterable<Card> GetCards() {
         return cards;
     }
 
