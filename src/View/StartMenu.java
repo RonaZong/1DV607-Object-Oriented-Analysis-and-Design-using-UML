@@ -3,67 +3,50 @@ package View;
 import Model.Boat;
 import Model.BoatClub;
 import Model.Member;
+import Util.MenuOptions;
 
 import java.util.Scanner;
 
-public class StartMenu {
+public class StartMenu implements IView{
     private Scanner sc = new Scanner(System.in);
-    private BoatClub boatClub;
+    private MenuOptions menuOptions;
 
-    public StartMenu(BoatClub boatClub) {
-        this.boatClub = boatClub;
+    public StartMenu() {
     }
 
-    public void welcomeMessage(){
+    @Override
+    public void showInstruction(){
         System.out.println("Welcome to Boat Club\n" +
                 "-----------------------\n" +
-                "Press 1 to Member Menu\n" +
-                "Press 2 to see a compact list of members\n"+
-                "Press 3 to see a full detailed list of members\n"+
-                "Press 4 to see the information of a specific member\n"+
-                //who can have access to a specific member's information?
-                // "press 3 to check member's information \n" +
-                "Press 0 to quit \n");
-                // do we need to have an admin so can have access to member's information?
-        int userInput = sc.nextInt();
-
-        actUponUserInputInMainMenu(userInput, boatClub);
-
-
-           // showMemberMenu();
-           /* int choice = sc.nextInt();
-            switch (choice) {
-                case 1:
-                    createMemberMenu(boatClub);
-                    break;
-                case 2:
-                    showList(boatClub);
-                    break;
-
-            }*/
+                "Press 1 to member menu\n" +
+                "Press 2 to show list\n" +
+                "Press 3 to quit");
     }
 
-    public void actUponUserInputInMainMenu(int userInput, BoatClub boatClub) {
-        switch (userInput) {
+    @Override
+    public int getInput() {
+        int inputOfStartMenu = sc.nextInt();
+        switch (inputOfStartMenu) {
             case 1:
-                MemberMenu memberMenu = new MemberMenu(boatClub);
-                memberMenu.showMemberMenu();
+                menuOptions = MenuOptions.MEMBER_MENU;
+                if (menuOptions.getInput() == inputOfStartMenu) {
+                    System.out.println(menuOptions.getMessage());
+                }
                 break;
             case 2:
-                showCompactList(boatClub);
-                break;
-            case 3:
-                showVerboseList(boatClub);
-                break;
-            case 4:
-                showSpecificMemberData(boatClub);
+                menuOptions = MenuOptions.SHOW_LIST;
+                if (menuOptions.getInput() == inputOfStartMenu) {
+                    System.out.println(menuOptions.getMessage());
+                }
                 break;
             case 0:
-                System.exit(1);
+                menuOptions = MenuOptions.QUIT;
+                if (menuOptions.getInput() == inputOfStartMenu) {
+                    System.out.println(menuOptions.getMessage());
+                }
         }
+        return inputOfStartMenu;
     }
-
-
 
     private void showSpecificMemberData(BoatClub boatClub) {
 

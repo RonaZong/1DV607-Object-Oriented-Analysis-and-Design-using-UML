@@ -3,52 +3,52 @@ package View;
 import Model.Boat;
 import Model.BoatClub;
 import Model.Member;
+import Util.MenuOptions;
 
 import java.util.Scanner;
 
-public class MemberMenu {
-
+public class MemberMenu implements IView{
     private Scanner sc = new Scanner(System.in);
-    private BoatClub boatClub;
-    private Member member;
-    private boolean alreadyMember = false;
+    private MenuOptions menuOptions;
 
 
-    public MemberMenu(BoatClub boatClub) {
-        this.boatClub = boatClub;
+    public MemberMenu() {
     }
 
-    public void showMemberMenu(){
+    @Override
+    public void showInstruction(){
         System.out.println("----Members' menu----\n" +
-                "Press 1 to register as a member\n" +
-                "Press 2 to update the information of a member\n" +
+                "Press 1 to add a member\n" +
+                "Press 2 to update a member\n" +
                 "Press 3 to delete a member\n" +
-                "Press 4 to see the information of a specific member\n" +
-                "Press 5 to Boat Menu\n" +
-                "Press 0 to quit\n");
-        int userInput = sc.nextInt();
-        actUponUserInputInMemberMenu(userInput, this.boatClub);
+                "Press 0 to quit");
     }
 
-    public void actUponUserInputInMemberMenu(int userInput, BoatClub boatClub) {
-        switch (userInput) {
+    @Override
+    public int getInput() {
+        int inputOfMemberMenu = sc.nextInt();
+        switch (inputOfMemberMenu) {
             case 1:
-                createMemberMenu();
+                menuOptions = MenuOptions.MEMBER_MENU;
+                if (menuOptions.getInput() == inputOfMemberMenu) {
+                    System.out.println(menuOptions.getMessage());
+                }
                 break;
             case 2:
-                showUpdateMemberMenu();
-                break;
-            case 3:
-                boatClub.deleteMember(this.member);
-                break;
-            case 5:
-                BoatMenu boatMenu = new BoatMenu(this.boatClub, this.member);
-                boatMenu.showBoatMenu();
+                menuOptions = MenuOptions.SHOW_LIST;
+                if (menuOptions.getInput() == inputOfMemberMenu) {
+                    System.out.println(menuOptions.getMessage());
+                }
                 break;
             case 0:
-                System.exit(1);
+                menuOptions = MenuOptions.QUIT;
+                if (menuOptions.getInput() == inputOfMemberMenu) {
+                    System.out.println(menuOptions.getMessage());
+                }
         }
+        return inputOfMemberMenu;
     }
+
 
     public void createMemberMenu(){
         System.out.println("----- Become a Member ----\n-" +
@@ -72,6 +72,6 @@ public class MemberMenu {
         System.out.println("If you want to update your personal number enter your new personal" +
                 "number otherwise press enter");
         String personalNumber = sc.nextLine();
-        this.boatClub.updateMemberInformation(this.member, name, personalNumber);
+        this.boatClub.updateMember(this.member, name, personalNumber);
     }
 }
