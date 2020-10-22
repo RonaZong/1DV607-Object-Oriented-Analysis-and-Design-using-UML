@@ -1,5 +1,8 @@
 package Model;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class Player {
     private List<Card> m_hand;
     protected final int g_maxScore = 21;
