@@ -7,7 +7,7 @@ import Util.MenuOptions;
 
 import java.util.Scanner;
 
-public class MemberMenu {
+public class MemberMenu implements IView{
     private Scanner sc = new Scanner(System.in);
     private MenuOptions menuOptions;
 
@@ -15,6 +15,7 @@ public class MemberMenu {
     public MemberMenu() {
     }
 
+    @Override
     public void showInstruction(){
         System.out.println("----Members' menu----\n" +
                 "Press 1 to add a member\n" +
@@ -23,7 +24,8 @@ public class MemberMenu {
                 "Press 0 to quit");
     }
 
-    public int getInputInMemberMenu() {
+    @Override
+    public int getInput() {
         int inputOfMemberMenu = sc.nextInt();
         switch (inputOfMemberMenu) {
             case 1:
@@ -70,6 +72,6 @@ public class MemberMenu {
         System.out.println("If you want to update your personal number enter your new personal" +
                 "number otherwise press enter");
         String personalNumber = sc.nextLine();
-        this.boatClub.updateMemberInformation(this.member, name, personalNumber);
+        this.boatClub.updateMember(this.member, name, personalNumber);
     }
 }
