@@ -37,28 +37,25 @@ public class Card {
     public Card(Color color, Value value) {
         this.value = value;
         this.color = color;
-        isHidden = true;
+        this.isHidden = true;
     }
 
     public Color GetColor() {
-        if (isHidden)
-        {
+        if (this.isHidden) {
             return Color.Hidden;
         }
-        return color;
+        return this.color;
     }
 
     public Value GetValue() {
-        if (isHidden)
-        {
+        if (this.isHidden) {
             return Value.Hidden;
         }
-        return value;
+        return this.value;
     }
 
-    public void Show(boolean a_show) {
-        isHidden = !a_show;
+    public void Show(boolean show) {
+        this.isHidden = !show;
     }
-
 
 }
