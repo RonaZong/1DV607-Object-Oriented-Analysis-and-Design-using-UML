@@ -7,13 +7,14 @@ import Util.MenuOptions;
 
 import java.util.Scanner;
 
-public class StartMenu {
+public class StartMenu implements IView{
     private Scanner sc = new Scanner(System.in);
     private MenuOptions menuOptions;
 
     public StartMenu() {
     }
 
+    @Override
     public void showInstruction(){
         System.out.println("Welcome to Boat Club\n" +
                 "-----------------------\n" +
@@ -22,7 +23,8 @@ public class StartMenu {
                 "Press 3 to quit");
     }
 
-    public int getInputInStartMenu() {
+    @Override
+    public int getInput() {
         int inputOfStartMenu = sc.nextInt();
         switch (inputOfStartMenu) {
             case 1:
