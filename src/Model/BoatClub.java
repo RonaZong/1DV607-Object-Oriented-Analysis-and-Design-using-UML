@@ -10,22 +10,26 @@ public class BoatClub {
     public BoatClub() {
     }
 
+    //we might use later it create a member and return it
     public Member creatMember(String userName, String personalNumber) {
         Member member = new Member(userName, personalNumber);
         return member;
     }
 
+    //add new member to list of members in boat club
     public Member addNewMember(Member member){
         members.add(member);
         return member;
     }
 
+    //this used in registery to create them from the loaded file and add them to list
     public Member makeMemberForLoadingInStartOfProgram(String name , String personalNemuber , String memberID){
         Member member = new Member(name , personalNemuber, memberID);
         members.add(member);
         return member;
     }
 
+    //delete memeber if list is not empty
     public Member deleteMember(Member member){
         this.member = member;
         if(members==null)
