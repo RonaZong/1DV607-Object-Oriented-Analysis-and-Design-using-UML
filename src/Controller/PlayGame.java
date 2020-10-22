@@ -1,5 +1,8 @@
 package Controller;
 
+import Model.Game;
+import View.IView;
+
 public class PlayGame {
     public boolean Play(Game a_game, IView a_view) {
         a_view.DisplayWelcomeMessage();
