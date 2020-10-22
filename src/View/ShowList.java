@@ -2,12 +2,13 @@ package View;
 
 import java.util.Scanner;
 
-public class ShowList {
+public class ShowList implements IView{
     private Scanner sc = new Scanner(System.in);
 
     public ShowList() {
     }
 
+    @Override
     public void showInstruction(){
         System.out.println("----Show List----\n" +
                 "Press 1 to show COMPACT LIST\n" +
@@ -17,5 +18,8 @@ public class ShowList {
         int userInput = sc.nextInt();
     }
 
-
+    @Override
+    public int getInput() {
+        return 0;
+    }
 }
