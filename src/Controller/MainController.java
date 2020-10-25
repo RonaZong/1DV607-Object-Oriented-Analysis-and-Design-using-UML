@@ -63,8 +63,7 @@ public class MainController {
     private void userWantsToLogin(StartMenu startMenu){
         Member newMember = startMenu.showLogInMenu();
         for (Member m:boatClub.getAllMembersLocally()){
-            System.out.println(m.getName());
-            if (m.getName().equals(newMember.getName())&&m.getPassword().equals(newMember.getPassword())){
+           if (m.getName().equals(newMember.getName()) && m.getPassword().equals(newMember.getPassword())){
                 boatClub.setLoggedIn(true);
                 break;
             }
