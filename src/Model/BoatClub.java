@@ -26,8 +26,8 @@ public class BoatClub {
     }
 
     //this used in registery to create them from the loaded file and add them to list
-    public Member makeMemberForLoadingInStartOfProgram(String name , PersonalNumber personalNemuber , String memberID){
-        Member member = new Member(name , personalNemuber, memberID);
+    public Member makeMemberForLoadingInStartOfProgram(String name , PersonalNumber personalNemuber ,String password, String memberID){
+        Member member = new Member(name , personalNemuber,password, memberID);
         members.add(member);
         return member;
     }
