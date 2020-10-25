@@ -1,80 +1,95 @@
 package Model;
 
 import Model.rules.HitStrategy;
+import Model.rules.IWinnerStrategy;
 import Model.rules.NewGameStrategy;
 import Model.rules.RulesFactory;
 
 public class Dealer extends Player{
     private Deck deck;
+    private Card card;
     private NewGameStrategy newGameStrategy;
     private HitStrategy hitStrategy;
+    private IWinnerStrategy m_winner;
 
     public Dealer(RulesFactory rulesFactory) {
         /** AmericanNewGame */
-        newGameStrategy = rulesFactory.GetNewGameRule();
+        this.newGameStrategy = rulesFactory.GetNewGameRule();
         /** BasicHit */
-        hitStrategy = rulesFactory.GetHitRule();
+        this.hitStrategy = rulesFactory.GetHitRule();
+        m_winner = rulesFactory.GetWinner();
 
-    /*for(Card c : m_deck.GetCards()) {
-      c.Show(true);
-      System.out.println("" + c.GetValue() + " of " + c.GetColor());
-    }    */
     }
 
+    public Deck getDeck() {
+        return deck;
+    }
+
+    public void setDeck(Deck deck) {
+        this.deck = deck;
+    }
 
     public boolean NewGame(Player player) {
-        if (deck == null || IsGameOver()) {
-            deck = new Deck();
+        if (this.deck == null || IsGameOver()) {
+            this.deck = new Deck(this.card);
             ClearHand();
             player.ClearHand();
-            return newGameStrategy.NewGame(deck, this, player);
+            return newGameStrategy.NewGame(this.deck, this, player);
         }
         return false;
+    }
+
+    private void getCard(Player role) {
+        this.card = this.deck.GetCard();
+        card.Show(true);
+        role.DealCard(card);
     }
 
     /** Take another card from the dealer */
     public boolean Hit(Player player) {
-        if (deck != null && player.CalcScore() < maxScore && !IsGameOver()) {
-            Card c;
-            c = deck.GetCard();
-            c.Show(true);
-            player.DealCard(c);
-
+        if (this.deck != null && player.CalcScore() < this.maxScore && !IsGameOver()) {
+            getCard(player);
             return true;
         }
         return false;
     }
 
-    /** Take no more cards */
     public boolean Stand() {
-        if (deck != null) {
+        /** Dealer gets card, Player stand */
+        if (this.deck != null) {
             ShowHand();
-
-            while (hitStrategy.DoHit(this)) {
-                Card c = deck.GetCard();
-                c.Show(true);
-                DealCard(c);
+            while (this.hitStrategy.DoHit(this)) {
+                getCard(this);
             }
             return true;
+        }
+        else if (this.hitStrategy.Soft17(this))  {
+            return false;
         }
         return false;
     }
 
     /** Dealer won */
-    public boolean IsDealerWinner(Player player) {
-        if (player.CalcScore() > maxScore) {
-            return true; // dealer won
-        } else if (CalcScore() > maxScore) {
-            return false; // dealer lost
+    public boolean IsDealerWinner(Player player, Dealer dealer) {
+        //    if (a_player.CalcScore() > g_maxScore) {
+//      return true;
+//    } else if (CalcScore() > g_maxScore) {
+//      return false;
+//    }
+//    return CalcScore() >= a_player.CalcScore();
+//    if (m_winner.IsPlayerWinner(a_player, a_dealer, g_maxScore)) {
+//      return false; // player win
+//    }
+//    else
+        if (m_winner.IsDealerWinner(player, dealer, maxScore)) {
+            return true; // dealer win
         }
-        return CalcScore() >= player.CalcScore();
+
+        return m_winner.GeneralWinner(player, dealer, maxScore);
     }
 
     /** Dealer Lost */
     public boolean IsGameOver() {
-        if (deck != null && hitStrategy.DoHit(this) != true) {
-            return true;
-        }
-        return false;
+        return this.deck != null && !this.hitStrategy.DoHit(this); // dealer won
     }
 }
