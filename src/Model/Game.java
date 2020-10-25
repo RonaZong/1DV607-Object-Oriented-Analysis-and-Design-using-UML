@@ -3,6 +3,7 @@ package Model;
 import Model.rules.RulesFactory;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class Game {
     private Player player;
@@ -11,6 +12,11 @@ public class Game {
     public Game() {
         this.player = new Player();
         this.dealer = new Dealer(new RulesFactory());
+    }
+
+    public void register(CardObserver observer) {
+        this.player.register(observer);
+        this.dealer.register(observer);
     }
 
     public Player getPlayer() {
@@ -27,11 +33,6 @@ public class Game {
 
     public void setDealer(Dealer dealer) {
         this.dealer = dealer;
-    }
-
-    public void Subscription(CardObserver obs) {
-        this.player.Subscribe(obs);
-        this.dealer.Subscribe(obs);
     }
 
     public boolean NewGame() {
@@ -72,6 +73,4 @@ public class Game {
     public int GetDealerScore() {
         return this.dealer.CalcScore();
     }
-
-
 }
