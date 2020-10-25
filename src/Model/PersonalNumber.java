@@ -5,16 +5,18 @@ public class PersonalNumber {
         private DateFormat birthday = new DateFormat();
         private int checksum;
         private boolean valid;
+        private String id;
 
         public PersonalNumber(){
         }
         public PersonalNumber(String id){
-            birthday.setYear(Integer.parseInt(id.substring(0,4)));
-            birthday.setMonth(Integer.parseInt(id.substring(4,6)));
-            birthday.setDay(Integer.parseInt(id.substring(6,8)));
-            birthday.setPunctuation('!');
-            birthday.setFormat('b');
-            checksum = Integer.parseInt(id.substring(9));
+//            birthday.setYear(Integer.parseInt(id.substring(0,4)));
+//            birthday.setMonth(Integer.parseInt(id.substring(4,6)));
+//            birthday.setDay(Integer.parseInt(id.substring(6,8)));
+//            birthday.setPunctuation('!');
+//            birthday.setFormat('b');
+//            checksum = Integer.parseInt(id.substring(9));
+            this.id = id;
         }
         public String showID(){
             return birthday.getDate(true) + "-" + checksum;
@@ -62,5 +64,7 @@ public class PersonalNumber {
         }
 
 
-
+    public String getId() {
+        return id;
+    }
 }
