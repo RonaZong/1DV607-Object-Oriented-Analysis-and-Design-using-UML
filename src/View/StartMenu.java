@@ -102,5 +102,5 @@ public class StartMenu extends menu {
     public void showSaveMsg(){
         System.out.println("The information is saved");
     }
-    }
+
 }
