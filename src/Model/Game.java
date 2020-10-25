@@ -2,30 +2,45 @@ package Model;
 
 import Model.rules.RulesFactory;
 
+import java.util.ArrayList;
+
 public class Game {
-    private Dealer dealer;
     private Player player;
+    private Dealer dealer;
 
     public Game() {
-        this.dealer = new Dealer(new RulesFactory());
         this.player = new Player();
+        this.dealer = new Dealer(new RulesFactory());
     }
 
-    public boolean IsGameOver() {
-        return this.dealer.IsGameOver();
+    public Player getPlayer() {
+        return player;
     }
 
-    public boolean IsDealerWinner() {
-        return this.dealer.IsDealerWinner(player);
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public Dealer getDealer() {
+        return dealer;
+    }
+
+    public void setDealer(Dealer dealer) {
+        this.dealer = dealer;
+    }
+
+    public void Subscription(CardObserver obs) {
+        this.player.Subscribe(obs);
+        this.dealer.Subscribe(obs);
     }
 
     public boolean NewGame() {
-        return this.dealer.NewGame(player);
+        return this.dealer.NewGame(this.player);
     }
 
     /** take a card */
     public boolean Hit() {
-        return this.dealer.Hit(player);
+        return this.dealer.Hit(this.player);
     }
 
     /** end turn */
@@ -34,19 +49,29 @@ public class Game {
         return this.dealer.Stand();
     }
 
-    public Iterable<Card> GetDealerHand() {
-        return this.dealer.GetHand();
+    public boolean IsGameOver() {
+        return this.dealer.IsGameOver();
+    }
+
+    public boolean IsDealerWinner() {
+        return this.dealer.IsDealerWinner(this.player, this.dealer);
     }
 
     public Iterable<Card> GetPlayerHand() {
         return this.player.GetHand();
     }
 
-    public int GetDealerScore() {
-        return this.dealer.CalcScore();
+    public Iterable<Card> GetDealerHand() {
+        return this.dealer.GetHand();
     }
 
     public int GetPlayerScore() {
         return this.player.CalcScore();
     }
+
+    public int GetDealerScore() {
+        return this.dealer.CalcScore();
+    }
+
+
 }
