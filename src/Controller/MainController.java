@@ -35,6 +35,10 @@ public class MainController {
                     userWantsToAddMember(menu);
                     userChoice=null;//for exiting the loop after add a member
                     break;
+                case LOG_IN:
+                    userWantsToLogin(menu);
+                    userChoice=null;
+                    break;
                 case MEMBER_MENU:
                     actUponUserInputInMemberMenu();
                     userChoice=null;//for exit the loop since userchoice does not change after member menu closed so we always come back here and user choice would be same
@@ -56,6 +60,17 @@ public class MainController {
     }
 
 
+    private void userWantsToLogin(StartMenu startMenu){
+        Member newMember = startMenu.showLogInMenu();
+        for (Member m:boatClub.getAllMembersLocally()){
+            System.out.println(m.getName());
+            if (m.getName().equals(newMember.getName())&&m.getPassword().equals(newMember.getPassword())){
+                boatClub.setLoggedIn(true);
+                break;
+            }
+        }
+        startMenu.showLoginStatus(boatClub);
+    }
     private void userWantsToAddMember(StartMenu menu){
        do {
             Member newMember = menu.showInstructionOfCreateMember();
