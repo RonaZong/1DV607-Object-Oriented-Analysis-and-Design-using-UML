@@ -17,13 +17,19 @@ public class Member {
         this.memberID = creatUniqueID();
     }
 
-
+    public Member(String name, PersonalNumber personalNumber ,String password, String memberID) {
+        this.name = name;
+        this.personalNumber = personalNumber;
+        this.memberID = memberID;
+        this.password = password;
+    }
 
     //Constructor
-    public Member(String name , PersonalNumber personalNumber,String uniqueID){
+    public Member(String name , PersonalNumber personalNumber,String password){
         setName(name);
         this.personalNumber = personalNumber;
-        setMemberID(uniqueID);
+        setPassword(password);
+        setMemberID(creatUniqueID());
     }
 
     public Member(String name, String password) {
@@ -131,5 +137,8 @@ public class Member {
         this.password = password;
     }
 
+    public String changeToStringPersonalID(){
+        return this.personalNumber.getId();
+    }
 
 }
