@@ -1,9 +1,7 @@
 package Model;
 
 
-import java.util.ArrayList;
-
-public class Card implements CardSubject{
+public class Card {
 
     public enum Color {
         Hearts,
@@ -32,44 +30,14 @@ public class Card implements CardSubject{
         Hidden
     }
 
-    private Color color;
     private Value value;
+    private Color color;
     private boolean isHidden;
-    private ArrayList<CardObserver> observers;
 
     public Card(Value value, Color color) {
         this.value = value;
         this.color = color;
         this.isHidden = true;
-        this.observers = new ArrayList<CardObserver>();
-
-    }
-
-    @Override
-    public void register(CardObserver newObserver) {
-        observers.add(newObserver);
-    }
-
-    @Override
-    public void unregister(CardObserver deleteObserver) {
-        int observerIndex = observers.indexOf(deleteObserver);
-        System.out.println("Observer " + (observerIndex + 1) + " deleted");
-        observers.remove(observerIndex);
-    }
-
-    @Override
-    public void notifyObserver() {
-        for (CardObserver observer : observers) {
-            observer.update(this.value, this.color);
-        }
-
-    }
-
-    public Color GetColor() {
-        if (this.isHidden) {
-            return Color.Hidden;
-        }
-        return this.color;
     }
 
     public Value GetValue() {
@@ -77,6 +45,13 @@ public class Card implements CardSubject{
             return Value.Hidden;
         }
         return this.value;
+    }
+
+    public Color GetColor() {
+        if (this.isHidden) {
+            return Color.Hidden;
+        }
+        return this.color;
     }
 
     public void Show(boolean show) {
