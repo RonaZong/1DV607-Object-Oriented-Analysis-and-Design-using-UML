@@ -4,20 +4,23 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Player  {
+public class Player implements CardSubject{
     private List<Card> hand;
     protected final int maxScore = 21;
+    private ArrayList<CardObserver> observers;
 
     public Player() {
         this.hand = new LinkedList<Card>();
+        this.observers = new ArrayList<CardObserver>();
     }
 
     public void DealCard(Card addToHand) {
         this.hand.add(addToHand);
+        notifyObserver(addToHand);
     }
 
     public Iterable<Card> GetHand() {
-        return this.hand;
+        return (LinkedList<Card>) this.hand;
     }
 
     public void ClearHand() {
@@ -25,8 +28,8 @@ public class Player  {
     }
 
     public void ShowHand() {
-        for(Card c : GetHand()) {
-            c.Show(true);
+        for(Card card : GetHand()) {
+            card.Show(true);
         }
     }
 
@@ -46,8 +49,8 @@ public class Player  {
         }
 
         if (score > this.maxScore) {
-            for(Card c : GetHand()) {
-                if (c.GetValue() == Card.Value.Ace && score > this.maxScore) {
+            for(Card card : GetHand()) {
+                if (card.GetValue() == Card.Value.Ace && score > this.maxScore) {
                     score -= 10;
                 }
             }
@@ -56,25 +59,25 @@ public class Player  {
         return score;
     }
 
-    public boolean Soft17() {
-        int cardScores[] = { 2, 3, 4, 5, 6, 7, 8, 9, 10, 10 ,10 ,10, 11 };
-        assert (cardScores.length == Card.Value.Count.ordinal()) : "Card Scores array size does not match number of card values";
-
-        int score = 0;
-
-        for (Card card : GetHand()) {
-            if (card.GetValue() == Card.Value.Ace) {
-                score += cardScores[card.GetValue().ordinal()];
-
-                if (score > this.maxScore) {
-                    score -= 10;
-                }
-                return score == 17;
-            }
+    @Override
+    public void register(CardObserver newObserver) {
+        if (!observers.contains(newObserver)) {
+            observers.add(newObserver);
         }
-
-        return false;
     }
 
+    @Override
+    public void unregister(CardObserver deleteObserver) {
+        int observerIndex = observers.indexOf(deleteObserver);
+        System.out.println("Observer " + (observerIndex + 1) + " deleted");
+        observers.remove(observerIndex);
+    }
+
+    @Override
+    public void notifyObserver(Card card) {
+        for (CardObserver observer : observers) {
+            observer.update(card);
+        }
+    }
 
 }
