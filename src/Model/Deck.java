@@ -3,25 +3,16 @@ package Model;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Deck implements CardObserver{
+public class Deck {
     private List<Card> cards;
-    private Card card;
 
-    private static int observerIDTracker = 0;
-    private int observerID;
-
-
-    public Deck(Card card) {
+    public Deck() {
         this.cards = new LinkedList<Card>();
-        this.card = card;
 
         for(int cIx = 0; cIx < Card.Value.Count.ordinal(); cIx++) {
             for (int vIx = 0; vIx < Card.Color.Count.ordinal(); vIx++) {
-                this.card = new Card(Card.Value.values()[cIx], Card.Color.values()[vIx]);
-                AddCard(this.card);
-                this.observerID = ++observerIDTracker;
-                System.out.println("New Observer " + this.observerID);
-                card.register(this);
+                Card card = new Card(Card.Value.values()[cIx], Card.Color.values()[vIx]);
+                AddCard(card);
             }
         }
 
@@ -52,15 +43,5 @@ public class Deck implements CardObserver{
         }
     }
 
-    @Override
-    public void update(Card.Value cardValue, Card.Color cardColor) {
-        this.card.GetValue() = cardValue;
-        this.card.GetColor() = cardColor;
 
-        printTheCard();
-    }
-
-    public void printTheCard() {
-        System.out.println(observerID + "\n" + );
-    }
 }
