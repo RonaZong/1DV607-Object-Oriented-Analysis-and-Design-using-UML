@@ -4,29 +4,45 @@ import java.util.ArrayList;
 
 public class Member {
     private String name;
-    private String personalNumber;
+    private PersonalNumber personalNumber;
     private int numbersOfBoatsOwnByAMember;
     private String memberID ;
     private ArrayList<Boat> boats = new ArrayList<>();
+    private String password;
 
     //Constructor
-    public Member(String name, String personalNumber) {
+    public Member(String name, PersonalNumber personalNumber) {
         setName(name);
-        setPersonalNumber(personalNumber);
+        this.personalNumber = personalNumber;
         this.memberID = creatUniqueID();
     }
 
+    public Member(String name, PersonalNumber personalNumber ,String password, String memberID) {
+        this.name = name;
+        this.personalNumber = personalNumber;
+        this.memberID = memberID;
+        this.password = password;
+    }
+
     //Constructor
-    public Member(String name , String personalNumber,String uniqueID){
+    public Member(String name , PersonalNumber personalNumber,String password){
         setName(name);
-        setPersonalNumber(personalNumber);
-        setMemberID(uniqueID);
+        this.personalNumber = personalNumber;
+        setPassword(password);
+        setMemberID(creatUniqueID());
+    }
+
+    public Member(String name, String password) {
+        this.name = name;
+        this.password = password;
+
     }
 
     // for updating member
-    public void updateMemberInformation(String name, String personalNumber) {
+    public void updateMemberInformation(String name, PersonalNumber personalNumber,String password) {
         setName(name);
-        setPersonalNumber(personalNumber);
+        setPassword(password);
+        this.personalNumber = personalNumber;
     }
 
     // return name
@@ -36,14 +52,15 @@ public class Member {
     public void setName(String name) { this.name = name; }
 
     //return personal number
-    public String getPersonalNumber() { return personalNumber; }
+    public PersonalNumber getPersonalNumber() { return personalNumber; }
 
     //set personal number if it s not valid it will throws error
     public void setPersonalNumber(String personalNumber) {
-        if(!isValid(personalNumber)) {
+        PersonalNumber personalNumberEntered = new PersonalNumber(personalNumber);
+        if(!personalNumberEntered.validID()) {
             throw new IllegalArgumentException("Personal number should be a 10 digit number\n");
         }
-        this.personalNumber = personalNumber;
+        this.personalNumber = personalNumberEntered;
     }
 
     //check if personal number is digit and length is 10
@@ -111,4 +128,17 @@ public class Member {
         boat.setLength(length);
         boat.setType(type);
     }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String changeToStringPersonalID(){
+        return this.personalNumber.getId();
+    }
+
 }

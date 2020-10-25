@@ -6,8 +6,11 @@ public class BoatClub {
     private ArrayList<Member> members=new ArrayList<>();
     private Registry registry = new Registry();
     private Member member;
+    private boolean isLoggedIn;
+
 
     public BoatClub() {
+        isLoggedIn = false;
     }
 
     //we might use later it create a member and return it
@@ -23,8 +26,8 @@ public class BoatClub {
     }
 
     //this used in registery to create them from the loaded file and add them to list
-    public Member makeMemberForLoadingInStartOfProgram(String name , String personalNemuber , String memberID){
-        Member member = new Member(name , personalNemuber, memberID);
+    public Member makeMemberForLoadingInStartOfProgram(String name , PersonalNumber personalNemuber ,String password, String memberID){
+        Member member = new Member(name , personalNemuber,password, memberID);
         members.add(member);
         return member;
     }
@@ -66,5 +69,12 @@ public class BoatClub {
             throw new IllegalArgumentException("List is empty\n" +
                     "----------------");
         return this.members;
+    }
+    public boolean getIsLoggedIn() {
+        return isLoggedIn;
+    }
+
+    public void setLoggedIn(boolean loggedIn) {
+        isLoggedIn = loggedIn;
     }
 }

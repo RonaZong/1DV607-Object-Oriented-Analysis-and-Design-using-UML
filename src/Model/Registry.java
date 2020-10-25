@@ -36,8 +36,9 @@ public class Registry {
         if(!eachLines[0].trim().isEmpty()){//In order to check if file is empty or not to not get error of index out boundary in line 62 (we have an array of length 1 which contains \\r\\n
            for (String lines : eachLines) {
                String[] parameters = lines.split(":");//separate each word and put them in an array
-               Member member = boatClub.makeMemberForLoadingInStartOfProgram(parameters[0], parameters[1],parameters[2]);
-               member.setNumbersOfBoatsOwnByAMember(Integer.parseInt(parameters[3]));
+               PersonalNumber personalNumber = new PersonalNumber(parameters[1]);
+               Member member = boatClub.makeMemberForLoadingInStartOfProgram(parameters[0], personalNumber,parameters[2],parameters[3]);
+               member.setNumbersOfBoatsOwnByAMember(Integer.parseInt(parameters[4]));
                for (int i = 4; i < parameters.length - 1; i = i + 2) {
                      member.registerNewBoat(BoatType.valueOf(parameters[i]),Double.parseDouble(parameters[i+1]));
                }
@@ -55,7 +56,7 @@ public class Registry {
         try {
             saver = new PrintWriter(file);
             for(Member member : boatClub.getAllMembersLocally()) {
-                saver.print(member.getName() + ":" + member.getPersonalNumber() + ":"
+                saver.print(member.getName() + ":" + member.changeToStringPersonalID() + ":"+member.getPassword()+":"
                         + member.getMemberID() + ":" + member.numberOfBoats());
                 for (Boat boat : member.boatsOwnedByMember()) {
                     saver.print(":" + boat.getType() + ":" + boat.getLength());
