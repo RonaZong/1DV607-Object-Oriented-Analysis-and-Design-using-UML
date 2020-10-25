@@ -1,24 +1,20 @@
 package Model;
 
 import Model.rules.HitStrategy;
-import Model.rules.IWinnerStrategy;
+import Model.rules.WinStrategy;
 import Model.rules.NewGameStrategy;
 import Model.rules.RulesFactory;
 
-public class Dealer extends Player{
+public class Dealer extends Player {
     private Deck deck;
-    private Card card;
     private NewGameStrategy newGameStrategy;
     private HitStrategy hitStrategy;
-    private IWinnerStrategy m_winner;
+    private WinStrategy winnerStrategy;
 
     public Dealer(RulesFactory rulesFactory) {
-        /** AmericanNewGame */
         this.newGameStrategy = rulesFactory.GetNewGameRule();
-        /** BasicHit */
         this.hitStrategy = rulesFactory.GetHitRule();
-        m_winner = rulesFactory.GetWinner();
-
+        this.winnerStrategy = rulesFactory.GetWinner();
     }
 
     public Deck getDeck() {
@@ -31,7 +27,7 @@ public class Dealer extends Player{
 
     public boolean NewGame(Player player) {
         if (this.deck == null || IsGameOver()) {
-            this.deck = new Deck(this.card);
+            this.deck = new Deck();
             ClearHand();
             player.ClearHand();
             return newGameStrategy.NewGame(this.deck, this, player);
@@ -40,7 +36,7 @@ public class Dealer extends Player{
     }
 
     private void getCard(Player role) {
-        this.card = this.deck.GetCard();
+        Card card = this.deck.GetCard();
         card.Show(true);
         role.DealCard(card);
     }
@@ -81,15 +77,16 @@ public class Dealer extends Player{
 //      return false; // player win
 //    }
 //    else
-        if (m_winner.IsDealerWinner(player, dealer, maxScore)) {
+        if (winnerStrategy.IsDealerWinner(player, dealer, maxScore)) {
             return true; // dealer win
         }
 
-        return m_winner.GeneralWinner(player, dealer, maxScore);
+        return winnerStrategy.GeneralWinner(player, dealer, maxScore);
     }
 
     /** Dealer Lost */
     public boolean IsGameOver() {
         return this.deck != null && !this.hitStrategy.DoHit(this); // dealer won
     }
+
 }
