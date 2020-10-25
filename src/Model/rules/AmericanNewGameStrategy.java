@@ -1,6 +1,5 @@
 package Model.rules;
 
-import Model.Card;
 import Model.Dealer;
 import Model.Deck;
 import Model.Player;
