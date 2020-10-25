@@ -2,6 +2,7 @@ package View;
 
 import Model.Boat;
 import Model.BoatClub;
+import Model.BoatType;
 import Model.Member;
 
 import java.util.Scanner;
@@ -47,7 +48,7 @@ public class BoatMenu {
         int typeValue = sc.nextInt();
         System.out.println("Enter length of the boat");
         int length = sc.nextInt();
-        this.member.registerBoat(Boat.BoatType.values()[typeValue], length);
+        this.member.registerNewBoat(BoatType.values()[typeValue], length);
     }
 
     private void showUpdateBoatMenu() {
