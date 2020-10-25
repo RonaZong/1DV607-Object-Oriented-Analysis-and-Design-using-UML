@@ -1,7 +1,6 @@
 package View;
 
-public abstract class BaseView {
-    private int input;
+public abstract class BaseView implements Runnable{
 
     protected int getInput() {
         try {
@@ -14,10 +13,6 @@ public abstract class BaseView {
             System.out.println(e);
             return 0;
         }
-    }
-
-    public void collectEvents() {
-        this.input = getInput();
     }
 
     public boolean play() {
@@ -35,14 +30,6 @@ public abstract class BaseView {
 
     public boolean quit() {
         return getInput() == 'q';
-    }
-
-    public void Pause() {
-        try {
-            Thread.sleep(2000);
-            System.out.println("...");
-        } catch (Exception e) {
-        }
     }
 
 }
