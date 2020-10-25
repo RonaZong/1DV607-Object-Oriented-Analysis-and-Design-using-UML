@@ -128,6 +128,8 @@ public class StartMenu extends menu {
         goBackToStartMenu();
     }
 
+
+
     //show the confirmation message after saving the program
     public void showSaveMsg(){
         System.out.println("The information is saved");
