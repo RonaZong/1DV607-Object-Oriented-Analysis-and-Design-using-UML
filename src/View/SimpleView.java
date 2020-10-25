@@ -12,17 +12,16 @@ public class SimpleView extends BaseView implements IView {
                 "Type 'p' to Play, 'h' to Hit, 's' to Stand or 'q' to Quit\n");
     }
 
-
-    public void DisplayPlayerCard(Card card) {
-        DisplayCard("Player", card);
+    public void DisplayCard(Card card) {
+        System.out.println(card.GetValue() + " of " + card.GetColor());
     }
 
-    public void DisplayDealerCard(Card card) {
-        DisplayCard("Dealer", card);
+    public void DisplayPlayerCard() {
+        System.out.print("Player: ");
     }
 
-    public void DisplayCard(String name, Card card) {
-        System.out.println(name + ": " + card.GetValue() + " of " + card.GetColor());
+    public void DisplayDealerCard() {
+        System.out.print("Dealer: ");
     }
 
     public void DisplayPlayerHand(Iterable<Card> hand, int score) {
@@ -35,9 +34,10 @@ public class SimpleView extends BaseView implements IView {
 
     private void DisplayHand(String name, Iterable<Card> hand, int score)
     {
+        System.out.println(name + ": ");
         for(Card card : hand)
         {
-            DisplayCard(name, card);
+            DisplayCard(card);
         }
         System.out.println("Score: " + score + "\n");
     }
@@ -50,6 +50,16 @@ public class SimpleView extends BaseView implements IView {
         }
         else {
             System.out.println("You Won!");
+        }
+    }
+
+    @Override
+    public void run() {
+        try {
+            Thread.sleep(2000);
+            System.out.println("*pause*");
+        } catch (InterruptedException e) {
+            System.out.println(e);
         }
     }
 }
