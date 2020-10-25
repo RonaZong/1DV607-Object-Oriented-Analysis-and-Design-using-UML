@@ -7,15 +7,15 @@ public interface IView {
     boolean hit();
     boolean stand();
     boolean quit();
-    void collectEvents();
-    void Pause();
+    void run();
 
     void DisplayWelcomeMessage();
-    void DisplayPlayerCard(Card card);
-    void DisplayDealerCard(Card card);
-    void DisplayCard(String name, Card card);
+    void DisplayCard(Card card);
+    void DisplayPlayerCard();
+    void DisplayDealerCard();
     void DisplayPlayerHand(Iterable<Card> hand, int score);
     void DisplayDealerHand(Iterable<Card> hand, int score);
     void DisplayGameOver(boolean dealerIsWinner);
+
 }
 
