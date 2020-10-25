@@ -9,8 +9,9 @@ public class Program {
     {
         Game game = new Game();
         IView view = new SimpleView(); //new SwedishView();
-        PlayGame ctrl = new PlayGame();
+        PlayGame ctrl = new PlayGame(game, view);
+        game.Subscription(ctrl);
 
-        while (ctrl.Play(game, view));
+        while (ctrl.Play());
     }
 }
