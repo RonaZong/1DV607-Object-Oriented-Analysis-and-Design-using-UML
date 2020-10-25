@@ -1,9 +1,6 @@
 package View;
 
-import Model.Boat;
-import Model.BoatClub;
-import Model.Member;
-import Model.BoatType;
+import Model.*;
 import Util.UserChoiceInBoatMenu;
 import Util.UserChoiceInMemberMenu;
 import java.util.Arrays;
@@ -72,20 +69,25 @@ public class MemberMenu extends menu{
                     "Or press other integer to go back");
             int chosenMember = correctInteger();
             index = 1;
-            for (Member member : boatClub.getAllMembersLocally()) {
-                if (index == chosenMember) {
-                    System.out.println("Press 1 to delete a member\n" +
-                            "Press 2 to update a member information\n" +
-                            "Press 3 to see a specific member data\n" +
-                            "Press any other key to go back");
-                    userInput = userStringInput();
-                    return member;
-                } else {
-                    index++;
-                }
+            if (boatClub.getIsLoggedIn()){
+                for (Member member : boatClub.getAllMembersLocally()) {
+                    if (index == chosenMember) {
+                        System.out.println("Press 1 to delete a member\n" +
+                                "Press 2 to update a member information\n" +
+                                "Press 3 to see a specific member data\n" +
+                                "Press any other key to go back");
+                        userInput = userStringInput();
+                        return member;
+                    } else {
+                        index++;
+                    }
+                } System.out.println("This member does not exist you will go back to start menu\n");
+                goBackToStartMenu();
             }
-            System.out.println("This member does not exist you will go back to start menu\n");
-            goBackToStartMenu();
+            else {
+                System.out.println("Please go back to main menu to log in first to create, change and delete information");
+            }
+
         }catch (IllegalArgumentException ex){
             System.out.println(ex.getMessage());
         }
@@ -112,11 +114,15 @@ public class MemberMenu extends menu{
         boolean isValid = false;
         System.out.println("Enter new name");
         String name = userStringInput();
+        System.out.println("Enter new password");
+        String password = userStringInput();
+
         do {
             System.out.println("Enter new 10 digits personal number");
              long personalNumber = correctLong();
              try {
-                 member.updateMemberInformation(name, (personalNumber + ""));
+                 PersonalNumber personalNumberEntered = new PersonalNumber(""+personalNumber);
+                 member.updateMemberInformation(name,personalNumberEntered,password);
                  isValid = true;
              }catch (IllegalArgumentException ex){
                  System.out.println(ex.getMessage());
