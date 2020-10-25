@@ -10,7 +10,7 @@ public class RulesFactory {
     }
 
     // TODO: variable rule for who wins the game
-    public IWinnerStrategy GetWinner() {
+    public WinStrategy GetWinner() {
         return new WinnerStrategy();
     }
 
