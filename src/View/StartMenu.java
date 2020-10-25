@@ -1,6 +1,8 @@
 package View;
 
+import Model.BoatClub;
 import Model.Member;
+import Model.PersonalNumber;
 import Util.UserChoiceInStartMenu;
 
 public class StartMenu extends menu {
@@ -11,10 +13,11 @@ public class StartMenu extends menu {
         System.out.println("Welcome to Boat Club\n" +
                 "-----------------------\n" +
                 "Press 1 to add a new member\n" +
-                "Press 2 to go to member menu\n" +
-                "Press 3 to see the instruction\n" +
-                "Press 4 to save\n" +
-                "Press 5 to quit");
+                "Press 2 to log \n"+
+                "Press 3 to go to member menu\n" +
+                "Press 4 to see the instruction\n" +
+                "Press 5 to save\n" +
+                "Press 6 to quit");
     }
 
 
@@ -28,15 +31,18 @@ public class StartMenu extends menu {
                     choice = UserChoiceInStartMenu.ADD_NEW_MEMBER;
                     break;
                 case "2":
-                    choice = UserChoiceInStartMenu.MEMBER_MENU;
+                    choice = UserChoiceInStartMenu.LOG_IN;
                     break;
                 case "3":
-                    choice = UserChoiceInStartMenu.SEE_INSTRUCTION;
+                    choice = UserChoiceInStartMenu.MEMBER_MENU;
                     break;
                 case "4":
-                    choice = UserChoiceInStartMenu.SAVE;
+                    choice = UserChoiceInStartMenu.SEE_INSTRUCTION;
                     break;
                 case "5":
+                    choice = UserChoiceInStartMenu.SAVE;
+                    break;
+                case "6":
                     choice = UserChoiceInStartMenu.QUIT;
                     break;
                 default:
@@ -59,15 +65,38 @@ public class StartMenu extends menu {
                     "In order to add a member you have to enter following information : \n" +
                     "Please enter user name: ");
             String name = userStringInput();
+            System.out.print("Please enter your pass word ");
+            String password = userStringInput();
             System.out.print("Please enter personal number in 10 digits: ");
             long personalNumber = correctLong();
+            PersonalNumber personalNumberEntered = new PersonalNumber(""+personalNumber);
+
             try {
-                    member = new Member(name, (personalNumber+""));
+                    member = new Member(name, personalNumberEntered,password);
             }catch(IllegalArgumentException ex){
                 System.out.println(ex.getMessage());
             }
+
         }while (member == null);
         return member;
+    }
+    public Member showLogInMenu(){
+        Member member = null;
+        System.out.println("Please enter your user name");
+        String name = userStringInput();
+        System.out.print("Please enter your pass word ");
+        String password = userStringInput();
+        member = new Member(name,password);
+        return member;
+    }
+
+    public void showLoginStatus(BoatClub boatClub){
+        if (boatClub.getIsLoggedIn()){
+            System.out.println("Log in successfully");
+        }
+        else{
+            System.out.println("Wrong password or password");
+        }
     }
 
     //show confirmation message after adding that member
