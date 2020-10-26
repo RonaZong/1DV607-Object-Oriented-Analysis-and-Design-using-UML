@@ -5,6 +5,8 @@ import Model.Member;
 import Model.PersonalNumber;
 import Util.UserChoiceInStartMenu;
 
+import java.time.DateTimeException;
+
 public class StartMenu extends menu {
 
     //show the start menu
@@ -13,7 +15,7 @@ public class StartMenu extends menu {
         System.out.println("Welcome to Boat Club\n" +
                 "-----------------------\n" +
                 "Press 1 to add a new member\n" +
-                "Press 2 to log \n"+
+                "Press 2 to log in\n"+
                 "Press 3 to go to member menu\n" +
                 "Press 4 to see the instruction\n" +
                 "Press 5 to save\n" +
@@ -64,16 +66,19 @@ public class StartMenu extends menu {
                     "In order to add a member you have to enter following information : \n" +
                     "Please enter user name: ");
             String name = userStringInput();
-            System.out.print("Please enter your pass word ");
+            System.out.print("Please enter your password ");
             String password = userStringInput();
-            System.out.print("Please enter personal number in 10 digits: ");
+            System.out.print("Please enter personal number in yyyy-mm-dd-checksum (without dash) format: ");
             long personalNumber = correctLong();
-            PersonalNumber personalNumberEntered = new PersonalNumber(""+personalNumber);
-
             try {
+                PersonalNumber personalNumberEntered = new PersonalNumber("" + personalNumber);
                     member = new Member(name, personalNumberEntered,password);
             }catch(IllegalArgumentException ex){
                 System.out.println(ex.getMessage());
+            }catch (DateTimeException ex){
+                System.err.print(ex);
+            }catch (Exception ex){
+                System.err.print(ex);
             }
 
         }while (member == null);
@@ -83,7 +88,7 @@ public class StartMenu extends menu {
         Member member = null;
         System.out.println("Please enter your user name");
         String name = userStringInput();
-        System.out.print("Please enter your pass word ");
+        System.out.print("Please enter your password ");
         String password = userStringInput();
         member = new Member(name,password);
         return member;
@@ -91,10 +96,10 @@ public class StartMenu extends menu {
 
     public void showLoginStatus(BoatClub boatClub){
         if (boatClub.getIsLoggedIn()){
-            System.out.println("Log in successfully");
+            System.out.println("Logged in successfully");
         }
         else{
-            System.out.println("Wrong password or password");
+            System.out.println("Wrong or invalid username/password");
         }
     }
 
@@ -126,6 +131,8 @@ public class StartMenu extends menu {
                 "For saving information you need to save all changes you made before you quit the program.\n");
         goBackToStartMenu();
     }
+
+
 
     //show the confirmation message after saving the program
     public void showSaveMsg(){
