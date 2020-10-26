@@ -110,15 +110,14 @@ public class MemberMenu extends menu{
         boolean isValid = false;
         System.out.println("Enter new name");
         String name = userStringInput();
-        System.out.println("Enter new password");
-        String password = userStringInput();
+
 
         do {
             System.out.println("Enter new 10 digits personal number");
              long personalNumber = correctLong();
              try {
                  PersonalNumber personalNumberEntered = new PersonalNumber(""+personalNumber);
-                 member.updateMemberInformation(name,personalNumberEntered,password);
+                 member.updateMemberInformation(name,personalNumberEntered);
                  isValid = true;
              }catch (IllegalArgumentException ex){
                  System.out.println(ex.getMessage());
