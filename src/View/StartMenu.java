@@ -52,13 +52,13 @@ public class StartMenu implements IView{
 
     }
 
-    public Member loginAuthentication() {
+    public boolean loginAuthentication(Member member) {
         System.out.print("Enter your username: ");
         String name = sc.nextLine();
         System.out.println("Enter your password: ");
         String password = sc.nextLine();
 
-        return new Member(name, password);
+        return member.getName().equals(name) && member.getPassword().equals(password);
     }
 
     public void showList(BoatClub boatClub){
