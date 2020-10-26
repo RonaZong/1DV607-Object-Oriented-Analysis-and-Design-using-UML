@@ -1,6 +1,8 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Member {
     private String name;
@@ -9,7 +11,7 @@ public class Member {
 
     //do we need to initialize?
     //change member id to string
-    private String memberID ;//=1;
+    private int memberID ;//=1;
     //we need the know how many boats each member has
     //if member should have a boat at least so he or she can register we can initialize arraylist in method
     //otherwise we have to initialize arraylist here or we get null value
@@ -68,24 +70,23 @@ public class Member {
         this.password = password;
     }
 
-    public String getMemberID() {
+    public int getMemberID() {
         return memberID;
     }
 
-    public void setMemberID(String memberID) {
+    public void setMemberID(int memberID) {
         this.memberID = memberID;
     }
 
     // I m not sure if it works or not but the member ID should be created by system and
     // we cant set it to whatever we want so I think we dont need setter
-    private String creatUniqueID(){
+    private int creatUniqueID(){
         //use current time to creat a unique id
         //only take long from 8 to 12
         long ID = System.currentTimeMillis();
-        String memberID = Long.toString(ID).substring(9,13);
+        int memberID = Integer.parseInt(Long.toString(ID).substring(9,13));
         return memberID;
     }
-
 
 
     public ArrayList<Boat> boatsOwnedByMember(){
