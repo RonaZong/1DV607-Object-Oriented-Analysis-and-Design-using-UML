@@ -18,7 +18,7 @@ public class StartMenu implements IView{
     public void showInstruction(){
         System.out.println("Welcome to Boat Club\n" +
                 "-----------------------\n" +
-                "Press 1 to member menu\n" +
+                "Press 1 to log in\n" +
                 "Press 2 to show list\n" +
                 "Press 3 to quit");
     }
@@ -28,7 +28,7 @@ public class StartMenu implements IView{
         int inputOfStartMenu = sc.nextInt();
         switch (inputOfStartMenu) {
             case 1:
-                menuOptions = MenuOptions.MEMBER_MENU;
+                menuOptions = MenuOptions.LOG_IN;
                 if (menuOptions.getInput() == inputOfStartMenu) {
                     System.out.println(menuOptions.getMessage());
                 }
@@ -52,6 +52,16 @@ public class StartMenu implements IView{
 
     }
 
+    public void loginAuthentication(Member member) {
+        System.out.print("----- Show list of members -----\n"+
+                " What kind of list, press 1 for compact list, press 2 for verbose list: ");
+
+
+
+        System.out.println("User: " + member.getName());
+
+    }
+
     public void showList(BoatClub boatClub){
         System.out.print("----- Show list of members -----\n"+
                 " What kind of list, press 1 for compact list, press 2 for verbose list: ");
@@ -68,29 +78,5 @@ public class StartMenu implements IView{
 
 
 
-    public void showCompactList(BoatClub boatClub){
-        for(Member member : boatClub.getAllMember()) {
-            System.out.println("This member name is : " + member.getName() +
-                    "\nwith memberID of : " + member.getMemberID() +
-                    "\nwhich has " + member.boatsOwnedByMember().size() + "boats" +
-                    "\n------------\n");
-        }
-    }
 
-    public void showVerboseList(BoatClub boatClub){
-        for(Member member : boatClub.getAllMember()){
-            System.out.println("This member name is : " + member.getName() +
-                           "\nwith personal number of " + member.getPersonalNumber() +
-                            "\nwith memberID of " + member.getMemberID());
-        //it might give a null exception
-            System.out.println("This member has " + member.boatsOwnedByMember().size() + "boats");
-            if(member.boatsOwnedByMember().size()> 0 ) {
-                System.out.println("this member boat information is :");
-                for (Boat boat : member.boatsOwnedByMember()) {
-                    System.out.println("Boat type :" + boat.getType() +
-                            "\nBoat color : " + boat.getLength());
-                }
-            }
-        }
-    }
 }
