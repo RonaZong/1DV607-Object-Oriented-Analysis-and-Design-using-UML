@@ -11,7 +11,6 @@ public class MemberMenu implements IView{
     private Scanner sc = new Scanner(System.in);
     private MenuOptions menuOptions;
 
-
     public MemberMenu() {
     }
 
@@ -29,19 +28,19 @@ public class MemberMenu implements IView{
         int inputOfMemberMenu = sc.nextInt();
         switch (inputOfMemberMenu) {
             case 1:
-                menuOptions = MenuOptions.MEMBER_MENU;
+                menuOptions = MenuOptions.ADD_MEMBER;
                 if (menuOptions.getInput() == inputOfMemberMenu) {
                     System.out.println(menuOptions.getMessage());
                 }
                 break;
             case 2:
-                menuOptions = MenuOptions.SHOW_LIST;
+                menuOptions = MenuOptions.UPDATE_MEMBER;
                 if (menuOptions.getInput() == inputOfMemberMenu) {
                     System.out.println(menuOptions.getMessage());
                 }
                 break;
-            case 0:
-                menuOptions = MenuOptions.QUIT;
+            case 3:
+                menuOptions = MenuOptions.DELETE_MEMBER;
                 if (menuOptions.getInput() == inputOfMemberMenu) {
                     System.out.println(menuOptions.getMessage());
                 }
@@ -50,28 +49,46 @@ public class MemberMenu implements IView{
     }
 
 
-    public void createMemberMenu(){
-        System.out.println("----- Become a Member ----\n-" +
-                "In order to be a member you have to enter following information : \n" +
-                "Please enter user name: ");
-        String name = sc.nextLine();
-
-        System.out.print("Please enter personal number: ");
+    public Member addMember(){
+        System.out.println("----- Add a Member ----\n-" +
+                "In order to be a member you have to enter following information: \n" +
+                "Please enter personal number: ");
         String personalNumber = sc.nextLine();
-        this.boatClub.creatMember(name, personalNumber);
-        // this.alreadyMember = true;
+        
+        System.out.println("Please enter user name: ");
+        String name = sc.nextLine();
+        
+        System.out.println("Please enter password: ");
+        String password = sc.nextLine();
+        
+        Member newMember = new Member(personalNumber, name, password);
+
+        return newMember;
     }
 
-    private void showUpdateMemberMenu() {
-        System.out.println("What do you want to update?");
-        System.out.println("If you want to update name enter your new name otherwise press enter");
-        String name = sc.nextLine();
-        //do we need to check for validate personal number??
-        //Yes
+    public void updateMember(Member member) {
+        String YN = null;
+        String personalNumber = member.getPersonalNumber();
+        String name = member.getName();
+        String password = member.getPassword();
 
-        System.out.println("If you want to update your personal number enter your new personal" +
-                "number otherwise press enter");
-        String personalNumber = sc.nextLine();
-        this.boatClub.updateMember(this.member, name, personalNumber);
+        System.out.println("Update personalNumber? (Y / N)");
+        if (YN.equals('Y')) {
+            personalNumber = sc.nextLine();
+        }
+        
+        System.out.println("Update name? (Y / N)");
+        YN = sc.nextLine();
+        if (YN.equals('Y')) {
+            name = sc.nextLine();
+        }
+
+        System.out.println("Update password? (Y / N)");
+        YN = sc.nextLine();
+        if (YN.equals('Y')) {
+            password = sc.nextLine();
+        }
+        
+        member.editMember(personalNumber, name, password);
     }
 }
