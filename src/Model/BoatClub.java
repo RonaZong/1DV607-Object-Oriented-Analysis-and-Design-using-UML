@@ -10,14 +10,17 @@ public class BoatClub {
         this.members = new ArrayList<>();
     }
 
+    public void addMember() {
+        this.members.add(this.member);
+    }
     // Register Member
-    public void creatMember(String userName, String personalNumber){
+    public void creatMember(String personalNumber, String userName, String password){
         if (this.member == null) {
-            Member newMember = new Member(userName, personalNumber);
+            Member newMember = new Member(personalNumber, userName,password);
             this.members.add(newMember);
         }
         else {
-            this.member.editMember(userName, personalNumber);
+            this.member.editMember(personalNumber, userName, password);
         }
     }
 
