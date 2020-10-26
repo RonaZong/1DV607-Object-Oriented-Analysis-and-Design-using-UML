@@ -29,6 +29,7 @@ public class MainController {
 
         switch (input) {
             case 1: /** LOGIN */
+                this.startMenu.loginAuthentication();
                 this.loginMenu = new LoginMenu();
                 this.loginMenu.showInstruction();
                 checkInputInLoginMenu();
