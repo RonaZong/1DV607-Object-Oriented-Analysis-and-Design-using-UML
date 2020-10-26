@@ -14,6 +14,7 @@ public class LoginMenu implements IView{
 
     @Override
     public void showInstruction(){
+
         System.out.println("----Login' menu----\n" +
                 "Press 1 to MEMBER MENU\n" +
                 "Press 2 to BOAT MENU\n" +
