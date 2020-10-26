@@ -4,20 +4,25 @@ public enum MenuOptions {
 
     /** Start Menu */
     QUIT(0, "QUIT"),
-    MEMBER_MENU(1, "MEMBER MENU"),
+    LOG_IN(1, "LOG IN"),
     SHOW_LIST(2, "SHOW LIST"),
+
+    /** Show List */
+    COMPACT_LIST(1, "COMPACT LIST"),
+    VERBOSE_LIST(2, "VERBOSE LIST"),
+    SPECIFIC_MEMBER(3, "SPECIFIC MEMBER"),
+
+    /** LOG IN */
+    MEMBER_MENU(1, "MEMBER MENU"),
+    BOAT_MENU(2, "BOAT MENU"),
 
     /** Member Menu */
     ADD_MEMBER(1, "ADD MEMBER"),
     UPDATE_MEMBER(2,"UPDATE MEMBER"),
     DELETE_MEMBER(3, "DELETE MEMBER"),
 
-    /** Show List */
-    COMPACT_LIST(1, "COMPACT LIST"),
-    VERBOSE_LIST(2, "VERBOSE LIST"),
-
     /** Boat Menu */
-    ADD_BOAT(1, "ADD Boat"),
+    ADD_BOAT(1, "ADD BOAT"),
     UPDATE_BOAT(2, "UPDATE BOAT"),
     DELETE_BOAT(3, "DELETE BOAT"),
 
@@ -26,8 +31,6 @@ public enum MenuOptions {
     MOTORSAILOR(2, "MOTORSAILOR"),
     KAYAK_OR_CANOE(3, "KAYAK_OR_CANOE"),
     OTHER(4, "OTHER");
-
-
 
 
     private int input;
