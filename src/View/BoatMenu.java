@@ -3,18 +3,18 @@ package View;
 import Model.Boat;
 import Model.BoatClub;
 import Model.Member;
+import Util.MenuOptions;
 
 import java.util.Scanner;
 
 public class BoatMenu implements IView{
     private Scanner sc = new Scanner(System.in);
-    private BoatClub boatClub;
     private Member member;
     private Boat boat;
 
-    public BoatMenu(BoatClub boatClub, Member member) {
-        this.boatClub = boatClub;
-        this.member = member;
+    private MenuOptions menuOptions;
+
+    public BoatMenu() {
     }
 
     @Override
@@ -30,7 +30,27 @@ public class BoatMenu implements IView{
 
     @Override
     public int getInput() {
-        return 0;
+        int inputOfBoatMenu = sc.nextInt();
+        switch (inputOfBoatMenu) {
+            case 1:
+                menuOptions = MenuOptions.ADD_BOAT;
+                if (menuOptions.getInput() == inputOfBoatMenu) {
+                    System.out.println(menuOptions.getMessage());
+                }
+                break;
+            case 2:
+                menuOptions = MenuOptions.UPDATE_BOAT;
+                if (menuOptions.getInput() == inputOfBoatMenu) {
+                    System.out.println(menuOptions.getMessage());
+                }
+                break;
+            case 3:
+                menuOptions = MenuOptions.DELETE_BOAT;
+                if (menuOptions.getInput() == inputOfBoatMenu) {
+                    System.out.println(menuOptions.getMessage());
+                }
+        }
+        return inputOfBoatMenu;
     }
 
     public void actUponUserInputInBoatMenu(int userInput, Member member, Boat boat) {
