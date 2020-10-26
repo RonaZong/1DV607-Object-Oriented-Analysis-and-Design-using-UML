@@ -8,30 +8,23 @@ public class Member {
     private String name;
     private String personalNumber;
     private String password;
-
-    //do we need to initialize?
-    //change member id to string
-    private int memberID ;//=1;
-    //we need the know how many boats each member has
-    //if member should have a boat at least so he or she can register we can initialize arraylist in method
-    //otherwise we have to initialize arraylist here or we get null value
+    private int memberID ;
     private ArrayList<Boat> boats;
 
     // I think we don't need scanner here
    // private Scanner scanner = new Scanner(System.in);
-    public Member(String personalNumber, String name) {
-        this.personalNumber = personalNumber;
-        this.name = name;
-        this.memberID = creatUniqueID();
-        this.boats = new ArrayList<>();
-    }
+//    public Member(String personalNumber, String name) {
+//        this.personalNumber = personalNumber;
+//        this.name = name;
+//        this.boats = new ArrayList<>();
+//    }
 
     // Authentication
-    public Member(String personalNumber, String name, String password) {
+    public Member(String personalNumber, String name, String password, int memberID) {
         this.personalNumber = personalNumber;
         this.name = name;
         this.password = password;
-        this.memberID = creatUniqueID();
+        this.memberID = memberID;
         this.boats = new ArrayList<>();
     }
 
@@ -43,7 +36,6 @@ public class Member {
 
     private boolean isValid(String input){
         return input.length() == 10 && input.matches("-?\\d+(\\.\\d+)?");
-        //check its digits
     }
 
     public String getPersonalNumber() {
@@ -78,24 +70,24 @@ public class Member {
         this.memberID = memberID;
     }
 
-    // I m not sure if it works or not but the member ID should be created by system and
-    // we cant set it to whatever we want so I think we dont need setter
-    private int creatUniqueID(){
-        //use current time to creat a unique id
-        //only take long from 8 to 12
-        long ID = System.currentTimeMillis();
-        int memberID = Integer.parseInt(Long.toString(ID).substring(9,13));
-        return memberID;
-    }
+
+//    private int creatUniqueID(){
+//        long ID = System.currentTimeMillis();
+//        int memberID = Integer.parseInt(Long.toString(ID).substring(9,13));
+//        return memberID;
+//    }
 
 
     public ArrayList<Boat> boatsOwnedByMember(){
         return this.boats;
     }
 
-    public void registerBoat(Boat.BoatType boatType, double length){
-        Boat boat = new Boat(boatType, length);
-        boats.add(boat);
+    public void addBoat(Boat.BoatType boatType, double length){
+        this.boats.add(new Boat(boatType, length));
+    }
+
+    public void updateBoat() {
+
     }
 
     public void deleteBoat(Boat boat) {
@@ -103,5 +95,18 @@ public class Member {
     }
 
 
+    public String toString(boolean compact) {
+        String compactOrVerbose = "";
 
+        if (compact) {   // Compact view.
+            compactOrVerbose = ", Number of boats = " + boats.size();
+        } else {        // Verbose view.
+            for (int i = 0; i < boats.size(); i++) {
+                compactOrVerbose += "\n\tBoat " + (i + 1) + ", " + boats.get(i).toString();
+            }
+        }
+        return "MemberID: " + memberID +
+                "\nName: " + name +
+                compactOrVerbose;
+    }
 }
