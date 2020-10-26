@@ -27,11 +27,11 @@ public class PersonalNumber {
            // this.id = id;
         }
 
-    private void setPersonalNumber(String personalNumber) {
-        date =LocalDate.parse(personalNumber.substring(0,8), DateTimeFormatter.BASIC_ISO_DATE);
+    public void setPersonalNumber(String personalNumber) {
         if(!validID(personalNumber)){
             throw new IllegalArgumentException("Invalid personal number");
         }
+        date =LocalDate.parse(personalNumber.substring(0,8), DateTimeFormatter.BASIC_ISO_DATE);
         this.personalNumber = personalNumber;
     }
 
