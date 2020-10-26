@@ -52,14 +52,13 @@ public class StartMenu implements IView{
 
     }
 
-    public void loginAuthentication(Member member) {
-        System.out.print("----- Show list of members -----\n"+
-                " What kind of list, press 1 for compact list, press 2 for verbose list: ");
+    public Member loginAuthentication() {
+        System.out.print("Enter your username: ");
+        String name = sc.nextLine();
+        System.out.println("Enter your password: ");
+        String password = sc.nextLine();
 
-
-
-        System.out.println("User: " + member.getName());
-
+        return new Member(name, password);
     }
 
     public void showList(BoatClub boatClub){
