@@ -66,13 +66,12 @@ public class StartMenu extends menu {
                     "In order to add a member you have to enter following information : \n" +
                     "Please enter user name: ");
             String name = userStringInput();
-            System.out.print("Please enter your password ");
-            String password = userStringInput();
+
             System.out.print("Please enter personal number in yyyy-mm-dd-checksum (without dash) format: ");
             long personalNumber = correctLong();
             try {
                 PersonalNumber personalNumberEntered = new PersonalNumber("" + personalNumber);
-                    member = new Member(name, personalNumberEntered,password);
+                    member = new Member(name, personalNumberEntered);
             }catch(IllegalArgumentException ex){
                 System.out.println(ex.getMessage());
             }catch (DateTimeException ex){
