@@ -15,7 +15,7 @@ public class MemberController {
 
     public String memberToString(int memberID) {
         if ((memberMap.size() > 0) && (memberID <= memberMap.size())) {
-            return memberMap.get(memberID).toString(false);
+//            return memberMap.get(memberID).toString(false);
         }
         else {
             return "\nNo member is founded.";
@@ -26,7 +26,7 @@ public class MemberController {
         String membersString = "";
         if (memberMap.size() > 0) {
             for (Map.Entry<Integer, Member> entry : memberMap.entrySet()) {
-                membersString += "\n" + (entry.getValue()).toString(compact);
+//                membersString += "\n" + (entry.getValue()).toString(compact);
             }
         } else {
             membersString = "\n No members found.";
