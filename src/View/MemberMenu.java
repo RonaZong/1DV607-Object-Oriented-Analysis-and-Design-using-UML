@@ -69,6 +69,7 @@ public class MemberMenu extends menu{
                     "Or press other integer to go back");
             int chosenMember = correctInteger();
             index = 1;
+            if (boatClub.getIsLoggedIn()){
                 for (Member member : boatClub.getAllMembersLocally()) {
                     if (index == chosenMember) {
                         System.out.println("Press 1 to delete a member\n" +
@@ -82,7 +83,10 @@ public class MemberMenu extends menu{
                     }
                 } System.out.println("This member does not exist you will go back to start menu\n");
                 goBackToStartMenu();
-            
+            }
+            else {
+                System.out.println("Please go back to main menu to log in first to create, change and delete information");
+            }
 
         }catch (IllegalArgumentException ex){
             System.out.println(ex.getMessage());
@@ -139,7 +143,7 @@ public class MemberMenu extends menu{
 
     public void showMemberInformation(Member member) {
         System.out.println("This member name is : " + member.getName() +
-                "\nwith personal number of " + member.changeToStringPersonalID() +
+                "\nwith personal number of " + member.getPersonalNumber() +
                 "\nwith memberID of " + member.getMemberID());
         System.out.println("This member has " + member.numberOfBoats() + "boats");
         int index=1;

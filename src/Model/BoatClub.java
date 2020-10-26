@@ -1,7 +1,5 @@
 package Model;
 
-import Model.searchRule.ISearchingStrategy;
-
 import java.util.ArrayList;
 
 public class BoatClub {
@@ -9,11 +7,9 @@ public class BoatClub {
     private Registry registry = new Registry();
     private Member member;
     private boolean isLoggedIn;
-    private ISearchingStrategy searchMethod;
 
 
-    public BoatClub(ISearchingStrategy searchMethod) {
-        this.searchMethod = searchMethod;
+    public BoatClub() {
         isLoggedIn = false;
     }
 
@@ -65,10 +61,6 @@ public class BoatClub {
             }
         }
         return null;
-    }
-
-    public void searchForMembers(String input){
-        searchMethod.searchMembers(this,input);
     }
 
     //other than first time, we use this one to get information of arrayList

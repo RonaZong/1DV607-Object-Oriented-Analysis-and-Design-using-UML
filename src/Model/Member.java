@@ -56,11 +56,10 @@ public class Member {
 
     //set personal number if it s not valid it will throws error
     public void setPersonalNumber(String personalNumber) {
-
         PersonalNumber personalNumberEntered = new PersonalNumber(personalNumber);
-        /*if(!personalNumberEntered.validID(personalNumber)) {
+        if(!personalNumberEntered.validID()) {
             throw new IllegalArgumentException("Personal number should be a 10 digit number\n");
-        }*/
+        }
         this.personalNumber = personalNumberEntered;
     }
 
@@ -139,7 +138,7 @@ public class Member {
     }
 
     public String changeToStringPersonalID(){
-        return this.personalNumber.getPersonalNumber();
+        return this.personalNumber.getId();
     }
 
 }

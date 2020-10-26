@@ -8,9 +8,6 @@ package Controller;
         import Util.UserChoiceInStartMenu;
 
         import View.*;
-
-        import java.awt.*;
-
 public class MainController {
 
     private BoatClub boatClub;
@@ -35,13 +32,7 @@ public class MainController {
         while (userChoice !=null) {
             switch (userChoice) {
                 case ADD_NEW_MEMBER:
-
-                    //if (boatClub.getIsLoggedIn()){
-
-                    //if the user must log in to create a member, so when text file is empty and can't log in, it can't run
-                        userWantsToAddMember(menu);
-//                    }else
-//                        userNeedToLogIn(menu);
+                    userWantsToAddMember(menu);
                     userChoice=null;//for exiting the loop after add a member
                     break;
                 case LOG_IN:
@@ -71,7 +62,7 @@ public class MainController {
 
     private void userWantsToLogin(StartMenu startMenu){
         Member newMember = startMenu.showLogInMenu();
-        for (Member m:boatClub.getAllMembersLocally()){//this should be in model I guess
+        for (Member m:boatClub.getAllMembersLocally()){
            if (m.getName().equals(newMember.getName()) && m.getPassword().equals(newMember.getPassword())){
                 boatClub.setLoggedIn(true);
                 break;
@@ -80,10 +71,10 @@ public class MainController {
         startMenu.showLoginStatus(boatClub);
     }
     private void userWantsToAddMember(StartMenu menu){
-            do {
-                Member newMember = menu.showInstructionOfCreateMember();
-                menu.confirmationMsg(boatClub.addNewMember(newMember));
-            }while(menu.userWantsToAddMoreMember());
+       do {
+            Member newMember = menu.showInstructionOfCreateMember();
+           menu.confirmationMsg(boatClub.addNewMember(newMember));
+        }while(menu.userWantsToAddMoreMember());
     }
 
     //handling all user choices in member menu
@@ -97,16 +88,7 @@ public class MainController {
             switch (userChoice) {
                 case COMPACT_LIST:
                     this.member = memberMenu.showCompactList(boatClub);//this boat club here show the list and assign the members to the boat club
-
-                    //if not log in can not edit the information but if put in here cant see
-                    //the specific information.
-                    //change the view or implement with a lot duplicate
-                    if (boatClub.getIsLoggedIn()){
-                        actionOnCompactList();
-                    }
-                    else{
-                        userNeedToLogIn(memberMenu);
-                    }
+                    actionOnCompactList();
                     // if(this.member!=null)
                     IWantToGoBack = true;
                     break;
@@ -184,10 +166,6 @@ public class MainController {
             case GO_BACK:
                 break;
         }
-    }
-
-    private void userNeedToLogIn(menu menu){
-        menu.needToLogInMsg();
     }
 
 }

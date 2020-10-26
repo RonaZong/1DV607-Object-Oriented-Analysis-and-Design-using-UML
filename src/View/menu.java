@@ -57,10 +57,6 @@ public abstract class menu {
         return inputToDouble;
     }
 
-    public void needToLogInMsg(){
-        System.out.println("You need to log in first\n");
-    }
-
     protected long correctLong(){
         boolean correctFormat=false;
         long inputToInteger = 0;
