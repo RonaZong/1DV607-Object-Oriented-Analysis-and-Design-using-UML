@@ -8,6 +8,7 @@ public class Main {
         BoatClub boatClub = new BoatClub();
         StartMenu startMenu = new StartMenu();
         MainController mainController = new MainController(boatClub, startMenu);
+
         mainController.memberAction();
     }
 }
