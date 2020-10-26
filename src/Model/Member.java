@@ -17,18 +17,12 @@ public class Member {
         this.memberID = creatUniqueID();
     }
 
-    public Member(String name, PersonalNumber personalNumber ,String password, String memberID) {
-        this.name = name;
-        this.personalNumber = personalNumber;
-        this.memberID = memberID;
-        this.password = password;
-    }
+
 
     //Constructor
-    public Member(String name , PersonalNumber personalNumber,String password){
+    public Member(String name , PersonalNumber personalNumber,String memberID){
         setName(name);
         this.personalNumber = personalNumber;
-        setPassword(password);
         setMemberID(creatUniqueID());
     }
 
@@ -39,9 +33,8 @@ public class Member {
     }
 
     // for updating member
-    public void updateMemberInformation(String name, PersonalNumber personalNumber,String password) {
+    public void updateMemberInformation(String name, PersonalNumber personalNumber) {
         setName(name);
-        setPassword(password);
         this.personalNumber = personalNumber;
     }
 
