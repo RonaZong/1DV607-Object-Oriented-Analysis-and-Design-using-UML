@@ -30,8 +30,8 @@ public class BoatClub {
     }
 
     //this used in registery to create them from the loaded file and add them to list
-    public Member makeMemberForLoadingInStartOfProgram(String name , PersonalNumber personalNemuber ,String password, String memberID){
-        Member member = new Member(name , personalNemuber,password, memberID);
+    public Member makeMemberForLoadingInStartOfProgram(String name , PersonalNumber personalNemuber , String memberID){
+        Member member = new Member(name , personalNemuber, memberID);
         members.add(member);
         return member;
     }
@@ -82,7 +82,11 @@ public class BoatClub {
         return isLoggedIn;
     }
 
-    public void setLoggedIn(boolean loggedIn) {
-        isLoggedIn = loggedIn;
+
+    public void checkLogin(Member member){
+            if (member.getName().equals("1111")&&member.getPassword().equals("1111")){
+                isLoggedIn = true;
+
+        }
     }
 }
