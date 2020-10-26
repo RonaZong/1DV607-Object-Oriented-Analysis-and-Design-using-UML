@@ -5,9 +5,6 @@ import Model.BoatClub;
 import Model.Member;
 import View.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 public class MainController {
     private BoatClub boatClub;
@@ -15,13 +12,13 @@ public class MainController {
     private StartMenu startMenu;
     private LoginMenu loginMenu;
     private ShowList showList;
-    private MemberController memberController;
     private MemberMenu memberMenu;
     private BoatMenu boatMenu;
 
     public MainController(BoatClub boatClub, StartMenu startMenu) {
         this.boatClub = boatClub;
         this.startMenu = startMenu;
+
     }
 
     public void memberAction() {
@@ -117,18 +114,5 @@ public class MainController {
         }
     }
 
-    public List<String> save() {
-        List<String> memberRegistry = new ArrayList<>();
 
-        // Adding header information.
-        memberRegistry.add(Integer.toString(this.member.getMemberID()));
-
-        for (Map.Entry<Integer, Member> entry : membersMap.entrySet()) {
-            memberRegistry.add( entry.getValue().getMemberID()+", "+
-                    entry.getValue().getName()+", "+
-                    entry.getValue().getPersonalNumber()+", "+
-                    entry.getValue().getBoats());
-        }
-        return memberRegistry;
-    }
 }
