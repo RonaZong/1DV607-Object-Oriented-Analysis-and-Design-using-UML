@@ -5,12 +5,17 @@ import Model.BoatClub;
 import Model.Member;
 import View.*;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 public class MainController {
     private BoatClub boatClub;
     private Member member;
     private StartMenu startMenu;
     private LoginMenu loginMenu;
     private ShowList showList;
+    private MemberController memberController;
     private MemberMenu memberMenu;
     private BoatMenu boatMenu;
 
@@ -29,14 +34,14 @@ public class MainController {
 
         switch (input) {
             case 1: /** LOGIN */
-                this.startMenu.loginAuthentication();
-                this.loginMenu = new LoginMenu();
-                this.loginMenu.showInstruction();
-                checkInputInLoginMenu();
+                for (Member member : boatClub.getAllMember()) {
+                    if (this.startMenu.loginAuthentication(member)) {
+                        this.member = member;
+                        checkInputInLoginMenu();
+                    }
+                }
                 break;
             case 2: /** SHOW LIST */
-                this.showList = new ShowList();
-                this.showList.showInstruction();
                 checkInputInShowList();
                 break;
             case 0:
@@ -46,17 +51,16 @@ public class MainController {
     }
 
     private void checkInputInLoginMenu() {
+        this.loginMenu = new LoginMenu();
+        this.loginMenu.showInstruction();
+        this.memberController = new MemberController();
         int input = this.loginMenu.getInput();
 
         switch (input) {
             case 1: /** MEMBER MENU */
-                this.memberMenu = new MemberMenu();
-                this.memberMenu.showInstruction();
                 checkInputInMemberMenu();
                 break;
             case 2: /** BOAT MENU */
-                this.boatMenu = new BoatMenu();
-                boatMenu.showInstruction();
                 checkInputInBoatMenu();
                 break;
             case 0:
@@ -66,6 +70,8 @@ public class MainController {
     }
 
     private void checkInputInShowList() {
+        this.showList = new ShowList();
+        this.showList.showInstruction();
         int input = this.startMenu.getInput();
 
         switch (input) {
@@ -80,23 +86,24 @@ public class MainController {
     }
 
     private void checkInputInMemberMenu() {
-
+        this.memberMenu = new MemberMenu();
+        this.memberMenu.showInstruction();
         int input = this.memberMenu.getInput();
 
         switch (input) {
             case 1: /** ADD MEMBER */
-                this.memberMenu.addMember();
+                this.boatClub.addMember(this.memberMenu.addMember());
                 break;
             case 2: /** UPDATE MEMBER */
                 this.memberMenu.updateMember(this.member);
                 break;
             case 3: /** DELETE MEMBER */
-
-
         }
     }
 
     private void checkInputInBoatMenu() {
+        this.boatMenu = new BoatMenu();
+        this.boatMenu.showInstruction();
         int input = this.memberMenu.getInput();
 
         switch (input) {
@@ -110,5 +117,18 @@ public class MainController {
         }
     }
 
+    public List<String> save() {
+        List<String> memberRegistry = new ArrayList<>();
 
+        // Adding header information.
+        memberRegistry.add(Integer.toString(this.member.getMemberID()));
+
+        for (Map.Entry<Integer, Member> entry : membersMap.entrySet()) {
+            memberRegistry.add( entry.getValue().getMemberID()+", "+
+                    entry.getValue().getName()+", "+
+                    entry.getValue().getPersonalNumber()+", "+
+                    entry.getValue().getBoats());
+        }
+        return memberRegistry;
+    }
 }
