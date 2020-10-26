@@ -280,9 +280,5 @@ public class MemberMenu extends menu{
         goBackToStartMenu();
     }
 
-        System.out.println("If you want to update your personal number enter your new personal" +
-                "number otherwise press enter");
-        String personalNumber = sc.nextLine();
-        this.boatClub.updateMemberInformation(this.member, name, personalNumber);
-    }
+
 }
