@@ -56,6 +56,7 @@ public class Member {
 
     //set personal number if it s not valid it will throws error
     public void setPersonalNumber(String personalNumber) {
+
         PersonalNumber personalNumberEntered = new PersonalNumber(personalNumber);
         /*if(!personalNumberEntered.validID(personalNumber)) {
             throw new IllegalArgumentException("Personal number should be a 10 digit number\n");
