@@ -36,12 +36,12 @@ public class MainController {
             switch (userChoice) {
                 case ADD_NEW_MEMBER:
 
-                    //if (boatClub.getIsLoggedIn()){
+                    if (boatClub.getIsLoggedIn()){
 
                     //if the user must log in to create a member, so when text file is empty and can't log in, it can't run
                         userWantsToAddMember(menu);
-//                    }else
-//                        userNeedToLogIn(menu);
+                    }else
+                        userNeedToLogIn(menu);
                     userChoice=null;//for exiting the loop after add a member
                     break;
                 case LOG_IN:
@@ -71,12 +71,7 @@ public class MainController {
 
     private void userWantsToLogin(StartMenu startMenu){
         Member newMember = startMenu.showLogInMenu();
-        for (Member m:boatClub.getAllMembersLocally()){//this should be in model I guess
-           if (m.getName().equals(newMember.getName()) && m.getPassword().equals(newMember.getPassword())){
-                boatClub.setLoggedIn(true);
-                break;
-            }
-        }
+        boatClub.checkLogin(newMember);
         startMenu.showLoginStatus(boatClub);
     }
     private void userWantsToAddMember(StartMenu menu){
@@ -98,15 +93,10 @@ public class MainController {
                 case COMPACT_LIST:
                     this.member = memberMenu.showCompactList(boatClub);//this boat club here show the list and assign the members to the boat club
 
-                    //if not log in can not edit the information but if put in here cant see
-                    //the specific information.
-                    //change the view or implement with a lot duplicate
-                    if (boatClub.getIsLoggedIn()){
+
                         actionOnCompactList();
-                    }
-                    else{
-                        userNeedToLogIn(memberMenu);
-                    }
+
+
                     // if(this.member!=null)
                     IWantToGoBack = true;
                     break;
@@ -130,12 +120,20 @@ public class MainController {
 
             switch (choice){
                 case DELETE:
-                    memberMenu.showDeletedMemberConfirmationMsg(boatClub.deleteMember(this.member));
+                    if (boatClub.getIsLoggedIn()) {
+                        memberMenu.showDeletedMemberConfirmationMsg(boatClub.deleteMember(this.member));
+                    }else {
+                        memberMenu.needToLogInMsg();
+                    }
                     goBack = true;
                     break;
                 case UPDATE:
+                    if (boatClub.getIsLoggedIn()) {
                     memberMenu.showUpdateMemberMenu(member);
                     memberMenu.showUpdatedMemberConfirmationMsg(member);
+                    }else {
+                        memberMenu.needToLogInMsg();
+                    }
                     //boatClub.updateMemberInformation(member, memberMenu.getName(), memberMenu.getPersonalNumber());
                     goBack = true;
                     break;
@@ -156,6 +154,7 @@ public class MainController {
 
     //handling all user choices for boat issues
     private void actUponUserInputInBoatMenu(){
+        if (boatClub.getIsLoggedIn()) {
         UserChoiceInBoatMenu choice = memberMenu.getUserInputInBoatMenu();
 
         switch (choice){
@@ -183,6 +182,9 @@ public class MainController {
                 break;
             case GO_BACK:
                 break;
+        }
+        }else {
+            memberMenu.needToLogInMsg();
         }
     }
 
