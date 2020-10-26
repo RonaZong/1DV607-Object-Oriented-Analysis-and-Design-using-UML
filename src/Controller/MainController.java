@@ -71,7 +71,7 @@ public class MainController {
 
     private void userWantsToLogin(StartMenu startMenu){
         Member newMember = startMenu.showLogInMenu();
-        for (Member m:boatClub.getAllMembersLocally()){
+        for (Member m:boatClub.getAllMembersLocally()){//this should be in model I guess
            if (m.getName().equals(newMember.getName()) && m.getPassword().equals(newMember.getPassword())){
                 boatClub.setLoggedIn(true);
                 break;
