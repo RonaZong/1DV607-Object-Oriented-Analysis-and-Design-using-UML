@@ -32,5 +32,8 @@ public class Boat {
         this.length = length;
     }
 
-
+    @Override
+    public String toString() {
+        return "Boat Type: " + type + "\nBoat length: " + length;
+    }
 }
