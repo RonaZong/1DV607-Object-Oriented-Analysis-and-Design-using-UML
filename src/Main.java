@@ -1,5 +1,6 @@
 import Controller.MainController;
 import Model.BoatClub;
+import Model.Member;
 import Model.Registry;
 import View.StartMenu;
 
@@ -11,7 +12,10 @@ public class Main {
         StartMenu startMenu = new StartMenu();
         MainController mainController = new MainController(boatClub, startMenu);
 
+        boatClub.polulate(registry.loadTextFromFile());
+        boatClub.addMember(new Member("199901011234", "rona", "1234"));
+
         mainController.memberAction();
-        registry.saveTextToFile(mainController.save());
+        registry.saveTextToFile(boatClub.save());
     }
 }
