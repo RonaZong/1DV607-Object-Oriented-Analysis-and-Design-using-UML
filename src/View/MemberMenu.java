@@ -1,15 +1,18 @@
 package View;
 
-import Model.Boat;
-import Model.BoatClub;
 import Model.Member;
 import Util.MenuOptions;
 
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class MemberMenu implements IView{
     private Scanner sc = new Scanner(System.in);
     private MenuOptions menuOptions;
+    private Pattern personalNumberPattern = Pattern.compile("[1]{1}-[9]{1}-[0-9]{2}-[0-12]{2}-[0-31]{2}-[0-9]{4}");
+    private String personalNumber;
+    private String name;
+    private String password;
 
     public MemberMenu() {
     }
@@ -53,11 +56,15 @@ public class MemberMenu implements IView{
         System.out.println("----- Add a Member ----\n-" +
                 "In order to be a member you have to enter following information: \n" +
                 "Please enter personal number: ");
-        String personalNumber = sc.nextLine();
-        
+
+        while(!sc.hasNext(personalNumberPattern)) {
+            sc.nextLine();
+            personalNumber = sc.nextLine();
+        }
+
         System.out.println("Please enter user name: ");
         String name = sc.nextLine();
-        
+
         System.out.println("Please enter password: ");
         String password = sc.nextLine();
         
