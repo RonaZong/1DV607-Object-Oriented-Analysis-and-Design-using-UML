@@ -1,6 +1,7 @@
 package Util;
 
 public enum MenuOptions {
+    GO_BACK(0, "GO BACK"),
 
     /** Start Menu */
     QUIT(0, "QUIT"),
