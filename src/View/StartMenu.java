@@ -3,11 +3,16 @@ package View;
 import Model.BoatClub;
 import Model.Member;
 import Model.PersonalNumber;
+import Model.searchRule.ISearchingStrategy;
 import Util.UserChoiceInStartMenu;
 
 import java.time.DateTimeException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class StartMenu extends menu {
+
+    private boolean isLoggedIn;
 
     //show the start menu
     public void showInstruction() {
@@ -15,7 +20,7 @@ public class StartMenu extends menu {
         System.out.println("Welcome to Boat Club\n" +
                 "-----------------------\n" +
                 "Press 1 to add a new member\n" +
-                "Press 2 to log in\n"+
+                "Press 2 to login\n"+
                 "Press 3 to go to member menu\n" +
                 "Press 4 to see the instruction\n" +
                 "Press 5 to search for (a) member(s)\n" +
@@ -66,15 +71,16 @@ public class StartMenu extends menu {
     public Member showInstructionOfCreateMember( ) {
         Member member = null;
         do {
-            System.out.println("----- Add a Member -----\n" +
-                    "In order to add a member you have to enter following information : \n" +
+            System.out.println("In order to add or update a member you have to enter following information : \n" +
                     "Please enter user name: ");
             String name = userStringInput();
 
             System.out.print("Please enter personal number in yyyy-mm-dd-checksum (without dash) format: ");
-            long personalNumber = correctLong();
+            //long personalNumber = correctLong();
+            String personalnumberDate = userStringInput();
             try {
-                PersonalNumber personalNumberEntered = new PersonalNumber(personalNumber+"");
+               LocalDate date = LocalDate.parse(personalnumberDate.substring(0,8), DateTimeFormatter.BASIC_ISO_DATE);
+                PersonalNumber personalNumberEntered = new PersonalNumber(date+"");
                     member = new Member(name, personalNumberEntered);
             }catch(IllegalArgumentException ex){
                 System.out.println(ex.getMessage());
@@ -89,9 +95,9 @@ public class StartMenu extends menu {
     }
     public Member showLogInMenu(){
         Member member = null;
-        System.out.println("Please enter your user name");
+        System.out.print("Please enter your username : ");
         String name = userStringInput();
-        System.out.print("Please enter your password ");
+        System.out.print("Please enter your password : ");
         String password = userStringInput();
         member = new Member(name,password);
         return member;
@@ -135,9 +141,16 @@ public class StartMenu extends menu {
         goBackToStartMenu();
     }
 
+    public void showSearchMenu(BoatClub boatClub , ISearchingStrategy search){
+        for(Member member : boatClub.searchForMember(search))
+            System.out.println(member.getName() + ", " + member.getPersonalNumber());
+        goBackToStartMenu();
+    }
+
     //show the confirmation message after saving the program
     public void showSaveMsg(){
         System.out.println("The information is saved");
     }
+    public void showLoggedInMsg(){System.out.println("You are already logged in");}
     }
 
