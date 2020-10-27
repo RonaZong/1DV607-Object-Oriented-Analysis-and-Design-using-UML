@@ -18,8 +18,9 @@ public class StartMenu extends menu {
                 "Press 2 to log in\n"+
                 "Press 3 to go to member menu\n" +
                 "Press 4 to see the instruction\n" +
-                "Press 5 to save\n" +
-                "Press 6 to quit");
+                "Press 5 to search for (a) member(s)\n" +
+                "Press 6 to save\n" +
+                "Press 7 to quit");
     }
 
 
@@ -42,9 +43,12 @@ public class StartMenu extends menu {
                     choice = UserChoiceInStartMenu.SEE_INSTRUCTION;
                     break;
                 case "5":
-                    choice = UserChoiceInStartMenu.SAVE;
+                    choice = UserChoiceInStartMenu.SEARCH;
                     break;
                 case "6":
+                    choice = UserChoiceInStartMenu.SAVE;
+                    break;
+                case "7":
                     choice = UserChoiceInStartMenu.QUIT;
                     break;
                 default:
@@ -70,7 +74,7 @@ public class StartMenu extends menu {
             System.out.print("Please enter personal number in yyyy-mm-dd-checksum (without dash) format: ");
             long personalNumber = correctLong();
             try {
-                PersonalNumber personalNumberEntered = new PersonalNumber("" + personalNumber);
+                PersonalNumber personalNumberEntered = new PersonalNumber(personalNumber+"");
                     member = new Member(name, personalNumberEntered);
             }catch(IllegalArgumentException ex){
                 System.out.println(ex.getMessage());
@@ -130,8 +134,6 @@ public class StartMenu extends menu {
                 "For saving information you need to save all changes you made before you quit the program.\n");
         goBackToStartMenu();
     }
-
-
 
     //show the confirmation message after saving the program
     public void showSaveMsg(){
