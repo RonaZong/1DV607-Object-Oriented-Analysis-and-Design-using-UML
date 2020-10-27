@@ -4,5 +4,5 @@ import Model.BoatClub;
 import Model.Member;
 
 public interface ISearchingStrategy {
-    public Iterable<Member> searchMembers(BoatClub boatClub, String input);
+     boolean searchMembers(Member member);
 }
