@@ -56,6 +56,10 @@ public class MainController {
                     menu.showInstructionOfProgram();
                     userChoice=null;//for exit the loop since userchoice does not change after member menu closed so we always come back here and user choice would be same
                     break;
+                case SEARCH:
+                   // menu.showSearchMenu(boatClub);
+                    userChoice=null;//for exit the loop since userchoice does not change after member menu closed so we always come back here and user choice would be same
+                    break;
                 case SAVE:
                     boatClub.save();
                     userChoice=null;
