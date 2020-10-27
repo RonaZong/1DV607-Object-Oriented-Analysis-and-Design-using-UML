@@ -1,10 +1,20 @@
 package Model;
 
+import Util.Checksum;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.InputMismatchException;
 
+
 public class PersonalNumber {
+    public enum DigitsForChecksum{
+      DIGITS(new int[]{1,2,3,4,5,6,7,8,9,0});
+      private int[] input;
+      private DigitsForChecksum(int[] newInput){
+          input = newInput;
+      }
+    }
 
        private LocalDate date;
     // private DateFormat birthday = new DateFormat();
@@ -14,25 +24,31 @@ public class PersonalNumber {
 
         public PersonalNumber(){
         }
-        public PersonalNumber(String personalNumber){
-           setPersonalNumber(personalNumber);
+        public PersonalNumber(LocalDate newDate , DigitsForChecksum firsNum, ValidDigitForChecksum secondNum , ValidDigitForChecksum thirdNum , ValidDigitForChecksum forthNum){
+           setDate(newDate);
             //date =LocalDate.parse(id.substring(0,8), DateTimeFormatter.BASIC_ISO_DATE);
-//            birthday.setYear(Integer.parseInt(id.substring(0,4)));
-//            birthday.setMonth(Integer.parseInt(id.substring(4,6)));
-//            birthday.setDay(Integer.parseInt(id.substring(6,8)));
-//            birthday.setPunctuation('!');
-//            birthday.setFormat('b');
            // setChecksum(id.substring(9));
            // checksum = Integer.parseInt(id.substring(9));
            // this.id = id;
         }
+        public PersonalNumber(String dataFromRegistry){
+            setPersonalNumber(dataFromRegistry);
+        }
+
+    private void setDate(LocalDate newDate) {
+            this.date = newDate;
+    }
 
     public void setPersonalNumber(String personalNumber) {
-        if(!validID(personalNumber)){
-            throw new IllegalArgumentException("Invalid personal number");
-        }
+       // if(!validID(personalNumber)){
+       //     throw new IllegalArgumentException("Invalid personal number");
+       // }
         date =LocalDate.parse(personalNumber.substring(0,8), DateTimeFormatter.BASIC_ISO_DATE);
         this.personalNumber = personalNumber;
+    }
+
+    public String toString(){
+            return this.personalNumber;
     }
 
    /* public String showID(){
@@ -41,14 +57,7 @@ public class PersonalNumber {
         public int getChecksum(){
             return checksum;
         }*/
-       /* public boolean isFemale(){
-           if (showID().charAt(11) % 2 == 1){
-                return false;
-            }
-            else {
-                return true;
-            }
-        }*/
+
 //        public int comparedTo(PersonalNumber otherID){
 //            if (showID().substring(0,7).compareTo(otherID.showID().substring(0,7)) == 0)
 //                return 0;
@@ -83,6 +92,9 @@ public class PersonalNumber {
                 return false;
         }
 
+    public int getyear(){
+            return date.getYear();
+    }
 
     public String getPersonalNumber() {
         return personalNumber;
