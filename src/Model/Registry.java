@@ -37,6 +37,7 @@ public class Registry {
            for (String lines : eachLines) {
                String[] parameters = lines.split(":");//separate each word and put them in an array
                PersonalNumber personalNumber = new PersonalNumber(parameters[1]);
+
                Member member = boatClub.makeMemberForLoadingInStartOfProgram(parameters[0], personalNumber,parameters[2]);
                member.setNumbersOfBoatsOwnByAMember(Integer.parseInt(parameters[3]));
                for (int i = 4; i < parameters.length - 1; i = i + 2) {
