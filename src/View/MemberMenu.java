@@ -8,6 +8,8 @@ import java.util.List;
 
 public class MemberMenu extends menu{
     private String userInput;
+    private double boatLength;
+    private BoatType type;
 
     public void showInstruction() {
         System.out.println("Press 1 to show a compact list of members\n" +
@@ -194,15 +196,19 @@ public class MemberMenu extends menu{
         return choice;
     }
 
+    private void promptUserToEnterBoatData(){
+        System.out.println("Please enter length of the boat :");
+        boatLength = correctDouble();
+        System.out.println("Please enter boat type(1 for sailboat, 2 for motor sail, " +
+                "3 for kayak/canoe, and 4 for others)");
+        this.type = correctBoatType();
+    }
+
     //show the menu of registering a new boat and return the boat
     public Boat showRegisterNewBoatMenu(Member member){
         Boat boat = null;
         do {
-            System.out.println("Please enter length of the boat :");
-            double boatLength = correctDouble();
-            System.out.println("Please enter boat type(1 for sailboat, 2 for motor sail, " +
-                    "3 for kayak/canoe, and 4 for others)");
-            BoatType type = correctBoatType();
+            promptUserToEnterBoatData();
             try {
                 boat = new Boat(type , boatLength);
                 member.registerANewBoat(boat);
@@ -221,11 +227,7 @@ public class MemberMenu extends menu{
     public void askUserToUpdateBoatData(Boat boat){
         boolean isValid = false;
         do {
-            System.out.println("Please enter length of the boat :");
-            double boatLength = correctDouble();
-            System.out.println("Please enter boat type(1 for sailboat, 2 for motor sail, " +
-                    "3 for kayak/canoe, and 4 for others)");
-            BoatType type = correctBoatType();
+            promptUserToEnterBoatData();
             try {
                 boat.setType(type);
                 boat.setLength(boatLength);
