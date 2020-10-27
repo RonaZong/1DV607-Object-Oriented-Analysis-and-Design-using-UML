@@ -3,6 +3,7 @@ package Controller;
         import Model.Boat;
         import Model.BoatClub;
         import Model.Member;
+        import Model.searchRule.ISearchingStrategy;
         import Util.UserChoiceInBoatMenu;
         import Util.UserChoiceInMemberMenu;
         import Util.UserChoiceInStartMenu;
@@ -22,13 +23,13 @@ public class MainController {
     }
 
     //every scenarios would happen in this method
-    public void memberAction(StartMenu menu){
+    public void memberAction(StartMenu menu, ISearchingStrategy search){
         boatClub.getAllMembersFromRegistry();//load all members' information from the text file in the beginning of program
-        while(!actUponUserInputInStartMenu(menu)) ;
+        while(!actUponUserInputInStartMenu(menu,search)) ;
     }
 
     //handling all user choices in main menu
-    private boolean actUponUserInputInStartMenu(StartMenu menu) {
+    private boolean actUponUserInputInStartMenu(StartMenu menu, ISearchingStrategy search) {
         menu.showInstruction();
         UserChoiceInStartMenu userChoice = menu.getUserInputInStartMenu();
 
@@ -45,7 +46,9 @@ public class MainController {
                     userChoice=null;//for exiting the loop after add a member
                     break;
                 case LOG_IN:
-                    userWantsToLogin(menu);
+                    if(!boatClub.getIsLoggedIn())
+                       userWantsToLogin(menu);
+                    menu.showLoggedInMsg();
                     userChoice=null;
                     break;
                 case MEMBER_MENU:
@@ -57,7 +60,7 @@ public class MainController {
                     userChoice=null;//for exit the loop since userchoice does not change after member menu closed so we always come back here and user choice would be same
                     break;
                 case SEARCH:
-                   // menu.showSearchMenu(boatClub);
+                    menu.showSearchMenu(boatClub, search);
                     userChoice=null;//for exit the loop since userchoice does not change after member menu closed so we always come back here and user choice would be same
                     break;
                 case SAVE:
