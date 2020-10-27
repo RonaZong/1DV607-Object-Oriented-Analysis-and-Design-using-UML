@@ -1,6 +1,7 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class Member {
     private String name;
@@ -15,6 +16,9 @@ public class Member {
         setName(name);
         this.personalNumber = personalNumber;
         this.memberID = creatUniqueID();
+    }
+
+    public Member(){
     }
 
 
@@ -50,7 +54,7 @@ public class Member {
     //set personal number if it s not valid it will throws error
     public void setPersonalNumber(String personalNumber) {
 
-        PersonalNumber personalNumberEntered = new PersonalNumber(personalNumber);
+        PersonalNumber personalNumberEntered = new PersonalNumber();
         /*if(!personalNumberEntered.validID(personalNumber)) {
             throw new IllegalArgumentException("Personal number should be a 10 digit number\n");
         }*/
@@ -61,6 +65,12 @@ public class Member {
     private boolean isValid(String input){
         return input.length() == 10 && input.matches("-?\\d+(\\.\\d+)?");
         //check its digits
+    }
+
+    public boolean isValidYear(int year){
+        if(year > Calendar.getInstance().get(Calendar.YEAR))
+            throw new IllegalArgumentException("enter a valid year");
+        return true;
     }
 
     //this used when we load from file and want to assign the same member Id for same person
