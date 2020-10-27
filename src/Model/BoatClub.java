@@ -9,11 +9,11 @@ public class BoatClub {
     private Registry registry = new Registry();
     private Member member;
     private boolean isLoggedIn;
-    private ISearchingStrategy searchMethod;
+   // private ISearchingStrategy searchMethod;
 
 
-    public BoatClub(ISearchingStrategy searchMethod) {
-        this.searchMethod = searchMethod;
+    public BoatClub() {
+        //this.searchMethod = searchMethod;
         isLoggedIn = false;
     }
 
@@ -29,7 +29,7 @@ public class BoatClub {
         return member;
     }
 
-    //this used in registery to create them from the loaded file and add them to list
+    //this used in registry to create them from the loaded file and add them to list
     public Member makeMemberForLoadingInStartOfProgram(String name , PersonalNumber personalNemuber , String memberID){
         Member member = new Member(name , personalNemuber, memberID);
         members.add(member);
@@ -67,8 +67,14 @@ public class BoatClub {
         return null;
     }
 
-    public void searchForMembers(String input){
-        searchMethod.searchMembers(this,input);
+    //search for member with rule defined in ISearchStrategy and returns an iterable of members
+    public Iterable<Member> searchForMember(ISearchingStrategy searchMethod){
+       ArrayList<Member> foundBySearch = new ArrayList<>();
+       for (Member member : members){
+           if(searchMethod.searchMembers(member))
+               foundBySearch.add(member);
+       }
+        return foundBySearch;
     }
 
     //other than first time, we use this one to get information of arrayList
