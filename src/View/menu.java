@@ -83,4 +83,10 @@ public abstract class menu {
     protected void showCreateOrUpdateAMemberMenu(){
 
     }
+
+    protected String validLengthPersonalNumber(String input){
+        if(input.length()!=12)
+            throw new IllegalArgumentException("personal number should be 12 digits");
+        return input;
+    }
 }
