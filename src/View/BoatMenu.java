@@ -73,7 +73,7 @@ public class BoatMenu implements IView{
         int typeValue = sc.nextInt();
         System.out.println("Enter length of the boat");
         int length = sc.nextInt();
-        this.member.registerBoat(Boat.BoatType.values()[typeValue], length);
+        this.member.addBoat(Boat.BoatType.values()[typeValue], length);
     }
 
     private void showUpdateBoatMenu() {
