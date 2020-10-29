@@ -8,7 +8,7 @@ public class Member {
     private String name;
     private String personalNumber;
     private String password;
-    private int memberID ;
+    private int memberID = 0;
     private ArrayList<Boat> boats;
 
     // I think we don't need scanner here
