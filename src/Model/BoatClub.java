@@ -8,18 +8,22 @@ import java.util.Map;
 public class BoatClub {
     private Map<Integer, Member> membersMap;
     private Member member;
-    private int memberID ;
 
     public BoatClub() {
         this.membersMap = new HashMap<>();
-        this.memberID = 0;
     }
 
+    public Map<Integer, Member> getMembersMap() {
+        return membersMap;
+    }
+
+    public void setMembersMap(Map<Integer, Member> membersMap) {
+        this.membersMap = membersMap;
+    }
 
     public void addMember(Member newMember){
-        this.memberID++;
         this.member = newMember;
-        this.membersMap.put(this.memberID, this.member);
+        this.membersMap.put(this.member.getMemberID(), this.member);
     }
 
     // Update Member
@@ -38,6 +42,10 @@ public class BoatClub {
 //        return this.members;
 //    }
 
+    public boolean memberExists(int memberID) {
+        return this.membersMap.containsKey(memberID);
+    }
+
     public String memberToString(int memberID) {
         if( (membersMap.size() > 0) && (memberID <= membersMap.size()) )
             return membersMap.get(memberID).toString();
@@ -54,8 +62,7 @@ public class BoatClub {
         for (Map.Entry<Integer, Member> entry : membersMap.entrySet()) {
             memberRegistry.add( entry.getValue().getMemberID()+", "+
                     entry.getValue().getName()+", "+
-                    entry.getValue().getPersonalNumber()+", " +
-                    entry.);
+                    entry.getValue().getPersonalNumber()+", ");
         }
         return memberRegistry;
     }
@@ -79,25 +86,22 @@ public class BoatClub {
         }
 
         // Updating memberID counter.
-        this.memberID = Integer.parseInt(memberRegistry.remove(0));
+        this.member.getMemberID() = Integer.parseInt(memberRegistry.remove(0));
 
         String[] parsedLine; // The parsed CSV temporary storage.
 
-        // Parse CSV string.
-        for (String textLine : memberRegistry) {
-            parsedLine = textLine.split(","); // Parse CSV.
-
-            // Parse the header for a member, name, id, personal number.
-            this.membersMap.put(Integer.parseInt(parsedLine[0]), new Member(parsedLine[1], parsedLine[2], Integer.parseInt(parsedLine[0])));
-
-            // Check if there are any boats associated to the member.
-            for (int i = 3; i < parsedLine.length - 1; i += 2)
-                this.member.addBoat(parsedLine[i], Integer.parseInt(parsedLine[i + 1]), Integer.parseInt(parsedLine[0]));
-        }
+//        // Parse CSV string.
+//        for (String textLine : memberRegistry) {
+//            parsedLine = textLine.split(","); // Parse CSV.
+//
+//            // Parse the header for a member, name, id, personal number.
+//            this.membersMap.put(Integer.parseInt(parsedLine[0]), new Member(parsedLine[1], parsedLine[2], Integer.parseInt(parsedLine[0])));
+//
+//            // Check if there are any boats associated to the member.
+//            for (int i = 3; i < parsedLine.length - 1; i += 2)
+//                this.member.addBoat(parsedLine[i], Integer.parseInt(parsedLine[i + 1]), Integer.parseInt(parsedLine[0]));
+//        }
 
     }
 
-    public boolean memberExists(int memberID) {
-        return this.membersMap.containsKey(memberID);
-    }
 }
