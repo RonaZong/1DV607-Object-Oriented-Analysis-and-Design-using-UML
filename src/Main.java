@@ -13,7 +13,7 @@ public class Main {
         MainController mainController = new MainController(boatClub, startMenu);
 
         boatClub.polulate(registry.loadTextFromFile());
-        boatClub.addMember(new Member("199901011234", "rona", "1234"));
+        boatClub.addMember(new Member("199901011234", "rona", "1234", 0));
 
         mainController.memberAction();
         registry.saveTextToFile(boatClub.save());
