@@ -31,9 +31,8 @@ public class MainController {
 
         switch (input) {
             case 1: /** LOGIN */
-                for (Member member : boatClub.getAllMember()) {
-                    if (this.startMenu.loginAuthentication(member)) {
-                        this.member = member;
+                for (this.boatClub.memberExists(this.member.getMemberID())) {
+                    if (this.startMenu.loginAuthentication(this.member)) {
                         checkInputInLoginMenu();
                     }
                 }
@@ -50,7 +49,6 @@ public class MainController {
     private void checkInputInLoginMenu() {
         this.loginMenu = new LoginMenu();
         this.loginMenu.showInstruction();
-        this.memberController = new MemberController();
         int input = this.loginMenu.getInput();
 
         switch (input) {
