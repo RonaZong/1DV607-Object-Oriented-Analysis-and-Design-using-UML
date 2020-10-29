@@ -13,6 +13,7 @@ public class MemberMenu implements IView{
     private String personalNumber;
     private String name;
     private String password;
+    private int memberID = 0;
 
     public MemberMenu() {
     }
@@ -67,8 +68,9 @@ public class MemberMenu implements IView{
 
         System.out.println("Please enter password: ");
         String password = sc.nextLine();
-        
-        Member newMember = new Member(personalNumber, name, password);
+
+        memberID++;
+        Member newMember = new Member(personalNumber, name, password, memberID);
 
         return newMember;
     }
