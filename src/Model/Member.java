@@ -142,7 +142,7 @@ public class Member {
     }
 
     public String changeToStringPersonalID(){
-        return this.personalNumber.getPersonalNumber();
+        return "";
     }
 
 }
