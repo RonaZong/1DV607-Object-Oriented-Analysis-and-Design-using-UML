@@ -1,6 +1,7 @@
 package View;
 
 import Model.BoatClub;
+import Model.Checksum;
 import Model.Member;
 import Model.PersonalNumber;
 import Model.searchRule.ISearchingStrategy;
@@ -70,29 +71,30 @@ public class StartMenu extends menu {
     //ask user to enter name and personal number to create that member and return it
     public Member showInstructionOfCreateMember( ) {
         Member member = null;
-        do {
+
             System.out.println("In order to add or update a member you have to enter following information : \n" +
                     "Please enter user name: ");
             String name = userStringInput();
-
+        do {
             System.out.print("Please enter personal number in yyyy-mm-dd-checksum (without dash) format: ");
             //long personalNumber = correctLong();
-            String personalnumberDate = userStringInput();
+
             try {
-               LocalDate date = LocalDate.parse(personalnumberDate.substring(0,8), DateTimeFormatter.BASIC_ISO_DATE);
-                PersonalNumber personalNumberEntered = new PersonalNumber(date+"");
+                String personalNumber = validLengthPersonalNumber(userStringInput());
+                PersonalNumber personalNumberEntered = new PersonalNumber(LocalDate.parse(personalNumber.substring(0,8),DateTimeFormatter.BASIC_ISO_DATE),new Checksum(Integer.parseInt(personalNumber.substring(8))));
                     member = new Member(name, personalNumberEntered);
-            }catch(IllegalArgumentException ex){
+            }catch(IllegalArgumentException ex) {
                 System.out.println(ex.getMessage());
             }catch (DateTimeException ex){
-                System.err.print(ex);
+                System.out.println(ex.getMessage());
             }catch (Exception ex){
-                System.err.print(ex);
+                System.err.println(ex.getMessage());
             }
 
         }while (member == null);
         return member;
     }
+
     public Member showLogInMenu(){
         Member member = null;
         System.out.print("Please enter your username : ");
