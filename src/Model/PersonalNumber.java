@@ -1,7 +1,6 @@
 package Model;
 
-import Util.Checksum;
-
+import javax.swing.text.DateFormatter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.InputMismatchException;
@@ -16,22 +15,28 @@ public class PersonalNumber {
       }
     }
 
-       private LocalDate date;
+    private LocalDate date;
     // private DateFormat birthday = new DateFormat();
        // private int checksum;
-        private boolean valid;
-        private String personalNumber;
+    private boolean valid;
+    private String birthDate;
+    private String personalNumber;
+    private Checksum checksum;
 
         public PersonalNumber(){
         }
-        public PersonalNumber(LocalDate newDate , DigitsForChecksum firsNum, ValidDigitForChecksum secondNum , ValidDigitForChecksum thirdNum , ValidDigitForChecksum forthNum){
+        public PersonalNumber(LocalDate newDate , Checksum checksum){
            setDate(newDate);
+           setChecksum(checksum);
             //date =LocalDate.parse(id.substring(0,8), DateTimeFormatter.BASIC_ISO_DATE);
            // setChecksum(id.substring(9));
            // checksum = Integer.parseInt(id.substring(9));
            // this.id = id;
         }
-        public PersonalNumber(String dataFromRegistry){
+
+
+
+    public PersonalNumber(String dataFromRegistry){
             setPersonalNumber(dataFromRegistry);
         }
 
@@ -43,13 +48,12 @@ public class PersonalNumber {
        // if(!validID(personalNumber)){
        //     throw new IllegalArgumentException("Invalid personal number");
        // }
-        date =LocalDate.parse(personalNumber.substring(0,8), DateTimeFormatter.BASIC_ISO_DATE);
         this.personalNumber = personalNumber;
     }
 
-    public String toString(){
+   /* public String toString(){
             return this.personalNumber;
-    }
+    }*/
 
    /* public String showID(){
             return date.toString() + checksum;
@@ -68,35 +72,43 @@ public class PersonalNumber {
 //                return -1;
 //            }
 //        }
-        public boolean validID(String personalNumber){
-            if(personalNumber.length()!=12){
-                throw new InputMismatchException("Check the length of your input");
-            }
-            int ch2 = Integer.parseInt(personalNumber.substring(2,3)) * 2;
-            int ch3 = Integer.parseInt(personalNumber.substring(3,4));
-            int ch4 = Integer.parseInt(personalNumber.substring(4,5)) * 2;
-            int ch5 = Integer.parseInt(personalNumber.substring(5,6));
-            int ch6 = Integer.parseInt(personalNumber.substring(6,7)) * 2;
-            int ch7 = Integer.parseInt(personalNumber.substring(7,8));
-            int ch9 = Integer.parseInt(personalNumber.substring(8,9)) * 2;
-            int ch10 = Integer.parseInt(personalNumber.substring(9,10));
-            int ch11 = Integer.parseInt(personalNumber.substring(10,11)) * 2;
+        public boolean validChecksum(){
+            String birth = date.format(DateTimeFormatter.BASIC_ISO_DATE);
+            int ch2 = Integer.parseInt(birth.substring(2,3)) * 2;
+            int ch3 = Integer.parseInt(birth.substring(3,4));
+            int ch4 = Integer.parseInt(birth.substring(4,5)) * 2;
+            int ch5 = Integer.parseInt(birth.substring(5,6));
+            int ch6 = Integer.parseInt(birth.substring(6,7)) * 2;
+            int ch7 = Integer.parseInt(birth.substring(7,8));
+            int ch9 = Integer.parseInt(checksum.getChecksum().substring(0,1)) * 2;
+            int ch10 = Integer.parseInt(checksum.getChecksum().substring(1,2));
+            int ch11 = Integer.parseInt(checksum.getChecksum().substring(2,3)) * 2;
             int sum = ch2 / 10 + ch2 % 10 + ch3 / 10 + ch3 % 10 + ch4 / 10 + ch4 % 10 + ch5 / 10 + ch5 % 10 + ch6 / 10 + ch6 % 10
                     + ch7 / 10 + ch7 % 10 + ch9 / 10 + ch9 % 10 + ch10 / 10 + ch10 % 10 + ch11 / 10 + ch11 % 10;
             int chech = (10 - sum % 10) % 10;
-            int checksum = Integer.parseInt(personalNumber.substring(9));
-            if (checksum % 10 == chech){
+            int checksum1 = Integer.parseInt(checksum.getChecksum().substring(3));
+            if (checksum1 % 10 == chech){
                 return true;
             }
             else
                 return false;
         }
+    private void setChecksum(Checksum checksum) {
+
+        this.checksum = checksum;
+        if(!validChecksum())
+            throw new IllegalArgumentException("Invalid Personal number");
+    }
 
     public int getyear(){
             return date.getYear();
     }
 
-    public String getPersonalNumber() {
-        return personalNumber;
+    public String getBirthDate() {
+        return date.format(DateTimeFormatter.BASIC_ISO_DATE);
+    }
+
+    public String getPersonalNumber(){
+            return date.format(DateTimeFormatter.BASIC_ISO_DATE) + checksum.getChecksum();
     }
 }
