@@ -3,6 +3,10 @@ package View;
 import Model.*;
 import Util.UserChoiceInBoatMenu;
 import Util.UserChoiceInMemberMenu;
+
+import java.time.DateTimeException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 
@@ -108,23 +112,43 @@ public class MemberMenu extends menu{
     }
 
     // show update menu of member
-    public void showUpdateMemberMenu(Member member){
+    public void showUpdateMemberMenu(Member member, BoatClub boatClub){
         boolean isValid = false;
         System.out.println("Enter new name");
         String name = userStringInput();
+        String oldPersonalNumber = member.getPersonalNumber().getPersonalNumber();
+        String personalNumber = "";
 
 
         do {
             System.out.println("Enter new 10 digits personal number");
-             long personalNumber = correctLong();
-             try {
-                 PersonalNumber personalNumberEntered = new PersonalNumber(""+personalNumber);
-                 member.updateMemberInformation(name,personalNumberEntered);
-                 isValid = true;
-             }catch (IllegalArgumentException ex){
-                 System.out.println(ex.getMessage());
-             }
-        }while (!isValid);
+            personalNumber= userStringInput();
+            try {
+                if(personalNumber.equalsIgnoreCase("q"))
+                    break;
+                PersonalNumber personalNumberEntered = new PersonalNumber(LocalDate.parse(personalNumber.substring(0,8), DateTimeFormatter.BASIC_ISO_DATE),new Checksum(Integer.parseInt(personalNumber.substring(8))));
+                if (oldPersonalNumber.equals(personalNumberEntered.getPersonalNumber())){
+                    member.updateMemberInformation(name,personalNumberEntered);
+                    showUpdatedMemberConfirmationMsg(member);
+
+                }else {
+                    if (boatClub.existPersonalNumber(member)){
+                        existPersonalNumber();
+                    }else{
+                        member.updateMemberInformation(name,personalNumberEntered);
+                        showUpdatedMemberConfirmationMsg(member);
+                    }
+
+                }
+            }catch(IllegalArgumentException ex) {
+                System.out.println(ex.getMessage());
+            }catch (DateTimeException ex){
+                System.out.println(ex.getMessage());
+            }catch (Exception ex){
+                System.err.println(ex.getMessage());
+            }
+
+        }while (member == null || personalNumber.equalsIgnoreCase("q"));
     }
 
     // show deleted member confirmation
@@ -281,5 +305,7 @@ public class MemberMenu extends menu{
         goBackToStartMenu();
     }
 
-
+    public void existPersonalNumber(){
+        System.out.println("This personal number already exist");
+    }
 }
