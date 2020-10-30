@@ -84,7 +84,10 @@ public class MainController {
     private void userWantsToAddMember(StartMenu menu){
             do {
                 Member newMember = menu.showInstructionOfCreateMember();
-                menu.confirmationMsg(boatClub.addNewMember(newMember));
+                if (boatClub.existPersonalNumber(newMember)){
+                    menu.existPersonalNumber();
+                }else
+                    menu.confirmationMsg(boatClub.addNewMember(newMember));
             }while(menu.userWantsToAddMoreMember());
     }
 
@@ -136,8 +139,7 @@ public class MainController {
                     break;
                 case UPDATE:
                     if (boatClub.getIsLoggedIn()) {
-                    memberMenu.showUpdateMemberMenu(member);
-                    memberMenu.showUpdatedMemberConfirmationMsg(member);
+                    memberMenu.showUpdateMemberMenu(member,boatClub);
                     }else {
                         memberMenu.needToLogInMsg();
                     }
