@@ -95,4 +95,13 @@ public class BoatClub {
 
         }
     }
+
+    public boolean existPersonalNumber(Member member){
+        for (Member m : members){
+            if (member.getPersonalNumber().getPersonalNumber().equals(m.getPersonalNumber().getPersonalNumber())){
+                return true;
+            }
+        }
+        return false;
+    }
 }
