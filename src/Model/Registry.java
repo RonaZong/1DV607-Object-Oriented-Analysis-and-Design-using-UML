@@ -2,6 +2,8 @@ package Model;
 
 import java.io.File;
 import java.io.PrintWriter;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -36,8 +38,8 @@ public class Registry {
         if(!eachLines[0].trim().isEmpty()){//In order to check if file is empty or not to not get error of index out boundary in line 62 (we have an array of length 1 which contains \\r\\n
            for (String lines : eachLines) {
                String[] parameters = lines.split(":");//separate each word and put them in an array
-               PersonalNumber personalNumber = new PersonalNumber(parameters[1]);
-
+               //PersonalNumber personalNumber = new PersonalNumber(parameters[1]);
+               PersonalNumber personalNumber = new PersonalNumber(LocalDate.parse(parameters[1].substring(0,8), DateTimeFormatter.BASIC_ISO_DATE),new Checksum(Integer.parseInt(parameters[1].substring(8))));
                Member member = boatClub.makeMemberForLoadingInStartOfProgram(parameters[0], personalNumber,parameters[2]);
                member.setNumbersOfBoatsOwnByAMember(Integer.parseInt(parameters[3]));
                for (int i = 4; i < parameters.length - 1; i = i + 2) {
