@@ -108,6 +108,10 @@ public class PersonalNumber {
         return date.format(DateTimeFormatter.BASIC_ISO_DATE);
     }
 
+//    public String getString(){
+//            return personalNumber;
+//    }
+
     public String getPersonalNumber(){
             return date.format(DateTimeFormatter.BASIC_ISO_DATE) + checksum.getChecksum();
     }
