@@ -71,16 +71,18 @@ public class StartMenu extends menu {
     //ask user to enter name and personal number to create that member and return it
     public Member showInstructionOfCreateMember( ) {
         Member member = null;
-
+        String personalNumber = "";
             System.out.println("In order to add or update a member you have to enter following information : \n" +
                     "Please enter user name: ");
             String name = userStringInput();
         do {
-            System.out.print("Please enter personal number in yyyy-mm-dd-checksum (without dash) format: ");
+            System.out.print("Please enter personal number in yyyy-mm-dd-checksum (without dash) format \n" +
+                    "Or press q to go back to main menu: ");
             //long personalNumber = correctLong();
-
+            personalNumber= userStringInput();
             try {
-                String personalNumber = validLengthPersonalNumber(userStringInput());
+                if(personalNumber.equalsIgnoreCase("q"))
+                    break;
                 PersonalNumber personalNumberEntered = new PersonalNumber(LocalDate.parse(personalNumber.substring(0,8),DateTimeFormatter.BASIC_ISO_DATE),new Checksum(Integer.parseInt(personalNumber.substring(8))));
                     member = new Member(name, personalNumberEntered);
             }catch(IllegalArgumentException ex) {
@@ -91,7 +93,7 @@ public class StartMenu extends menu {
                 System.err.println(ex.getMessage());
             }
 
-        }while (member == null);
+        }while (member == null || personalNumber.equalsIgnoreCase("q"));
         return member;
     }
 
@@ -116,7 +118,8 @@ public class StartMenu extends menu {
 
     //show confirmation message after adding that member
     public void confirmationMsg(Member member){
-        System.out.println("\n" + member.getName() +" is added\n");
+        if(member!=null)
+              System.out.println("\n" + member.getName() +" is added\n");
     }
 
     //after adding a member asking if user wants to add more member or not and act upon that
