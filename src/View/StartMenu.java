@@ -153,6 +153,9 @@ public class StartMenu extends menu {
     }
 
     //show the confirmation message after saving the program
+    public void existPersonalNumber(){
+        System.out.println("This personal number already exist");
+    }
     public void showSaveMsg(){
         System.out.println("The information is saved");
     }
