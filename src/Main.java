@@ -6,7 +6,7 @@ import Model.searchRule.CompositeSearch;
 import Model.searchRule.ISearchingStrategy;
 import Model.searchRule.SearchByAge;
 import Model.searchRule.SearchNameStartWithString;
-import Util.Checksum;
+//import Util.Checksum;
 import View.StartMenu;
 
 public class Main {
