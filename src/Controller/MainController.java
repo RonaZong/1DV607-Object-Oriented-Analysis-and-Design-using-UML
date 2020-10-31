@@ -82,13 +82,14 @@ public class MainController {
         startMenu.showLoginStatus(boatClub);
     }
     private void userWantsToAddMember(StartMenu menu){
+        Member newMember;
             do {
-                Member newMember = menu.showInstructionOfCreateMember();
+                 newMember = menu.showInstructionOfCreateMember();
                 if (boatClub.existPersonalNumber(newMember)){
                     menu.existPersonalNumber();
                 }else
                     menu.confirmationMsg(boatClub.addNewMember(newMember));
-            }while(menu.userWantsToAddMoreMember());
+            }while(menu.userWantsToAddMoreMember(newMember));
     }
 
     //handling all user choices in member menu
