@@ -121,7 +121,8 @@ public class MemberMenu extends menu{
 
 
         do {
-            System.out.println("Enter new 10 digits personal number");
+            System.out.println("Please enter personal number in yyyy-mm-dd-checksum (without dash) format\n"+
+                    "Or press q to go back to main menu: ");
             personalNumber= userStringInput();
             try {
                 if(personalNumber.equalsIgnoreCase("q"))
