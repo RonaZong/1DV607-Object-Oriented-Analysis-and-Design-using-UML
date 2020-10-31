@@ -123,13 +123,15 @@ public class StartMenu extends menu {
     }
 
     //after adding a member asking if user wants to add more member or not and act upon that
-    public boolean userWantsToAddMoreMember() {
+    public boolean userWantsToAddMoreMember(Member member) {
         String answer ="";
-        do {
-            System.out.println("Do you want to add another member\n" +
-                    "Press \"yes\" to add a new member or \"no\" to go back to start menu");
-            answer = userStringInput();
-        }while (!answer.equalsIgnoreCase("yes") && !answer.equalsIgnoreCase("no"));
+        if(member != null) {
+            do {
+                System.out.println("Do you want to add another member\n" +
+                        "Press \"yes\" to add a new member or \"no\" to go back to start menu");
+                answer = userStringInput();
+            } while (!answer.equalsIgnoreCase("yes") && !answer.equalsIgnoreCase("no"));
+        }
         return answer.equalsIgnoreCase("yes");
     }
 
