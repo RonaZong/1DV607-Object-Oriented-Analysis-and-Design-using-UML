@@ -114,33 +114,21 @@ public class MemberMenu extends menu{
     // show update menu of member
     public void showUpdateMemberMenu(Member member, BoatClub boatClub){
         boolean isValid = false;
-        System.out.println("Enter new name");
+        System.out.println("Enter new name or leave it empty for not changing previous name");
         String name = userStringInput();
-        String oldPersonalNumber = member.getPersonalNumber().getPersonalNumber();
-        String personalNumber = "";
-
-
+        String input = "";
         do {
             System.out.println("Please enter personal number in yyyy-mm-dd-checksum (without dash) format\n"+
                     "Or press q to go back to main menu: ");
-            personalNumber= userStringInput();
+            input= userStringInput();
             try {
-                if(personalNumber.equalsIgnoreCase("q"))
+                if(input.equalsIgnoreCase("q"))
                     break;
-                PersonalNumber personalNumberEntered = new PersonalNumber(LocalDate.parse(personalNumber.substring(0,8), DateTimeFormatter.BASIC_ISO_DATE),new Checksum(Integer.parseInt(personalNumber.substring(8))));
-                if (oldPersonalNumber.equals(personalNumberEntered.getPersonalNumber())){
+                PersonalNumber personalNumberEntered = new PersonalNumber(LocalDate.parse(input.substring(0,8),DateTimeFormatter.BASIC_ISO_DATE),
+                        new Last3DigitsBeforeChecksum(Integer.parseInt(input.substring(8,11))),new Checksum(Integer.parseInt(input.substring(11))));
+                    boatClub.isPersonalNumberExisted(personalNumberEntered);
                     member.updateMemberInformation(name,personalNumberEntered);
                     showUpdatedMemberConfirmationMsg(member);
-
-                }else {
-                    if (boatClub.existPersonalNumber(member)){
-                        existPersonalNumber();
-                    }else{
-                        member.updateMemberInformation(name,personalNumberEntered);
-                        showUpdatedMemberConfirmationMsg(member);
-                    }
-
-                }
             }catch(IllegalArgumentException ex) {
                 System.out.println(ex.getMessage());
             }catch (DateTimeException ex){
@@ -149,7 +137,7 @@ public class MemberMenu extends menu{
                 System.err.println(ex.getMessage());
             }
 
-        }while (member == null || personalNumber.equalsIgnoreCase("q"));
+        }while (member == null || input.equalsIgnoreCase("q"));
     }
 
     // show deleted member confirmation
@@ -165,7 +153,7 @@ public class MemberMenu extends menu{
 
     public void showMemberInformation(Member member) {
         System.out.println("This member name is : " + member.getName() +
-                "\nwith personal number of " + member.changeToStringPersonalID() +
+                "\nwith personal number of " + member.changePersonalNumberToStringForSave() +
                 "\nwith memberID of " + member.getMemberID());
         System.out.println("This member has " + member.numberOfBoats() + "boats");
         int index=1;
