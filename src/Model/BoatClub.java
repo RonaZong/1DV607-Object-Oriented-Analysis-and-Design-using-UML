@@ -18,15 +18,25 @@ public class BoatClub {
     }
 
     //we might use later it create a member and return it
-    public Member creatMember(String userName, String personalNumber) {
+    public Member creatMember(String userName, PersonalNumber personalNumber) {
+        if(isPersonalNumberExisted(personalNumber))
+            throw new IllegalArgumentException("This personal number is already used");
         Member member = new Member(userName, personalNumber);
         return member;
     }
 
+    public void updateMemberInformation(String name , PersonalNumber personalNumber){
+        if(isPersonalNumberExisted(personalNumber))
+            throw new IllegalArgumentException("personal number is already taken");
+
+    }
+
     //add new member to list of members in boat club
     public Member addNewMember(Member member){
-        members.add(member);
-        return member;
+        Member member1 = member;
+        if(member != null)
+            members.add(member);
+        return member1;
     }
 
     //this used in registry to create them from the loaded file and add them to list
@@ -101,6 +111,15 @@ public class BoatClub {
             if (member.getPersonalNumber().getPersonalNumber().equals(m.getPersonalNumber().getPersonalNumber())){
                 return true;
             }
+        }
+        return false;
+    }
+
+    public boolean isPersonalNumberExisted(PersonalNumber personalNumber){
+        for(Member m : members){
+            if(m.getPersonalNumber().equals(personalNumber))
+              // return true;
+                 throw new IllegalArgumentException("personal numbers existed");
         }
         return false;
     }
