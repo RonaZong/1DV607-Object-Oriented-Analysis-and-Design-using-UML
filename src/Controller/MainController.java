@@ -84,10 +84,7 @@ public class MainController {
     private void userWantsToAddMember(StartMenu menu){
         Member newMember;
             do {
-                 newMember = menu.showInstructionOfCreateMember();
-                if (boatClub.existPersonalNumber(newMember)){
-                    menu.existPersonalNumber();
-                }else
+                 newMember = menu.showInstructionOfCreateMember(boatClub);
                     menu.confirmationMsg(boatClub.addNewMember(newMember));
             }while(menu.userWantsToAddMoreMember(newMember));
     }
