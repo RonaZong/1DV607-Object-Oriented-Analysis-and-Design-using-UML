@@ -16,6 +16,6 @@ public class SearchByAge implements ISearchingStrategy {
 
     @Override
     public boolean searchMembers(Member member) {
-        return (Integer.parseInt(member.getPersonalNumber().toString().substring(0,4))< year);
+        return (Integer.parseInt(member.getPersonalNumber().getPersonalNumber().substring(0,4))< year);
     }
 }
