@@ -156,7 +156,7 @@ public class StartMenu extends menu {
 
     public void showSearchMenu(BoatClub boatClub , ISearchingStrategy search){
         for(Member member : boatClub.searchForMember(search))
-            System.out.println(member.getName() + ", " + member.getPersonalNumber());
+            System.out.println(member.getName() + ", " + member.getPersonalNumber().getPersonalNumber());
         goBackToStartMenu();
     }
 
