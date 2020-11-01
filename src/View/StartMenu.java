@@ -1,9 +1,6 @@
 package View;
 
-import Model.BoatClub;
-import Model.Checksum;
-import Model.Member;
-import Model.PersonalNumber;
+import Model.*;
 import Model.searchRule.ISearchingStrategy;
 import Util.UserChoiceInStartMenu;
 
@@ -69,31 +66,40 @@ public class StartMenu extends menu {
      }
 
     //ask user to enter name and personal number to create that member and return it
-    public Member showInstructionOfCreateMember( ) {
+    public Member showInstructionOfCreateMember(BoatClub boatClub) {
         Member member = null;
-        String personalNumber = "";
-            System.out.println("In order to add or update a member you have to enter following information : \n" +
+        boolean valid = false;
+        String input = "";
+            System.out.print("In order to add or update a member you have to enter following information : \n" +
                     "Please enter user name: ");
             String name = userStringInput();
         do {
             System.out.print("Please enter personal number in yyyy-mm-dd-checksum (without dash) format \n" +
                     "Or press q to go back to main menu: ");
             //long personalNumber = correctLong();
-            personalNumber= userStringInput();
+            input= userStringInput();
             try {
-                if(personalNumber.equalsIgnoreCase("q"))
+                if(input.equalsIgnoreCase("q"))
                     break;
-                PersonalNumber personalNumberEntered = new PersonalNumber(LocalDate.parse(personalNumber.substring(0,8),DateTimeFormatter.BASIC_ISO_DATE),new Checksum(Integer.parseInt(personalNumber.substring(8))));
-                    member = new Member(name, personalNumberEntered);
+               // ValidDigitForChecksum first = new ValidDigitForChecksum(Integer.parseInt(personalNumber.substring(8,10)));
+                PersonalNumber personalNumberEntered = new PersonalNumber(LocalDate.parse(input.substring(0,8),DateTimeFormatter.BASIC_ISO_DATE),
+                        new Last3DigitsBeforeChecksum(Integer.parseInt(input.substring(8,11))),new Checksum(Integer.parseInt(input.substring(11))));
+                //boatClub.isPersonalNumberExisted(personalNumberEntered);
+                member = boatClub.creatMember(name,personalNumberEntered);
+               // System.out.println(first.toString());
+                System.out.println(member.getPersonalNumber().getPersonalNumber());
+                    // boatClub.addNewMember(member);
+                     valid = true;
             }catch(IllegalArgumentException ex) {
                 System.out.println(ex.getMessage());
             }catch (DateTimeException ex){
                 System.out.println(ex.getMessage());
-            }catch (Exception ex){
-                System.err.println(ex.getMessage());
             }
+            //catch (Exception ex){
+              //  System.err.println(ex.getMessage());
+            //}
 
-        }while (member == null || personalNumber.equalsIgnoreCase("q"));
+        }while (member==null || input.equalsIgnoreCase("q"));
         return member;
     }
 
