@@ -38,8 +38,10 @@ public class Member {
 
     // for updating member
     public void updateMemberInformation(String name, PersonalNumber personalNumber) {
-        setName(name);
-        this.personalNumber = personalNumber;
+        if(name.length()>0)
+            setName(name);
+        if(personalNumber.getPersonalNumber().length() > 0)
+            setPersonalNumber(personalNumber);
     }
 
     // return name
@@ -52,20 +54,12 @@ public class Member {
     public PersonalNumber getPersonalNumber() { return personalNumber; }
 
     //set personal number if it s not valid it will throws error
-    public void setPersonalNumber(String personalNumber) {
+    public void setPersonalNumber(PersonalNumber personalNumber) {
 
-        PersonalNumber personalNumberEntered = new PersonalNumber();
-        /*if(!personalNumberEntered.validID(personalNumber)) {
-            throw new IllegalArgumentException("Personal number should be a 10 digit number\n");
-        }*/
-        this.personalNumber = personalNumberEntered;
+        //PersonalNumber personalNumberEntered = new PersonalNumber();
+        this.personalNumber = personalNumber;
     }
 
-    //check if personal number is digit and length is 10
-    private boolean isValid(String input){
-        return input.length() == 10 && input.matches("-?\\d+(\\.\\d+)?");
-        //check its digits
-    }
 
     public boolean isValidYear(int year){
         if(year > Calendar.getInstance().get(Calendar.YEAR))
@@ -113,7 +107,7 @@ public class Member {
         boats.add(boat);
     }
 
-    //if boat beolng to person it return the boat
+    //if boat belongs to person it return the boat
     public Boat memberSelectABoat(Boat boat){
         if(boat == null)
             throw new IllegalArgumentException("Boat could not be found");
@@ -141,8 +135,8 @@ public class Member {
         this.password = password;
     }
 
-    public String changeToStringPersonalID(){
-        return "";
+    public String changePersonalNumberToStringForSave(){
+        return this.personalNumber.getPersonalNumber();
     }
 
 }
