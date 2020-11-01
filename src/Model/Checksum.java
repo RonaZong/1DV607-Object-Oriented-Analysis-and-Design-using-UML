@@ -1,48 +1,35 @@
 package Model;
 
-import java.time.LocalDate;
-
 public class Checksum {
-    private ValidDigitForChecksum firstDigit;
-    private ValidDigitForChecksum secondDigit;
-    private ValidDigitForChecksum thirdDigit;
-    private ValidDigitForChecksum fourthDigit;
-    private int checksum;
+    private int number;
 
-    public Checksum(ValidDigitForChecksum firstDigit,ValidDigitForChecksum secondDigit,ValidDigitForChecksum thirdDigit,ValidDigitForChecksum fourthDigit){
-        setFirstDigit(firstDigit);
-        setSecondDigit(secondDigit);
-        setThirdDigit(thirdDigit);
-        setFourthDigit(fourthDigit);
-    }
-     public Checksum(int newNumber){
-        setChecksum(newNumber);
-     }
+    public Checksum(int newNumber){
+        setNumber(newNumber);
+        }
 
-    private void setChecksum(int newNumber) {
-        if(newNumber<0 || newNumber>9999)
-            throw new IllegalArgumentException("Invalid personal number check last 4 digits");
-        this.checksum = newNumber;
+    private void setNumber(int newNumber) {
+        if(newNumber<0 || newNumber>9)
+            throw new IllegalArgumentException("wrong input for checksum");
+        this.number = newNumber;
+
     }
 
-    private void setFirstDigit(ValidDigitForChecksum firstDigit) {
-        this.firstDigit = firstDigit;
+    public int getNumber(){
+        return this.number;
     }
 
-    private void setSecondDigit(ValidDigitForChecksum secondDigit) {
-        this.secondDigit = secondDigit;
+    @Override
+    public boolean equals(Object obj){
+        if(obj instanceof Checksum){
+            Checksum digit = (Checksum) obj;
+            return this.number == digit.getNumber();
+        }
+        return false;
     }
 
-    private void setThirdDigit(ValidDigitForChecksum thirdDigit) {
-        this.thirdDigit = thirdDigit;
+    @Override
+    public String toString(){
+        return this.number+"";
     }
-
-    private void setFourthDigit(ValidDigitForChecksum fourthDigit) {
-        this.fourthDigit = fourthDigit;
-    }
-
-    public String getChecksum(){
-        return this.checksum+"";
-    }
-
 }
+
