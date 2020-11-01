@@ -39,7 +39,8 @@ public class Registry {
            for (String lines : eachLines) {
                String[] parameters = lines.split(":");//separate each word and put them in an array
                //PersonalNumber personalNumber = new PersonalNumber(parameters[1]);
-               PersonalNumber personalNumber = new PersonalNumber(LocalDate.parse(parameters[1].substring(0,8), DateTimeFormatter.BASIC_ISO_DATE),new Checksum(Integer.parseInt(parameters[1].substring(8))));
+               PersonalNumber personalNumber = new PersonalNumber(LocalDate.parse(parameters[1].substring(0,8), DateTimeFormatter.BASIC_ISO_DATE),new Last3DigitsBeforeChecksum(Integer.parseInt(parameters[1].substring(8,11))),
+                       new Checksum(Integer.parseInt(parameters[1].substring(11))));
                Member member = boatClub.makeMemberForLoadingInStartOfProgram(parameters[0], personalNumber,parameters[2]);
                member.setNumbersOfBoatsOwnByAMember(Integer.parseInt(parameters[3]));
                for (int i = 4; i < parameters.length - 1; i = i + 2) {
@@ -59,7 +60,7 @@ public class Registry {
         try {
             saver = new PrintWriter(file);
             for(Member member : boatClub.getAllMembersLocally()) {
-                saver.print(member.getName() + ":" + member.changeToStringPersonalID() + ":"
+                saver.print(member.getName() + ":" + member.changePersonalNumberToStringForSave() + ":"
                         + member.getMemberID() + ":" + member.numberOfBoats());
                 for (Boat boat : member.boatsOwnedByMember()) {
                     saver.print(":" + boat.getType() + ":" + boat.getLength());
