@@ -1,0 +1,26 @@
+
+m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(³¾®8ß™®´Õ.
+m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(—™8ß™®´Õ.
+r	java:S117&"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(å”Õùÿÿÿÿ8ß™®´Õ.
+r	java:S117A"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(—áˆÀüÿÿÿÿ8ß™®´Õ.
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(±·²Öşÿÿÿÿ
+r	java:S116	"QRename this field "m_deck" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(îéóäşÿÿÿÿ8Â®Ù±Õ.
+y	java:S116
+"XRename this field "m_newGameRule" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÖŒ€“ûÿÿÿÿ8Â®Ù±Õ.
+u	java:S116"TRename this field "m_hitRule" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£×‘çûÿÿÿÿ8Â®Ù±Õ.
+u	java:S116"TRename this field "m_winRule" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Éë©Çúÿÿÿÿ8ß™®´Õ.
+X	java:S125"<This block of commented-out lines of code should be removed.(ÍÏôÑ8ß™®´Õ.
+]	java:S125"<This block of commented-out lines of code should be removed.(üë£èşÿÿÿÿ8ß™®´Õ.
+X	java:S125"<This block of commented-out lines of code should be removed.(™Šºù8ß™®´Õ.
+j	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(—™8ß™®´Õ.
+o	java:S100&"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(å”Õùÿÿÿÿ8ß™®´Õ.
+o	java:S1003"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÊŸ¿îıÿÿÿÿ8ß™®´Õ.
+L
+java:S62128"/Declare this local variable with "var" instead.(¶‹ù¦8¦æšÃ/
+o	java:S100A"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(—áˆÀüÿÿÿÿ8ß™®´Õ.
+]	java:S125B"<This block of commented-out lines of code should be removed.(ıã”šÿÿÿÿÿ8ß™®´Õ.
+o	java:S100M"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(úùÄæÿÿÿÿÿ8®™Ü³Õ.
+c
+java:S1126N"AReplace this if-then-else statement by a single return statement.(èä»üÿÿÿÿ8®™Ü³Õ.
+I
+java:S1125N"'Remove the unnecessary boolean literal.(èä»üÿÿÿÿ8®™Ü³Õ.

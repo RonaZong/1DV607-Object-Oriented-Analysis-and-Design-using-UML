@@ -1,0 +1,14 @@
+
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(äØÜÖùÿÿÿÿ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(±·²Öşÿÿÿÿ
+o
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(õÚÚ”
+b	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ìßå
+h	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(äØÜÖùÿÿÿÿ
+h	java:S100#"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(«ÓŠÄüÿÿÿÿ
+?
+java:S2140,")Use "java.util.Random.nextInt()" instead.(—åĞ
+g	java:S116"RRename this field "m_cards" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(•²ÀŞ
+F
+java:S5413.")Verify that "remove()" is used correctly.(‡äÎ©8Ä™§³Õ.
+c	java:S100("NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚¸€

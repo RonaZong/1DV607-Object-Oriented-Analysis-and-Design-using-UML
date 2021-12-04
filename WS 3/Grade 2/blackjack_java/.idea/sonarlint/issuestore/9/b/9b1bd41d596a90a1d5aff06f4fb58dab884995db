@@ -1,0 +1,9 @@
+
+m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ò±ÚÆ8‘ì°´Õ.
+K
+java:S1066"/Merge this if statement with the enclosing one.(ÑšÓ8‘ì°´Õ.
+l	java:S117
+"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Í¸Î08‘ì°´Õ.
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(§çùÓ8‘ì°´Õ.
+U
+java:S1128"3Remove this unused import 'BlackJack.model.Dealer'.(ÿ©ñóûÿÿÿÿ8‘ì°´Õ.

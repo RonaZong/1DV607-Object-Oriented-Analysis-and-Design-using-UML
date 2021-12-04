@@ -1,0 +1,10 @@
+
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(§çùÓ
+P
+java:S1128"3Remove this unused import 'BlackJack.model.Player'.(¬‹´ 8º·£³Õ.
+U
+java:S1128"3Remove this unused import 'BlackJack.model.Dealer'.(ÿ©ñóûÿÿÿÿ8º·£³Õ.
+S
+java:S1128"1Remove this unused import 'BlackJack.model.Card'.(êð‰ªýÿÿÿÿ8º·£³Õ.
+N
+java:S1128"1Remove this unused import 'BlackJack.model.Deck'.(Á„°Î8º·£³Õ.

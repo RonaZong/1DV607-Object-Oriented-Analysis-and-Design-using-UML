@@ -1,0 +1,10 @@
+
+m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ã‹ø«8¶®Ù±Õ.
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ü ûÉúÿÿÿÿ
+r	java:S116	"QRename this field "a_view" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›¦áýûÿÿÿÿ8¶®Ù±Õ.
+r	java:S116
+"QRename this field "a_game" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(äÅ†ýúÿÿÿÿ8¶®Ù±Õ.
+]	java:S125"<This block of commented-out lines of code should be removed.(ö€¨ýùÿÿÿÿ8†±î³Õ.
+j	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¶“Öß8¶®Ù±Õ.
+X	java:S125"<This block of commented-out lines of code should be removed.(Ë±Åñ8¶®Ù±Õ.
+X	java:S1256"<This block of commented-out lines of code should be removed.(ê¥î±8ƒ«Ñ‘Õ.

@@ -1,0 +1,8 @@
+
+l	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Í¸Î08ĞÈ¬´Õ.
+S
+java:S1128"1Remove this unused import 'BlackJack.model.Card'.(êğ‰ªıÿÿÿÿ8Ü§®´Õ.
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(§çùÓ
+>
+java:S1170"!Make this final field static too.(Ã¸ı8Ü§®´Õ.
+q	java:S116"URename this field "g_hitLimit" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ã¸ı8ĞÈ¬´Õ.
