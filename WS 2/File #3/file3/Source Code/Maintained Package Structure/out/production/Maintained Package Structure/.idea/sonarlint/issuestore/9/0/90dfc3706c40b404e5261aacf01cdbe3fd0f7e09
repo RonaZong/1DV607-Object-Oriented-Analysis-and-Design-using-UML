@@ -1,0 +1,13 @@
+
+h
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 24 to the 15 allowed.(Àİì
+S	java:S106"9Replace this use of System.out or System.err by a logger.(ìıàÚùÿÿÿÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(Ş™”ä
+N	java:S106&"9Replace this use of System.out or System.err by a logger.(¤³Âû
+S	java:S106-"9Replace this use of System.out or System.err by a logger.(ìıàÚùÿÿÿÿ
+N	java:S106."9Replace this use of System.out or System.err by a logger.(û¡ñ
+S	java:S106/"9Replace this use of System.out or System.err by a logger.(°ÌÆõûÿÿÿÿ
+7	java:S1319""Add a default case to this switch.(¬ Ï§
+S	java:S106?"9Replace this use of System.out or System.err by a logger.(‰Íá®ûÿÿÿÿ
+M	java:S106D"9Replace this use of System.out or System.err by a logger.(í€Æ"
+S	java:S106G"9Replace this use of System.out or System.err by a logger.(âšØğşÿÿÿÿ

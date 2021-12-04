@@ -1,0 +1,11 @@
+
+J
+java:S1172+"/Remove this unused method parameter "memberID".(ŽÏ×Åøÿÿÿÿ
+I
+java:S1068".Remove this unused "memberUUID" private field.(Þð¤Õþÿÿÿÿ
+>
+java:S1643"Use a StringBuilder instead.(¨½‹Âøÿÿÿÿ8šŽ ÊÐ.
+9
+java:S1643["Use a StringBuilder instead.(Ï÷ñ–8šŽ ÊÐ.
+[
+java:S1155(">Use isEmpty() to check whether the collection is empty or not.(·Ã´µ8šŽ ÊÐ.
