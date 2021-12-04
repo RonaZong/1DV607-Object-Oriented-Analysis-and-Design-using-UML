@@ -1,0 +1,25 @@
+
+f	java:S117 "QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ú†Œ…
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(±·²Öþÿÿÿÿ
+k	java:S116	"QRename this field "m_hand" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ûÈÙ¯ûÿÿÿÿ
+o	java:S116
+"URename this field "g_maxScore" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÔÊßœúÿÿÿÿ
+<
+java:S1170
+"!Make this final field static too.(ÔÊßœúÿÿÿÿ
+o
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(Š”á‘
+=
+java:S1125"'Remove the unnecessary boolean literal.(èÆ¿î
+c	java:S100 "NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ú†Œ…
+c	java:S100%"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(žŒÍ„
+c	java:S100)"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ñ¹–Ý
+h	java:S100-"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(é·Ó²ýÿÿÿÿ
+h	java:S1003"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÒóÀµûÿÿÿÿ
+E
+java:S62127"/Declare this local variable with "var" instead.(þï¨–
+N
+java:S11977"8Move the array designator from the variable to the type.(þï¨–
+V	java:S1256"<This block of commented-out lines of code should be removed.(ïó–®øÿÿÿÿ
+E
+java:S6212="/Declare this local variable with "var" instead.(²ùŸÇ

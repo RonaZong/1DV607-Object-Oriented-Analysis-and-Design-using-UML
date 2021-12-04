@@ -1,0 +1,31 @@
+
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼ï¸¤
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÈÜéùÿÿÿÿ
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÈÜéùÿÿÿÿ
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÊÑÿÏıÿÿÿÿ
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÊÑÿÏıÿÿÿÿ
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ô™Ã
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ô™Ã
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ô™Ã
+k	java:S117*"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ş³Èıÿÿÿÿÿ
+B
+java:S1128"'Remove this unused import 'model.Card'.(Ú×«ûÿÿÿÿÿ
+V	java:S125"<This block of commented-out lines of code should be removed.(• ×Ëÿÿÿÿÿ
+E
+java:S6212
+"/Declare this local variable with "var" instead.(ÿıÓã
+N	java:S106
+"9Replace this use of System.out or System.err by a logger.(ÿıÓã
+2
+java:S1116
+"Remove this empty statement.(ÿıÓã
+S	java:S106"9Replace this use of System.out or System.err by a logger.(íğóÓùÿÿÿÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(®„ò
+N	java:S106"9Replace this use of System.out or System.err by a logger.(Ÿ¼­Ğ
+c	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ô™Ã
+N	java:S106!"9Replace this use of System.out or System.err by a logger.(•û¯â
+N	java:S106&"9Replace this use of System.out or System.err by a logger.(ñÅ‰²
+S	java:S106'"9Replace this use of System.out or System.err by a logger.(ŞÒ—üÿÿÿÿ
+N	java:S106,"9Replace this use of System.out or System.err by a logger.(ïóÏ¡
+N	java:S106/"9Replace this use of System.out or System.err by a logger.(›úàè
+S	java:S1063"9Replace this use of System.out or System.err by a logger.(îïÜ©ÿÿÿÿÿ

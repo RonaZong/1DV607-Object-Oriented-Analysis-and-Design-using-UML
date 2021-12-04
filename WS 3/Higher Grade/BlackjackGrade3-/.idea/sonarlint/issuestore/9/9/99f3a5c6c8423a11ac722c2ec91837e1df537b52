@@ -1,0 +1,15 @@
+
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(À¯‡ßøÿÿÿÿ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÍŞÂŸÿÿÿÿÿ
+V
+java:S1128";Remove this unused import 'BlackJack.model.rules.IVisible'.(Œ¡Ë‰úÿÿÿÿ
+Q
+java:S1128";Remove this unused import 'BlackJack.model.rules.IVisitor'.(´“ş×
+Q
+java:S6212"/Declare this local variable with "var" instead.(í’¾Âüÿÿÿÿ8“œÃ/
+Q
+java:S6212"/Declare this local variable with "var" instead.(­úƒùÿÿÿÿ8•œÃ/
+Q	java:S125"<This block of commented-out lines of code should be removed.(Ö™¯ñ
+K
+java:S6212"/Declare this local variable with "var" instead.(ç†#8œÃ/
+V	java:S125"<This block of commented-out lines of code should be removed.(¹Ñıùÿÿÿÿ

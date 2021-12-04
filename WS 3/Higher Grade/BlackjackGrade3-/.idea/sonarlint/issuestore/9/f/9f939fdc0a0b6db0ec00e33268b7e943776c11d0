@@ -1,0 +1,24 @@
+
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ºİÔÏ
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(—™
+k	java:S117-"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(å”Õùÿÿÿÿ
+k	java:S117B"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(—áˆÀüÿÿÿÿ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(±·²Öşÿÿÿÿ
+k	java:S116
+"QRename this field "m_deck" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(îéóäşÿÿÿÿ
+r	java:S116"XRename this field "m_newGameRule" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÖŒ€“ûÿÿÿÿ
+n	java:S116"TRename this field "m_hitRule" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£×‘çûÿÿÿÿ
+n	java:S116"TRename this field "m_winRule" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Éë©Çúÿÿÿÿ
+Q	java:S125"<This block of commented-out lines of code should be removed.(ÍÏôÑ
+c	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(—™
+J
+java:S6212("/Declare this local variable with "var" instead.(öØÜøÿÿÿÿ
+h	java:S100-"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(å”Õùÿÿÿÿ
+h	java:S1006"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÊŸ¿îıÿÿÿÿ
+h	java:S100B"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(—áˆÀüÿÿÿÿ
+V	java:S125C"<This block of commented-out lines of code should be removed.(ıã”šÿÿÿÿÿ
+h	java:S100N"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(úùÄæÿÿÿÿÿ
+\
+java:S1126O"AReplace this if-then-else statement by a single return statement.(èä»üÿÿÿÿ
+B
+java:S1125O"'Remove the unnecessary boolean literal.(èä»üÿÿÿÿ

@@ -1,0 +1,12 @@
+We use fxml as UI interface. So the main changes are in controller and view. We creat fxml controller based on previous console controller, same for the view. 
+So we remove the previous controller and view classes. 
+
+All the game: play, hit, stand are set on action with the buttons instead. We set the game rule, button's availability and other inital settings in the initialize.
+
+All the Imageviews are set to be invisible before the cards are shown. To set the imageview with the corresponding card image, we use GetColor(), GetValue() from Card class.
+
+We do not manage to have delay after each card is shown.
+
+We continue to use observer to show card, but since observer only return one card per time, which make it difficult to set in UI Imageview.
+So we create Imageview array, and set image from each card that gets from hand.
+   
