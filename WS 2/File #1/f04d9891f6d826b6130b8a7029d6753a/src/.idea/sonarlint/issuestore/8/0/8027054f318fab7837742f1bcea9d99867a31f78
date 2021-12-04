@@ -1,0 +1,12 @@
+
+†
+java:S1319N"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ºøüë
+j
+java:S1128"TRemove this unnecessary import: same package classes are always implicitly imported.(¦¯ş
+t
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(àœˆÙùÿÿÿÿ
+7
+java:S1116"Remove this empty statement.(àœˆÙùÿÿÿÿ
+Q	java:S125"<This block of commented-out lines of code should be removed.(¾ÔÛ
+V	java:S125-"<This block of commented-out lines of code should be removed.(Ã¬¬˜üÿÿÿÿ
+V	java:S125@"<This block of commented-out lines of code should be removed.(óÚúÃûÿÿÿÿ

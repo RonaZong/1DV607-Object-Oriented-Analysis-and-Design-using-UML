@@ -1,0 +1,25 @@
+
+
+java:S1319"uThe type of the "memberList" object should be an interface such as "List" rather than the implementation "ArrayList".(¸¯–®ùÿÿÿÿ
+‹
+java:S1319T"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(Ÿˆíéûÿÿÿÿ
+
+java:S1319X"uThe type of the "memberList" object should be an interface such as "List" rather than the implementation "ArrayList".(°ˆ„úÿÿÿÿ
+`
+java:S2095G"EUse try-with-resources or close this "Scanner" in a "finally" clause.(™§²ìùÿÿÿÿ
+^
+java:S2095!"HUse try-with-resources or close this "FileWriter" in a "finally" clause.(ß´‹ğ
+ 
+java:S1862"„This branch can not be reached because the condition duplicates a previous condition in the same sequence of "if/else if" statements(€‚’Õıÿÿÿÿ
+j
+java:S1128"TRemove this unnecessary import: same package classes are always implicitly imported.(¦¯ş
+—
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(˜£Ì…
+\	java:S899"BDo something with the "boolean" value returned by "createNewFile".(Ğ’Íùÿÿÿÿ
+K
+java:S1172"0Remove this unused method parameter "boatsFile".(¸¯–®ùÿÿÿÿ
+Q
+java:S1117"";Rename "members" which hides the field declared at line 10.(©Åº’
+T
+java:S1117#"9Rename "boats" which hides the field declared at line 11.(ÖØ÷·şÿÿÿÿ
+N	java:S1067"9Replace this use of System.out or System.err by a logger.(Àûå 

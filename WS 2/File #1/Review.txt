@@ -1,0 +1,16 @@
+It lacks documentation.
+Class diagram is ok.
+Sequence diagram is missing activation on lifelines and should be seperated into two diagrams for input and output.
+The code is generally readable and understandable.
+The code is missing comments.
+
+It contains one UML class diagram and one sequence diagram (with input and output).
+It contains the source code of the application.
+It does not contain an executable version alternatively instructions on how to runt he system.
+I can run the system after creating txt files.
+The requirements are not all working in the running system. Boat info is saved in the member file after exiting the system. Then the system can not be runned unless deleting the boat info from member file.
+The system does not show verbose list.
+
+There is a model-view seperation, but it is not strict.
+The design and implementation is object oriented and can be improved.
+The design artifacts are in sync with the code.
