@@ -1,0 +1,5 @@
+1. Sequence diagram - remove start menu part, page 275 (Applying UML and Sequence patterns)
+*lines with dots is to show as return message
+
+Insert optins -> variable name and type
+

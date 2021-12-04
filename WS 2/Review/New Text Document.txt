@@ -1,0 +1,8 @@
+To give more details in the Class diagram, and tidy up the code before hand-in. To provide simple instructions of how to run jar-file. The requirement "Simple error handling" needs to be fixed. 
+
+Consider also to make the member management a bit more viable instead of going into compact list to do changes. When I try to update the user it asks me to do the changes but when ever I'm done I can't go anywhere further. The information doesn't update.
+
+I get null pointer exception when I'm in boat menu and tries to add a new boat directly to a member, I also get this when I try to delete boat in boat menu. If I want to change the information I also get null pointer exception.
+
+Extra notes and thoughts: in Registry.loadForVerboseList, why is a boatclub object instantiated? It doesn't seem to have any use in the current form. As the BoatClub object seems to be the creator for Registry, it's weird that Registry also creates a BoatClub object.
+
