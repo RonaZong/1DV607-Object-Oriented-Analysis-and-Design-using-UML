@@ -1,0 +1,22 @@
+<?xml version = "1.0"?>
+
+<boatRegister>
+    <member id="123456">
+        <name>
+            <firstname>Test</firstname>
+            <lastname>Testsson</lastname>
+        </name>
+        <personal-nr>19500101011010</personal-nr>
+        <boats>
+            <boat>
+                <boat-type>Fregatt</boat-type>
+                <boat-length>50</boat-length>
+            </boat>
+            <boat>
+                <boat-type>Sailing boat</boat-type>
+                <boat-length>20</boat-length>
+            </boat>
+        </boats>
+    </member>
+
+</boatRegister>

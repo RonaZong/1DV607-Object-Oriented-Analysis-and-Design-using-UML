@@ -1,0 +1,13 @@
+
+b	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ïíê
+t
+java:S1171"YMove the contents of this initializer to a standard constructor or to field initializers.(ÒÌâ–øÿÿÿÿ
+\
+java:S1075"ARefactor your code to get this URI from a customizable parameter.(¬Ä¸´ÿÿÿÿÿ
+M	java:S106"9Replace this use of System.out or System.err by a logger.(«Ã¥
+S	java:S106"9Replace this use of System.out or System.err by a logger.(şæ£ñşÿÿÿÿ
+S	java:S106#"9Replace this use of System.out or System.err by a logger.(ñï¯Òÿÿÿÿÿ
+H
+java:S1481"-Remove this unused "memberId" local variable.(Ï‹öÏùÿÿÿÿ
+H
+java:S1481"-Remove this unused "boatType" local variable.(æ–Üøÿÿÿÿ
