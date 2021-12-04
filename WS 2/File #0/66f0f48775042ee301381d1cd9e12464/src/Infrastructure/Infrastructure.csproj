@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Identity\" />
+    <Folder Include="Mvc\" />
+    <Folder Include="Data\" />
+    <Folder Include="Mvc\Abstractions\" />
+    <Folder Include="Mvc\Attributes\" />
+    <Folder Include="Mvc\Routing\" />
+    <Folder Include="Session\" />
+    <Folder Include="Session\Abstractions\" />
+    <Folder Include="Mvc\Middlewares\" />
+    <Folder Include="IO\" />
+    <Folder Include="Data\VO\" />
+    <Folder Include="Data\Seed\" />
+    <Folder Include="Repositories\" />
+    <Folder Include="Data\EntityConfigurations\" />
+    <Folder Include="Data\Utils\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="TwoFactorAuth.Net" Version="1.4.0" />
+    <PackageReference Include="TwoFactorAuth.Net.QRCoder" Version="1.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.DataProtection.Abstractions" Version="3.1.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation" Version="3.1.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.8">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.8" />
+    <PackageReference Include="Microsoft.AspNetCore.DataProtection" Version="3.1.8" />
+    <PackageReference Include="Colorful.Console" Version="1.2.11" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core.Domain\Core.Domain.csproj" />
+    <ProjectReference Include="..\Core.Application\Core.Application.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,9 @@
+C:\Users\ronaz\Downloads\66f0f48775042ee301381d1cd9e12464\src\Core.Domain\bin\Debug\netcoreapp3.1\Core.Domain.deps.json
+C:\Users\ronaz\Downloads\66f0f48775042ee301381d1cd9e12464\src\Core.Domain\bin\Debug\netcoreapp3.1\Core.Domain.dll
+C:\Users\ronaz\Downloads\66f0f48775042ee301381d1cd9e12464\src\Core.Domain\bin\Debug\netcoreapp3.1\Core.Domain.pdb
+C:\Users\ronaz\Downloads\66f0f48775042ee301381d1cd9e12464\src\Core.Domain\obj\Debug\netcoreapp3.1\Core.Domain.csprojAssemblyReference.cache
+C:\Users\ronaz\Downloads\66f0f48775042ee301381d1cd9e12464\src\Core.Domain\obj\Debug\netcoreapp3.1\Core.Domain.csproj.CoreCompileInputs.cache
+C:\Users\ronaz\Downloads\66f0f48775042ee301381d1cd9e12464\src\Core.Domain\obj\Debug\netcoreapp3.1\Core.Domain.AssemblyInfoInputs.cache
+C:\Users\ronaz\Downloads\66f0f48775042ee301381d1cd9e12464\src\Core.Domain\obj\Debug\netcoreapp3.1\Core.Domain.AssemblyInfo.cs
+C:\Users\ronaz\Downloads\66f0f48775042ee301381d1cd9e12464\src\Core.Domain\obj\Debug\netcoreapp3.1\Core.Domain.dll
+C:\Users\ronaz\Downloads\66f0f48775042ee301381d1cd9e12464\src\Core.Domain\obj\Debug\netcoreapp3.1\Core.Domain.pdb

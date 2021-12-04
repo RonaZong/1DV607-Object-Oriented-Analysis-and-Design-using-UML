@@ -1,0 +1,20 @@
+Your implementation is a bit advanced for me, I can only review it based on the requirements.
+Tbh I learned a lot from your work. Thank you!
+
+The documentation is very clear, easy to follow.
+Class diagram uses correct notation and layout. If it is suitable for your implementation and logic, you can add multiplicity.
+Sequence digrams use correct notation and layout.
+Indentation and formatting of blocks is correct and consequent.
+Naming of classes/operations/attributes and arguments are consequent and use real words.
+The code is generally readable and understandable.
+Comments are readable and in English.
+
+It contains one UML class diagram and two sequence diagrams(one for input and one for output).
+It contains the source code of the application.
+It contains an executable version alternatively instruction on how to run the system.
+I can run the system.
+All requirements are working in the running system.
+
+There is a strict model-view seperation, no printing or display of information in the model. No formating of strings for printouts in the model.
+The design and implementation is object oriented.
+The design artifacts are in sync with the code.
