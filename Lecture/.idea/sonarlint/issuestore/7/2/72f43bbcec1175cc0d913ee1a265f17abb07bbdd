@@ -1,0 +1,18 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ƒğ¼êÿÿÿÿÿ
+m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ú†Œ…8ÏêÌ†Õ.
+r	java:S116"QRename this field "m_hand" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ûÈÙ¯ûÿÿÿÿ8ÏêÌ†Õ.
+v	java:S116"URename this field "g_maxScore" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÔÊßœúÿÿÿÿ8ÏêÌ†Õ.
+C
+java:S1170"!Make this final field static too.(ÔÊßœúÿÿÿÿ8ÏêÌ†Õ.
+v
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(Š”á‘8ÏêÌ†Õ.
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(ã²–õıÿÿÿÿ8ÏêÌ†Õ.
+j	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ú†Œ…8ÏêÌ†Õ.
+j	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŒÍ„8ÏêÌ†Õ.
+j	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ñ¹–İ8ÏêÌ†Õ.
+o	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(é·Ó²ıÿÿÿÿ8ÏêÌ†Õ.
+o	java:S100!"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÒóÀµûÿÿÿÿ8ÏêÌ†Õ.
+U
+java:S1197%"8Move the array designator from the variable to the type.(³åİ—8ÏêÌ†Õ.
+]	java:S125$"<This block of commented-out lines of code should be removed.(ïó–®øÿÿÿÿ8ÏêÌ†Õ.

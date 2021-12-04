@@ -1,0 +1,19 @@
+
+o	java:S100."NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(—áˆÀüÿÿÿÿ8Û»Ù†Õ.
+J
+java:S11258"(Remove the literal "true" boolean value.(èä»üÿÿÿÿ8Û»Ù†Õ.
+X	java:S125"<This block of commented-out lines of code should be removed.(™Šºù8‹ˆì„Õ.
+r	java:S117""QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(å”Õùÿÿÿÿ8Û»Ù†Õ.
+m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(³¾®8‹ˆì„Õ.
+r	java:S116"QRename this field "m_deck" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(îéóäşÿÿÿÿ8‹ˆì„Õ.
+j	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(—™8‹ˆì„Õ.
+o	java:S1007"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(úùÄæÿÿÿÿÿ8Û»Ù†Õ.
+c
+java:S11268"AReplace this if-then-else statement by a single return statement.(èä»üÿÿÿÿ8Û»Ù†Õ.
+m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(—™8‹ˆì„Õ.
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ƒğ¼êÿÿÿÿÿ
+r	java:S117."QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(—áˆÀüÿÿÿÿ8Û»Ù†Õ.
+u	java:S116
+"TRename this field "m_hitRule" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£×‘çûÿÿÿÿ8‹ˆì„Õ.
+y	java:S116	"XRename this field "m_newGameRule" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÖŒ€“ûÿÿÿÿ8‹ˆì„Õ.
+o	java:S100""NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(å”Õùÿÿÿÿ8Û»Ù†Õ.

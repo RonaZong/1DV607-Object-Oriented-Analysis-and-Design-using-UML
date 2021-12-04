@@ -1,0 +1,15 @@
+
+o	java:S116"SRename this field "m_player" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(™”—ñ8ŒÂ…Õ.
+o	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²‹úğşÿÿÿÿ8‡¼…Õ.
+o	java:S116"SRename this field "m_dealer" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¾‰ô8ŒÂ…Õ.
+o	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(è¾‚¯ıÿÿÿÿ8‡¼…Õ.
+j	java:S100#"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹·‚¾8‡¼…Õ.
+T
+java:S1135%"2Complete the task associated to this TODO comment.(»¨ìêıÿÿÿÿ8‡¼…Õ.
+o	java:S100."NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(å•µ¤øÿÿÿÿ8‡¼…Õ.
+j	java:S100)"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŒµòÍ8‡¼…Õ.
+j	java:S1003"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(û¦ˆŞ8‡¼…Õ.
+j	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ò¿Ëè8‡¼…Õ.
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ƒğ¼êÿÿÿÿÿ
+j	java:S1008"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Îç¶¬8‡¼…Õ.
+j	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬Õáå8‡¼…Õ.

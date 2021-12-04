@@ -1,0 +1,26 @@
+
+S	java:S106	"9Replace this use of System.out or System.err by a logger.(æÙÑËùÿÿÿÿ
+k	java:S117!"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ž³âŠúÿÿÿÿ
+S	java:S1063"9Replace this use of System.out or System.err by a logger.(ÞžÒ—üÿÿÿÿ
+N	java:S1062"9Replace this use of System.out or System.err by a logger.(ñÅ‰²
+k	java:S117+"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(žÀ—·ÿÿÿÿÿ
+k	java:S117+"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(žÀ—·ÿÿÿÿÿ
+r	java:S1176"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Þ³Èýÿÿÿÿÿ8û¨Ð”Õ.
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ç‚Þ¼
+N	java:S106"9Replace this use of System.out or System.err by a logger.(²§²½
+N	java:S106"9Replace this use of System.out or System.err by a logger.(Ÿ¼­Ð
+N	java:S106"9Replace this use of System.out or System.err by a logger.(®„Žò
+N	java:S106-"9Replace this use of System.out or System.err by a logger.(•û¯â
+h	java:S100+"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(žÀ—·ÿÿÿÿÿ
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ò¨Ñü
+S	java:S106?"9Replace this use of System.out or System.err by a logger.(îïÜ©ÿÿÿÿÿ
+k	java:S117&"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Žÿ†ßùÿÿÿÿ
+7
+java:S1116	"Remove this empty statement.(æÙÑËùÿÿÿÿ
+k	java:S117&"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Žÿ†ßùÿÿÿÿ
+N	java:S106;"9Replace this use of System.out or System.err by a logger.(›úàè
+S	java:S106
+"9Replace this use of System.out or System.err by a logger.(íðóÓùÿÿÿÿ
+k	java:S117+"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(žÀ—·ÿÿÿÿÿ
+k	java:S117!"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ž³âŠúÿÿÿÿ
+N	java:S1068"9Replace this use of System.out or System.err by a logger.(ïóÏ¡

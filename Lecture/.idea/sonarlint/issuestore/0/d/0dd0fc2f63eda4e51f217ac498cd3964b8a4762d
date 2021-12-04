@@ -1,0 +1,7 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÒÁ˜òùÿÿÿÿ
+e	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Í¸Î0
+7
+java:S1170"!Make this final field static too.(Ã¸ı
+b	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Í¸Î0
+j	java:S116"URename this field "g_hitLimit" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ã¸ı
