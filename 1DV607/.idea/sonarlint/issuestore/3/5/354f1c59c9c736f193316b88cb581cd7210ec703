@@ -1,0 +1,17 @@
+
+R	java:S125­"<This block of commented-out lines of code should be removed.(º¹Î¥
+R	java:S125¸"<This block of commented-out lines of code should be removed.(¾†ÔÒ
+Q	java:S125|"<This block of commented-out lines of code should be removed.(¼ æî
+W	java:S125™"<This block of commented-out lines of code should be removed.(¶¿éÓùÿÿÿÿ
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(º›°Î
+o	java:S131"YComplete cases by adding the missing enum constants or add a default case to this switch.(¨ÕÉ
+R	java:S125©"<This block of commented-out lines of code should be removed.(¾†ÔÒ
+R	java:S125"<This block of commented-out lines of code should be removed.(ƒÈÔ
+R	java:S125³"<This block of commented-out lines of code should be removed.(ÿ‘˜†
+V	java:S125_"<This block of commented-out lines of code should be removed.(•Ä°şûÿÿÿÿ
+W	java:S125º"<This block of commented-out lines of code should be removed.(˜Êıÿÿÿÿ
+R	java:S125«"<This block of commented-out lines of code should be removed.(û÷Æí
+R	java:S125±"<This block of commented-out lines of code should be removed.(¾†ÔÒ
+V	java:S125l"<This block of commented-out lines of code should be removed.(Ï»ôìıÿÿÿÿ
+f	java:S117`"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ò«ü
+n	java:S131d"YComplete cases by adding the missing enum constants or add a default case to this switch.(…úÏ¡

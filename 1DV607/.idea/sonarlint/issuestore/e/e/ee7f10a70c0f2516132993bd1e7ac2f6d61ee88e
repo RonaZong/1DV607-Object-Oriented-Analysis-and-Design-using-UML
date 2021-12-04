@@ -1,0 +1,34 @@
+
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ìºéÚ
+I
+java:S1068".Remove this unused "isLoggedIn" private field.(âª¸Ìşÿÿÿÿ
+Z
+java:S2147_"DCombine this catch with the one at line 93, which has the same body.(…‘
+S	java:S106^"9Replace this use of System.out or System.err by a logger.(ı™øøÿÿÿÿ
+S	java:S106`"9Replace this use of System.out or System.err by a logger.(ı™øøÿÿÿÿ
+N	java:S106Z"9Replace this use of System.out or System.err by a logger.(°İø
+S	java:S106n"9Replace this use of System.out or System.err by a logger.(î÷©çÿÿÿÿÿ
+V	java:S125Y"<This block of commented-out lines of code should be removed.(œçùÌúÿÿÿÿ
+S	java:S106v"9Replace this use of System.out or System.err by a logger.(ôÄ„ûÿÿÿÿ
+T	java:S106ª"9Replace this use of System.out or System.err by a logger.(…ºªßÿÿÿÿÿ
+S	java:S106l"9Replace this use of System.out or System.err by a logger.(÷¾ÑÁÿÿÿÿÿ
+S	java:S106M"9Replace this use of System.out or System.err by a logger.(Àì¾ûùÿÿÿÿ
+V	java:S125T"<This block of commented-out lines of code should be removed.(ûó˜´ùÿÿÿÿ
+@
+java:S1481G"*Remove this unused "valid" local variable.(›úœí
+V	java:S125W"<This block of commented-out lines of code should be removed.(†©ßªüÿÿÿÿ
+T	java:S106¥"9Replace this use of System.out or System.err by a logger.(ùÜ¤öıÿÿÿÿ
+M	java:S106"9Replace this use of System.out or System.err by a logger.(æ$
+V	java:S125b"<This block of commented-out lines of code should be removed.(§‚ñÿÿÿÿÿ
+V	java:S125O"<This block of commented-out lines of code should be removed.(ÓÃ‡‹şÿÿÿÿ
+V	java:S125["<This block of commented-out lines of code should be removed.(ù“ÿ şÿÿÿÿ
+O	java:S106ˆ"9Replace this use of System.out or System.err by a logger.(É…‡¼
+T	java:S106€"9Replace this use of System.out or System.err by a logger.(±­şìûÿÿÿÿ
+O	java:S106’"9Replace this use of System.out or System.err by a logger.(ªš·Ô
+N	java:S106A"9Replace this use of System.out or System.err by a logger.(º”¯
+S	java:S106I"9Replace this use of System.out or System.err by a logger.(“Èƒüÿÿÿÿÿ
+S	java:S106y"9Replace this use of System.out or System.err by a logger.(£Ï”öÿÿÿÿÿ
+O	java:S106¨"9Replace this use of System.out or System.err by a logger.(ŠÒ‚‹
+T	java:S106Ÿ"9Replace this use of System.out or System.err by a logger.(ÇùŸ“şÿÿÿÿ
+O
+java:S1854\"9Remove this useless assignment to local variable "valid".(è¬£‡

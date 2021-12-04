@@ -1,0 +1,24 @@
+
+P
+java:S1117":Rename "member" which hides the field declared at line 10.(ÔàÚ¸
+t
+java:S1488"^Immediately return this expression instead of assigning it to the temporary variable "member".(ÔàÚ¸
+Q	java:S125"<This block of commented-out lines of code should be removed.(—„Öı
+k
+java:S1450
+"URemove the "member" field and declare it as a local variable in the relevant methods.(÷‡•Ó
+Q	java:S125"<This block of commented-out lines of code should be removed.(í¦ú•
+P
+java:S1117,":Rename "member" which hides the field declared at line 10.(§“à
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(á–Ì“
+M
+java:S2589I"7Remove this expression which always evaluates to "true"(†Ñ„Ã
+A
+java:S1172"+Remove this unused method parameter "name".(ŠÆ
+Q
+java:S1117B";Rename "registry" which hides the field declared at line 9.(äßà¡
+P
+java:S1117S":Rename "member" which hides the field declared at line 10.(”áÅ
+[
+java:S1764I"ECorrect one of the identical sub-expressions on both sides of equals.(†Ñ„Ã
+Q	java:S125y"<This block of commented-out lines of code should be removed.(Üîæİ
