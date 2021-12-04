@@ -1,0 +1,16 @@
+﻿We added the Treasurer class after reading the student reviews. However, we removed it again after talking with the tutor, as he mentioned, due to the requirements it is unnecessary to have this class for Grade 2.
+
+
+We changed all the attributes in camel case style.
+
+
+We think the association for Secretary and Berth is not needed, as there is no need to have an ongoing memory of the fact of a particular Secretary assigning particular Berth. Same as Secretary and Calendar; Member, Calendar and Event.
+
+
+Historically, a boat can be assigned to different berths and vice versa. So the multiplicity of the role is multiple to multiple.
+
+
+Therefore, there is a Booking History class to record the past occupation of Boat and Berth.
+
+
+We think it is not needed to have some memory as “Register Boat”, “Update Boat” and so on, it is more meaningful to indicate the connection with ownership instead of functionality.
